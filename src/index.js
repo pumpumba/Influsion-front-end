@@ -1,15 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './components/header/Header'
+import AppBar from '@material-ui/core/AppBar'
 
 import './styles/main.scss'
+import { Toolbar } from '@material-ui/core';
 
 const title = 'inFlusion'
 
 const Index = () => {
   return (
     <main>
-      <Header title={title}/>
+      <AppBar position='static'>
+        <Toolbar>
+          <h1>inFlusion</h1>
+        </Toolbar>
+      </AppBar>
     </main>
   )
 }
