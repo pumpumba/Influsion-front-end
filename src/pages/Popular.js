@@ -1,9 +1,15 @@
 import React from 'react'
+import Header from './../components/header/Header'
+import Footer from './../components/footer/Footer'
 
 const Popular = (props) => {
-  return (
-          <h1>Popular</h1>
-  )
+    return (
+        <div>
+            <Header />
+            <h1>Popular</h1>
+            <Footer />
+        </div>
+    )
 }
 
 export default Popular

@@ -1,8 +1,14 @@
 import React from 'react'
+import Header from './../components/header/Header'
+import Footer from './../components/footer/Footer'
 
 const Feed = () => {
   return (
-          <h1>Feed</h1>
+    <div>
+      <Header />
+      <h1>Feed</h1>
+      <Footer />
+    </div>
   )
 }
 
