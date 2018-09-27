@@ -1,18 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './components/header/Header'
-import Footer from './components/footer/Footer'
-
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Popular from './pages/Popular'
+import Feed from './pages/Feed'
+import Search from './pages/Search'
+import Settings from './pages/Settings'
 import './styles/main.scss'
 
-const title = 'inFlusion'
 
 const Index = () => {
   return (
-    <main>
-      <Header title={title} />
-      <Footer title={title} />
-    </main>
+    <Router>
+      <div>
+        <Route exact path='/' component={Popular} />
+        <Route exact path='/feed' component={Feed} />
+        <Route path='/search' component={Search} />
+        <Route path='/settings' component={Settings} />
+      </div>
+    </Router>
   )
 }
 
