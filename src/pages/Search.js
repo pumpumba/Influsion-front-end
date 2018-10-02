@@ -5,7 +5,7 @@ import Footer from './../components/footer/Footer'
 const Search = (props) => {
   return (
     <div>
-      <Header />
+      <Header title={'Search'}/>
       <h1>Search</h1>
       <Footer />
     </div>

@@ -5,7 +5,7 @@ import Footer from './../components/footer/Footer'
 const Popular = (props) => {
     return (
         <div>
-            <Header />
+            <Header title={'Popular'}/ >
             <h1>Popular</h1>
             <Footer />
         </div>
