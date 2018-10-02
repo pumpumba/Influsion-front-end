@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-library.add(faJedi)
+
 
 const FilterFooter = () => {
   return (
       <div>
-        Instagram: <FontAwesomeIcon icon={['fab', 'Instagram']} />
+
+    <FontAwesomeIcon icon="check-square" />
       </div>
   )
 }
