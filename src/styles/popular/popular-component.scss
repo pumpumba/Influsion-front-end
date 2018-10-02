@@ -1,0 +1,14 @@
+.feed-component-wrapper {
+    background-size: cover;
+    width: 50%;
+
+    &:after {
+        content: '';
+        display: block;
+        padding-bottom: 100%;
+    }
+
+    .expanded-view {
+        display: none;
+    }
+}
