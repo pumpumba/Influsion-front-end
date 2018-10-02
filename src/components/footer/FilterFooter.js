@@ -7,10 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const FilterFooter = () => {
   return (
-      <div>
-
-    <FontAwesomeIcon icon="check-square" />
-      </div>
+      <nav>
+        <FontAwesomeIcon icon="check-square" />
+      </nav>
   )
 }
 

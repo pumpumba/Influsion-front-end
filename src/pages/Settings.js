@@ -6,7 +6,7 @@ const Settings = (props) => {
   return (
     <div>
       <Header />
-      <h1>Search</h1>
+      <h1>Settings</h1>
       <Footer />
     </div>
   )
