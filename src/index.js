@@ -1,21 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import AppBar from '@material-ui/core/AppBar'
-
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Popular from './pages/Popular'
+import Feed from './pages/Feed'
+import Search from './pages/Search'
+import Settings from './pages/Settings'
 import './styles/main.scss'
-import { Toolbar } from '@material-ui/core';
 
-const title = 'inFlusion'
 
 const Index = () => {
   return (
-    <main>
-      <AppBar position='static'>
-        <Toolbar>
-          <h1>inFlusion</h1>
-        </Toolbar>
-      </AppBar>
-    </main>
+    <Router>
+      <div>
+        <Route exact path='/' component={Popular} />
+        <Route exact path='/feed' component={Feed} />
+        <Route path='/search' component={Search} />
+        <Route path='/settings' component={Settings} />
+      </div>
+    </Router>
   )
 }
 
