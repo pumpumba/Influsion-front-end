@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import FilterFooter from './FilterFooter'
+import SubFooter from './SubFooter'
+
 
 const Footer = () => {
   return (
-      <nav>
-        <Link to='/'>Popular</Link>
-        <Link to='/feed'>Feed</Link>
-        <Link to='/search'>Search</Link>
-        <Link to='/settings'>Settings</Link>
-      </nav>
+      <div>
+        <FilterFooter/>
+        <SubFooter/>
+      </div>
   )
 }
-
 export default Footer
