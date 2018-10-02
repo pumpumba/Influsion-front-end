@@ -6,6 +6,14 @@ class FeedComponent extends React.Component {
     this.state = {
       open: false
     }
+
+    this.onClick = this.onClick.bind(this)
+  }
+
+  onClick() {
+    this.setState(prevState => ({
+      open: !prevState.open
+    }))
   }
   render() {
     const backgroundImage = {
@@ -13,7 +21,12 @@ class FeedComponent extends React.Component {
     }
 
     return (
-      <div className='feed-component-wrapper' style={backgroundImage} data-state={this.state.open && 'open'}>
+      <div
+        className='feed-component-wrapper'
+        style={backgroundImage}
+        data-state={this.state.open && 'open'}
+        onClick={this.onClick}
+      >
         <div className='expanded-view'>
           <h3>{this.props.data.name}</h3>
           <span className='social-media-source'>{this.props.data.content.source}</span>

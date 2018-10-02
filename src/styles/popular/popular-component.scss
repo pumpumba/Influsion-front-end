@@ -3,13 +3,25 @@
     width: 50%;
     float: left;
 
+    .expanded-view {
+        display: none;
+    }
+
     &:after {
         content: '';
         display: block;
         padding-bottom: 100%;
     }
 
-    .expanded-view {
-        display: none;
+    &[data-state='open'] {
+        width: 100%;
+
+        .expanded-view{
+            display: block;
+        }
+
+        &:after {
+            padding-bottom: 50%;
+        }
     }
 }
