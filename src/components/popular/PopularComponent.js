@@ -15,6 +15,7 @@ class FeedComponent extends React.Component {
       open: !prevState.open
     }))
   }
+
   render() {
     const backgroundImage = {
       backgroundImage: 'url(' + this.props.data.content.tweet_img_url + ')'

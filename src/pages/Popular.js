@@ -147,7 +147,6 @@ const feedData = [
 
 class Popular extends React.Component {
 
-
     render() {
         const FeedContent = Object.keys(feedData).map(key => {
             return <PopularComponent key={key} data={feedData[key]} />
@@ -155,7 +154,7 @@ class Popular extends React.Component {
 
         return (
             <main>
-                <Header />
+                <Header title={'Popular'} />
                 {FeedContent}
                 <Footer />
             </main>

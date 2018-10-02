@@ -5,7 +5,7 @@ import Footer from './../components/footer/Footer'
 const Feed = () => {
   return (
     <div>
-      <Header />
+      <Header title={'My Feed'}/>
       <h1>Feed</h1>
       <Footer />
     </div>

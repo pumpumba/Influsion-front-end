@@ -5,7 +5,7 @@ import Footer from './../components/footer/Footer'
 const Settings = (props) => {
   return (
     <div>
-      <Header />
+      <Header title={'Settings'}/>
       <h1>Search</h1>
       <Footer />
     </div>
