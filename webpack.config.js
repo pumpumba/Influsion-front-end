@@ -6,9 +6,7 @@ module.exports = {
     filename: "main.js"
   },
   devServer: {
-    inline: true,
-    contentBase: "./dist",
-    historyApiFallback: true
+    contentBase: "./dist"
   },
   module: {
     rules: [
