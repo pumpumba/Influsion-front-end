@@ -6,10 +6,10 @@ import SubFooter from './SubFooter'
 
 const Footer = () => {
   return (
-      <div>
+      <footer>
         <FilterFooter/>
         <SubFooter/>
-      </div>
+      </footer>
   )
 }
 export default Footer
