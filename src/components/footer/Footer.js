@@ -6,7 +6,7 @@ import SubFooter from './SubFooter'
 
 const Footer = () => {
   return (
-      <div>
+      <div className="footer">
         <FilterFooter/>
         <SubFooter/>
       </div>

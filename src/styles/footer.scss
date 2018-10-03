@@ -1,3 +1,9 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 
 body {
     color: red;
@@ -13,8 +19,12 @@ p {
     font-family: 'Open Sans', sans-serif;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .FooterButton{
-  width: 5em;
   a {
     color: white;
   }
