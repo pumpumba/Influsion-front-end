@@ -1,7 +1,7 @@
 @import 'vars';
 @import 'reset';
 @import 'footer';
-@import 'filterFooter';
+@import './footer/filterFooter';
 
 body {
     color: $gs-hard;
