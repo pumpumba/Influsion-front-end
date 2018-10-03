@@ -1,31 +1,6 @@
 .footer {
-  position: fixed;
+  background-color: #FDD3B6;
   bottom: 0;
+  position: fixed;
   width: 100%;
-}
-
-
-body {
-    color: red;
-    background-color: #FDD3B6;
-}
-
-h2 {
-    font-family: 'Montserrat', sans-serif;
-}
-
-p {
-    font-size: 1.25em;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.FooterButton{
-  a {
-    color: white;
-  }
 }
