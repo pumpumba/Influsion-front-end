@@ -36,7 +36,9 @@ class FilterFooter extends React.Component {
   }
 
   render() {
-    return (<div className="FiltFooter">
+
+    return (
+    <div className="FiltFooter">
       <FontAwesomeIcon
         icon={['fab', 'twitter']}
         className="footItem footStart"
@@ -55,7 +57,8 @@ class FilterFooter extends React.Component {
         onClick={this.changeYoutube}
         data-state={this.state.youtube && 'active'}
       />
-    </div>)
+    </div>
+    )
   }
 }
 
