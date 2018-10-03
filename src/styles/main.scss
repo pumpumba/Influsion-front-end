@@ -1,12 +1,16 @@
 @import 'vars';
 @import 'reset';
+<<<<<<< HEAD
 @import 'footer';
+=======
+@import 'header';
+>>>>>>> 0f85871e4d79725b260e784ecf818bc36dcdd57e
 
 body {
     color: $gs-hard;
 }
 
-h2 {
+h1, h2, h3, h4, h5 {
     font-family: 'Montserrat', sans-serif;
 }
 
