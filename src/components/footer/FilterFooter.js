@@ -38,22 +38,22 @@ class FilterFooter extends React.Component {
   render() {
 
     return (
-    <div className="FiltFooter">
+    <div className="filter">
       <FontAwesomeIcon
         icon={['fab', 'twitter']}
-        className="footItem footStart"
+        className="item"
         onClick={this.changeTwitter}
         data-state={this.state.twitter && 'active'}
       />
       <FontAwesomeIcon
         icon={['fab', 'instagram']}
-        className="footItem footMid"
+        className="item"
         onClick={this.changeInstagram}
         data-state={this.state.instagram && 'active'}
       />
       <FontAwesomeIcon
         icon={['fab', 'youtube']}
-        className="footItem footEnd"
+        className="item"
         onClick={this.changeYoutube}
         data-state={this.state.youtube && 'active'}
       />

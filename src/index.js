@@ -9,8 +9,8 @@ import './styles/main.scss'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-
-library.add(fab)
+import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs } from '@fortawesome/free-solid-svg-icons'
+library.add(fab, faCheckSquare, faStar, faHeart, faSearch, faCogs)
 
 const Index = () => {
   return (

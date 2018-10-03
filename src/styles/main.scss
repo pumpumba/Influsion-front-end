@@ -1,9 +1,10 @@
 @import 'vars';
 @import 'reset';
 @import 'footer';
+@import 'header';
+@import 'footer/subFooter';
 @import 'footer/filterFooter';
 @import 'popular/popular-component.scss';
-@import 'header';
 
 body {
     color: $gs-hard;
