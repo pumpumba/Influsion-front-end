@@ -2,12 +2,13 @@
 @import 'reset';
 @import 'footer';
 @import 'header';
-@import 'filterFooter';
-@import 'subFooter';
-
+@import 'footer/subFooter';
+@import 'footer/filterFooter';
+@import 'popular/popular-component.scss';
 
 body {
     color: $gs-hard;
+    max-width: 812px;;
 }
 
 h1, h2, h3, h4, h5 {

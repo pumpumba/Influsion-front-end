@@ -1,0 +1,19 @@
+footer{
+  .filter{
+    background-color:  $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem 0;
+
+
+    .item{
+      color: $link-grey;
+      margin: auto;
+
+      &[data-state='active'] {
+        color: $medium;
+      }
+    }
+  }
+}

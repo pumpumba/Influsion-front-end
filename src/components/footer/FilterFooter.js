@@ -1,45 +1,64 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-var twitter = true;
-var instagram = true;
-var  youtube = true;
 
-class FilterFooter extends Component {
+class FilterFooter extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      twitterS: true,
+      twitter: true,
       instagram: true,
       youtube: true
-    };
+    }
 
-    
+    this.changeTwitter = this.changeTwitter.bind(this)
+    this.changeInstagram = this.changeInstagram.bind(this)
+    this.changeYoutube = this.changeYoutube.bind(this)
   }
 
   changeTwitter() {
-    this.setState({twitterS: !twitterS});
-    twitter != twitter;
-    console.log(twitter);
+    this.setState(prevState => ({
+      twitter: !prevState.twitter
+    }))
   }
 
   changeInstagram() {
-    instagram = !instagram;
-    console.log(instagram);
+    this.setState(prevState => ({
+      instagram: !prevState.instagram
+    }))
   }
 
   changeYoutube() {
-    youtube = !youtube;
-    console.log(youtube);
+    this.setState(prevState => ({
+      youtube: !prevState.youtube
+    }))
   }
 
   render() {
-    return (<div className="FiltFooter">
-      <FontAwesomeIcon icon={['fab', 'twitter']} className="footItem footStart" onClick={this.changeTwitter} style={{color: twitter? '#faa495' : '#E0E0EB'}}/>
-      <FontAwesomeIcon icon={['fab', 'instagram']} className="footItem footMid" onClick={this.changeInstagram} style={{color: instagram? '#faa495' : '#E0E0EB'}}/>
-      <FontAwesomeIcon icon={['fab', 'youtube']} className="footItem footEnd" onClick={this.changeYoutube} style={{color: youtube? '#faa495' : '#E0E0EB'}}/>
-    </div>)
+
+    return (
+    <div className="filter">
+      <FontAwesomeIcon
+        icon={['fab', 'twitter']}
+        className="item"
+        onClick={this.changeTwitter}
+        data-state={this.state.twitter && 'active'}
+      />
+      <FontAwesomeIcon
+        icon={['fab', 'instagram']}
+        className="item"
+        onClick={this.changeInstagram}
+        data-state={this.state.instagram && 'active'}
+      />
+      <FontAwesomeIcon
+        icon={['fab', 'youtube']}
+        className="item"
+        onClick={this.changeYoutube}
+        data-state={this.state.youtube && 'active'}
+      />
+    </div>
+    )
   }
 }
 

@@ -1,8 +1,6 @@
 import React, { Component }  from 'react';
 import FooterButton from './FooterButton';
 
-
-
 const SubFooter = () => {
 
   return (
