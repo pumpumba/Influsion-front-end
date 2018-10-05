@@ -1,7 +1,6 @@
 .feed-component-wrapper {
     background-size: cover;
     width: 50%;
-    float: left;
 
     .expanded-view {
         display: none;
@@ -15,13 +14,45 @@
 
     &[data-state='open'] {
         width: 100%;
-
+        background-image: none !important;
         .expanded-view{
+            background-color: lighten($light, 5%);
             display: block;
-        }
+            padding: .5rem;
 
+            img {
+                box-sizing: border-box;
+                border-radius: 3px;
+                margin-bottom: 1em;
+            }
+
+            .content-container {
+                position: relative;
+
+                h3 {
+                    font-size: 1.25rem;
+                    margin-bottom: .5rem;
+                }
+
+                .icon {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: $medium;
+                    font-size: 1.5rem;
+                }
+
+                p {
+                    margin-bottom: 1rem;
+                }
+
+                .hashtags {
+                    display: block;
+                }
+            }
+        }
         &:after {
-            padding-bottom: 50%;
+            padding-bottom: 0%;
         }
     }
 }
