@@ -149,7 +149,7 @@ class Popular extends React.Component {
 
     render() {
         const FeedContent = Object.keys(feedData).map(key => {
-            return <PopularComponent key={key} data={feedData[key]} />
+            return <PopularComponent key={key} data={feedData[key]} order={key} />
         })
 
         return (

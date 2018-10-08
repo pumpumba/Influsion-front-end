@@ -15,10 +15,16 @@
     &[data-state='open'] {
         width: 100%;
         background-image: none !important;
+
         .expanded-view{
             background-color: lighten($light, 5%);
             display: block;
             padding: .5rem;
+
+            h3 {
+                font-size: 1.25rem;
+                margin-bottom: .5rem;
+            }
 
             img {
                 box-sizing: border-box;
@@ -29,10 +35,6 @@
             .content-container {
                 position: relative;
 
-                h3 {
-                    font-size: 1.25rem;
-                    margin-bottom: .5rem;
-                }
 
                 .icon {
                     position: absolute;
@@ -44,10 +46,17 @@
 
                 p {
                     margin-bottom: 1rem;
+                    padding-right: 1.5rem;
                 }
 
                 .hashtags {
                     display: block;
+                }
+
+                .meta-data {
+                    display: flex;
+                    justify-content: space-around;
+                    padding: .5rem;
                 }
             }
         }
