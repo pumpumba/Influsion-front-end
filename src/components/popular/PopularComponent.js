@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class FeedComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      open: false
+      open: false,
+      closed: true
     }
 
     this.onClick = this.onClick.bind(this)
@@ -12,7 +15,9 @@ class FeedComponent extends React.Component {
 
   onClick() {
     this.setState(prevState => ({
-      open: !prevState.open
+      open: !prevState.open,
+      closed: !prevState.closed
+
     }))
   }
 
@@ -36,6 +41,9 @@ class FeedComponent extends React.Component {
           <span className='hashtags'>{this.props.data.content.tweet_hashtags}</span>
           <span className='no-of-likes'>{this.props.data.content.tweet_no_likes}</span>
           <span className='no-of-retweets'>{this.props.data.content.tweet_no_retweets}</span>
+        </div>
+        <div className='closed-view'>
+          <a href={this.props.data.content.source}> <FontAwesomeIcon icon={['fab', this.props.data.content.source]}/> </a>
         </div>
       </div>
     )

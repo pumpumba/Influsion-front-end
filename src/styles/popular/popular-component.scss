@@ -2,9 +2,14 @@
     background-size: cover;
     width: 50%;
     float: left;
+    display: flex;
 
     .expanded-view {
         display: none;
+    }
+
+    .social-media-source{
+      color: white;
     }
 
     &:after {
@@ -23,5 +28,29 @@
         &:after {
             padding-bottom: 50%;
         }
+    }
+
+
+
+    &[data-state= 'closed'] {
+        width: 100%;
+
+        &:after {
+            padding-bottom: 50%;
+        }
+    }
+}
+
+.closed-view{
+    display: block;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+    margin-left: auto;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    a {
+        font-size: 1.25rem;
+        color: $medium;
     }
 }

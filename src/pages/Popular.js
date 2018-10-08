@@ -7,7 +7,7 @@ const feedData = [
     {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -18,7 +18,7 @@ const feedData = [
     }, {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -30,7 +30,7 @@ const feedData = [
     {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -41,7 +41,7 @@ const feedData = [
     }, {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -53,7 +53,7 @@ const feedData = [
     {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -64,7 +64,7 @@ const feedData = [
     }, {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -76,7 +76,7 @@ const feedData = [
     {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -87,7 +87,7 @@ const feedData = [
     }, {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -99,7 +99,7 @@ const feedData = [
     {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -110,7 +110,7 @@ const feedData = [
     }, {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -122,7 +122,7 @@ const feedData = [
     {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
@@ -133,7 +133,7 @@ const feedData = [
     }, {
         name: "Ida Warg",
         content: {
-            source: "Twitter",
+            source: "twitter",
             time_stamp: "201810012033",
             tweet_text: "The best things in life are free, the second best are very, very expensive",
             tweet_img_url: "https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg",
