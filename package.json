@@ -34,7 +34,6 @@
     "npm": "^6.4.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-native-elements": "^0.19.1",
     "react-router-dom": "^4.3.1"
   }
 }
