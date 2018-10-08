@@ -17,7 +17,7 @@ const Index = () => {
     <Router>
       <div>
         <Route exact path='/' component={Popular} />
-        <Route exact path='/feed' component={Feed} />
+        <Route path='/feed' component={Feed} />
         <Route path='/search' component={Search} />
         <Route path='/settings' component={Settings} />
       </div>
