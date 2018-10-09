@@ -10,7 +10,7 @@ const SubFooter = () => {
           <FooterButton link={'/search'} icon={'search'}/>
           <FooterButton link={'/settings'} icon={'cogs'}/>
       </div>
-  )
+    )
 }
 
 export default SubFooter
