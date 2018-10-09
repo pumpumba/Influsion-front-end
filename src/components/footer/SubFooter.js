@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component }  from 'react';
+import { Link } from 'react-router-dom';
 import FooterButton from './FooterButton';
 
-const SubFooter = () => {
-
-  return (
+class SubFooter extends React.Component {
+ render() {
+   return (
       <div className="subFooter">
           <FooterButton link={'/'} icon={'star'}/>
           <FooterButton link={'/feed'} icon={'heart'}/>

@@ -2,14 +2,20 @@
 @import 'reset';
 @import 'footer';
 @import 'header';
+@import 'login';
 @import 'footer/subFooter';
 @import 'footer/filterFooter';
 @import 'popular/popular-component.scss';
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import 'popular/popular.scss';
 
 body {
     color: $gs-hard;
     max-width: 812px;;
+    font-family: 'Open Sans', sans-serif;
+}
+
+input {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -19,6 +25,15 @@ h1, h2, h3, h4, h5 {
 
 p {
     font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+}
+
+@font-face {
+  font-family: 'Pacifico', cursive;
+  src: url('https://fonts.googleapis.com/css?family=Pacifico')
 }
 
 img {
