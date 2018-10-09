@@ -19,7 +19,6 @@ class FeedComponent extends React.Component {
     this.setState(prevState => ({
       open: !prevState.open,
       closed: !prevState.closed
-
     }))
   }
 
@@ -33,7 +32,7 @@ class FeedComponent extends React.Component {
       <div
         className='feed-component-wrapper'
         style={styles}
-        data-state={this.state.open && 'open'}
+        data-state={this.state.open ? 'open' : 'closed'}
         onClick={this.onClick}
       >
         <div className='expanded-view'>
