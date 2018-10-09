@@ -5,8 +5,8 @@ import Popular from './pages/Popular'
 import Feed from './pages/Feed'
 import Search from './pages/Search'
 import Settings from './pages/Settings'
+import Login from './pages/Login'
 import './styles/main.scss'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs } from '@fortawesome/free-solid-svg-icons'
@@ -20,6 +20,7 @@ const Index = () => {
         <Route path='/feed' component={Feed} />
         <Route path='/search' component={Search} />
         <Route path='/settings' component={Settings} />
+        <Route path='/login' component={Login} />
       </div>
     </Router>
   )
