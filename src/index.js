@@ -7,8 +7,6 @@ import Search from './pages/Search'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
 import './styles/main.scss'
-
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs } from '@fortawesome/free-solid-svg-icons'
