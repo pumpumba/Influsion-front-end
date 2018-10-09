@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import FooterButton from './FooterButton';
 
-const FooterButton = () => {
+const SubFooter = () => {
 
     return (
         <div className="subFooter">

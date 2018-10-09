@@ -50,7 +50,7 @@ class FeedComponent extends React.Component {
           </div>
         </div>
         <div className='closed-view'>
-          <a href={this.props.data.content.source}> <FontAwesomeIcon icon={['fab', this.props.data.content.source]}/> </a>
+          <a href={this.props.data.tweet_url}> <FontAwesomeIcon icon={['fab', 'twitter']}/> </a>
         </div>
       </div>
     )
