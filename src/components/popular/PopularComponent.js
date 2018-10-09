@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class FeedComponent extends React.Component {
@@ -6,7 +7,7 @@ class FeedComponent extends React.Component {
     super(props)
     this.state = {
       open: false,
-      nextComponentOrder: this.props.order + 1
+      closed: true
     }
 
     this.onClick = this.onClick.bind(this)
@@ -16,7 +17,8 @@ class FeedComponent extends React.Component {
     let newNextComponentOrder = 0;
 
     this.setState(prevState => ({
-      open: !prevState.open
+      open: !prevState.open,
+      closed: !prevState.closed
     }))
   }
 
@@ -30,7 +32,7 @@ class FeedComponent extends React.Component {
       <div
         className='feed-component-wrapper'
         style={styles}
-        data-state={this.state.open && 'open'}
+        data-state={this.state.open ? 'open' : 'closed'}
         onClick={this.onClick}
       >
         <div className='expanded-view'>
@@ -47,7 +49,10 @@ class FeedComponent extends React.Component {
             </div>
           </div>
         </div>
-      </div >
+        <div className='closed-view'>
+          <a href={this.props.data.content.source}> <FontAwesomeIcon icon={['fab', this.props.data.content.source]}/> </a>
+        </div>
+      </div>
     )
   }
 }

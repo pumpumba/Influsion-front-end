@@ -1,15 +1,36 @@
 .feed-component-wrapper {
     background-size: cover;
     width: 50%;
+    float: left;
+    display: flex;
 
     .expanded-view {
         display: none;
+    }
+
+    .social-media-source{
+      color: white;
     }
 
     &:after {
         content: '';
         display: block;
         padding-bottom: 100%;
+    }
+
+    &[data-state='closed']{
+      .closed-view {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: auto;
+          margin-left: auto;
+          padding-bottom: 1em;
+          padding-right: 1em;
+          a {
+              font-size: 1.25rem;
+              color: $medium;
+          }
+        }
     }
 
     &[data-state='open'] {
@@ -34,8 +55,6 @@
 
             .content-container {
                 position: relative;
-
-
                 .icon {
                     position: absolute;
                     top: 0;
@@ -59,6 +78,12 @@
                     padding: .5rem;
                 }
             }
+        }
+
+        .closed-view {
+          a {
+            display: none;
+          }
         }
         &:after {
             padding-bottom: 0%;
