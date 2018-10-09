@@ -24,7 +24,7 @@ class FeedComponent extends React.Component {
 
   render() {
     const styles = {
-      backgroundImage: 'url(' + this.props.data.content.tweet_img_url + ')',
+      backgroundImage: 'url(' + this.props.data.user_profile_image_url + ')',
       order: this.props.order
     }
 
@@ -36,16 +36,16 @@ class FeedComponent extends React.Component {
         onClick={this.onClick}
       >
         <div className='expanded-view'>
-          <h3>{this.props.data.name}</h3>
-          <img src={this.props.data.content.tweet_img_url} />
+          <h3>{this.props.data.user_name}</h3>
+          <img src={this.props.data.user_profile_image_url} />
           <div className='content-container'>
-            <FontAwesomeIcon className='icon' icon={['fab', this.props.data.content.source]} />
-            <p className='tweet_text'>{this.props.data.content.tweet_text}</p>
-            <span className='hashtags'>{this.props.data.content.tweet_hashtags}</span>
+            <a target_="blank" href={this.props.data.tweet_url}><FontAwesomeIcon className='icon' icon={['fab', 'twitter']} /></a>
+            <p className='tweet_text'>{this.props.data.tweet_text}</p>
+            <span className='hashtags'>{this.props.data.hashtags}</span>
             <div className='meta-data'>
-              <span className='no-of-likes'>Likes: {this.props.data.content.tweet_no_likes}</span>
-              <span className='no-of-retweets'>Retweets: {this.props.data.content.tweet_no_retweets}</span>
-              <span className='time-stamp'>Posted: {this.props.data.content.time_stamp}</span>
+              <span className='no-of-likes'>Likes: {this.props.data.tweet_favorite_count}</span>
+              <span className='no-of-retweets'>Retweets: {this.props.data.tweet_retweet_count}</span>
+              <span className='time-stamp'>Posted: {this.props.data.tweet_created_at}</span>
             </div>
           </div>
         </div>
