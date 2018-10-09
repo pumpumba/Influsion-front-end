@@ -2,9 +2,13 @@
 @import 'reset';
 @import 'footer';
 @import 'header';
+@import 'login';
 @import 'footer/subFooter';
 @import 'footer/filterFooter';
 @import 'popular/popular-component.scss';
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+
 
 body {
     color: $gs-hard;
@@ -18,4 +22,10 @@ h1, h2, h3, h4, h5 {
 p {
     font-size: 1.25em;
     font-family: 'Open Sans', sans-serif;
+}
+
+
+@font-face {
+  font-family: 'Pacifico', cursive;
+  src: url('https://fonts.googleapis.com/css?family=Pacifico')
 }
