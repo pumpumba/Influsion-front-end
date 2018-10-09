@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 const Login = (props) => {
   return (<div className="login">
     <h1 className="loginTitle">inFlusion</h1>
-    <textarea className="input" placeholder="Username"></textarea>
-    <textarea className="input" placeholder="Password"></textarea>
+    <input className="input" placeholder="Username"></input>
+    <input className="input" placeholder="Password" type="password"></input>
     <Link to={'/feed'}>
       <button className="loginButton" link>Lets go into the wilderness!</button>
     </Link>
