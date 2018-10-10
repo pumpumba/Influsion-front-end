@@ -4,11 +4,12 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .5rem 0;
+    padding: 1rem 0;
 
     .item{
       color: $link-grey;
       margin: auto;
+      font-size: 1.25rem;
 
       &[data-state='active'] {
         color: $medium;

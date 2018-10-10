@@ -3,6 +3,8 @@
     width: 50%;
     float: left;
     display: flex;
+    overflow: hidden;
+
 
     &:nth-child(4n+4), &:nth-child(4n+1) {
         background-color: lighten($light, 10%);
@@ -27,6 +29,7 @@
       .closed-view {
             position: relative;
             padding: .25rem;
+            width: 100%;
 
             .header {
                 img {
@@ -62,6 +65,14 @@
             background-color: lighten($light, 5%);
             display: block;
             padding: .5rem;
+            position: fixed;
+            z-index: 9999;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            box-sizing: border-box;
+            border-radius: 3px;
 
             .header {
                 align-items: center;
@@ -114,8 +125,17 @@
                     }
                 }
             }
-        }
 
+        }
+        .blur-overlay {
+            background-color: rgba(0,0,0,0.5);
+            position: fixed;
+            top: -20vh;
+            left: -20vw;
+            height: 200vh;
+            width: 200vw;
+            z-index: 999;
+        }
         .closed-view {
             display: none;
         }
