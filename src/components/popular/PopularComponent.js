@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import TimeAgo from 'react-timeago'
 
 class FeedComponent extends React.Component {
   constructor(props) {
@@ -47,7 +48,9 @@ class FeedComponent extends React.Component {
                 {this.props.data.tweet_favorite_count}</span>
               <span className='no-of-retweets'> <FontAwesomeIcon className="metaIcon" icon={'retweet'}/>
                 {this.props.data.tweet_retweet_count}</span>
-              <span className='time-stamp'>Posted: {this.props.data.tweet_created_at}</span>
+              <span className='time-stamp'><FontAwesomeIcon className="metaIcon" icon={'calendar-alt'}/> 
+                <TimeAgo date={this.props.data.tweet_created_at}/>
+              </span>
             </div>
           </div>
         </div>
