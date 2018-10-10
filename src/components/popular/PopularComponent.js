@@ -24,7 +24,7 @@ class FeedComponent extends React.Component {
 
   render() {
     const styles = {
-      backgroundImage: 'url(' + this.props.data.user_profile_image_url + ')',
+
       order: this.props.order
     }
 
@@ -35,6 +35,14 @@ class FeedComponent extends React.Component {
         data-state={this.state.open ? 'open' : 'closed'}
         onClick={this.onClick}
       >
+        <div className='closed-view'>
+          <div className='header'>
+            <img src={this.props.data.user_profile_image_url} />
+            <h3>{this.props.data.user_name}</h3>
+          </div>
+          <a href={this.props.data.tweet_url}> <FontAwesomeIcon icon={['fab', 'twitter']} /> </a>
+          <p className='tweet_text'>{this.props.data.tweet_text}</p>
+        </div>
         <div className='expanded-view'>
           <h3>{this.props.data.user_name}</h3>
           <img src={this.props.data.user_profile_image_url} />
@@ -48,9 +56,6 @@ class FeedComponent extends React.Component {
               <span className='time-stamp'>Posted: {this.props.data.tweet_created_at}</span>
             </div>
           </div>
-        </div>
-        <div className='closed-view'>
-          <a href={this.props.data.tweet_url}> <FontAwesomeIcon icon={['fab', 'twitter']}/> </a>
         </div>
       </div>
     )
