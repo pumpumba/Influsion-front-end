@@ -1,6 +1,5 @@
 .feed-component-wrapper {
     background-size: cover;
-
     width: 50%;
     float: left;
     display: flex;
@@ -35,7 +34,6 @@
                     border: 2px solid $hard;
                     height: 2em;
                     width: 2em;
-
                 }
                 * {
                     display: inline;
@@ -44,7 +42,6 @@
 
             .tweet_text {
                 padding: .5rem;
-
             }
             a {
                 position: absolute;
@@ -68,12 +65,21 @@
             h3 {
                 font-size: 1.25rem;
                 margin-bottom: .5rem;
+                display: flex;
             }
 
             img {
                 box-sizing: border-box;
                 border-radius: 3px;
                 margin-bottom: 1em;
+            }
+
+            .verifiedIcon{
+              margin-left: 0.5rem;
+              margin-top: .2rem;
+              color: $medium;
+              width: 1rem;
+              height: 1rem;
             }
 
             .content-container {
@@ -99,6 +105,11 @@
                     display: flex;
                     justify-content: space-around;
                     padding: .5rem;
+
+                    .metaIcon{
+                      margin-right: 0.5rem;
+                      color: $medium;
+                    }
                 }
             }
         }
