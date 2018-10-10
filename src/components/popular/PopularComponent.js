@@ -41,7 +41,6 @@ class FeedComponent extends React.Component {
           </div>
 
           <a href={this.props.data.tweet_url}> <FontAwesomeIcon icon={['fab', 'twitter']} /> </a>
-          {console.log(this.props.data.tweet_media.length)}
           {(this.props.data.tweet_media.length <= 0) ? <p className='tweet_text'>{this.props.data.tweet_text}</p> : ''}
 
         </div>
