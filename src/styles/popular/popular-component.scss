@@ -76,6 +76,11 @@
                     display: flex;
                     justify-content: space-around;
                     padding: .5rem;
+
+                    .metaIcon{
+                      margin-right: 0.5rem;
+                      color: $medium;
+                    }
                 }
             }
         }
