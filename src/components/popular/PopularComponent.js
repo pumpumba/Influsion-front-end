@@ -39,11 +39,10 @@ class FeedComponent extends React.Component {
         <div className='closed-view'>
           <div className='header'>
             <img src={this.props.data.user_profile_image_url} />
+            <a href={this.props.data.tweet_url}> </a>
+            <FontAwesomeIcon className="tweetIcon" icon={['fab', 'twitter']} />
           </div>
-
-          <a href={this.props.data.tweet_url}> <FontAwesomeIcon icon={['fab', 'twitter']} /> </a>
           {(this.props.data.tweet_media.length <= 0) ? <p className='tweet_text'>{this.props.data.tweet_text}</p> : ''}
-
         </div>
         <div className='expanded-view'>
           <h3>{this.props.data.user_name}{this.props.data.user_verified && <img className="verifiedIcon" src={require('../../../img/Twitter_Verified_Badge.svg')}/>}</h3>
