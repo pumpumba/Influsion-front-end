@@ -37,7 +37,7 @@ class FeedComponent extends React.Component {
         onClick={this.onClick}
       >
         <div className='expanded-view'>
-          <h3>{this.props.data.user_name}</h3>
+          <h3>{this.props.data.user_name}{this.props.data.user_verified && <img className="verifiedIcon" src={require('../../../img/Twitter_Verified_Badge.svg')}/>}</h3>
           <img src={this.props.data.user_profile_image_url} />
           <div className='content-container'>
             <a target_="blank" href={this.props.data.tweet_url}><FontAwesomeIcon className='icon' icon={['fab', 'twitter']} /></a>
@@ -48,7 +48,7 @@ class FeedComponent extends React.Component {
                 {this.props.data.tweet_favorite_count}</span>
               <span className='no-of-retweets'> <FontAwesomeIcon className="metaIcon" icon={'retweet'}/>
                 {this.props.data.tweet_retweet_count}</span>
-              <span className='time-stamp'><FontAwesomeIcon className="metaIcon" icon={'calendar-alt'}/> 
+              <span className='time-stamp'><FontAwesomeIcon className="metaIcon" icon={'calendar-alt'}/>
                 <TimeAgo date={this.props.data.tweet_created_at}/>
               </span>
             </div>
