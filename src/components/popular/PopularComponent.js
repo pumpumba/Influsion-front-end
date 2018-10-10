@@ -43,8 +43,10 @@ class FeedComponent extends React.Component {
             <p className='tweet_text'>{this.props.data.tweet_text}</p>
             <span className='hashtags'>{this.props.data.hashtags}</span>
             <div className='meta-data'>
-              <span className='no-of-likes'>Likes: {this.props.data.tweet_favorite_count}</span>
-              <span className='no-of-retweets'>Retweets: {this.props.data.tweet_retweet_count}</span>
+              <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'}/>
+                {this.props.data.tweet_favorite_count}</span>
+              <span className='no-of-retweets'> <FontAwesomeIcon className="metaIcon" icon={'retweet'}/>
+                {this.props.data.tweet_retweet_count}</span>
               <span className='time-stamp'>Posted: {this.props.data.tweet_created_at}</span>
             </div>
           </div>
