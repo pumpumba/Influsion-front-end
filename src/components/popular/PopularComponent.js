@@ -24,7 +24,7 @@ class FeedComponent extends React.Component {
 
   render() {
     const styles = {
-
+      backgroundImage: 'url(' + this.props.data.tweet_media[0] + ')',
       order: this.props.order
     }
 
@@ -38,10 +38,12 @@ class FeedComponent extends React.Component {
         <div className='closed-view'>
           <div className='header'>
             <img src={this.props.data.user_profile_image_url} />
-            <h3>{this.props.data.user_name}</h3>
           </div>
+
           <a href={this.props.data.tweet_url}> <FontAwesomeIcon icon={['fab', 'twitter']} /> </a>
-          <p className='tweet_text'>{this.props.data.tweet_text}</p>
+          {console.log(this.props.data.tweet_media.length)}
+          {(this.props.data.tweet_media.length <= 0) ? <p className='tweet_text'>{this.props.data.tweet_text}</p> : ''}
+
         </div>
         <div className='expanded-view'>
           <h3>{this.props.data.user_name}</h3>

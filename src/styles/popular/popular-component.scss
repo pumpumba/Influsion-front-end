@@ -1,13 +1,18 @@
 .feed-component-wrapper {
     background-size: cover;
-    background-color: lighten($light, 10%);
+
     width: 50%;
     float: left;
     display: flex;
 
+    &:nth-child(4n+4), &:nth-child(4n+1) {
+        background-color: lighten($light, 10%);
+    }
+
     .expanded-view {
         display: none;
     }
+
 
     .social-media-source{
       color: white;
@@ -32,11 +37,6 @@
                     width: 2em;
 
                 }
-                h3 {
-                    margin-left: 3em;
-                    margin-top: -1.5rem;
-                    display: block;
-                }
                 * {
                     display: inline;
                 }
@@ -48,8 +48,8 @@
             }
             a {
                 position: absolute;
-                bottom: 1em;
-                right: 1em;
+                bottom: .25em;
+                right: .25em;
                 color: $medium;
                 font-size: 1.5rem;
             }
@@ -104,9 +104,7 @@
         }
 
         .closed-view {
-
             display: none;
-
         }
         &:after {
             padding-bottom: 0%;
