@@ -7,8 +7,7 @@ class FeedComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      open: false,
-      closed: true
+      open: false
     }
 
     this.onClick = this.onClick.bind(this)
@@ -18,8 +17,7 @@ class FeedComponent extends React.Component {
     let newNextComponentOrder = 0;
 
     this.setState(prevState => ({
-      open: !prevState.open,
-      closed: !prevState.closed
+      open: !prevState.open
     }))
   }
 
@@ -46,12 +44,15 @@ class FeedComponent extends React.Component {
 
         </div>
         <div className='expanded-view'>
-          <h3>{this.props.data.user_name}{this.props.data.user_verified && <img className="verifiedIcon" src={require('../../../img/Twitter_Verified_Badge.svg')}/>}</h3>
-          <img src={this.props.data.user_profile_image_url} />
+          <div className='header'>
+            <img src={this.props.data.user_profile_image_url} />
+            <h3>{this.props.data.user_name}</h3>
+            {this.props.data.user_verified && <img className="verifiedIcon" src={require('../../../img/Twitter_Verified_Badge.svg')}/>}
+          </div>
           <div className='content-container'>
             <a target_="blank" href={this.props.data.tweet_url}><FontAwesomeIcon className='icon' icon={['fab', 'twitter']} /></a>
             <p className='tweet_text'>{this.props.data.tweet_text}</p>
-            <span className='hashtags'>{this.props.data.hashtags}</span>
+            <img src={this.props.data.tweet_media[0]} />
             <div className='meta-data'>
               <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'}/>
                 {this.props.data.tweet_favorite_count}</span>
