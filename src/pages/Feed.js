@@ -6,7 +6,9 @@ const Feed = () => {
   return (
     <div>
       <Header title={'My Feed'}/>
-      <h1>Feed</h1>
+      <main>
+        <h1>Feed</h1>
+      </main>
       <Footer />
     </div>
   )
