@@ -40,3 +40,8 @@ a {
 img {
     max-width: 100%;
 }
+
+main {
+  margin-top: $headerHeight;
+  margin-bottom: $footerHeight;
+}
