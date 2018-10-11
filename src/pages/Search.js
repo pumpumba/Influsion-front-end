@@ -4,12 +4,14 @@ import Footer from './../components/footer/Footer'
 
 const Search = (props) => {
   return (
-    <div>
-      <Header title={'Search'}/>
+  <div>
+    <Header title={'Search'}/>
+    <main>
       <h1>Search</h1>
-      <Footer />
-    </div>
-  )
+    </main>
+    <Footer/>
+  </div>
+)
 }
 
 export default Search
