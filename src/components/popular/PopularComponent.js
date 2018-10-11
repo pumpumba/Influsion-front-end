@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimeAgo from 'react-timeago'
 
-class FeedComponent extends React.Component {
+class PopularComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -27,7 +27,7 @@ class FeedComponent extends React.Component {
 
     return (
       <div
-        className='feed-component-wrapper'
+        className='popular-component-wrapper'
         style={styles}
         data-state={this.state.open ? 'open' : 'closed'}
         onClick={this.onClick}
@@ -68,4 +68,4 @@ class FeedComponent extends React.Component {
   }
 }
 
-export default FeedComponent
+export default PopularComponent
