@@ -1,15 +1,15 @@
 header {
   background-color: #FDD3B6;
-  height: 4em;
+  height: $headerHeight;
   color: $white;
   text-align: center;
   position: fixed;
-  margin-top: -4em;
+  margin-top: -$headerHeight;
   z-index: 9;
   width: 100%;
-
   h1 {
-    padding-top: 1em;
-    font-size: 1.5em;
+    font-size: $headerHeight / 2;
+    font-family: 'Pacifico', cursive;
+    padding-top: $headerHeight / 8;
     }
 }

@@ -9,7 +9,9 @@ const Settings = (props) => {
   return (
     <div>
       <Header title={'Settings'}/>
-      <Link to='/login'>Logga in</Link>
+      <main>
+        <Link to='/login'>Logga in</Link>
+      </main>
       <Footer />
     </div>
   )
