@@ -14,6 +14,7 @@ class FeedComponent extends React.Component {
         <div className='header'>
           <img src={this.props.data.user_profile_image_url} />
           <h3>{this.props.data.user_name}</h3>
+          <a target_="blank" href={this.props.data.tweet_url}><FontAwesomeIcon className='icon' icon={['fab', 'twitter']} /></a>
         </div>
         <div className='content'>
           <p className='tweet_text'>{this.props.data.tweet_text}</p>

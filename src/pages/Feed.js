@@ -21,7 +21,7 @@ class Feed extends React.Component {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: 'elonmusk' })
+      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: 'beyonce' })
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
