@@ -3,17 +3,23 @@
 @import 'footer';
 @import 'header';
 @import 'login';
-@import 'footer/subFooter';
-@import 'footer/filterFooter';
-@import 'popular/popular-component.scss';
+@import 'footer/sub-footer';
+@import 'footer/filter-footer';
+@import 'popular/popular-component';
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
-@import 'popular/popular.scss';
+@import 'popular/popular';
+@import 'feed/feed-component';
+
+html {
+    background-color: $light;
+}
 
 body {
     color: $gs-hard;
     max-width: $maxWidth;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+    background-color: $white;
 }
 
 input {

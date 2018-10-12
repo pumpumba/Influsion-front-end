@@ -1,0 +1,43 @@
+.feed-component-wrapper {
+    padding: .75rem 1rem 1.5rem;
+
+    &:nth-child(even) {
+        background-color: lighten($light, 10%);
+    }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+            border-radius: 99px;
+            border: 2px solid $hard;
+            height: 2.5rem;
+        }
+
+        h3 {
+            margin-left: .75rem;
+        }
+
+        a {
+            color: $hard;
+            font-size: 1.5em;
+            margin-left: auto;
+        }
+    }
+
+    .content {
+        margin: 1rem 0;
+    }
+
+    .meta-data {
+        display: flex;
+        justify-content: space-around;
+
+        svg {
+            color: $medium;
+            margin-right: 0.5rem;
+        }
+    }
+}
