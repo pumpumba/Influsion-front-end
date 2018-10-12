@@ -5,7 +5,6 @@
     display: flex;
     overflow: hidden;
 
-
     &:nth-child(4n+4), &:nth-child(4n+1) {
         background-color: lighten($light, 10%);
     }
@@ -13,7 +12,6 @@
     .expanded-view {
         display: none;
     }
-
 
     .social-media-source{
       color: white;
@@ -46,12 +44,25 @@
             .tweet_text {
                 padding: .5rem;
             }
+
             a {
                 position: absolute;
                 top: .25em;
                 right: .25em;
                 color: $medium;
                 font-size: 1.5rem;
+            }
+
+            .follow_heart{
+              color: $link-grey;
+              margin: auto;
+              font-size: 1.25rem;
+              position: absolute;
+              bottom: .25em;
+              right: .25em;
+              &[data-state='active'] {
+                color: $medium;
+              }
             }
         }
     }
@@ -60,6 +71,9 @@
         width: 100%;
         background-image: none !important;
 
+        a {
+            color: $medium;
+          }
 
         .expanded-view{
             background-color: lighten($light, 5%);
@@ -85,10 +99,12 @@
                     height: 2.5em;
                     width: 2.5em;
                 }
+
                 h3 {
                     font-size: 1.25em;
                     margin-left: 1rem;
                 }
+
                 .verifiedIcon{
                   height: 1rem;
                   border: 0;
@@ -97,6 +113,7 @@
 
             .content-container {
                 position: relative;
+
                 .icon {
                     position: absolute;
                     top: 0;
@@ -119,14 +136,26 @@
                     justify-content: space-around;
                     padding: .5rem;
 
+                    .follow_heart{
+                      color: $link-grey;
+                      margin: auto;
+                      font-size: 1.25rem;
+                      position: absolute;
+                      bottom: .25em;
+                      right: .25em;
+                      &[data-state='active'] {
+                        color: $medium;
+                      }
+                    }
+
                     .metaIcon{
                       margin-right: 0.5rem;
                       color: $medium;
                     }
                 }
             }
-
         }
+        
         .blur-overlay {
             background-color: rgba(0,0,0,0.5);
             position: fixed;

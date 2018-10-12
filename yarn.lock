@@ -5325,6 +5325,11 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-clickable@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-clickable/-/react-clickable-1.1.0.tgz#88fb62e1e659ea9ec98451688b51e037ae292bfb"
+  integrity sha512-4x5TscVFO1mgEpIGOkVlBt2iZtlNBKSPYHEOFE9/8j3oSLMTlZncLJHipqBkaN7Fga4WsJwivyCebnTMiVaKiA==
+
 react-dom@^16.4.1:
   version "16.5.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.1.tgz#29d0c5a01ed3b6b4c14309aa91af6ec4eb4f292c"
