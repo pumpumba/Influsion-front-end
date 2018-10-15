@@ -28,7 +28,7 @@ class Feed extends React.Component {
   render() {
 
     let { data } = this.state
-
+    
     let FeedContent = data.map(content => {
       return <FeedComponent key={content.tweet_created_at} data={content}/>
     })
