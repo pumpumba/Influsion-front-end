@@ -1,5 +1,6 @@
 .popular-component-wrapper {
     background-size: cover;
+    background-position: center center;
     width: 50%;
     float: left;
     display: flex;
@@ -155,7 +156,7 @@
                 }
             }
         }
-        
+
         .blur-overlay {
             background-color: rgba(0,0,0,0.5);
             position: fixed;
