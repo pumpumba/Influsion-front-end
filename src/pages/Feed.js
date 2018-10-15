@@ -12,7 +12,6 @@ class Feed extends React.Component {
     }
   }
 
-
   componentDidMount() {
 
     fetch('http://40.127.101.155/twitter/content', {
@@ -29,11 +28,9 @@ class Feed extends React.Component {
   render() {
 
     let { data } = this.state
-
     let FeedContent = data.map(content => {
       return <FeedComponent key={content.tweet_created_at} data={content}/>
     })
-
 
     return (
       <div>
