@@ -31,7 +31,7 @@ class Feed extends React.Component {
     let { data } = this.state
 
     let FeedContent = data.map(content => {
-      return <FeedComponent data={content}/>
+      return <FeedComponent key={content.tweet_created_at} data={content}/>
     })
 
 
@@ -46,6 +46,5 @@ class Feed extends React.Component {
     )
   }
 }
-
 
 export default Feed
