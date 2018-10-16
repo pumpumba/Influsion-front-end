@@ -13,7 +13,6 @@ const FeedComponent = (props) => {
             </div>
             <div className='content'>
                 <p className='tweet_text'>{props.data.tweet_text}</p>
-                <img src={props.data.media[0]} />
             </div>
             <div className='meta-data'>
                 <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />

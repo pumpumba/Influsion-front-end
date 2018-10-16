@@ -29,8 +29,7 @@ class PopularComponent extends React.Component {
 
   render() {
     const styles = {
-      backgroundImage: 'url(' + this.props.data.tweet_media[0] + ')',
-      order: this.props.order
+      backgroundImage: 'url(' + this.props.data.tweet_media[0] + ')'
     }
 
     return (
