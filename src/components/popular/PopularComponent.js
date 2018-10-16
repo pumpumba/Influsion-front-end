@@ -48,7 +48,7 @@ class PopularComponent extends React.Component {
               <a href={this.props.data.tweet_url}> <FontAwesomeIcon icon={['fab', 'twitter']} /> </a>
               <FontAwesomeIcon icon={'heart'} className="follow_heart"  onClick={this.changeHeart}  data-state={this.state.heart && 'active'} />
             </StopPropagation>
-          {(this.props.data.tweet_media.length <= 0) ? <p className='tweet_text'>{this.props.data.tweet_text}</p> : ''}
+            {(this.props.data.tweet_media.length <= 0) ? <div className='text-wrapper'> <p className='tweet-text'>{this.props.data.tweet_text}</p> </div>: ''} 
         </div>
         <div className='expanded-view'>
           <div className='header'>
