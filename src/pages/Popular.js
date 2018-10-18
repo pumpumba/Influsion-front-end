@@ -8,7 +8,8 @@ class Popular extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+            data: [],
+            filters: ['twitter', 'youtube', 'instagram']
         }
     }
 
@@ -19,9 +20,9 @@ class Popular extends React.Component {
     }
 
     render() {
-        let { data } = this.state
+        let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
 
-        let FeedContent = data.map(influencer => {
+        let FeedContent = filteredContent.map(influencer => {
             return <PopularComponent key={influencer.tweet_created_at} data={influencer} />
         })
 
