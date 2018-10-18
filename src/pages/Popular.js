@@ -11,6 +11,11 @@ class Popular extends React.Component {
             data: [],
             filters: ['twitter', 'youtube', 'instagram']
         }
+        this.updateFeedFilters = this.updateFeedFilters.bind(this)
+    }
+
+    updateFeedFilters(newFilters) {
+        this.setState({filters: newFilters})
     }
 
     componentDidMount() {
@@ -32,7 +37,7 @@ class Popular extends React.Component {
                 <main className='popular-feed-content'>
                     {FeedContent}
                 </main>
-                <Footer />
+                <Footer updateFeedFilters={this.updateFeedFilters} />
             </div>
         )
     }
