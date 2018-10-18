@@ -8,8 +8,11 @@ class Feed extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      filters: ['twitter', 'youtube', 'instagram']
     }
+
+    this.updateFeedFilters = this.updateFeedFilters.bind(this)
   }
 
   componentDidMount() {
@@ -25,11 +28,14 @@ class Feed extends React.Component {
       .then(data => this.setState({ data }))
   }
 
+  updateFeedFilters(newFilters) {
+    this.setState({filters: newFilters})
+}
+
   render() {
 
-    let { data } = this.state
-    
-    let FeedContent = data.map(content => {
+    let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
+    let FeedContent = filteredContent.map(content => {
       return <FeedComponent key={content.tweet_created_at} data={content}/>
     })
 
@@ -39,7 +45,7 @@ class Feed extends React.Component {
         <main>
           {FeedContent}
         </main>
-        <Footer />
+        <Footer updateFeedFilters={this.updateFeedFilters} />
       </div>
     )
   }

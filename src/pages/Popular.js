@@ -25,8 +25,8 @@ class Popular extends React.Component {
     }
 
     render() {
-        let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
 
+        let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
         let FeedContent = filteredContent.map(influencer => {
             return <PopularComponent key={influencer.tweet_created_at} data={influencer} />
         })
