@@ -7,6 +7,7 @@ import InfluencerFeed from './pages/Influencerfeed'
 import Search from './pages/Search'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -23,6 +24,7 @@ const Index = () => {
         <Route path='/settings' component={Settings} />
         <Route path='/login' component={Login} />
         <Route path='/:influencer' component={InfluencerFeed} />
+        <Route path='/register' component={Register} />
       </div>
     </Router>
   )
