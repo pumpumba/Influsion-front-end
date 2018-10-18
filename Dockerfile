@@ -1,18 +1,13 @@
 FROM node:latest
 
 RUN npm install webpack -g
+WORKDIR /app
+COPY . .
+RUN yarn run build
 
-WORKDIR /tmp
-COPY package.json /tmp/
-RUN npm config set registry http://registry.npmjs.org/ && npm install
-
-WORKDIR /usr/src/app
-COPY . /usr/src/app/
-RUN cp -a /tmp/node_modules /usr/src/app/
-RUN webpack
-
-ENV NODE_ENV=production
-ENV PORT=8080
-
-CMD [ “/usr/local/bin/node”, “./index.js” ]
+FROM node:latest
+RUN npm install http-server -g
+WORKDIR /app
+COPY --from=0 /app/dist .
 EXPOSE 8080
+CMD [ "http-server", "./dist/", "-p 8080" ]
