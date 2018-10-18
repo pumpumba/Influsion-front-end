@@ -42,8 +42,11 @@
                 }
             }
 
-            .tweet_text {
-                padding: .5rem;
+            .text-wrapper{
+              display: flex;
+              align-items: center;
+              height: 70%;
+              font-size: .8em;
             }
 
             a {
@@ -156,7 +159,7 @@
                 }
             }
         }
-      
+
         .blur-overlay {
             background-color: rgba(0,0,0,0.5);
             position: fixed;
