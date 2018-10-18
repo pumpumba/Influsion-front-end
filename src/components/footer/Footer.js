@@ -3,10 +3,11 @@ import FilterFooter from './FilterFooter'
 import SubFooter from './SubFooter'
 
 
-const Footer = () => {
+const Footer = (props) => {
+
   return (
       <footer>
-        <FilterFooter/>
+        <FilterFooter updateFeedFilters={props.updateFeedFilters}/>
         <SubFooter/>
       </footer>
   )
