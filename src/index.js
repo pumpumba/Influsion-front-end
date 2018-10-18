@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Popular from './pages/Popular'
 import Feed from './pages/Feed'
+import InfluencerFeed from './pages/Influencerfeed'
 import Search from './pages/Search'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
@@ -21,6 +22,7 @@ const Index = () => {
         <Route path='/search' component={Search} />
         <Route path='/settings' component={Settings} />
         <Route path='/login' component={Login} />
+        <Route path='/:influencer' component={InfluencerFeed} />
       </div>
     </Router>
   )
