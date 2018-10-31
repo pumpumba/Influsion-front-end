@@ -8,10 +8,13 @@ class Register extends React.Component {
             username: '',
             password: '',
             email: '',
+            age: '',
             sex: false
         }
 
         this.registerNewUser = this.registerNewUser.bind(this)
+        this.registerSuccsessfull = this.registerSuccsessfull.bind(this)
+        this.registerUnsuccsessfull = this.registerUnsuccsessfull.bind(this)
     }
 
     registerNewUser(e) {
@@ -22,9 +25,19 @@ class Register extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: 'beyonce' })
+            body: JSON.stringify(this.state)
         })
-        console.log(this.state)
+        .then(response => response.json())
+        .then(response => console.log(response.createSuccess))
+        .then(response => response.createSuccess ? this.registerSuccsessfull : this.registerUnsuccsessfull)
+    }
+
+    registerSuccsessfull() {
+        console.log('suc')
+    }
+
+    registerUnsuccsessfull() {
+        console.log('usuc')
     }
 
 
@@ -46,6 +59,11 @@ class Register extends React.Component {
                 <input
                     onChange={(e) => this.setState({ email: e.target.value })}
                     placeholder="Email"
+                >
+                </input>
+                <input
+                    onChange={(e) => this.setState({ age: e.target.value })}
+                    placeholder="Age"
                 >
                 </input>
                 <select name="sex">
