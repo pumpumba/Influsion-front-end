@@ -28,8 +28,7 @@ class Register extends React.Component {
             body: JSON.stringify(this.state)
         })
         .then(response => response.json())
-        .then(response => console.log(response.createSuccess))
-        .then(response => response.createSuccess ? this.registerSuccsessfull : this.registerUnsuccsessfull)
+        .then(response => (response.createSuccess) ? this.registerSuccsessfull() : this.registerUnsuccsessfull())
     }
 
     registerSuccsessfull() {
@@ -39,8 +38,6 @@ class Register extends React.Component {
     registerUnsuccsessfull() {
         console.log('usuc')
     }
-
-
 
     render() {
         return (
