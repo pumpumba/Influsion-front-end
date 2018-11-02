@@ -1,5 +1,6 @@
 import React from 'react'
 import RegisterForm from './../components/register/RegisterForm'
+import RegisterAlert from './../components/register/RegisterAlert'
 
 class Register extends React.Component {
 
@@ -29,9 +30,9 @@ class Register extends React.Component {
         let objToRender;
 
         if (this.state.registerSuccsessfull) {
-            objToRender = '<h1>suc</h1>'
+            objToRender = <RegisterAlert title='Congrats' />
         } else if (this.state.registerUnsuccsessfull) {
-            objToRender = '<h1>Usuc</h1>'
+            objToRender = <RegisterAlert title='Something went wrong' />
         } else {
             objToRender =
                 <RegisterForm
