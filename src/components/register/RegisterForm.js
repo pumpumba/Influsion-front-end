@@ -32,8 +32,7 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
-            <form className="register">
-                <h1>inFlusion</h1>
+            <form>
                 <h2>Register</h2>
                 <input
                     onChange={(e) => this.setState({ username: e.target.value })}

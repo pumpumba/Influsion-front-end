@@ -12,6 +12,7 @@ class Register extends React.Component {
         }
         this.registerSuccsessfull = this.registerSuccsessfull.bind(this)
         this.registerUnsuccsessfull = this.registerUnsuccsessfull.bind(this)
+        this.resetState = this.resetState.bind(this)
     }
 
     registerSuccsessfull() {
@@ -26,13 +27,20 @@ class Register extends React.Component {
         })
     }
 
+    resetState() {
+        this.setState({
+            registerUnsuccsessfull: false,
+            registerSuccsessfull: false
+        })
+    }
+
     render() {
         let objToRender;
 
         if (this.state.registerSuccsessfull) {
-            objToRender = <RegisterAlert title='Congrats' />
+            objToRender = <RegisterAlert title='Welcome!' btnTxt='Log in!' link='/login' />
         } else if (this.state.registerUnsuccsessfull) {
-            objToRender = <RegisterAlert title='Something went wrong' />
+            objToRender = <RegisterAlert title='Something went wrong...' btnTxt='Try again!' resetState={this.resetState} />
         } else {
             objToRender =
                 <RegisterForm
@@ -40,8 +48,10 @@ class Register extends React.Component {
                     registerUnsuccsessfull={this.registerUnsuccsessfull}
                 />
         }
+
         return (
-            <div>
+            <div className='register'>
+                <h1>inFlusion</h1>
                 {objToRender}
             </div>
         )

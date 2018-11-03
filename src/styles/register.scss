@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   h1 {
     font-family: 'Pacifico', cursive;
@@ -39,14 +40,15 @@
     }
   }
 
-  button {
+  a, button {
     text-align: center;
     background: transparent;
     color: $white;
     border: 0.1em solid $white;
     border-radius: 0.5em;
+    display: block;
     font-size: 1rem;
-    margin: 2rem;
+    margin: 2rem auto;
     padding: 1rem;
     width: 80%;
     box-sizing: border-box;
