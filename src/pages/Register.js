@@ -1,38 +1,61 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import RegisterForm from './../components/register/RegisterForm'
+import RegisterAlert from './../components/register/RegisterAlert'
 
-const Register = (props) => {
+class Register extends React.Component {
 
-    return (
-        <div className="register">
-            <h1 className="register-title">Register</h1>
-            <input placeholder="Username"></input>
-            <input placeholder="Password" type="password"></input>
-            <input placeholder="Email"></input>
-            <select name="sex">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+    constructor(props) {
+        super(props)
+        this.state = {
+            registerSuccsessfull: false,
+            registerUnsuccsessfull: false
+        }
+        this.registerSuccsessfull = this.registerSuccsessfull.bind(this)
+        this.registerUnsuccsessfull = this.registerUnsuccsessfull.bind(this)
+        this.resetState = this.resetState.bind(this)
+    }
 
-            <select name="Country">
-                <option value="Sweden">Sweden</option>
-                <option value="Norway">Norway</option>
-                <option value="Finland">Finland</option>
-                <option value="Denmark">Denmark</option>
-            </select>
+    registerSuccsessfull() {
+        this.setState({
+            registerSuccsessfull: true
+        })
+    }
 
-            <select name="City">
-                <option value="Stockholm">Stockholm</option>
-                <option value="Göteborg">Göteborg</option>
-                <option value="Linköping">Linköping</option>
-                <option value="Luleå">Luleå</option>
-            </select>
+    registerUnsuccsessfull() {
+        this.setState({
+            registerUnsuccsessfull: true
+        })
+    }
 
-            <Link to={'/feed'} className="register-button">
-                Register!
-            </Link>
-        </div>
-    )
+    resetState() {
+        this.setState({
+            registerUnsuccsessfull: false,
+            registerSuccsessfull: false
+        })
+    }
+
+    render() {
+        let objToRender;
+
+        if (this.state.registerSuccsessfull) {
+            objToRender = <RegisterAlert title='Welcome!' btnTxt='Log in!' link='/login' />
+        } else if (this.state.registerUnsuccsessfull) {
+            objToRender = <RegisterAlert title='Something went wrong...' btnTxt='Try again!' resetState={this.resetState} />
+        } else {
+            objToRender =
+                <RegisterForm
+                    registerSuccsessfull={this.registerSuccsessfull}
+                    registerUnsuccsessfull={this.registerUnsuccsessfull}
+                />
+        }
+
+        return (
+            <div className='register'>
+                <h1>inFlusion</h1>
+                {objToRender}
+            </div>
+        )
+    }
 }
 
 export default Register
