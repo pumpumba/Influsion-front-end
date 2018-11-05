@@ -14,7 +14,7 @@
     font-size: 5rem;
   }
 
-  .input {
+  input {
     width: 20rem;
     margin: 1rem;
     background: rgba(255,255,255,0.2);
@@ -34,7 +34,7 @@
     }
   }
 
-  .loginButton {
+  button {
     background: transparent;
     color: $white;
     border: 0.1em solid $white;

@@ -29,14 +29,14 @@ class Feed extends React.Component {
   }
 
   updateFeedFilters(newFilters) {
-    this.setState({filters: newFilters})
-}
+    this.setState({ filters: newFilters })
+  }
 
   render() {
 
     let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
     let FeedContent = filteredContent.map(content => {
-      return <FeedComponent key={content.tweet_created_at} data={content}/>
+      return <FeedComponent key={content.tweet_created_at} data={content} />
     })
 
     return (
