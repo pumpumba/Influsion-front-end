@@ -13,7 +13,7 @@ class InfluencerFeed extends React.Component {
   }
 
   componentDidMount() {
-    var influencer = this.props.match.params.influencer
+    let influencer = this.props.match.params.influencer
     fetch('http://40.127.101.155/twitter/content', {
       method: 'post',
       headers: {
