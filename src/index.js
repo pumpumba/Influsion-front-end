@@ -7,11 +7,12 @@ import Search from './pages/Search'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import ModifyUser from './pages/ModifyUser'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs, faRetweet,faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-library.add(fab, faCheckSquare, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt)
+import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs, faRetweet,faCalendarAlt, faAngleDown} from '@fortawesome/free-solid-svg-icons'
+library.add(fab, faCheckSquare, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt, faAngleDown)
 
 const Index = () => {
   return (
@@ -22,7 +23,8 @@ const Index = () => {
         <Route path='/search' component={Search} />
         <Route path='/settings' component={Settings} />
         <Route path='/login' component={Login} />
-        <Route path='/register' component={Register}/>
+        <Route path='/register' component={Register} />
+        <Route path='/modifyUser' component={ModifyUser} />
       </div>
     </Router>
   )
