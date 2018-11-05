@@ -8,11 +8,21 @@ class Feed extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: [],
-      filters: ['twitter', 'youtube', 'instagram']
+      data: []
     }
+  }
 
-    this.updateFeedFilters = this.updateFeedFilters.bind(this)
+  followingUser(u) {
+
+    fetch('http://40.127.101.155/db/get_follow_list_accounts', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(*input USER_ID* )
+    })
+    .then(data => data.json())
   }
 
   componentDidMount() {
@@ -23,19 +33,16 @@ class Feed extends React.Component {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: 'beyonce' })
+      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: '*GET_FOLLOW_LIST_ACCOUNTS*/data'?' })
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
 
-  updateFeedFilters(newFilters) {
-    this.setState({filters: newFilters})
-}
-
   render() {
 
-    let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
-    let FeedContent = filteredContent.map(content => {
+    let { data } = this.state
+
+    let FeedContent = data.map(content => {
       return <FeedComponent key={content.tweet_created_at} data={content}/>
     })
 
@@ -45,7 +52,7 @@ class Feed extends React.Component {
         <main>
           {FeedContent}
         </main>
-        <Footer updateFeedFilters={this.updateFeedFilters} />
+        <Footer />
       </div>
     )
   }

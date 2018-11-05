@@ -7,12 +7,50 @@ class PopularComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      open: false,
-      heart: false,
+      heart = {this.followingUser ? true : false},
+      open: false
     }
 
     this.onClick = this.onClick.bind(this)
     this.changeHeart = this.changeHeart.bind(this)
+  }
+
+  followingUser(u) {
+
+    fetch('http://40.127.101.155/db/get_follow_list_accounts', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(*input USER_ID* )
+    })
+    .then(data => data.json())
+    .then(data => (data.contains(this.props.data.user_screen_name.toLowerCase()) ? return 'true' : return 'false'))
+  }
+
+  followUser(u) {
+    fetch('http://40.127.101.155/db/add_follow_influencer', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(this.props.data.user_screen_name.toLowerCase(), *input USER_ID* )
+    })
+    .then(data => data.json())
+  }
+
+  unFollowUser(u) {
+    fetch('http://40.127.101.155/db/unfollow_influencer', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(this.props.data.user_screen_name.toLowerCase(), *input USER_ID* )
+    })
+    .then(data => data.json())
   }
 
   onClick() {
@@ -24,6 +62,7 @@ class PopularComponent extends React.Component {
   changeHeart() {
     this.setState(prevState => ({
       heart: !prevState.heart
+      this.followingUser ? unFollowUser : followUser,
     }))
   }
 
@@ -47,7 +86,7 @@ class PopularComponent extends React.Component {
               <a href={this.props.data.tweet_url}> <FontAwesomeIcon icon={['fab', 'twitter']} /> </a>
               <FontAwesomeIcon icon={'heart'} className="follow_heart"  onClick={this.changeHeart}  data-state={this.state.heart && 'active'} />
             </StopPropagation>
-            {(this.props.data.tweet_media.length <= 0) ? <div className='text-wrapper'> <p className='tweet-text'>{this.props.data.tweet_text}</p> </div>: ''} 
+            {(this.props.data.tweet_media.length <= 0) ? <div className='text-wrapper'> <p className='tweet-text'>{this.props.data.tweet_text}</p> </div>: ''}
         </div>
         <div className='expanded-view'>
           <div className='header'>
