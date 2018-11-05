@@ -14,24 +14,33 @@ class FilterFooter extends React.Component {
     this.changeTwitter = this.changeTwitter.bind(this)
     this.changeInstagram = this.changeInstagram.bind(this)
     this.changeYoutube = this.changeYoutube.bind(this)
+    this.updateFilter = this.updateFilter.bind(this)
+  }
+
+  updateFilter() {
+    let newFilters = []
+
+    Object.entries(this.state).map(([key, value]) => value ? newFilters.push(key) : '')
+
+    this.props.updateFeedFilters(newFilters)
   }
 
   changeTwitter() {
     this.setState(prevState => ({
       twitter: !prevState.twitter
-    }))
+    }), () => this.updateFilter())
   }
 
   changeInstagram() {
     this.setState(prevState => ({
       instagram: !prevState.instagram
-    }))
+    }), () => this.updateFilter())
   }
 
   changeYoutube() {
     this.setState(prevState => ({
       youtube: !prevState.youtube
-    }))
+    }), () => this.updateFilter())
   }
 
   render() {

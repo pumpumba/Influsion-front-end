@@ -9,7 +9,10 @@ jobs:
        #   password: $DOCKER_PWD
 
     working_directory: ~/repo
-
+    branches:
+      only:
+        - master
+        
     steps:
       - checkout
 

@@ -8,8 +8,14 @@ class Popular extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+            data: [],
+            filters: ['twitter', 'youtube', 'instagram']
         }
+        this.updateFeedFilters = this.updateFeedFilters.bind(this)
+    }
+
+    updateFeedFilters(newFilters) {
+        this.setState({filters: newFilters})
     }
 
     componentDidMount() {
@@ -19,9 +25,9 @@ class Popular extends React.Component {
     }
 
     render() {
-        let { data } = this.state
 
-        let FeedContent = data.map(influencer => {
+        let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
+        let FeedContent = filteredContent.map(influencer => {
             return <PopularComponent key={influencer.tweet_created_at} data={influencer} />
         })
 
@@ -31,7 +37,7 @@ class Popular extends React.Component {
                 <main className='popular-feed-content'>
                     {FeedContent}
                 </main>
-                <Footer />
+                <Footer updateFeedFilters={this.updateFeedFilters} />
             </div>
         )
     }
