@@ -10,7 +10,9 @@ const Settings = (props) => {
         <main>
             <h1 className="title">Settings</h1>
             <Link to='/login' className="setting">Log in</Link>
+            <Link to='/feed' className="setting">Log out</Link>
             <Link to='/modifyUser' className="setting">Edit information</Link>
+            <Link to='/modifyUser' className="setting">Delete account</Link>
         </main>
         <Footer/>
     </div>)

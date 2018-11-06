@@ -26,7 +26,7 @@ class ModifyForm extends React.Component {
         })
         .then(response => response.json())
         .then(response => (response.updateSucess) ? this.props.modSuccsessfull() : this.props.modUnsuccsessfull())
-        this.props.modSuccsessfull();
+        {/*this.props.modSuccsessfull();*/}
     }
 
 
