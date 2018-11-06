@@ -7,7 +7,8 @@ class Login extends React.Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            loginFailed: false
         }
         this.login = this.login.bind(this)
         this.loginSuccsessfull = this.loginSuccsessfull.bind(this)
@@ -22,10 +23,11 @@ class Login extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify({username : this.state.username, password : this.state.password})
         })
             .then(response => response.json())
             .then(response => (response.dbResults.loginSuccess) ? this.loginSuccsessfull(response.dbResults) : this.loginUnsuccsessfull())
+            .catch(error => this.loginUnsuccsessfull())
     }
 
     loginSuccsessfull(userInfo) {
@@ -36,7 +38,9 @@ class Login extends React.Component {
     }
 
     loginUnsuccsessfull() {
-        console.log('unsuc')
+      this.setState({
+        loginFailed: true
+      })
     }
 
     render() {
@@ -56,11 +60,13 @@ class Login extends React.Component {
                 <button onClick={this.login}>
                     Lets go into the wilderness!
                 </button>
+                {this.state.loginFailed && <span className='error-msg'>Something went wrong... Please try again</span>}
+
                 <div className="smallText">
                     <p>What is my password?</p>
                     <Link to={'/register'} className="smallText">
                         It is finally my time - lets get registered
-                </Link>
+                  </Link>
                 </div>
             </div>
         )
