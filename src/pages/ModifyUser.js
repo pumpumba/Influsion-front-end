@@ -3,71 +3,66 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import {Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import ModifyForm from './../components/modifyUser/ModifyForm'
+import ModifyAlert from './../components/modifyUser/ModifyAlert'
 
 class ModifyUser extends React.Component {
 
     constructor(props){
         super(props)
         this.state = {
-            usrid: 43,
-            username: 'jonas',
-            password: '1234',
-            email: 'jonasolaussen@gmail.se',
-            age: '23',
-            sex: 'Male'
+            modSuccsessfull: false,
+            modUnsuccsessfull: false
         }
-        this.sendChanges = this.sendChanges.bind(this);
+        this.modSuccsessfull = this.modSuccsessfull.bind(this)
+        this.modUnsuccsessfull = this.modUnsuccsessfull.bind(this)
+        this.resetState = this.resetState.bind(this)
     }
 
-    sendChanges(e){
-        {/*Add code for DB interaction*/}
-        fetch('http://40.127.101.155/db/modify_user/', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
+    modSuccsessfull() {
+        this.setState({
+            modSuccsessfull: true
+        })
+    }
+
+    modUnsuccsessfull() {
+        this.setState({
+            modUnsuccsessfull: true
+        })
+    }
+
+    resetState() {
+        this.setState({
+            modUnsuccsessfull: false,
+            modSuccsessfull: false
         })
     }
 
     render() {
-        return (<div>
-        <Header/>
-        <main>
-            <h1 className="title">Settings</h1>
+        let objToRender;
 
-            <p className="inputTitle">Enter new username</p>
-            <input className="input" placeholder="Username"
-            onChange={(e) => this.setState({ username: e.target.value })}
-            ></input>
+        if (this.state.modSuccsessfull) {
+            objToRender = <ModifyAlert title='Changes made!' btnTxt='OK!' link='/settings' />
+        } else if (this.state.modUnsuccsessfull) {
+            objToRender = <ModifyAlert title='Something went wrong...' btnTxt='Try again!' resetState={this.resetState} />
+        } else {
+            objToRender =
+                <ModifyForm
+                    modSuccsessfull={this.modSuccsessfull}
+                    modUnsuccsessfull={this.modUnsuccsessfull}
+                />
+        }
 
-            <p className="inputTitle">Enter new password</p>
-            <input className="input" placeholder="Password"
-            onChange={(e) => this.setState({ password: e.target.value })}
-            ></input>
-
-            <p className="inputTitle">Enter new age</p>
-            <input className="input" placeholder="Age"
-            onChange={(e) => this.setState({ age: e.target.value })}
-            ></input>
-
-            <p className="inputTitle">Enter new sex</p>
-            <select name="sex" className="input"
-            onChange={(e) => this.setState({ sex: e.target.value })}>
-                <option value='Male'>Male</option>
-                <option value='Female'>Female</option>
-            </select>
-
-            <p className="inputTitle">Enter new email</p>
-            <input className="input" placeholder="Email"
-            onChange={(e) => this.setState({ email: e.target.value })}
-            ></input>
-
-            <button onClick={this.sendChanges}>Send Changes</button>
-        </main>
-        <Footer/>
-    </div>)}
+        return (
+            <div>
+                <Header/>
+                <main className="modify">
+                    {objToRender}
+                </main>
+                <Footer/>
+            </div>
+        )
+    }
 }
 
 
