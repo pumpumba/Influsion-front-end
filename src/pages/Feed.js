@@ -3,7 +3,7 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
 import YoutubeFeedComponent from './../components/feed/YoutubeFeedComponent'
-import './../styles/feed/YoutubeFeedComponent.scss'
+import './../styles/feed/youtube-feed-component.scss'
 
 class Feed extends React.Component {
 
@@ -17,7 +17,24 @@ class Feed extends React.Component {
         url: "https://www.youtube.com/embed/tgbNymZ7vqY",
         likes: 1456,
         dislikes: 56,
-        user: "Pekka rinne pinne"
+        user: "Pekka rinne pinne",
+        views: 144454
+      },
+      ytData2:{
+        platform: "Youtube",
+        url: "https://www.youtube.com/embed/JH_BAwSFKwM",
+        likes: 1456,
+        dislikes: 56,
+        user: "Star Wars rinne pinne",
+        views: 144454
+      },
+      ytData3:{
+        platform: "Youtube",
+        url: "https://www.youtube.com/embed/mM5_T-F1Yn4",
+        likes: 1456,
+        dislikes: 56,
+        user: "4/3 Wars rinne pinne",
+        views: 144454
       }
     }
 
@@ -56,6 +73,9 @@ class Feed extends React.Component {
         <Header title={'My Feed'} />
         <main>
         <YoutubeFeedComponent data={this.state.ytData} user_name="Jesper Hedlund"  />
+        <YoutubeFeedComponent data={this.state.ytData2} user_name="Jesper Hedlund"  />
+        <YoutubeFeedComponent data={this.state.ytData3} user_name="Jesper Hedlund"  />
+
          {FeedContent}
         </main>
         <Footer updateFeedFilters={this.updateFeedFilters} />
