@@ -8,32 +8,31 @@ class Feed extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: [],
-      filters: ['twitter', 'youtube', 'instagram']
+      data: []
     }
-
-    this.updateFeedFilters = this.updateFeedFilters.bind(this)
   }
 
   componentDidMount() {
-    fetch('http://40.127.101.155/twitter/content', {
+    fetch('http://40.127.101.155/db/get_followed_infl_posts', {
       method: 'post',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: 'beyonce' })
+      body: JSON.stringify({userid: this.props.userID})
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
+
   updateFeedFilters(newFilters) {
     this.setState({ filters: newFilters })
   }
 
   render() {
+    console.log("heeeeeeeej"+ this.props.userId);
+    let { data } = this.state
 
-    let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
-    let FeedContent = filteredContent.map(content => {
+    let FeedContent = data.map(content => {
       return <FeedComponent key={content.tweet_created_at} data={content}/>
     })
 
@@ -43,7 +42,7 @@ class Feed extends React.Component {
         <main>
           {FeedContent}
         </main>
-        <Footer updateFeedFilters={this.updateFeedFilters} />
+        <Footer />
       </div>
     )
   }
