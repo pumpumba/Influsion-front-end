@@ -8,8 +8,8 @@ const FeedComponent = (props) => {
         <div className='feed-component-wrapper'>
             <div className='header'>
                 <img src={props.data.user_profile_image_url} />
-                <h3>{props.data.user_name}</h3>
-                <a target_="blank" href={props.data.tweet_url}><FontAwesomeIcon className='icon' icon={['fab', 'twitter']} /></a>
+                <a href={props.data.user_screen_name.toLowerCase()}> {props.data.user_name} </a>
+                <a target_="blank" href={props.data.tweet_url} className="twitter-icon"><FontAwesomeIcon className='icon' icon={['fab', 'twitter']} /></a>
             </div>
             <div className='content'>
                 <p className='tweet_text'>{props.data.tweet_text}</p>

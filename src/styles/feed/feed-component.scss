@@ -10,6 +10,12 @@
         flex-direction: row;
         align-items: center;
 
+        a {
+              color: black;
+              font-size: 1.25em;
+              margin-left: 1rem;
+        }
+
         img {
             border-radius: 99px;
             border: 2px solid $hard;
@@ -20,7 +26,7 @@
             margin-left: .75rem;
         }
 
-        a {
+        .twitter-icon {
             color: $hard;
             font-size: 1.5em;
             margin-left: auto;
