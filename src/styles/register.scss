@@ -6,12 +6,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
-  .register-title {
+  h1 {
     font-family: 'Pacifico', cursive;
     color: $white;
     margin: 4rem;
     font-size: 5rem;
+  }
+
+  h2 {
+    color: $white;
+    font-size: 2rem;
   }
 
   input, select {
@@ -34,14 +40,15 @@
     }
   }
 
-  .register-button {
+  a, button {
     text-align: center;
     background: transparent;
     color: $white;
     border: 0.1em solid $white;
     border-radius: 0.5em;
+    display: block;
     font-size: 1rem;
-    margin: 2rem;
+    margin: 2rem auto;
     padding: 1rem;
     width: 80%;
     box-sizing: border-box;

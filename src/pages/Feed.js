@@ -13,7 +13,7 @@ class Feed extends React.Component {
   }
 
   followingUser(u) {
-
+/db/get_followed_infl_posts
     fetch('http://40.127.101.155/db/get_follow_list_accounts', {
       method: 'post',
       headers: {
@@ -26,8 +26,9 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.userId)
 
-    fetch('http://40.127.101.155/twitter/content', {
+    fetch('http://40.127.101.155/db/get_followed_infl_posts', {
       method: 'post',
       headers: {
         'Accept': 'application/json, text/plain, */*',
