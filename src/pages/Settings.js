@@ -4,7 +4,6 @@ import Footer from './../components/footer/Footer'
 import FooterButton from './../components/footer/FooterButton';
 import { Link } from 'react-router-dom'
 
-
 const Settings = (props) => {
   return (
     <div>

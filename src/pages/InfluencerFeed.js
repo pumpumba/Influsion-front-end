@@ -3,16 +3,13 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
 
-class Feed extends React.Component {
+class InfluencerFeed extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      data: [],
-      filters: ['twitter', 'youtube', 'instagram']
+      data: []
     }
-
-    this.updateFeedFilters = this.updateFeedFilters.bind(this)
   }
 
   componentDidMount() {
@@ -27,15 +24,10 @@ class Feed extends React.Component {
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
-  updateFeedFilters(newFilters) {
-    this.setState({filters: newFilters})
-}
 
   render() {
-
-    let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
-    let FeedContent = filteredContent.map(content => {
-
+    let { data } = this.state
+    let FeedContent = data.map(content => {
       return <FeedComponent key={content.tweet_created_at} data={content}/>
     })
 
@@ -45,10 +37,10 @@ class Feed extends React.Component {
         <main>
           {FeedContent}
         </main>
-        <Footer updateFeedFilters={this.updateFeedFilters} />
+        <Footer />
       </div>
     )
   }
 }
 
-export default Feed
+export default InfluencerFeed
