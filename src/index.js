@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Popular from './pages/Popular'
 import Feed from './pages/Feed'
+import InfluencerFeed from './pages/Influencerfeed'
 import Search from './pages/Search'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
@@ -18,7 +19,7 @@ class Index extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-          userId: 34
+          userId: 0
         }
         this.updateUserId = this.updateUserId.bind(this)
     }

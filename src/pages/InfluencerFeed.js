@@ -3,7 +3,7 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
 
-class Feed extends React.Component {
+class InfluencerFeed extends React.Component {
 
   constructor(props) {
     super(props)
@@ -13,25 +13,20 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://40.127.101.155/db/get_followed_infl_posts', {
+    let influencer = this.props.match.params.influencer
+    fetch('http://40.127.101.155/twitter/content', {
       method: 'post',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({userid: this.props.userID})
+      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: influencer })
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
 
-  updateFeedFilters(newFilters) {
-    this.setState({ filters: newFilters })
-  }
-
   render() {
-    console.log("heeeeeeeej"+ this.props.userId);
     let { data } = this.state
-
     let FeedContent = data.map(content => {
       return <FeedComponent key={content.tweet_created_at} data={content}/>
     })
@@ -48,4 +43,4 @@ class Feed extends React.Component {
   }
 }
 
-export default Feed
+export default InfluencerFeed
