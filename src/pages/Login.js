@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 class Login extends React.Component {
 
@@ -10,6 +10,8 @@ class Login extends React.Component {
             password: ''
         }
         this.login = this.login.bind(this)
+        this.loginSuccsessfull = this.loginSuccsessfull.bind(this)
+        this.loginUnsuccsessfull = this.loginUnsuccsessfull.bind(this)
     }
 
     login(e) {
@@ -23,7 +25,15 @@ class Login extends React.Component {
             body: JSON.stringify(this.state)
         })
             .then(response => response.json())
-            .then(response => console.log(response))
+            .then(response => (response.dbResults.loginSuccess) ? this.loginSuccsessfull(response.dbResults) : this.loginUnsuccsessfull())
+    }
+
+    loginSuccsessfull(userInfo) {
+        this.props.updateUserId(userInfo.usrid)
+    }
+
+    loginUnsuccsessfull() {
+        console.log('unsuc')
     }
 
     render() {
@@ -42,7 +52,7 @@ class Login extends React.Component {
                 </input>
                 <button onClick={this.login}>
                     Lets go into the wilderness!
-            </button>
+                </button>
                 <div className="smallText">
                     <p>What is my password?</p>
                     <Link to={'/register'} className="smallText">
