@@ -16,18 +16,17 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
-
+    let influencer = this.props.match.params.influencer
     fetch('http://40.127.101.155/twitter/content', {
       method: 'post',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: 'beyonce' })
+      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: influencer })
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
-
   updateFeedFilters(newFilters) {
     this.setState({filters: newFilters})
 }

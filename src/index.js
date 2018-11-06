@@ -11,23 +11,39 @@ import Register from './pages/Register'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs, faRetweet,faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 library.add(fab, faCheckSquare, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt)
 
-const Index = () => {
-  return (
-    <Router>
-      <div>
-        <Route exact path='/' component={Popular} />
-        <Route path='/feed' component={Feed} />
-        <Route path='/search' component={Search} />
-        <Route path='/settings' component={Settings} />
-        <Route path='/login' component={Login} />
-        <Route path='/:influencer' component={InfluencerFeed} />
-        <Route path='/register' component={Register} />
-      </div>
-    </Router>
-  )
+class Index extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+          userId: 34
+        }
+        this.updateUserId = this.updateUserId.bind(this)
+    }
+
+    updateUserId(newId) {
+        this.setState({userId: newId})
+    }
+
+
+    render() {
+
+        return (
+                <Router>
+                    <div>
+                        <Route exact path='/' component={() => <Popular updateUserId={this.updateUserId} userId={this.state.userId} />}/>
+                        <Route path='/feed' component={() => <Feed updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/search' component={() => <Search updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/settings' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/login' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/register' component={() => <Register updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    </div>
+                </Router>
+        )
+    }
 }
 
 ReactDOM.render(<Index />, document.getElementById('index'))
