@@ -1,21 +1,76 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
-const Login = (props) => {
-  return (<div className="login">
-    <h1 className="loginTitle">inFlusion</h1>
-    <input className="input" placeholder="Username"></input>
-    <input className="input" placeholder="Password" type="password"></input>
-    <Link to={'/feed'} className="loginButton">
-      Lets go into the wilderness!
-    </Link>
-    <div className="smallText">
-      <p>What is my password?</p>
-      <Link to={'/register'} className="smallText">
-        It is finally my time - lets get registered
-      </Link>
-    </div>
-  </div>)
+class Login extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            username: '',
+            password: '',
+            loginFailed: false
+        }
+        this.login = this.login.bind(this)
+        this.loginSuccsessfull = this.loginSuccsessfull.bind(this)
+        this.loginUnsuccsessfull = this.loginUnsuccsessfull.bind(this)
+    }
+
+    login(e) {
+        e.preventDefault()
+        fetch('http://40.127.101.155/db/login/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username : this.state.username, password : this.state.password})
+        })
+            .then(response => response.json())
+            .then(response => (response.dbResults.loginSuccess) ? this.loginSuccsessfull(response.dbResults) : this.loginUnsuccsessfull())
+            .catch(error => this.loginUnsuccsessfull())
+    }
+
+    loginSuccsessfull(userInfo) {
+        this.props.updateUserId(userInfo.usrid)
+        let curUrl = window.location.href
+        let newUrl = curUrl.replace('login', '')
+        window.location.replace(newUrl)
+    }
+
+    loginUnsuccsessfull() {
+      this.setState({
+        loginFailed: true
+      })
+    }
+
+    render() {
+        return (
+            <div className="login">
+                <h1 className="loginTitle">inFlusion</h1>
+                <input
+                    placeholder="Username"
+                    onChange={(e) => this.setState({ username: e.target.value })}
+                >
+                </input>
+                <input
+                    onChange={(e) => this.setState({ password: e.target.value })}
+                    placeholder="Password"
+                    type="password">
+                </input>
+                <button onClick={this.login}>
+                    Lets go into the wilderness!
+                </button>
+                {this.state.loginFailed && <span className='error-msg'>Something went wrong... Please try again</span>}
+
+                <div className="smallText">
+                    <p>What is my password?</p>
+                    <Link to={'/register'} className="smallText">
+                        It is finally my time - lets get registered
+                  </Link>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default Login
