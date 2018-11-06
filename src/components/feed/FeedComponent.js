@@ -7,16 +7,43 @@ class FeedComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      heart: false,
+      heart: true
     }
 
     this.changeHeart = this.changeHeart.bind(this)
+  }
+
+  unfollowInfluencer() {
+     fetch('http://40.127.101.155/db/unfollow_influencer', {
+       method: 'post',
+       headers: {
+         'Accept': 'application/json, text/plain, */*',
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({user_id: this.props.userID, influencer_id: this.props.data.inflid})
+     })
+     .then(response => response.json())
+     .then(data => this.setState({ data }))
+  }
+
+  followInfluencer() {
+     fetch('http://40.127.101.155/db/add_follow_influencer', {
+       method: 'post',
+       headers: {
+         'Accept': 'application/json, text/plain, */*',
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({user_id: this.props.userID, influencer_id: this.props.data.inflid})
+     })
+     .then(response => response.json())
+     .then(data => this.setState({ data }))
   }
 
     changeHeart() {
       this.setState(prevState => ({
         heart: !prevState.heart
       }))
+      this.props.data.USRFOLLOWINGINFLUENCER ? unfollowInfluencer() : followInfluencer()
     }
 
     render () {

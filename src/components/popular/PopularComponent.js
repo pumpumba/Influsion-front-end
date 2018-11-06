@@ -7,50 +7,38 @@ class PopularComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      heart = {this.followingUser ? true : false},
-      open: false
+      open: false,
+      heart: this.props.data.USRFOLLOWINGINFLUENCER
     }
 
     this.onClick = this.onClick.bind(this)
     this.changeHeart = this.changeHeart.bind(this)
   }
 
-  followingUser(u) {
-
-    fetch('http://40.127.101.155/db/get_follow_list_accounts', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-        },
-      body: JSON.stringify(*input USER_ID* )
-    })
-    .then(data => data.json())
-    .then(data => (data.contains(this.props.data.user_screen_name.toLowerCase()) ? return 'true' : return 'false'))
+  unfollowInfluencer() {
+     fetch('http://40.127.101.155/db/unfollow_influencer', {
+       method: 'post',
+       headers: {
+         'Accept': 'application/json, text/plain, */*',
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({user_id: this.props.userID, influencer_id: this.props.data.inflid})
+     })
+     .then(response => response.json())
+     .then(data => this.setState({ data }))
   }
 
-  followUser(u) {
-    fetch('http://40.127.101.155/db/add_follow_influencer', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-        },
-      body: JSON.stringify(this.props.data.user_screen_name.toLowerCase(), *input USER_ID* )
-    })
-    .then(data => data.json())
-  }
-
-  unFollowUser(u) {
-    fetch('http://40.127.101.155/db/unfollow_influencer', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-        },
-      body: JSON.stringify(this.props.data.user_screen_name.toLowerCase(), *input USER_ID* )
-    })
-    .then(data => data.json())
+  followInfluencer() {
+     fetch('http://40.127.101.155/db/add_follow_influencer', {
+       method: 'post',
+       headers: {
+         'Accept': 'application/json, text/plain, */*',
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({user_id: this.props.userID, influencer_id: this.props.data.inflid})
+     })
+     .then(response => response.json())
+     .then(data => this.setState({ data }))
   }
 
   onClick() {
@@ -62,8 +50,8 @@ class PopularComponent extends React.Component {
   changeHeart() {
     this.setState(prevState => ({
       heart: !prevState.heart
-      this.followingUser ? unFollowUser : followUser,
     }))
+    this.props.data.USRFOLLOWINGINFLUENCER ? unfollowInfluencer() : followInfluencer()
   }
 
   render() {

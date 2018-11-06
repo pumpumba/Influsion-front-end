@@ -19,8 +19,14 @@ class Popular extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://40.127.101.155/api/twitter?request_type=popular')
-        .then(response => response.json())
+        fetch('http://40.127.101.155/db/get_latest_posts', {
+         method: 'post',
+         headers: {
+           'Accept': 'application/json, text/plain, */*',
+           'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ top: '100', user_id: this.props.userId, platform: 'all' })
+      }).then(data => data.json())
         .then(data => this.setState({ data }))
     }
 

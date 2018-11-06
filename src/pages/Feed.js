@@ -12,21 +12,8 @@ class Feed extends React.Component {
     }
   }
 
-  followingUser(u) {
-/db/get_followed_infl_posts
-    fetch('http://40.127.101.155/db/get_follow_list_accounts', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-        },
-      body: JSON.stringify(*input USER_ID* )
-    })
-    .then(data => data.json())
-  }
-
   componentDidMount() {
-    console.log(this.props.userId)
+    console.log("heeeeeeeej"+ this.props.userId);
 
     fetch('http://40.127.101.155/db/get_followed_infl_posts', {
       method: 'post',
@@ -34,13 +21,13 @@ class Feed extends React.Component {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: '*GET_FOLLOW_LIST_ACCOUNTS*/data'?' })
+      body: JSON.stringify({userid: this.props.userID})
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
 
   render() {
-
+    console.log("heeeeeeeej"+ this.props.userId);
     let { data } = this.state
 
     let FeedContent = data.map(content => {
