@@ -2,6 +2,8 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
+import YoutubeFeedComponent from './../components/feed/YoutubeFeedComponent'
+import './../styles/feed/YoutubeFeedComponent.scss'
 
 class Feed extends React.Component {
 
@@ -9,15 +11,25 @@ class Feed extends React.Component {
     super(props)
     this.state = {
       data: [],
-      filters: ['twitter', 'youtube', 'instagram']
+      filters: ['twitter', 'youtube', 'instagram'],
+      ytData:{
+        platform: "Youtube",
+        url: "https://www.youtube.com/embed/tgbNymZ7vqY",
+        likes: 1456,
+        dislikes: 56,
+        user: "Pekka rinne pinne"
+      }
     }
 
     this.updateFeedFilters = this.updateFeedFilters.bind(this)
   }
 
+
+
   componentDidMount() {
 
-    fetch('http://40.127.101.155/twitter/content', {
+
+    fetch('http://40.127.101.155/db/get_followed_infl_posts', {
       method: 'post',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -43,7 +55,8 @@ class Feed extends React.Component {
       <div>
         <Header title={'My Feed'} />
         <main>
-          {FeedContent}
+        <YoutubeFeedComponent data={this.state.ytData} user_name="Jesper Hedlund"  />
+         {FeedContent}
         </main>
         <Footer updateFeedFilters={this.updateFeedFilters} />
       </div>
