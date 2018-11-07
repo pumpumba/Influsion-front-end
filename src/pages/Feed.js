@@ -21,7 +21,7 @@ class Feed extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: 1, limit: 100 })
+            body: JSON.stringify({ assetType: ['tweet'], filterType: ['user'], filterValue: 1, limit: 100 })
         }).then(data => data.json())
             .then(data => this.setState({ data }))
 
@@ -37,19 +37,37 @@ class Feed extends React.Component {
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
-                return <FeedComponent key={curContent.postid} data={curContent.platformcontent} />
+                return <FeedComponent
+                    key={curContent.postid}
+                    data={curContent.platformcontent}
+                    userId={this.props.userId}
+                />
             })
         }
+        if (feedContent != null) {
 
-        return (
-            <div>
-                <Header />
-                <main>
-                    {feedContent}
-                </main>
-                <Footer updateFeedFilters={this.updateFeedFilters} />
-            </div>
-        )
+            return (
+                <div>
+                    <Header />
+                    <main>
+
+                        {feedContent}
+                    </main>
+                    <Footer updateFeedFilters={this.updateFeedFilters} />
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <Header />
+                    <main className='feed'>
+                        <h2>Nothing here to show, please follow a influencer...</h2>
+                    </main>
+                    <Footer updateFeedFilters={this.updateFeedFilters} />
+                </div>
+
+            )
+        }
     }
 }
 
