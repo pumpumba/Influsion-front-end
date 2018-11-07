@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimeAgo from 'react-timeago'
-import { StopPropagation } from 'react-clickable';
+import { StopPropagation } from 'react-clickable'
 
 
 function ContentPlacer(props){
@@ -39,8 +39,8 @@ function ContentPlacer(props){
                  2 hours ago
              </span>
              <StopPropagation>
+                <FontAwesomeIcon icon={'heart'} className="follow_heart" onClick={props.changeHeart} data-state={props.heart && 'active'} />
              </StopPropagation>
-             <FontAwesomeIcon icon={'heart'} className="follow_heart" onClick={props.changeHeart} data-state={props.heart && 'active'} />
          </div>
      </div>
    )
@@ -52,8 +52,6 @@ class PopularComponentExpandedView extends React.Component {
     super()
 
   }
-
-
 
     render() {
         const plat = this.props.platform

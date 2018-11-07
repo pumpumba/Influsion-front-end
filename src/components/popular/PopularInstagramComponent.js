@@ -27,12 +27,23 @@ class PopularInstagramComponent extends React.Component {
       this.setState(prevState => ({
           heart: !prevState.heart
       }))
+      if (this.state.heart) {
+          unfollowInfluencer(this.props.userId, this.props.data.realInfluencerName)
+      } else {
+          followInfluencer(this.props.userId, this.props.data.realInfluencerName)
+      }
+  }
+
+  changeHeart() {
+      this.setState(prevState => ({
+          heart: !prevState.heart
+      }))
   }
 
   render() {
       if (this.props.data != null && this.props.data.platform == 'instagram' ) {
           const styles = {
-              backgroundImage: 'url(' + this.props.data.platformcontent.post_media[0] + ')'
+              backgroundImage: 'url(' + this.props.data.post_media[0] + ')'
           }
           return (
               <div
@@ -42,24 +53,27 @@ class PopularInstagramComponent extends React.Component {
                   onClick={this.onClick}
               >
                   <PopularComponentClosedView
-                      backgroundImage={this.props.data.platformcontent.post_media}
-                      userProfileImageUrl={this.props.data.platformcontent.user_profile_image_url}
-                      url={this.props.data.platformcontent.post_url}
+                      backgroundImage={this.props.data.post_media}
+                      userProfileImageUrl={this.props.data.user_profile_image_url}
+                      url={this.props.data.post_url}
                       changeHeart={this.changeHeart}
                       icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
-                      platform={this.props.data.platformcontent.platform}
+                      platform={this.props.data.platform}
+                      heart={this.state.heart}
+                      
                   />
                   <PopularComponentExpandedView
-                      userProfileImageUrl={this.props.data.platformcontent.user_profile_image_url}
-                      userName={this.props.data.platformcontent.user_name}
-                      url={this.props.data.platformcontent.post_url}
-                      caption={this.props.data.platformcontent.post_text}
-                      img={this.props.data.platformcontent.post_media[0]}
-                      noOfLikes={this.props.data.platformcontent.post_like_count}
-                      timestamp={this.props.data.platformcontent.psot_created_at}
+                      userProfileImageUrl={this.props.data.user_profile_image_url}
+                      userName={this.props.data.user_name}
+                      url={this.props.data.post_url}
+                      caption={this.props.data.post_text}
+                      img={this.props.data.post_media[0]}
+                      noOfLikes={this.props.data.post_like_count}
+                      timestamp={this.props.data.psot_created_at}
                       changeHeart={this.changeHeart}
                       icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
-                      platform={this.props.data.platformcontent.platform}
+                      platform={this.props.data.platform}
+                      heart={this.state.heart}
                   />
                   <div className='blur-overlay'></div>
               </div>

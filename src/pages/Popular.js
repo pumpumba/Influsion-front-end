@@ -38,9 +38,17 @@ class Popular extends React.Component {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
               if(curContent.platform=="twitter"){
-                return <PopularComponent key={curContent.postid} data={curContent} />
-              }else{
-                return <PopularInstagramComponent key={curContent.postid} data={curContent}/>
+                return <PopularComponent
+                                        key={curContent.postid}
+                                        data={curContent.platformcontent}
+                                        userId={this.props.userId}
+                                        userFollowing={curContent.usrfollowinginfluencer} />
+              }else if (curContent.platform=="instagram"){
+                return <PopularInstagramComponent
+                                                  key={curContent.postid}
+                                                  data={curContent.platformcontent}
+                                                  userId={this.props.userId}
+                                                  userFollowing={curContent.usrfollowinginfluencer}/>
               }
             })
         }

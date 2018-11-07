@@ -4,7 +4,6 @@ import { StopPropagation } from 'react-clickable';
 
 class PopularComponentHeader extends React.Component {
     render() {
-      const plat = this.props.platform
         return (
             <div className='closed-view'>
                 <div className='header'>
