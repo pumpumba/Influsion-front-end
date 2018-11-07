@@ -15,6 +15,13 @@ class PopularComponent extends React.Component {
         this.changeHeart = this.changeHeart.bind(this)
     }
 
+    componentWillMount() {
+        console.log(this.props.userFollowing)
+        this.setState(({
+            heart: this.props.userFollowing
+        }))
+    }
+
     onClick() {
         this.setState(prevState => ({
             open: !prevState.open
@@ -50,7 +57,8 @@ class PopularComponent extends React.Component {
                         url={this.props.data.tweet_url}
                         changeHeart={this.changeHeart}
                         caption={this.props.data.tweet_text}
-                    />
+                        heart={this.state.heart}
+                        />
                     <PopularComponentExpandedView
                         userProfileImageUrl={this.props.data.user_profile_image_url}
                         userName={this.props.data.user_name}
@@ -62,6 +70,7 @@ class PopularComponent extends React.Component {
                         noOfRetweet={this.props.data.tweet_retweet_count}
                         timestamp={this.props.data.tweet_created_at}
                         changeHeart={this.changeHeart}
+                        heart={this.state.heart}
                     />
                     <div className='blur-overlay'></div>
                 </div>
