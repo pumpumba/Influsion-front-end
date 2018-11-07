@@ -38,22 +38,36 @@ class Feed extends React.Component {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
                 return <FeedComponent
-                            key={curContent.postid}
-                            data={curContent.platformcontent}
-                            userId={this.props.userId}
-                        />
+                    key={curContent.postid}
+                    data={curContent.platformcontent}
+                    userId={this.props.userId}
+                />
             })
         }
+        if (feedContent != null) {
 
-        return (
-            <div>
-                <Header />
-                <main>
-                    {feedContent}
-                </main>
-                <Footer updateFeedFilters={this.updateFeedFilters} />
-            </div>
-        )
+            return (
+                <div>
+                    <Header />
+                    <main>
+
+                        {feedContent}
+                    </main>
+                    <Footer updateFeedFilters={this.updateFeedFilters} />
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <Header />
+                    <main className='feed'>
+                        <h2>Nothing here to show, please follow a influencer...</h2>
+                    </main>
+                    <Footer updateFeedFilters={this.updateFeedFilters} />
+                </div>
+
+            )
+        }
     }
 }
 
