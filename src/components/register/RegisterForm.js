@@ -27,6 +27,7 @@ class RegisterForm extends React.Component {
         })
         .then(response => response.json())
         .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
+        .catch(error => this.props.registerUnsuccsessfull())
     }
 
 

@@ -15,27 +15,35 @@ class Popular extends React.Component {
     }
 
     updateFeedFilters(newFilters) {
-        this.setState({filters: newFilters})
+        this.setState({ filters: newFilters })
     }
 
     componentDidMount() {
-        fetch('http://40.127.101.155/api/twitter?request_type=popular')
-            .then(response => response.json())
+        fetch('http://40.127.101.155/aggregate/content', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId], limit: 100 })
+        }).then(data => data.json())
             .then(data => this.setState({ data }))
     }
 
     render() {
-
-        let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
-        let FeedContent = filteredContent.map(influencer => {
-            return <PopularComponent key={influencer.tweet_created_at} data={influencer} />
-        })
+        let feedContent = null
+        if (this.state.data.length > 0) {
+            let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
+            feedContent = filteredContent.map(curContent => {
+                return <PopularComponent key={curContent.postid} data={curContent.platformcontent} />
+            })
+        }
 
         return (
             <div>
                 <Header title={'Popular'} />
                 <main className='popular-feed-content'>
-                    {FeedContent}
+                    {feedContent}
                 </main>
                 <Footer updateFeedFilters={this.updateFeedFilters} />
             </div>

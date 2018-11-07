@@ -5,50 +5,52 @@ import FeedComponent from './../components/feed/FeedComponent'
 
 class Feed extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: [],
-      filters: ['twitter', 'youtube', 'instagram']
+    constructor(props) {
+        super(props)
+        this.state = {
+            data: [],
+            filters: ['twitter', 'youtube', 'instagram']
+        }
+        this.updateFeedFilters = this.updateFeedFilters.bind(this)
     }
 
-    this.updateFeedFilters = this.updateFeedFilters.bind(this)
-  }
+    componentDidMount() {
+        fetch('http://40.127.101.155/aggregate/content', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: 1, limit: 100 })
+        }).then(data => data.json())
+            .then(data => this.setState({ data }))
 
-  componentDidMount() {
+    }
 
-    fetch('http://40.127.101.155/twitter/content', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ filterType: ['user'], assetType: ['tweet'], filterValue: 'beyonce' })
-    }).then(data => data.json())
-      .then(data => this.setState({ data }))
-  }
+    updateFeedFilters(newFilters) {
+        this.setState({ filters: newFilters })
+    }
 
-  updateFeedFilters(newFilters) {
-    this.setState({filters: newFilters})
-}
+    render() {
 
-  render() {
+        let feedContent = null
+        if (this.state.data.length > 0) {
+            let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
+            feedContent = filteredContent.map(curContent => {
+                return <FeedComponent key={curContent.postid} data={curContent.platformcontent} />
+            })
+        }
 
-    let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
-    let FeedContent = filteredContent.map(content => {
-      return <FeedComponent key={content.tweet_created_at} data={content}/>
-    })
-
-    return (
-      <div>
-        <Header title={'My Feed'} />
-        <main>
-          {FeedContent}
-        </main>
-        <Footer updateFeedFilters={this.updateFeedFilters} />
-      </div>
-    )
-  }
+        return (
+            <div>
+                <Header />
+                <main>
+                    {feedContent}
+                </main>
+                <Footer updateFeedFilters={this.updateFeedFilters} />
+            </div>
+        )
+    }
 }
 
 export default Feed
