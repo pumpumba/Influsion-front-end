@@ -8,9 +8,6 @@ class InfluencerFeed extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
-    }
-    this.state = {
       data: [],
       filters: ['twitter', 'youtube', 'instagram']
     }
@@ -19,13 +16,15 @@ class InfluencerFeed extends React.Component {
 
 
   componentDidMount() {
+    console.log(this.props.match)
+    /* var influencerId = this.props.match.params.influencerid */
     fetch('http://40.127.101.155/aggregate/content', {
       method: 'post',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ assetType: ['tweet'], filterType: ['influencer'], filterValue: [1, 2], limit: 100 })
+      body: JSON.stringify({ assetType: ['tweet'], filterType: ['influencer'], filterValue: [1, 26], limit: 100 })
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
