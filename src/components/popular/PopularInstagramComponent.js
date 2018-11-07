@@ -60,7 +60,7 @@ class PopularInstagramComponent extends React.Component {
                       icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
                       platform={this.props.data.platform}
                       heart={this.state.heart}
-                      
+
                   />
                   <PopularComponentExpandedView
                       userProfileImageUrl={this.props.data.user_profile_image_url}
@@ -74,6 +74,7 @@ class PopularInstagramComponent extends React.Component {
                       icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
                       platform={this.props.data.platform}
                       heart={this.state.heart}
+                      influencerId={this.props.data.realInfluencerName}
                   />
                   <div className='blur-overlay'></div>
               </div>
