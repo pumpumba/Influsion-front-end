@@ -30,7 +30,7 @@ class PopularComponent extends React.Component {
     }
 
     render() {
-        if (this.props.data.platformcontent != null) {
+        if (this.props.data != null && this.props.data.platform == 'twitter' ) {
             const styles = {
                 backgroundImage: 'url(' + this.props.data.platformcontent.tweet_media[0] + ')'
             }
@@ -47,6 +47,8 @@ class PopularComponent extends React.Component {
                         url={this.props.data.platformcontent.tweet_url}
                         changeHeart={this.changeHeart}
                         caption={this.props.data.platformcontent.tweet_text}
+                        icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
+                        platform={this.props.data.platformcontent.platform}
                     />
                     <PopularComponentExpandedView
                         userProfileImageUrl={this.props.data.platformcontent.user_profile_image_url}
@@ -59,13 +61,14 @@ class PopularComponent extends React.Component {
                         noOfRetweet={this.props.data.platformcontent.tweet_retweet_count}
                         timestamp={this.props.data.platformcontent.tweet_created_at}
                         changeHeart={this.changeHeart}
+                        icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
+                        platform={this.props.data.platform}
+
                     />
                     <div className='blur-overlay'></div>
                 </div>
             )
-        } else {
-            return null;
-        }
+          } else return null
     }
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import PopularComponent from './../components/popular/PopularComponent'
+import PopularInstagramComponent from './../components/popular/PopularInstagramComponent'
 
 class Popular extends React.Component {
 
@@ -31,11 +32,16 @@ class Popular extends React.Component {
     }
 
     render() {
+
         let feedContent = null
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
+              if(curContent.platform=="twitter"){
                 return <PopularComponent key={curContent.postid} data={curContent} />
+              }else{
+                return <PopularInstagramComponent key={curContent.postid} data={curContent}/>
+              }
             })
         }
 
