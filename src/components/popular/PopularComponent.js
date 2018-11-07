@@ -1,9 +1,7 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import TimeAgo from 'react-timeago'
-import { StopPropagation } from 'react-clickable';
 import PopularComponentClosedView from './popularSubComponents/PopularComponentClosedView'
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
+import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
 
 class PopularComponent extends React.Component {
     constructor(props) {
@@ -27,6 +25,11 @@ class PopularComponent extends React.Component {
         this.setState(prevState => ({
             heart: !prevState.heart
         }))
+        if (this.state.heart) {
+            unfollowInfluencer(this.props.userId, this.props.data.realInfluencerName)
+        } else {
+            followInfluencer(this.props.userId, this.props.data.realInfluencerName)
+        }
     }
 
     render() {

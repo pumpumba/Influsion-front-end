@@ -19,7 +19,7 @@ class Index extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-          userId: 0
+          userId: 1
         }
         this.updateUserId = this.updateUserId.bind(this)
     }

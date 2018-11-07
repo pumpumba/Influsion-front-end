@@ -35,7 +35,7 @@ class Popular extends React.Component {
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
-                return <PopularComponent key={curContent.postid} data={curContent.platformcontent} />
+                return <PopularComponent key={curContent.postid} data={curContent.platformcontent} userId={this.props.userId}/>
             })
         }
 
