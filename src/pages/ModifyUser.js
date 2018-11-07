@@ -3,37 +3,68 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import {Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import ModifyForm from './../components/modifyUser/ModifyForm'
+import ModifyAlert from './../components/modifyUser/ModifyAlert'
 
-const Settings = (props) => {
-    return (<div>
-        <Header/>
-        <main>
-            <h1 className="title">Settings</h1>
+class ModifyUser extends React.Component {
 
-            <p className="inputTitle">Enter new username</p>
-            <input className="input" placeholder="Username"></input>
+    constructor(props){
+        super(props)
+        this.state = {
+            modSuccsessfull: false,
+            modUnsuccsessfull: false
+        }
+        this.modSuccsessfull = this.modSuccsessfull.bind(this)
+        this.modUnsuccsessfull = this.modUnsuccsessfull.bind(this)
+        this.resetState = this.resetState.bind(this)
+    }
 
-            <p className="inputTitle">Enter new password</p>
-            <input className="input" placeholder="Password"></input>
+    modSuccsessfull() {
+        this.setState({
+            modSuccsessfull: true
+        })
+    }
 
-            <p className="inputTitle">Enter new asername</p>
-            <input className="input" placeholder="Age"></input>
+    modUnsuccsessfull() {
+        this.setState({
+            modUnsuccsessfull: true
+        })
+    }
 
-            <p className="inputTitle">Enter new sex</p>
-            <select name="sex" className="input">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+    resetState() {
+        this.setState({
+            modUnsuccsessfull: false,
+            modSuccsessfull: false
+        })
+    }
 
-            <p className="inputTitle">Enter new email</p>
-            <input className="input" placeholder="Email"></input>
+    render() {
+        let objToRender;
 
-            <button>Send Changes</button>
-        </main>
-        <Footer/>
-    </div>)
+        if (this.state.modSuccsessfull) {
+            objToRender = <ModifyAlert title='Changes made!' btnTxt='OK!' link='/settings' />
+        } else if (this.state.modUnsuccsessfull) {
+            objToRender = <ModifyAlert title='Something went wrong...' btnTxt='Try again!' resetState={this.resetState} />
+        } else {
+            objToRender =
+                <ModifyForm
+                    modSuccsessfull={this.modSuccsessfull}
+                    modUnsuccsessfull={this.modUnsuccsessfull}
+                />
+        }
+
+        return (
+            <div>
+                <Header/>
+                <main className="modify">
+                    {objToRender}
+                </main>
+                <Footer/>
+            </div>
+        )
+    }
 }
 
 
 
-export default Settings
+export default ModifyUser

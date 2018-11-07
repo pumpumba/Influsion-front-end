@@ -66,18 +66,19 @@ class Settings extends React.Component {
         <main>
             <h1 className="title">Settings</h1>
             <Link to='/login' className="setting">Log in</Link>
+            <Link to='/feed' className="setting">Log out</Link>
             <Link to='/modifyUser' className="setting">Edit information</Link>
             <Link className="setting" onClick={this.toggleHidden.bind(this)} to='/settings'>
                 Delete account :'(
             </Link>
             <div className="DeleteComponent">
                   <h2> Are you sure that you want to delete your account? </h2>
-                  <form>
+                  /*<form>
                   <input
                       onChange={(e) => this.setState({ password: e.target.value })}
                       placeholder="Confirm Password"
                       type="password"></input>
-                  </form>
+                  </form>*/
                   <div className="confirmOptions">
                   <Link /*onClick={this.deleteAccount()}*/  to='/delete' className="setting">Confirm</Link>
                   <Link onClick={this.toggleHidden.bind(this)} to='/settings' className="setting" > Gosh no, cancel </Link>

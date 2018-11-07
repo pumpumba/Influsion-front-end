@@ -1,8 +1,15 @@
-main {
+.modify {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   background-color: $light;
+
+  .modifyForm{
+     align-self: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+  }
 
   .title {
     align-self: center;
@@ -19,7 +26,7 @@ main {
   }
 
   .input {
-      margin:1rem;
+    margin:1rem;
     align-self: center;
     outline: none;
     resize: none;
@@ -38,7 +45,7 @@ main {
     }
   }
 
-  button{
+  .modButton{
       align-self: center;
       border: 0.1rem solid $white;
       border-radius: .2rem;
@@ -47,6 +54,7 @@ main {
       font-size: 1.3rem;
       width: 80%;
       margin:1rem;
+      text-align: center;
   }
 
 }
