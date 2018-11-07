@@ -1,0 +1,17 @@
+.delete {
+  color: $medium;
+  padding-left: 2em;
+  padding-right: 2em;
+  text-align: center;
+}
+
+.deleteButton {
+  background: transparent;
+  color: $white;
+  border: 0.1em solid $white;
+  border-radius: 0.5em;
+  font-size: 1rem;
+  margin: 2rem;
+  padding: 1rem;
+  text-align: center;
+}

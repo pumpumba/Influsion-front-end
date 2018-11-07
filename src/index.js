@@ -8,6 +8,7 @@ import Settings from './pages/Settings'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import ModifyUser from './pages/ModifyUser'
+import Delete from './pages/Delete'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -25,6 +26,7 @@ const Index = () => {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/modifyUser' component={ModifyUser} />
+        <Route path='/delete' component={Delete} />
       </div>
     </Router>
   )
