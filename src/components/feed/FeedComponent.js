@@ -2,6 +2,7 @@ import React from 'react'
 import TimeAgo from 'react-timeago'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StopPropagation } from 'react-clickable';
+import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
 
 class FeedComponent extends React.Component {
   constructor(props) {
@@ -17,6 +18,11 @@ class FeedComponent extends React.Component {
     this.setState(prevState => ({
       heart: !prevState.heart
     }))
+    if (this.state.heart) {
+      unfollowInfluencer(this.props.userId, this.props.data.realInfluencerName)
+    } else {
+      followInfluencer(this.props.userId, this.props.data.realInfluencerName)
+    }
   }
 
   render() {

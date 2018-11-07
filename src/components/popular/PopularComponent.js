@@ -16,7 +16,6 @@ class PopularComponent extends React.Component {
     }
 
     componentWillMount() {
-        console.log(this.props.userFollowing)
         this.setState(({
             heart: this.props.userFollowing
         }))
