@@ -2,6 +2,8 @@ import React from 'react'
 import PopularComponentClosedView from './popularSubComponents/PopularComponentClosedView'
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
 import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 class PopularComponent extends React.Component {
     constructor(props) {
@@ -57,7 +59,9 @@ class PopularComponent extends React.Component {
                         changeHeart={this.changeHeart}
                         caption={this.props.data.tweet_text}
                         heart={this.state.heart}
-                        />
+                        icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
+                        platform={this.props.data.platform}
+                    />
                     <PopularComponentExpandedView
                         userProfileImageUrl={this.props.data.user_profile_image_url}
                         userName={this.props.data.user_name}
@@ -69,14 +73,15 @@ class PopularComponent extends React.Component {
                         noOfRetweet={this.props.data.tweet_retweet_count}
                         timestamp={this.props.data.tweet_created_at}
                         changeHeart={this.changeHeart}
+                        icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
+                        platform={this.props.data.platform}
                         heart={this.state.heart}
+
                     />
                     <div className='blur-overlay'></div>
                 </div>
             )
-        } else {
-            return null;
-        }
+          } else return null
     }
 }
 
