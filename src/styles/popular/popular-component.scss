@@ -6,6 +6,7 @@
     display: flex;
     overflow: hidden;
 
+    // Cred to Nils Roger Johnsson for the math.
     &:nth-child(4n+4), &:nth-child(4n+1) {
         background-color: lighten($light, 10%);
     }
