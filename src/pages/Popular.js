@@ -19,21 +19,21 @@ class Popular extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://40.127.101.155/db/get_latest_posts', {
+        fetch('http://40.127.101.155/aggregate/content', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ top: '100', user_id: this.props.userId, platform: 'twitter' })
+            body: JSON.stringify({assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId] })
         }).then(data => data.json())
             .then(data => this.setState({ data }))
     }
 
     render() {
         let feedContent = null
-        if (this.state.data.rowCount != null) {
-            let filteredContent = this.state.data.rows.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
+        if (this.state.data.length > 0) {
+            let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
                 return <PopularComponent key={curContent.postid} data={curContent} />
             })
