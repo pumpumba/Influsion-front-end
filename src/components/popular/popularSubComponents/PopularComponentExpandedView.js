@@ -10,7 +10,7 @@ class PopularComponentExpandedView extends React.Component {
             <div className='expanded-view'>
                 <div className='header'>
                     <img src={this.props.userProfileImageUrl} />
-                    <a href="#"> {this.props.userName} </a>
+                    <a href={`/${this.props.influencerId}`}> {this.props.userName}  </a>
                     {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
                     <a href={this.props.url}> <FontAwesomeIcon icon={['fab', 'twitter']} /> </a>
                 </div>

@@ -57,6 +57,7 @@ class PopularComponent extends React.Component {
                         changeHeart={this.changeHeart}
                         caption={this.props.data.tweet_text}
                         heart={this.state.heart}
+                        influencerId={this.props.data.realInfluencerName}
                         />
                     <PopularComponentExpandedView
                         userProfileImageUrl={this.props.data.user_profile_image_url}
@@ -70,6 +71,7 @@ class PopularComponent extends React.Component {
                         timestamp={this.props.data.tweet_created_at}
                         changeHeart={this.changeHeart}
                         heart={this.state.heart}
+                        influencerId={this.props.data.realInfluencerName}
                     />
                     <div className='blur-overlay'></div>
                 </div>
