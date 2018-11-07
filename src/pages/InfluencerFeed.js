@@ -16,7 +16,7 @@ class InfluencerFeed extends React.Component {
 
 
   componentDidMount() {
-    console.log(this.props.match)
+    console.log(this.props.match.params.influencerid)
     /* var influencerId = this.props.match.params.influencerid */
     fetch('http://40.127.101.155/aggregate/content', {
       method: 'post',
@@ -24,7 +24,7 @@ class InfluencerFeed extends React.Component {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ assetType: ['tweet'], filterType: ['influencer'], filterValue: [1, 26], limit: 100 })
+      body: JSON.stringify({ assetType: ['tweet'], filterType: ['influencer'], filterValue: [this.props.match.params.influencerid, 1], limit: 100 })
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
