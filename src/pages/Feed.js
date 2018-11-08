@@ -2,6 +2,8 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
+import InstagramFeedComponent from './../components/feed/InstagramFeedComponent'
+import YoutubeFeedComponent from './../components/feed/YoutubeFeedComponent'
 
 class Feed extends React.Component {
 
@@ -28,28 +30,60 @@ class Feed extends React.Component {
     }
 
     updateFeedFilters(newFilters) {
+        console.log(newFilters)
         this.setState({ filters: newFilters })
     }
 
     render() {
-
+        console.log(this.state.data)
         let feedContent = null
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
-                return <FeedComponent key={curContent.postid} data={curContent.platformcontent} />
+              if(curContent.platform == "twitter"){
+                return <FeedComponent
+                    key={curContent.postid}
+                    data={curContent.platformcontent}
+                    userId={this.props.userId}
+                />
+              }else if(curContent.platform == "instagram"){
+                return <InstagramFeedComponent
+                    key={curContent.postid}
+                    data={curContent.platformcontent}
+                    userId={this.props.userId}
+                />
+              }else if(curContent.platform == "youtube"){
+                return <YoutubeFeedComponent
+                    key={curContent.postid}
+                    data={curContent.platformcontent}
+                    userId={this.props.userId}
+                />
+              }
             })
         }
 
-        return (
-            <div>
-                <Header />
-                <main>
-                    {feedContent}
-                </main>
-                <Footer updateFeedFilters={this.updateFeedFilters} />
-            </div>
-        )
+        if (feedContent != null) {
+            return (
+                <div>
+                    <Header />
+                    <main>
+                        {feedContent}
+                    </main>
+                    <Footer updateFeedFilters={this.updateFeedFilters} />
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <Header />
+                    <main className='feed'>
+                        <h2>Nothing here to show, please follow a influencer...</h2>
+                    </main>
+                    <Footer />
+                </div>
+
+            )
+        }
     }
 }
 

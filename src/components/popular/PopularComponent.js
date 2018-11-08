@@ -1,9 +1,9 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import TimeAgo from 'react-timeago'
-import { StopPropagation } from 'react-clickable';
 import PopularComponentClosedView from './popularSubComponents/PopularComponentClosedView'
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
+import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 class PopularComponent extends React.Component {
     constructor(props) {
@@ -17,6 +17,12 @@ class PopularComponent extends React.Component {
         this.changeHeart = this.changeHeart.bind(this)
     }
 
+    componentWillMount() {
+        this.setState(({
+            heart: this.props.userFollowing
+        }))
+    }
+
     onClick() {
         this.setState(prevState => ({
             open: !prevState.open
@@ -27,6 +33,11 @@ class PopularComponent extends React.Component {
         this.setState(prevState => ({
             heart: !prevState.heart
         }))
+        if (this.state.heart) {
+            unfollowInfluencer(this.props.userId, this.props.data.realInfluencerName)
+        } else {
+            followInfluencer(this.props.userId, this.props.data.realInfluencerName)
+        }
     }
 
     render() {
@@ -47,6 +58,10 @@ class PopularComponent extends React.Component {
                         url={this.props.data.tweet_url}
                         changeHeart={this.changeHeart}
                         caption={this.props.data.tweet_text}
+                        heart={this.state.heart}
+                        icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
+                        platform={this.props.data.platform}
+                        influencerId={this.props.data.realInfluencerName}
                     />
                     <PopularComponentExpandedView
                         userProfileImageUrl={this.props.data.user_profile_image_url}
@@ -59,13 +74,15 @@ class PopularComponent extends React.Component {
                         noOfRetweet={this.props.data.tweet_retweet_count}
                         timestamp={this.props.data.tweet_created_at}
                         changeHeart={this.changeHeart}
+                        icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
+                        platform={this.props.data.platform}
+                        heart={this.state.heart}
+                        influencerId={this.props.data.realInfluencerName}
                     />
                     <div className='blur-overlay'></div>
                 </div>
             )
-        } else {
-            return null;
-        }
+          } else return null
     }
 }
 

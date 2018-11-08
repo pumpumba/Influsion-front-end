@@ -13,6 +13,10 @@
 @import 'modifyUser';
 @import 'settings';
 @import 'delete'; 
+@import 'popular/popular-instagram-component';
+@import 'feed';
+@import 'feed/instagram-feed-component';
+@import 'feed/youtube-feed-component';
 
 html {
     background-color: $light;
