@@ -56,12 +56,12 @@ class Feed extends React.Component {
               }
             })
         }
+
         if (feedContent != null) {
             return (
                 <div>
                     <Header />
                     <main>
-
                         {feedContent}
                     </main>
                     <Footer updateFeedFilters={this.updateFeedFilters} />

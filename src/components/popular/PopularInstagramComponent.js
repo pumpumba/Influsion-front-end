@@ -4,7 +4,7 @@ import TimeAgo from 'react-timeago'
 import { StopPropagation } from 'react-clickable';
 import PopularComponentClosedView from './popularSubComponents/PopularComponentClosedView'
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
-
+import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
 
 class PopularInstagramComponent extends React.Component {
   constructor(props){
@@ -60,7 +60,7 @@ class PopularInstagramComponent extends React.Component {
                       icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
                       platform={this.props.data.platform}
                       heart={this.state.heart}
-                      
+
                   />
                   <PopularComponentExpandedView
                       userProfileImageUrl={this.props.data.user_profile_image_url}
@@ -74,6 +74,7 @@ class PopularInstagramComponent extends React.Component {
                       icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
                       platform={this.props.data.platform}
                       heart={this.state.heart}
+                      influencerId={this.props.data.realInfluencerName}
                   />
                   <div className='blur-overlay'></div>
               </div>

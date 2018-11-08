@@ -3,6 +3,7 @@ import TimeAgo from 'react-timeago'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StopPropagation } from 'react-clickable';
 import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
+import { Link } from 'react-router-dom'
 
 class FeedComponent extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class FeedComponent extends React.Component {
         <div className='feed-component-wrapper'>
           <div className='header'>
             <img src={this.props.data.user_profile_image_url} />
-            <a href={this.props.data.user_screen_name.toLowerCase()}> {this.props.data.user_name} </a>
+            <a href={`/${this.props.data.realInfluencerName}`}> {this.props.data.user_name} </a>
             <a target_="blank" href={this.props.data.tweet_url} className="twitter-icon"><FontAwesomeIcon className='icon' icon={['fab', 'twitter']} /></a>
           </div>
           <div className='content'>

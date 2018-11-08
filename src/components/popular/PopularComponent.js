@@ -59,6 +59,7 @@ class PopularComponent extends React.Component {
                         changeHeart={this.changeHeart}
                         caption={this.props.data.tweet_text}
                         heart={this.state.heart}
+                        influencerId={this.props.data.realInfluencerName}
                         icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
                         platform={this.props.data.platform}
                     />
@@ -76,7 +77,7 @@ class PopularComponent extends React.Component {
                         icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
                         platform={this.props.data.platform}
                         heart={this.state.heart}
-
+                        influencerId={this.props.data.realInfluencerName}
                     />
                     <div className='blur-overlay'></div>
                 </div>
