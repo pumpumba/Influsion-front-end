@@ -5,15 +5,6 @@
         background-color: lighten($light, 10%);
     }
 
-    .content {
-        margin: 1rem 0;
-
-        img {
-            margin-top: 1rem;
-            border-radius: $borderRadius;
-        }
-    }
-
     .meta-data {
         display: flex;
         justify-content: space-around;
