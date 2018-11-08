@@ -32,12 +32,6 @@ class PopularYoutubecomponent extends React.Component {
       }
   }
 
-  changeHeart() {
-      this.setState(prevState => ({
-          heart: !prevState.heart
-      }))
-  }
-
   render() {
       if (this.props.data != null && this.props.data.platform.toLowerCase() == 'youtube' ) {
           let imageArr = []
@@ -69,6 +63,8 @@ class PopularYoutubecomponent extends React.Component {
                       caption={this.props.data.video_description}
                       videoUrl={this.props.data.video_embeded_url}
                       noOfLikes={this.props.data.video_like_count}
+                      noOfComments={this.props.data.video_comment_count}
+                      noOfViews={this.props.data.video_view_count}
                       timestamp={this.props.data.video_created_at}
                       changeHeart={this.changeHeart}
                       icon={<FontAwesomeIcon icon={['fab', 'youtube']} />}

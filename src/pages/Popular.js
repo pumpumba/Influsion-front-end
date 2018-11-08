@@ -51,7 +51,6 @@ class Popular extends React.Component {
                         userId={this.props.userId}
                         userFollowing={curContent.usrfollowinginfluencer} />
                 } else if (curContent.platform == "youtube") {
-                    console.log('youtube')
                     return <PopularYoutubeComponent
                         key={curContent.postid}
                         data={curContent.platformcontent}

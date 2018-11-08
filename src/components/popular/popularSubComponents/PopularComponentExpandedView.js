@@ -60,8 +60,15 @@ function ContentPlacer(props) {
                     <p className='tweet_text instagram_text'>{props.caption}</p>
                 </div>
                 <div className='meta-data'>
+                    <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'eye'} />
+                        {props.noOfViews}
+                    </span>
+                    <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'comment'} />
+                        {props.noOfComments}
+                    </span>
                     <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />
-                        {props.noOfLikes}</span>
+                        {props.noOfLikes}
+                    </span>
                     <span className='time-stamp'><FontAwesomeIcon className="metaIcon" icon={'calendar-alt'} />
                         <TimeAgo date={props.timestamp} />
                     </span>
