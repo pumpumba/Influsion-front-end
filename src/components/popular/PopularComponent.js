@@ -59,9 +59,9 @@ class PopularComponent extends React.Component {
                         changeHeart={this.changeHeart}
                         caption={this.props.data.tweet_text}
                         heart={this.state.heart}
-                        influencerId={this.props.data.realInfluencerName}
                         icon={<FontAwesomeIcon icon={['fab', 'twitter']} />}
                         platform={this.props.data.platform}
+                        influencerId={this.props.data.realInfluencerName}
                     />
                     <PopularComponentExpandedView
                         userProfileImageUrl={this.props.data.user_profile_image_url}
