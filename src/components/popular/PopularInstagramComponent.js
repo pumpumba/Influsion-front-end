@@ -4,7 +4,7 @@ import TimeAgo from 'react-timeago'
 import { StopPropagation } from 'react-clickable';
 import PopularComponentClosedView from './popularSubComponents/PopularComponentClosedView'
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
-
+import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
 
 class PopularInstagramComponent extends React.Component {
   constructor(props){
