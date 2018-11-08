@@ -23,4 +23,5 @@ const FeedComponentMeta = (props) => {
           </div>
     )
 }
+
 export default FeedComponentMeta
