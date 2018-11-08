@@ -38,7 +38,6 @@ class Feed extends React.Component {
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
-              console.log(curContent.platform)
               if(curContent.platform == "twitter"){
                 return <FeedComponent
                     key={curContent.postid}
@@ -46,8 +45,6 @@ class Feed extends React.Component {
                     userId={this.props.userId}
                 />
               }else if(curContent.platform == "instagram"){
-                console.log("instagram feed object!!")
-                console.log(curContent)
                 return <InstagramFeedComponent
                     key={curContent.postid}
                     data={curContent.platformcontent}
