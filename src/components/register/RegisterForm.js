@@ -9,7 +9,7 @@ class RegisterForm extends React.Component {
             password: '',
             email: '',
             age: '',
-            sex: false
+            sex: 'Male'
         }
 
         this.registerNewUser = this.registerNewUser.bind(this)

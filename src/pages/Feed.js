@@ -29,6 +29,7 @@ class Feed extends React.Component {
     }
 
     updateFeedFilters(newFilters) {
+        console.log(newFilters)
         this.setState({ filters: newFilters })
     }
 
@@ -71,7 +72,7 @@ class Feed extends React.Component {
                     <main className='feed'>
                         <h2>Nothing here to show, please follow a influencer...</h2>
                     </main>
-                    <Footer updateFeedFilters={this.updateFeedFilters} />
+                    <Footer />
                 </div>
 
             )
