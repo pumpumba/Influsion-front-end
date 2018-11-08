@@ -26,21 +26,21 @@ class FeedComponent extends React.Component {
     }
 
     render() {
+        console.log(this.props.data.video_thumbnail_url)
         if (this.props.data != null) {
             return (
                 <div className='feed-component-wrapper'>
                     <FeedComponentHeader
-                        inflImgUrl={this.props.data.user_profile_image_url}
+                        inflImgUrl={this.props.data.user_profile_image_url || this.props.data.video_thumbnail_url}
                         inflId={this.props.data.realInfluencerName}
-                        inflName={this.props.data.user_name}
-                        contentUrl={this.props.data.tweet_url}
-                        contentUrl={this.props.data.post_url}
+                        inflName={this.props.data.user_name || this.props.data.channel_title}
+                        contentUrl={this.props.data.tweet_url || this.props.data.post_url}
                         platform={this.props.platform}
                     />
                     <FeedComponentContent
                         caption={this.props.data.tweet_text}
-                        imageUrl={this.props.data.tweet_media}
-                        imageUrl={this.props.data.post_media}
+                        imageUrl={this.props.data.tweet_media || this.props.data.post_media}
+                        videoUrl={this.props.data.video_embeded_url}
                     />
                     <FeedComponentMeta
                         noOfLikes={this.props.data.tweet_favorite_count}

@@ -40,20 +40,12 @@ class Feed extends React.Component {
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
-              if(curContent.platform == "twitter" || curContent.platform == "instagram"){
                 return <FeedComponent
                     key={curContent.postid}
                     data={curContent.platformcontent}
                     userId={this.props.userId}
                     platform={curContent.platform}
                 />
-              }else if(curContent.platform == "youtube"){
-                return <YoutubeFeedComponent
-                    key={curContent.postid}
-                    data={curContent.platformcontent}
-                    userId={this.props.userId}
-                />
-              }
             })
         }
 
