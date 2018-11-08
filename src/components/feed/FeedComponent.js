@@ -2,8 +2,7 @@ import React from 'react'
 import TimeAgo from 'react-timeago'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StopPropagation } from 'react-clickable';
-import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
-import { Link } from 'react-router-dom'
+import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfollowInfluencer'
 
 class FeedComponent extends React.Component {
   constructor(props) {
