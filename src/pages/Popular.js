@@ -3,6 +3,7 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import PopularComponent from './../components/popular/PopularComponent'
 import PopularInstagramComponent from './../components/popular/PopularInstagramComponent'
+import PopularYoutubeComponent from './../components/popular/PopularYoutubeComponent'
 
 class Popular extends React.Component {
 
@@ -37,19 +38,26 @@ class Popular extends React.Component {
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
-              if(curContent.platform=="twitter"){
-                return <PopularComponent
-                                        key={curContent.postid}
-                                        data={curContent.platformcontent}
-                                        userId={this.props.userId}
-                                        userFollowing={curContent.usrfollowinginfluencer} />
-              }else if (curContent.platform=="instagram"){
-                return <PopularInstagramComponent
-                                                  key={curContent.postid}
-                                                  data={curContent.platformcontent}
-                                                  userId={this.props.userId}
-                                                  userFollowing={curContent.usrfollowinginfluencer}/>
-              }
+                if (curContent.platform == "twitter") {
+                    return <PopularComponent
+                        key={curContent.postid}
+                        data={curContent.platformcontent}
+                        userId={this.props.userId}
+                        userFollowing={curContent.usrfollowinginfluencer} />
+                } else if (curContent.platform == "instagram") {
+                    return <PopularInstagramComponent
+                        key={curContent.postid}
+                        data={curContent.platformcontent}
+                        userId={this.props.userId}
+                        userFollowing={curContent.usrfollowinginfluencer} />
+                } else if (curContent.platform == "youtube") {
+                    console.log('youtube')
+                    return <PopularYoutubeComponent
+                        key={curContent.postid}
+                        data={curContent.platformcontent}
+                        userId={this.props.userId}
+                        userFollowing={curContent.usrfollowinginfluencer} />
+                }
             })
         }
 
