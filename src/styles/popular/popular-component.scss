@@ -76,7 +76,9 @@
         background-image: none !important;
 
         a {
-            color: $medium;
+            color: black;
+            font-size: 1.25em;
+            margin-left: 1rem;
           }
 
         .expanded-view{
@@ -105,6 +107,7 @@
                 }
 
                 h3 {
+                    color: $gs-hard;
                     font-size: 1.25em;
                     margin-left: 1rem;
                 }
@@ -112,6 +115,10 @@
                 .verifiedIcon{
                   height: 1rem;
                   border: 0;
+                }
+
+                a svg {
+                    color: $hard;
                 }
             }
 
@@ -133,6 +140,10 @@
 
                 .hashtags {
                     display: block;
+                }
+
+                img {
+                    width: 100%;
                 }
 
                 .meta-data {

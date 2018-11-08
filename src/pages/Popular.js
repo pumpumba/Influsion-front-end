@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import PopularComponent from './../components/popular/PopularComponent'
+import PopularInstagramComponent from './../components/popular/PopularInstagramComponent'
 
 class Popular extends React.Component {
 
@@ -15,27 +16,48 @@ class Popular extends React.Component {
     }
 
     updateFeedFilters(newFilters) {
-        this.setState({filters: newFilters})
+        this.setState({ filters: newFilters })
     }
 
     componentDidMount() {
-        fetch('http://40.127.101.155/api/twitter?request_type=popular')
-        .then(response => response.json())
-        .then(data => this.setState({ data }))
+        fetch('http://40.127.101.155/aggregate/content', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId], limit: 100 })
+        }).then(data => data.json())
+            .then(data => this.setState({ data }))
     }
 
     render() {
 
-        let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
-        let FeedContent = filteredContent.map(influencer => {
-            return <PopularComponent key={influencer.tweet_created_at} data={influencer} />
-        })
+        let feedContent = null
+        if (this.state.data.length > 0) {
+            let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
+            feedContent = filteredContent.map(curContent => {
+              if(curContent.platform=="twitter"){
+                return <PopularComponent
+                                        key={curContent.postid}
+                                        data={curContent.platformcontent}
+                                        userId={this.props.userId}
+                                        userFollowing={curContent.usrfollowinginfluencer} />
+              }else if (curContent.platform=="instagram"){
+                return <PopularInstagramComponent
+                                                  key={curContent.postid}
+                                                  data={curContent.platformcontent}
+                                                  userId={this.props.userId}
+                                                  userFollowing={curContent.usrfollowinginfluencer}/>
+              }
+            })
+        }
 
         return (
             <div>
                 <Header title={'Popular'} />
                 <main className='popular-feed-content'>
-                    {FeedContent}
+                    {feedContent}
                 </main>
                 <Footer updateFeedFilters={this.updateFeedFilters} />
             </div>

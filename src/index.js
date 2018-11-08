@@ -7,6 +7,7 @@ import Search from './pages/Search'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import InfluencerFeed from './pages/InfluencerFeed'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -18,7 +19,7 @@ class Index extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-          userId: 34
+          userId: 1
         }
         this.updateUserId = this.updateUserId.bind(this)
     }
@@ -36,6 +37,7 @@ class Index extends React.Component {
                         <Route exact path='/' component={() => <Popular updateUserId={this.updateUserId} userId={this.state.userId} />}/>
                         <Route path='/feed' component={() => <Feed updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/search' component={() => <Search updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/:influencerid' component={InfluencerFeed} />
                         <Route path='/settings' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/login' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/register' component={() => <Register updateUserId={this.updateUserId} userId={this.state.userId} />} />
