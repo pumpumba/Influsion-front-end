@@ -37,7 +37,7 @@ class FeedComponent extends React.Component {
           </div>
           <div className='content'>
             <p className='tweet_text'>{this.props.data.tweet_text}</p>
-            <img src={this.props.data.tweet_media[0]} />
+            <img src={this.props.data.tweet_media} />
           </div>
           <div className='meta-data'>
             <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />
