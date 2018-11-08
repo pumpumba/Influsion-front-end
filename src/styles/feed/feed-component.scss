@@ -5,35 +5,6 @@
         background-color: lighten($light, 10%);
     }
 
-    .header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        a {
-              color: black;
-              font-size: 1.25em;
-              margin-left: 1rem;
-        }
-
-        img {
-            border-radius: 99px;
-            border: 2px solid $hard;
-            height: 2.5rem;
-            width: 2.5rem;
-        }
-
-        h3 {
-            margin-left: .75rem;
-        }
-
-        .twitter-icon {
-            color: $hard;
-            font-size: 1.5em;
-            margin-left: auto;
-        }
-    }
-
     .content {
         margin: 1rem 0;
 

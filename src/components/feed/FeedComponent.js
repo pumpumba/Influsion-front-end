@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StopPropagation } from 'react-clickable';
 import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfollowInfluencer'
 import FeedComponentHeader from './components/FeedComponentHeader';
+import FeedComponentContent from './components/FeedComponentContent';
 
 class FeedComponent extends React.Component {
   constructor(props) {
@@ -36,10 +37,10 @@ class FeedComponent extends React.Component {
             inflName={this.props.data.user_name}
             contentUrl={this.props.data.tweet_url}
           />
-          <div className='content'>
-            <p className='tweet_text'>{this.props.data.tweet_text}</p>
-            <img src={this.props.data.tweet_media} />
-          </div>
+          <FeedComponentContent
+            caption={this.props.data.tweet_text}
+            imageUrl={this.props.data.tweet_media}
+          />
           <div className='meta-data'>
             <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />
               {this.props.data.tweet_favorite_count}
