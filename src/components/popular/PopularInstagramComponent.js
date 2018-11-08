@@ -6,6 +6,7 @@ import PopularComponentClosedView from './popularSubComponents/PopularComponentC
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
 import {followInfluencer, unfollowInfluencer} from '../functions/followAndUnfollowInfluencer'
 
+
 class PopularInstagramComponent extends React.Component {
   constructor(props){
     super(props)
@@ -34,11 +35,6 @@ class PopularInstagramComponent extends React.Component {
       }
   }
 
-  changeHeart() {
-      this.setState(prevState => ({
-          heart: !prevState.heart
-      }))
-  }
 
   render() {
       if (this.props.data != null && this.props.data.platform == 'instagram' ) {
@@ -57,9 +53,11 @@ class PopularInstagramComponent extends React.Component {
                       userProfileImageUrl={this.props.data.user_profile_image_url}
                       url={this.props.data.post_url}
                       changeHeart={this.changeHeart}
-                      icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
                       platform={this.props.data.platform}
                       heart={this.state.heart}
+                      icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
+                      platform={this.props.data.platform}
+                      influencerId={this.props.data.realInfluencerName}
 
                   />
                   <PopularComponentExpandedView

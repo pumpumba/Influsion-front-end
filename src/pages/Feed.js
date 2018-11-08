@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
+import InstagramFeedComponent from './../components/feed/InstagramFeedComponent'
 import YoutubeFeedComponent from './../components/feed/YoutubeFeedComponent'
 
 class Feed extends React.Component {
@@ -24,7 +25,6 @@ class Feed extends React.Component {
             },
             body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: 1, limit: 100 })
         }).then(data => data.json())
-            .then(data => console.log(data))
             .then(data => this.setState({ data }))
 
     }
@@ -34,21 +34,34 @@ class Feed extends React.Component {
     }
 
     render() {
-
+        console.log(this.state.data)
         let feedContent = null
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
             feedContent = filteredContent.map(curContent => {
+              if(curContent.platform == "twitter"){
                 return <FeedComponent
                     key={curContent.postid}
                     data={curContent.platformcontent}
                     userId={this.props.userId}
                 />
+              }else if(curContent.platform == "instagram"){
+                return <InstagramFeedComponent
+                    key={curContent.postid}
+                    data={curContent.platformcontent}
+                    userId={this.props.userId}
+                />
+              }else if(curContent.platform == "youtube"){
+                return <YoutubeFeedComponent
+                    key={curContent.postid}
+                    data={curContent.platformcontent}
+                    userId={this.props.userId}
+                />
+              }
             })
         }
 
         if (feedContent != null) {
-
             return (
                 <div>
                     <Header />
