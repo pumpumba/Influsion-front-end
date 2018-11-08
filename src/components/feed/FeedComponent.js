@@ -34,10 +34,13 @@ class FeedComponent extends React.Component {
                         inflId={this.props.data.realInfluencerName}
                         inflName={this.props.data.user_name}
                         contentUrl={this.props.data.tweet_url}
+                        contentUrl={this.props.data.post_url}
+                        platform={this.props.platform}
                     />
                     <FeedComponentContent
                         caption={this.props.data.tweet_text}
                         imageUrl={this.props.data.tweet_media}
+                        imageUrl={this.props.data.post_media}
                     />
                     <FeedComponentMeta
                         noOfLikes={this.props.data.tweet_favorite_count}
