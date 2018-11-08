@@ -16,8 +16,6 @@ class InfluencerFeed extends React.Component {
 
 
   componentDidMount() {
-    console.log(this.props.match.params.influencerid)
-    /* var influencerId = this.props.match.params.influencerid */
     fetch('http://40.127.101.155/aggregate/content', {
       method: 'post',
       headers: {
