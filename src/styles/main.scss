@@ -22,7 +22,6 @@ html {
 
 body {
     color: $gs-hard;
-    max-width: $maxWidth;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     background-color: $white;
@@ -56,4 +55,19 @@ img {
 main {
   margin-top: $headerHeight;
   margin-bottom: $footerHeight;
+}
+
+@media screen and (min-width: 480px) {
+
+    body, header, footer {
+        max-width: 375px;
+    }
+
+    body {
+        margin: 0 auto;
+    }
+
+    html {
+        background: $gs-hard;
+    }
 }
