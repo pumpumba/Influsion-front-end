@@ -1,0 +1,21 @@
+.feed-component-wrapper {
+    .meta-data {
+        display: flex;
+        justify-content: space-around;
+
+        .follow_heart{
+          color: $link-grey;
+          margin: auto;
+          font-size: 1.25rem;
+          position: absolute;
+          &[data-state='active'] {
+            color: $medium;
+          }
+        }
+
+        svg {
+            color: $medium;
+            margin-right: 0.5rem;
+        }
+    }
+}
