@@ -12,7 +12,9 @@ class FeedComponentContent extends React.Component {
 
     renderVideo(curVideoUrl) {
         return curVideoUrl ?
-                <iframe className="videoFrame" allow="fullscreen" src={curVideoUrl}></iframe>
+                <div className='youtube-video-container'>
+                    <iframe allow="fullscreen" src={curVideoUrl}></iframe>
+                </div>
                 : ''
     }
 
