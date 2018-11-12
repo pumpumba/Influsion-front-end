@@ -1,54 +1,48 @@
 .search-content {
     background-color: #ffe6e6;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 15px;
     flex-wrap: wrap;
 
-    form {
+    .search-input-wrapper {
+      background-color: $hard;
+      border-radius: $borderRadius;
+      margin: 1rem;
+
       a, button {
         text-align: center;
         background: transparent;
+        border: none;
         color: $white;
-        border: 0.1em solid $white;
-        border-radius: 0.5em;
-        height: 2em;
+        height: 100%;
         font-size: 1rem;
-        box-sizing: border-box;
+        width: 15%;
+        padding: 0;
+        position: relative;
+        bottom: 2px;
       }
-    }
 
-    input {
-      width: 18rem;
-      margin: 1rem;
-      align-self: center;
-      background: white;
-      outline: none;
-      resize: none;
-      border: white;
-      overflow: auto;
-      text-align: center;
-      height: 2rem;
-      font-size: 1.3rem;
-      border-radius: 0.2em;
-
-      &::placeholder {
-        color: #ffe6e6;
+      input {
+        width: 85%;
+        border: white;
+        text-align: center;
         font-size: 1.3rem;
+        border-radius: $borderRadius 0 0 $borderRadius;
+        border-right: 1px solid #eee;
+        box-sizing: border-box;
+
+        &::placeholder {
+          color: #ffe6e6;
+          font-size: 1.3rem;
+        }
       }
     }
-}
 
-.info-text {
-  width: 70%;
-  height: 10rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3rem;
-  padding-top: 30px;
-  line-height: 25px;
-  align-content: center;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
+    .info-text {
+      width: 70%;
+      height: 10rem;
+      margin: 3em auto 0;
+      text-align: center;
+    }
 }
