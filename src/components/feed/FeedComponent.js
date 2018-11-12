@@ -26,7 +26,6 @@ class FeedComponent extends React.Component {
     }
 
     render() {
-        console.log(this.props.data.video_thumbnail_url)
         if (this.props.data != null) {
             return (
                 <div className='feed-component-wrapper'>
