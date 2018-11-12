@@ -2,8 +2,6 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
-import InstagramFeedComponent from './../components/feed/InstagramFeedComponent'
-import YoutubeFeedComponent from './../components/feed/YoutubeFeedComponent'
 
 class Feed extends React.Component {
 
@@ -30,12 +28,10 @@ class Feed extends React.Component {
     }
 
     updateFeedFilters(newFilters) {
-        console.log(newFilters)
         this.setState({ filters: newFilters })
     }
 
     render() {
-        console.log(this.state.data)
         let feedContent = null
         if (this.state.data.length > 0) {
             let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
