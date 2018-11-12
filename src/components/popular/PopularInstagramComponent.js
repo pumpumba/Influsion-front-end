@@ -53,7 +53,6 @@ class PopularInstagramComponent extends React.Component {
                       userProfileImageUrl={this.props.data.user_profile_image_url}
                       url={this.props.data.post_url}
                       changeHeart={this.changeHeart}
-                      platform={this.props.data.platform}
                       heart={this.state.heart}
                       icon={<FontAwesomeIcon icon={['fab', 'instagram']} />}
                       platform={this.props.data.platform}
