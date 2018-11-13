@@ -10,8 +10,15 @@ class PopularComponentHeader extends React.Component {
                     <img src={this.props.userProfileImageUrl} />
                 </div>
                 <StopPropagation>
-                    <a href={this.props.url}> {this.props.icon} </a>
-                    <FontAwesomeIcon icon={'heart'} className="follow_heart" onClick={this.props.changeHeart} data-state={this.props.heart && 'active'} />
+                    <a href={this.props.url}>
+                        <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
+                    </a>
+                    <FontAwesomeIcon
+                        icon={'heart'}
+                        className="follow_heart"
+                        onClick={this.props.changeHeart}
+                        data-state={this.props.heart && 'active'}
+                    />
                 </StopPropagation>
                 {(this.props.backgroundImage <= 0) ? <div className='text-wrapper'> <p className='caption'>{this.props.caption}</p> </div> : ''}
             </div>

@@ -3,20 +3,21 @@
 @import 'footer';
 @import 'header';
 @import 'login';
+@import 'search';
 @import 'footer/sub-footer';
 @import 'footer/filter-footer';
 @import 'popular/popular-component';
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import 'popular/popular';
 @import 'feed/feed-component';
+@import 'feed/components/feed-component-header';
+@import 'feed/components/feed-component-content';
+@import 'feed/components/feed-component-meta';
 @import 'register';
 @import 'modifyUser';
 @import 'settings';
 @import 'delete'; 
-@import 'popular/popular-instagram-component';
 @import 'feed';
-@import 'feed/instagram-feed-component';
-@import 'feed/youtube-feed-component';
 
 html {
     background-color: $light;
@@ -24,7 +25,6 @@ html {
 
 body {
     color: $gs-hard;
-    max-width: $maxWidth;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     background-color: $white;
@@ -58,4 +58,19 @@ img {
 main {
   margin-top: $headerHeight;
   margin-bottom: $footerHeight;
+}
+
+@media screen and (min-width: 480px) {
+
+    body, header, footer {
+        max-width: 375px;
+    }
+
+    body {
+        margin: 0 auto;
+    }
+
+    html {
+        background: $gs-hard;
+    }
 }
