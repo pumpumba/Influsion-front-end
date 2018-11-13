@@ -1,17 +1,91 @@
-.delete {
-  color: $medium;
-  padding-left: 2em;
-  padding-right: 2em;
-  text-align: center;
+.bg{
+    height: 90vh;
+    background-color: $light-pink;
+    top: 2rem;
+    bottom: 1rem;
 }
 
-.deleteButton {
-  background: transparent;
-  color: $white;
-  border: 0.1em solid $white;
-  border-radius: 0.5em;
-  font-size: 1rem;
-  margin: 2rem;
-  padding: 1rem;
-  text-align: center;
+.delete{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: -$footerHeight;
+
+    .setting{
+        align-self: center;
+        margin: 1rem;
+        padding: 0.2rem;
+        border: 0.1rem solid $white;
+        border-radius: .2rem;
+        background: $white;
+        color: $grey;
+        font-size: 1.3rem;
+        width: 80%;
+        height: auto;
+        margin: 1rem;
+    }
+
+    .setting:hover{
+        background: $light-pink;
+    }
+
+    .setting:active{
+        background: $light-pink;
+    }
+
+    .deleteTitle{
+        align-self: center;
+        text-align: center;
+        color: $grey;
+        font-size: 1.3rem;
+        align-self: center;
+    }
+
+
+    .deleteInput {
+        margin:1rem;
+        margin-bottom: 2rem;
+        align-self: center;
+        outline: none;
+        resize: none;
+        border: none;
+        overflow: auto;
+        color: $grey;
+        background: rgb(255,255,255);
+        text-align: center;
+        height: 2rem;
+        font-size: 1.3rem;
+        width: 80%;
+
+        &::placeholder {
+        color: $light-pink;
+        font-size: 1.3rem;
+        }
+    }
+
+    .deleteOptions{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .deleteButton{
+            align-self: center;
+            border: 0.1rem solid $white;
+            border-radius: .2rem;
+            background: $white;
+            color: $grey;
+            font-size: 1.3rem;
+            padding: .5rem;
+            margin:1rem;
+            text-align: center;
+        }
+
+        .deleteButton:active{
+            background-color: $light-pink;
+        }
+
+        .deleteButton:hover{
+            background-color: $light-pink;
+        }
+    }
 }

@@ -2,7 +2,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: $light;
+  background-color: $light-pink;
+  margin-top: -$footerHeight;
 
   .title {
     align-self: center;
@@ -18,32 +19,20 @@ main {
       padding: 0.2rem;
       border: 0.1rem solid $white;
       border-radius: .2rem;
-      background: transparent;
-      color: $white;
+      background: $white;
+      color: $grey;
       font-size: 1.3rem;
       width: 80%;
       height: auto;
       margin: 1rem;
   }
 
-  .input {
-    margin:1rem;
-    align-self: center;
-    outline: none;
-    resize: none;
-    border: none;
-    overflow: auto;
-    color: $white;
-    background: rgba(255,255,255,0.2);
-    text-align: center;
-    height: 2rem;
-    font-size: 1.3rem;
-    width: 80%;
+  .setting:hover{
+      background: $light-pink;
+  }
 
-    &::placeholder {
-      color: $white;
-      font-size: 1.3rem;
-    }
+  .setting:active{
+      background: $light-pink;
   }
 
 }
