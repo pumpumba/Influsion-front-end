@@ -1,5 +1,4 @@
-.Settings {
-  flex-wrap: wrap;
+main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -27,63 +26,24 @@
       margin: 1rem;
   }
 
-  &[hidden-state='hidden'] {
-      .DeleteComponent{
-        display: none;
-      }
-  }
+  .input {
+    margin:1rem;
+    align-self: center;
+    outline: none;
+    resize: none;
+    border: none;
+    overflow: auto;
+    color: $white;
+    background: rgba(255,255,255,0.2);
+    text-align: center;
+    height: 2rem;
+    font-size: 1.3rem;
+    width: 80%;
 
-  &[hidden-state='visible'] {
-      .DeleteComponent{
-        background-color: lighten($light, 5%);
-        display: block;
-        padding: .5rem;
-        position: fixed;
-        z-index: 9999;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        height: 50%;
-        margin-top: 4rem;
-        box-sizing: border-box;
-        border-radius: 3px;
-
-        h2{
-          margin-top: 4rem;
-          color: $medium;
-          font-size: 1.5rem;
-          text-align: center;
-        }
-
-        .confirmOptions{
-          margin-top: 8rem;
-
-          .setting{
-            align-self: center;
-            margin: 1rem;
-            border: 0.1rem solid $white;
-            border-radius: .2rem;
-            background: transparent;
-            color: $white;
-            font-size: 1.3rem;
-            width: 80%;
-            height: auto;
-            margin: 1rem;
-          }
-        }
-      }
-
-
-      .blur-overlay {
-          background-color: rgba(0,0,0,0.5);
-          position: fixed;
-          top: -20vh;
-          left: -20vw;
-          height: 200vh;
-          width: 200vw;
-          z-index: 999;
-      }
-
+    &::placeholder {
+      color: $white;
+      font-size: 1.3rem;
     }
   }
+
+}
