@@ -46,8 +46,13 @@ class PopularComponent extends React.Component {
             let backgroundUrl = ['']
             backgroundUrl = this.props.data.tweet_media ? this.props.data.tweet_media : this.props.data.post_media
 
-            let styles = null
+            if (this.props.data.platform.toLowerCase() == 'youtube') {
+                let imageArr = []
+                imageArr.push(this.props.data.video_thumbnail_url)
+                backgroundUrl = imageArr
+            }
 
+            let styles = null
             if (backgroundUrl) {
                 styles = {
                     backgroundImage: 'url(' + backgroundUrl[0] + ')'
@@ -62,9 +67,9 @@ class PopularComponent extends React.Component {
                     onClick={this.onClick}
                 >
                     <PopularComponentClosedView
-                        backgroundImage={this.props.data.tweet_media || this.props.data.post_media}
-                        userProfileImageUrl={this.props.data.user_profile_image_url}
-                        url={this.props.data.tweet_url || this.props.data.post_url}
+                        backgroundImage={backgroundUrl}
+                        userProfileImageUrl={this.props.data.user_profile_image_url || this.props.data.video_thumbnail_url}
+                        url={this.props.data.tweet_url || this.props.data.post_url || this.props.data.video_url}
                         changeHeart={this.changeHeart}
                         caption={this.props.data.tweet_text}
                         heart={this.state.heart}
@@ -72,15 +77,18 @@ class PopularComponent extends React.Component {
                         influencerId={this.props.data.realInfluencerName}
                     />
                     <PopularComponentExpandedView
-                        userProfileImageUrl={this.props.data.user_profile_image_url}
-                        userName={this.props.data.user_name}
+                        userProfileImageUrl={this.props.data.user_profile_image_url || this.props.data.video_thumbnail_url}
+                        userName={this.props.data.user_name || this.props.data.channel_title}
                         userVerified={this.props.data.user_verified}
-                        url={this.props.data.tweet_url || this.props.data.post_url}
-                        caption={this.props.data.tweet_text || this.props.data.post_text}
+                        url={this.props.data.tweet_url || this.props.data.post_url || this.props.data.video_ur}
+                        caption={this.props.data.tweet_text || this.props.data.post_text || this.props.data.video_description}
+                        videoUrl={this.props.data.video_embeded_url}
                         img={this.props.data.tweet_media || this.props.data.post_media}
-                        noOfLikes={this.props.data.tweet_favorite_count || this.props.data.post_like_count}
+                        noOfLikes={this.props.data.tweet_favorite_count || this.props.data.post_like_count || this.props.data.video_like_count}
                         noOfRetweet={this.props.data.tweet_retweet_count}
-                        timestamp={this.props.data.tweet_created_at || this.props.data.post_created_at}
+                        noOfComments={this.props.data.video_comment_count}
+                        noOfViews={this.props.data.video_view_count}
+                        timestamp={this.props.data.tweet_created_at || this.props.data.post_created_at || this.props.data.video_created_at}
                         changeHeart={this.changeHeart}
                         platform={this.props.data.platform}
                         heart={this.state.heart}
