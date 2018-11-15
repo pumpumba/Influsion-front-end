@@ -12,10 +12,7 @@ class Settings extends React.Component {
 
   render() {
     return (
-     <div
-     className="Settings"
-     onClick={this.onClick}
-     >
+     <div className="settings">
         <main>
             <h1 className="title">Settings</h1>
             <Link to='/login' className="setting">Log in</Link>

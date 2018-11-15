@@ -1,12 +1,10 @@
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: $light-pink;
-  margin-top: -$footerHeight;
+main{
+    display: flex;
+    flex-direction: column;
+    background-color: $light-pink;
 
   .title {
-    align-self: center;
+    justify-content: center;
     font-family: 'Pacifico', cursive;
     color: $white;
     margin: 4rem;
@@ -14,7 +12,7 @@ main {
   }
 
   .setting{
-      align-self: center;
+      justify-content: center;
       margin: 1rem;
       padding: 0.2rem;
       border: 0.1rem solid $white;
@@ -34,5 +32,4 @@ main {
   .setting:active{
       background: $light-pink;
   }
-
 }
