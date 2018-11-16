@@ -12,17 +12,17 @@ class Settings extends React.Component {
 
   render() {
     return (
-     <div className="settings">
         <main>
-            <h1 className="title">Settings</h1>
-            <Link to='/login' className="setting">Log in</Link>
-            <Link to='/feed' className="setting">Log out</Link>
-            <Link to='/modifyUser' className="setting">Edit information</Link>
-            <Link className="setting"to='/delete' >Delete account</Link>
+            <div className="settings">
+                <h1 className="title">Settings</h1>
+                <Link to='/login' className="setting">Log in</Link>
+                <Link to='/feed' className="setting">Log out</Link>
+                <Link to='/modifyUser' className="setting">Edit information</Link>
+                <Link className="setting"to='/delete' >Delete account</Link>
+            </div>
         </main>
-    </div>
-  )
-  }
+        )
+    }
 }
 
 export default Settings
