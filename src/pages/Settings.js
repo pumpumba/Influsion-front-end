@@ -1,26 +1,29 @@
 import React from 'react'
-import Header from './../components/header/Header'
-import Footer from './../components/footer/Footer'
-import {Link} from 'react-router-dom'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
+import Footer from '../components/footer/Footer';
+import Header from '../components/header/Header';
 
 class Settings extends React.Component {
-  constructor () {
-    super()
+    constructor() {
+        super()
 
     }
 
-  render() {
-    return (
-        <main>
-            <div className="settings">
-                <h1 className="title">Settings</h1>
-                <Link to='/login' className="setting">Log in</Link>
-                <Link to='/feed' className="setting">Log out</Link>
-                <Link to='/modifyUser' className="setting">Edit information</Link>
-                <Link className="setting"to='/delete' >Delete account</Link>
+    render() {
+        return (
+            <div>
+                <Header />
+                <main>
+                    <div className='settings'>
+                        <h1>Settings</h1>
+                        <Link to='/login' className='white-button'>Log in</Link>
+                        <Link to='/feed' className='white-button'>Log out</Link>
+                        <Link to='/modifyUser' className='white-button'>Edit information</Link>
+                        <Link to='/delete' className='white-button' >Delete account</Link>
+                    </div>
+                </main>
+                <Footer />
             </div>
-        </main>
         )
     }
 }

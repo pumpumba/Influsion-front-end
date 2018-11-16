@@ -8,7 +8,7 @@ const SubFooter = () => {
             <FooterButton link={'/'} icon={'star'} />
             <FooterButton link={'/feed'} icon={'heart'} />
             <FooterButton link={'/search'} icon={'search'} />
-            <FooterButton link={'/login'} icon={'cogs'} />
+            <FooterButton link={'/settings'} icon={'cogs'} />
         </div>
     )
 }

@@ -1,0 +1,19 @@
+.white-button {
+    background: $white;
+    border-radius: $borderRadius;
+    border-bottom: 2px solid $light;
+    color: $grey;
+    font-size: 1.3rem;
+    height: auto;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+
+    &:hover{
+        background: $light-pink;
+    }
+
+    &:active{
+        background: $light-pink;
+    }
+}
