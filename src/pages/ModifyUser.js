@@ -68,7 +68,7 @@ class ModifyUser extends React.Component {
 
         return (
             <div>
-
+                <Header />
                 <main className="modify">
                     {objToRender}
                 </main>
