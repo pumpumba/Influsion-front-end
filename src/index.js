@@ -26,7 +26,7 @@ class Index extends React.Component {
 
     updateUserId(newId) {
         this.setState({ userId: newId })
-        localStorage.setItem('userId', userInfo.usrid)
+        localStorage.setItem('userId', newId)
     }
 
     componentWillMount() {
@@ -44,7 +44,10 @@ class Index extends React.Component {
         if (this.state.userId == 0) {
             return (
                 <Router>
-                    <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <div>
+                        <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    </div>
                 </Router>
             )
         }
@@ -57,7 +60,6 @@ class Index extends React.Component {
                     <Route path='/search' render={(props) => <Search {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route path='/login' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                 </div>
             </Router>
