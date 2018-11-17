@@ -13,7 +13,7 @@
         border: 0.1em solid $white;
         border-radius: 0.5em;
         height: 2em;
-        font-size: 1rem;
+        font-size: 1.2rem;
         box-sizing: border-box;
       }
     }
@@ -37,6 +37,28 @@
         font-size: 1.3rem;
       }
     }
+}
+
+.searchHeader{
+        height: 2rem; 
+
+        .searchPlatforms{
+          text-align: right !important;
+          padding-left: 1rem;
+          color: $link-grey;
+          align-items: right;
+        }
+
+        img {
+                border-radius: 99px;
+                border: 2px solid $hard;
+                height: 2em;
+                width: 2em;
+            }
+            * {
+                display: inline;
+            }
+
 }
 
 .info-text {
