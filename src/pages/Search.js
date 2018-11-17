@@ -2,6 +2,8 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import SearchSuggestions from './../components/search/SearchSuggestions'
+// import AutoSuggestTest from './../components/search/AutoSuggestTest'
 
 class Search extends React.Component {
 
@@ -17,15 +19,7 @@ class Search extends React.Component {
             <div>
                 <Header />
                 <main className='search-content'>
-                    <form className='search-input-wrapper'>
-                            <input
-                                className='searchInput'
-                                placeholder="Search"
-                            />
-                            <button >
-                                <FontAwesomeIcon icon={'search'} />
-                            </button>
-                    </form>
+                    <SearchSuggestions></SearchSuggestions>
                     <div className='info-text'>
                         Welcome to the world of searching and all we can give
                   <br />
