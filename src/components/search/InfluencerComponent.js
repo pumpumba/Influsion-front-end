@@ -6,8 +6,8 @@ class InfluencerComponent extends React.Component {
     render() {
             return (
                 <div className="searchHeader">
-                  <img src={this.props.tweet_img_url} />
-                  <a href={`/1`}> {this.props.name} </a>
+                  <img className="userImage" src={"https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg"} />
+                  <a className="userName" href={`/1`}> {this.props.name} </a>
                   <div className="searchPlatforms">
                     { (this.props.tweet.trim() =="") ? '' : <span><FontAwesomeIcon   icon={['fab', 'twitter']}/> </span>  }
                     { (this.props.insta.trim() =="") ? '' : <span><FontAwesomeIcon icon={['fab', 'instagram']}/> </span>  }

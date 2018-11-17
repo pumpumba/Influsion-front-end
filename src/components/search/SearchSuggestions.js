@@ -1,5 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import InfluencerComponent from './InfluencerComponent'
 
 class SearchSuggestions extends React.Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class SearchSuggestions extends React.Component {
         this.onChange = this.onChange.bind(this)
         this.checkForInfluencer = this.checkForInfluencer.bind(this)
     }
-    
+
     checkForInfluencer(searchString) {
         const influData = [
             {
@@ -619,7 +620,7 @@ class SearchSuggestions extends React.Component {
                 searchResults.push(influData[i])
                 found = true
             }
-            
+
             if (!found) {
                 for(let j=0; j < influData[i]['pfaccs']['platformaccounts'].length; j++) {
                     if (influData[i]['pfaccs']['platformaccounts'][j]['actname'].toLowerCase().startsWith(searchString.toLowerCase())) {
@@ -632,18 +633,13 @@ class SearchSuggestions extends React.Component {
         }
         if (searchString==="")
             return []
-        
+
         return searchResults
     }
     onChange(searchString) {
         this.setState({searchResults: this.checkForInfluencer(searchString)})
     }
-  
-    
-      
-        
 
-    
     render() {
         let feedContent = null
         if (this.state.searchResults.length > 0) {
@@ -652,7 +648,13 @@ class SearchSuggestions extends React.Component {
                 influencerName.push(this.state.searchResults[i].influencername)
             }
             feedContent = influencerName.map(curContent => {
-                return <h1>{curContent}</h1>
+                return <InfluencerComponent
+                    name={curContent}
+                    tweet={'realInfoToCome'}
+                    insta={'realInfoToCome'}
+                    youtube={'realInfoToCome'}
+                    id={'realInfoToCome'}
+                />
             })
         }
         return (
@@ -662,11 +664,8 @@ class SearchSuggestions extends React.Component {
                     className='searchInput'
                     placeholder="Search"
                 />
-                <button >
-                    <FontAwesomeIcon icon={'search'} />
-                </button>
                 {feedContent}
-            </form>            
+            </form>
         )
     }
 }
