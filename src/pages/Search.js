@@ -59,15 +59,7 @@ class Search extends React.Component {
         <div>
             <Header />
             <main className='search-content'>
-                <form>
-                  <input className='searchInput'
-                      placeholder="Search"
-                  ></input>
-                  <button onClick={this.searchGo} >
-                    <FontAwesomeIcon icon={'search'} />
-                  </button>
-
-                </form>
+                    <SearchSuggestions></SearchSuggestions>
                 <div className='info-text'>
                   Welcome to the world of searching and all we can give
                   <br/>
