@@ -1,0 +1,28 @@
+.modify {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: $light-pink;
+
+  .confirm-Form{
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      margin-top: 5rem;
+  }
+
+  .title {
+    align-self: center;
+    font-family: 'Pacifico', cursive;
+    color: $white;
+    margin: 4rem;
+    font-size: 5rem;
+  }
+
+  .input-Title{
+      color: $grey;
+      font-size: 1.3rem;
+      align-self: center;
+  }
+
+}

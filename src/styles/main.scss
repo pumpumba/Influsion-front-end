@@ -14,10 +14,11 @@
 @import 'feed/components/feed-component-content';
 @import 'feed/components/feed-component-meta';
 @import 'register';
-@import 'modifyUser';
+@import 'modify-user';
 @import 'settings';
 @import 'delete';
 @import 'feed';
+@import 'general-elements';
 
 html {
     background-color: $light;

@@ -56,7 +56,7 @@ class ModifyUser extends React.Component {
             objToRender = <ModifyAlert title='Something went wrong...' btnTxt='Try again!' resetState={this.resetState} />
         } else if(this.state.wrongPassword){
             objToRender = <ModifyAlert title="Wrong password" btnTxt='Try again!' resetState={this.resetState}/>
-        }else {
+        } else {
             objToRender =
                 <ModifyForm
                     modSuccsessfull={this.modSuccsessfull}
@@ -68,7 +68,7 @@ class ModifyUser extends React.Component {
 
         return (
             <div>
-
+                <Header />
                 <main className="modify">
                     {objToRender}
                 </main>
