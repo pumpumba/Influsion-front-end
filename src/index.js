@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Popular from './pages/Popular'
 import Feed from './pages/Feed'
 import Search from './pages/Search'
@@ -21,7 +21,8 @@ class Index extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userId: 0
+            userId: 0,
+            adminId: 0
         }
         this.updateUserId = this.updateUserId.bind(this)
     }
@@ -31,10 +32,20 @@ class Index extends React.Component {
         localStorage.setItem('userId', newId)
     }
 
+    updateAdminId(newId) {
+        this.setState({ adminId: newId })
+        localStorage.setItem('adminId', newId)
+    }
+
     componentWillMount() {
         if (localStorage.getItem('userId') != null && this.state.userId == 0) {
             this.setState({
                 userId: localStorage.getItem('userId')
+            })
+        }
+        if (localStorage.getItem('adminId') != null && this.state.adminId == 0) {
+            this.setState({
+                adminId: localStorage.getItem('adminId')
             })
         }
     }
@@ -44,19 +55,19 @@ class Index extends React.Component {
         if (this.state.userId == 0) {
             return (
                 <Router>
-                    <div>
-                        <Route exact path='/admin'className="adminRoute" component={() => <AdminPage updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route exact path='/adminlogin' component={() => <AdminLogin updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <Switch>
+                        <Route path='/admin'className="adminRoute" component={() => <AdminPage updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/adminlogin' component={() => <AdminLogin updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    </div>
+                    </Switch>
                 </Router>
             )
         }
 
         return (
             <Router>
-                <div>
+                <Switch>
                     <Route exact path='/' render={(props) => <Popular {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/feed' render={(props) => <Feed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/search' render={(props) => <Search {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
@@ -64,7 +75,7 @@ class Index extends React.Component {
                     <Route path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                </div>
+                </Switch>
             </Router>
         )
     }

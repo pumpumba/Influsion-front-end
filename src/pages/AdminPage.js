@@ -2,6 +2,7 @@ import React from 'react'
 import Popular from './Popular'
 import {AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area} from 'recharts'
 import Statistics from './../components/admin/Statistics'
+import CreateAd from './../components/admin/CreateAd'
 
 
 
@@ -24,9 +25,7 @@ class AdminPage extends React.Component {
             <Statistics/>
           </div>
           <div className="admin-center-content">
-            <h1></h1>
-
-
+            <CreateAd/>
           </div>
           <div className="admin-right-content">
           </div>

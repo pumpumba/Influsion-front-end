@@ -15,8 +15,10 @@
 @import 'feed/components/feed-component-meta';
 @import 'register';
 @import 'feed';
-@import 'admin-page.scss';
-@import 'admin-login.scss';
+@import 'admin/admin-page.scss';
+@import 'admin/admin-login.scss';
+@import 'admin/statistics.scss';
+@import 'admin/create-ad.scss';
 
 html {
     background-color: $light;
@@ -76,4 +78,5 @@ main {
         margin: 0 auto;
     }
 
+}
 }
