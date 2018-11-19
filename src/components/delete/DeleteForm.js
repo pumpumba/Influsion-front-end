@@ -7,7 +7,7 @@ class DeleteForm extends React.Component {
         super(props)
         this.state = {
             password: '',
-            userid: this.props.userId
+            userid: 46
         }
         this.deleteAccount = this.deleteAccount.bind(this)
     }
@@ -24,6 +24,7 @@ class DeleteForm extends React.Component {
       })
       .then(response => response.json())
       .then(response => (response.dbResults.deleteSuccess) ? this.props.deleteSuccsessfull() : this.props.wrongPassword())
+
     }
 
     render() {
