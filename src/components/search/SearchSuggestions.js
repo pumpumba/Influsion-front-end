@@ -5,9 +5,9 @@ import InfluencerComponent from './InfluencerComponent'
 class SearchSuggestions extends React.Component {
     constructor(props) {
         super(props)
-            this.state = {
-                searchResults: []
-            }
+        this.state = {
+            searchResults: []
+        }
         this.onChange = this.onChange.bind(this)
         this.checkForInfluencer = this.checkForInfluencer.bind(this)
     }
@@ -615,14 +615,14 @@ class SearchSuggestions extends React.Component {
         let searchResults = []
         let found = false
 
-        for (let i=0 ; i < influData.length ; i++){
+        for (let i = 0; i < influData.length; i++) {
             if (influData[i]['influencername'].toLowerCase().startsWith(searchString.toLowerCase())) {
                 searchResults.push(influData[i])
                 found = true
             }
 
             if (!found) {
-                for(let j=0; j < influData[i]['pfaccs']['platformaccounts'].length; j++) {
+                for (let j = 0; j < influData[i]['pfaccs']['platformaccounts'].length; j++) {
                     if (influData[i]['pfaccs']['platformaccounts'][j]['actname'].toLowerCase().startsWith(searchString.toLowerCase())) {
                         searchResults.push(influData[i])
                         found = false
@@ -631,20 +631,20 @@ class SearchSuggestions extends React.Component {
                 }
             }
         }
-        if (searchString==="")
+        if (searchString === "")
             return []
 
         return searchResults
     }
     onChange(searchString) {
-        this.setState({searchResults: this.checkForInfluencer(searchString)})
+        this.setState({ searchResults: this.checkForInfluencer(searchString) })
     }
 
     render() {
         let feedContent = null
         if (this.state.searchResults.length > 0) {
             let influencerName = []
-            for (let i=0; i < this.state.searchResults.length; i++) {
+            for (let i = 0; i < this.state.searchResults.length; i++) {
                 influencerName.push(this.state.searchResults[i])
             }
             feedContent = influencerName.map(curContent => {
@@ -657,7 +657,7 @@ class SearchSuggestions extends React.Component {
         return (
             <form className='search-input-wrapper'>
                 <input
-                    onChange={(e) => this.onChange( e.target.value )}
+                    onChange={(e) => this.onChange(e.target.value)}
                     className='searchInput'
                     placeholder="Search"
                 />

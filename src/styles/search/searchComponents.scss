@@ -1,9 +1,9 @@
-.searchHeader{
+.search-header{
         display: flex;
         flex-direction: row;
         align-items: center;
         margin-top: 0.5em;
-        padding-bottom: 1.1em;
+        padding: .5rem;
         border-radius: 25px;
         background:rgba(255,255,255, 0.6);
 
@@ -21,16 +21,15 @@
           color: $medium;
           font-size: 1em;
           letter-spacing: 10px;
-          margin-top: 1em;
+          margin-left: auto;
+          margin-right: 1rem;
         }
 
         img {
-                margin-top: 1em;
                 border-radius: 99px;
                 border: 2px solid $hard;
                 height: 2em;
                 width: 2em;
-                margin-left: 0.7em;
                 margin-right: 0.7em;
             }
             * {
