@@ -645,15 +645,12 @@ class SearchSuggestions extends React.Component {
         if (this.state.searchResults.length > 0) {
             let influencerName = []
             for (let i=0; i < this.state.searchResults.length; i++) {
-                influencerName.push(this.state.searchResults[i].influencername)
+                influencerName.push(this.state.searchResults[i])
             }
             feedContent = influencerName.map(curContent => {
                 return <InfluencerComponent
-                    name={curContent}
-                    tweet={'realInfoToCome'}
-                    insta={'realInfoToCome'}
-                    youtube={'realInfoToCome'}
-                    id={'realInfoToCome'}
+                    data={curContent}
+                    key={curContent.inflid}
                 />
             })
         }

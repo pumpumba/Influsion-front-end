@@ -37,10 +37,10 @@ class Index extends React.Component {
                         <Route exact path='/' component={() => <Popular updateUserId={this.updateUserId} userId={this.state.userId} />}/>
                         <Route path='/feed' component={() => <Feed updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/search' component={() => <Search updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/:influencerid' component={InfluencerFeed} />
                         <Route path='/settings' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/login' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/register' component={() => <Register updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/:influencerid' component={InfluencerFeed} />                        
                     </div>
                 </Router>
         )
