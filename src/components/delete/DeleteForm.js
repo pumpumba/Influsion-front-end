@@ -23,13 +23,13 @@ class DeleteForm extends React.Component {
           body: JSON.stringify({ usrid: this.state.userid, password: this.state.password})
       })
       .then(response => response.json())
-      .then(response => console.log(response.dbResults))
       .then(response => (response.dbResults.deleteSuccess) ? this.props.deleteSuccsessfull() : this.props.wrongPassword())
     }
 
     render() {
         return (
             <form className="delete-Form">
+            <h2 className="delete-Title"> Are you sure that you want to delete your account? </h2>
                 <input
                     onChange={(e) => this.setState({ password: e.target.value })}
                     placeholder="Confirm Password"

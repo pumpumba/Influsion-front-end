@@ -50,8 +50,8 @@ render() {
 
     return (
         <div className="bg">
+            <Header/>
             <main className="delete">
-                <h2 className="delete-Title"> Are you sure that you want to delete your account? </h2>
                 {objToRender}
             </main>
             <Footer/>
