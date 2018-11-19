@@ -32,9 +32,6 @@ class Login extends React.Component {
 
     loginSuccsessfull(userInfo) {
         this.props.updateUserId(userInfo.usrid)
-        let curUrl = window.location.href
-        let newUrl = curUrl.replace('login', '')
-        window.location.replace(newUrl)
     }
 
     loginUnsuccsessfull() {
