@@ -117,6 +117,10 @@
                   border: 0;
                 }
 
+                .platform-link {
+                    margin: 0 1rem 0 auto;
+                }
+
                 a svg {
                     color: $hard;
                 }
@@ -135,7 +139,7 @@
 
                 p {
                     margin-bottom: 1rem;
-                    padding-right: 1.5rem;
+                    padding-top: 1.5rem;
                 }
 
                 .hashtags {
