@@ -17,7 +17,7 @@ class InfluencerComponent extends React.Component {
       return (
                 <div className="searchHeader">
                   <img className="userImage" src={"https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg"} />
-                  <NavLink name="userName" to={`${this.props.data.inflid}`}> {this.props.data.influencername} </NavLink>
+                  <NavLink name="userName" to={`/${this.props.data.inflid}`}> {this.props.data.influencername} </NavLink>
                   <div className="searchPlatforms" style={{justifyContent:'right', alignItems:'right', textalign:'right'}}>
                     { (twitter) ? <span><FontAwesomeIcon icon={['fab', 'twitter']}/> </span> : '' }
                     { (instagram) ? <span><FontAwesomeIcon icon={['fab', 'instagram']}/> </span> :'' }
