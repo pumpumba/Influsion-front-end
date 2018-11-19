@@ -1,19 +1,33 @@
 import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
-import FooterButton from './../components/footer/FooterButton';
 import { Link } from 'react-router-dom'
 
-const Settings = (props) => {
-  return (
-    <div className="mobile-page">
-      <Header title={'Settings'}/>
-      <main>
-        <Link to='/login'>Logga in</Link>
-      </main>
-      <Footer />
-    </div>
-  )
+class Settings extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.logOut = this.logOut.bind(this)
+  }
+
+  logOut() {
+    console.log('logga ut')
+    this.props.updateUserId(0)
+  }
+
+  render() {
+
+    return (
+      <div>
+        <Header title={'Settings'} />
+        <main>
+          <Link to='/login'>Logga in</Link>
+          <button onClick={this.logOut}>Logga ut</button>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
 }
 
 export default Settings

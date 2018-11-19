@@ -3,6 +3,7 @@
 @import 'footer';
 @import 'header';
 @import 'login';
+@import 'search';
 @import 'footer/sub-footer';
 @import 'footer/filter-footer';
 @import 'popular/popular-component';
@@ -13,7 +14,6 @@
 @import 'feed/components/feed-component-content';
 @import 'feed/components/feed-component-meta';
 @import 'register';
-@import 'popular/popular-instagram-component';
 @import 'feed';
 @import 'admin-page.scss';
 @import 'admin-login.scss';
@@ -76,6 +76,4 @@ main {
         margin: 0 auto;
     }
 
-
-  }
 }

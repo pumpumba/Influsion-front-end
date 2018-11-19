@@ -2,85 +2,63 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimeAgo from 'react-timeago'
 import { StopPropagation } from 'react-clickable'
+import { NavLink } from 'react-router-dom'
 
 
 function ContentPlacer(props) {
-    if (props.platform == 'twitter') {
-        return (
-            <div className='content-container'>
-                <p className='tweet_text'>{props.caption}</p>
-                <img src={props.img} />
-                <div className='meta-data'>
-                    <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />
-                        {props.noOfLikes}</span>
-                    <span className='no-of-retweets'> <FontAwesomeIcon className="metaIcon" icon={'retweet'} />
-                        {props.noOfRetweet}</span>
-                    <span className='time-stamp'><FontAwesomeIcon className="metaIcon" icon={'calendar-alt'} />
-                        <TimeAgo date={props.timestamp} />
-                    </span>
-                    <StopPropagation>
-                        <FontAwesomeIcon icon={'heart'} className="follow_heart" onClick={props.changeHeart} data-state={props.heart && 'active'} />
-                    </StopPropagation>
+    return (
+        <div className='content-container'>
+            {props.platform == 'twitter' && <p>{props.caption}</p>}
+            <img src={props.img} />
+            {props.videoUrl &&
+                <div className="videoWrapper">
+                    <iframe
+                        width="560"
+                        height="349"
+                        src={props.videoUrl}
+                        frameBorder="0"
+                        allowFullScreen>
+                    </iframe>
                 </div>
-            </div>
-        )
-
-    } else if (props.platform == "instagram") {
-        return (
-            <div className='content-container'>
-                <div className='instagram-text-and-pic'>
-                    <img src={props.img} />
-                    <p className='tweet_text instagram_text'>{props.caption}</p>
-                </div>
-                <div className='meta-data'>
-                    <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />
-                        {props.noOfLikes}</span>
-                    <span className='time-stamp'><FontAwesomeIcon className="metaIcon" icon={'calendar-alt'} />
-                        2 hours ago
-             </span>
-                    <StopPropagation>
-                        <FontAwesomeIcon icon={'heart'} className="follow_heart" onClick={props.changeHeart} data-state={props.heart && 'active'} />
-                    </StopPropagation>
-                </div>
-            </div>
-        )
-    } else if (props.platform.toLowerCase() == "youtube") {
-        return (
-            <div className='content-container'>
-                <div className='instagram-text-and-pic'>
-                    <div className="videoWrapper">
-                        <iframe
-                            width="560"
-                            height="349"
-                            src={props.videoUrl}
-                            frameBorder="0"
-                            allowFullScreen>
-                        </iframe>
-                    </div>
-                    <p className='tweet_text instagram_text'>{props.caption}</p>
-                </div>
-                <div className='meta-data'>
-                    <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'eye'} />
+            }
+            {props.platform != 'twitter' && <p>{props.caption}</p>}
+            <div className='meta-data'>
+                {props.noOfViews &&
+                    <span>
+                        <FontAwesomeIcon className="metaIcon" icon={'eye'} />
                         {props.noOfViews}
                     </span>
-                    <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'comment'} />
+                }
+                {props.noOfComments &&
+                    <span>
+                        <FontAwesomeIcon className="metaIcon" icon={'comment'} />
                         {props.noOfComments}
                     </span>
-                    <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />
+                }
+                {props.noOfLikes &&
+                    <span>
+                        <FontAwesomeIcon className="metaIcon" icon={'heart'} />
                         {props.noOfLikes}
                     </span>
-                    <span className='time-stamp'><FontAwesomeIcon className="metaIcon" icon={'calendar-alt'} />
-                        <TimeAgo date={props.timestamp} />
+                }
+                {props.noOfRetweet &&
+                    <span>
+                        <FontAwesomeIcon className="metaIcon" icon={'retweet'} />
+                        {props.noOfRetweet}
                     </span>
-                    <StopPropagation>
-                        <FontAwesomeIcon icon={'heart'} className="follow_heart" onClick={props.changeHeart} data-state={props.heart && 'active'} />
-                    </StopPropagation>
-                </div>
+                }
+                <span>
+                    <FontAwesomeIcon className="metaIcon" icon={'calendar-alt'} />
+                    <TimeAgo date={props.timestamp} />
+                </span>
+                <StopPropagation>
+                    <FontAwesomeIcon icon={'heart'} className="follow_heart" onClick={props.changeHeart} data-state={props.heart && 'active'} />
+                </StopPropagation>
             </div>
-        )
-    }
-
+        </div>
+    )
 }
+
 class PopularComponentExpandedView extends React.Component {
     constructor() {
         super()
@@ -93,9 +71,11 @@ class PopularComponentExpandedView extends React.Component {
             <div className='expanded-view'>
                 <div className='header'>
                     <img src={this.props.userProfileImageUrl} />
-                    <a href={`/${this.props.influencerId}`}> {this.props.userName}  </a>
+                    <NavLink to={`/${this.props.influencerId}`}> {this.props.userName}  </NavLink>
                     {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
-                    <a href={this.props.url}> {this.props.icon} </a>
+                    <a href={this.props.url} className='platform-link'>
+                        <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
+                    </a>
                 </div>
                 <ContentPlacer {...this.props} />
             </div>
