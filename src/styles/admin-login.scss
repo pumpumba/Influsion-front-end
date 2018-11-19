@@ -1,0 +1,35 @@
+.loginBox{
+  display: grid;
+  grid-gap: 1.5vh;
+  margin: auto;
+  width: 30%;
+  height: 40%;
+  padding: 2vh;
+  -webkit-box-shadow: 0 8px 6px -6px grey;
+	   -moz-box-shadow: 0 8px 6px -6px grey;
+	        box-shadow: 2px 8px 6px -6px grey;
+}
+.admin-login-container{
+  text-align: center;
+  width: 100%;
+  padding-top: 35vh;
+  overflow: hidden;
+  height:65vh;
+}
+.login-input{
+  padding:3px;
+  border-radius: 4px;
+  width: 80%;
+  margin: auto;
+  height: 4vh;
+
+}
+.loginButton{
+  width: 40%;
+  background-color: $medium;
+  margin:auto;
+  font-weight: bold;
+  height: 5vh;
+  border-radius: 25px;
+  border: 1px solid $hard;
+}

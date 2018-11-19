@@ -7,6 +7,8 @@ import Search from './pages/Search'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import AdminPage from './pages/AdminPage'
+import AdminLogin from './pages/AdminLogin'
 import InfluencerFeed from './pages/InfluencerFeed'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -33,14 +35,17 @@ class Index extends React.Component {
 
         return (
                 <Router>
-                    <div>
+
+                    <div className="routerDiv">
                         <Route exact path='/' component={() => <Popular updateUserId={this.updateUserId} userId={this.state.userId} />}/>
-                        <Route path='/feed' component={() => <Feed updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/search' component={() => <Search updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/:influencerid' component={InfluencerFeed} />
-                        <Route path='/settings' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/login' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/register' component={() => <Register updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route exact path='/feed' component={() => <Feed updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route exact path='/search' component={() => <Search updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route exact path='/settings' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route exact path='/login' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route exact path='/register' component={() => <Register updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route exact path='/admin'className="adminRoute" component={() => <AdminPage updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route exact path='/adminlogin' component={() => <AdminLogin updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/influencerid' component={InfluencerFeed} />
                     </div>
                 </Router>
         )

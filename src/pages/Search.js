@@ -4,7 +4,7 @@ import Footer from './../components/footer/Footer'
 
 const Search = (props) => {
   return (
-  <div>
+  <div className="mobile-page">
     <Header title={'Search'}/>
     <main>
       <h1>Search</h1>

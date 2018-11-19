@@ -3,8 +3,8 @@ import React from 'react'
 class Header extends React.Component {
   render() {
     return (
-        <header className="inFlusion-header">
-            <h1> inFlusion </h1>
+        <header className="inFlusion-admin-header">
+            <h1> inFlusion Admin page</h1>
         </header>
     )
   }

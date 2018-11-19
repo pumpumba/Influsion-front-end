@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Settings = (props) => {
   return (
-    <div>
+    <div className="mobile-page">
       <Header title={'Settings'}/>
       <main>
         <Link to='/login'>Logga in</Link>

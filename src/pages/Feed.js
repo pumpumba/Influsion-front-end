@@ -47,7 +47,7 @@ class Feed extends React.Component {
 
         if (feedContent != null) {
             return (
-                <div>
+                <div className="mobile-page">
                     <Header />
                     <main>
                         {feedContent}
@@ -57,7 +57,7 @@ class Feed extends React.Component {
             )
         } else {
             return (
-                <div>
+                <div className="mobile-page">
                     <Header />
                     <main className='feed'>
                         <h2>Nothing here to show, please follow a influencer...</h2>

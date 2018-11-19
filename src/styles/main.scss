@@ -15,6 +15,8 @@
 @import 'register';
 @import 'popular/popular-instagram-component';
 @import 'feed';
+@import 'admin-page.scss';
+@import 'admin-login.scss';
 
 html {
     background-color: $light;
@@ -58,6 +60,13 @@ main {
 }
 
 @media screen and (min-width: 480px) {
+  html {
+      background: $gs-hard;
+  }
+  .mobile-page{
+    max-width: 375px;
+    margin: 0 auto;
+
 
     body, header, footer {
         max-width: 375px;
@@ -67,7 +76,6 @@ main {
         margin: 0 auto;
     }
 
-    html {
-        background: $gs-hard;
-    }
+
+  }
 }
