@@ -4,10 +4,15 @@ import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
 
 class Settings extends React.Component {
-    constructor() {
-        super()
+  constructor(props) {
+    super(props)
+    this.logOut = this.logOut.bind(this)
+  }
 
-    }
+  logOut() {
+    console.log('logga ut')
+    this.props.updateUserId(0)
+  } 
 
     render() {
         return (
@@ -17,7 +22,7 @@ class Settings extends React.Component {
                     <div className='settings'>
                         <h1>Settings</h1>
                         <Link to='/login' className='white-button'>Log in</Link>
-                        <Link to='/feed' className='white-button'>Log out</Link>
+                        <button onClick={this.logOut} className='white-button'>Logga ut</button>
                         <Link to='/modifyUser' className='white-button'>Edit information</Link>
                         <Link to='/delete' className='white-button' >Delete account</Link>
                     </div>
