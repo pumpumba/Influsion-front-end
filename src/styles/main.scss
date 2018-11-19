@@ -74,3 +74,59 @@ main {
         background: $gs-hard;
     }
 }
+
+form{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+
+button{
+    align-self: center;
+    border: 0.1rem solid $white;
+    border-radius: .2rem;
+    background: $white;
+    color: $grey;
+    font-size: 1.3rem;
+    width: 80%;
+    margin:1rem;
+    text-align: center;
+}
+
+button:active{
+    background-color: $light-pink;
+}
+
+button:hover{
+    background-color: $light-pink;
+}
+
+form{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    input,select {
+      margin:1rem;
+      margin-bottom: 2rem;
+      align-self: center;
+      outline: none;
+      resize: none;
+      border: none;
+      overflow: auto;
+      color: $grey;
+      background: rgb(255,255,255);
+      text-align: center;
+      height: 2rem;
+      font-size: 1.3rem;
+      width: 22rem;
+
+      &::placeholder {
+        color: $light-pink;
+        font-size: 1.3rem;
+      }
+    }
+}

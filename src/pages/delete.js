@@ -11,7 +11,6 @@ class Delete extends React.Component {
 constructor(props){
     super(props)
     this.state = {
-      userid: 70,
       deleteSuccsessfull: false,
       wrongPassword: false
     }
@@ -21,10 +20,7 @@ constructor(props){
 }
 
 deleteSuccsessfull() {
-    this.setState({
-        deleteSuccsessfull: true
-    })
-    {/*this.props.updateUserId(0)*/}
+    console.log("Delete")
 }
 
 wrongPassword(){
@@ -55,7 +51,7 @@ render() {
     return (
         <div className="bg">
             <main className="delete">
-                <h2 className="deleteTitle"> Are you sure that you want to delete your account? </h2>
+                <h2 className="delete-Title"> Are you sure that you want to delete your account? </h2>
                 {objToRender}
             </main>
             <Footer/>

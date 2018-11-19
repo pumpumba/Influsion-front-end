@@ -11,40 +11,7 @@
     justify-content: space-around;
     margin-top: -$footerHeight;
 
-    .modifyForm{
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        .modButton{
-            align-self: center;
-            border: 0.1rem solid $white;
-            border-radius: .2rem;
-            background: $white;
-            color: $grey;
-            font-size: 1.3rem;
-            width: 80%;
-            margin:1rem;
-            text-align: center;
-        }
-
-        .modButton:active{
-            background-color: $light-pink;
-        }
-
-        .modButton:hover{
-            background-color: $light-pink;
-        }
-
-        .inputTitle{
-            color: $grey;
-            font-size: 1.3rem;
-            align-self: center;
-        }
-
-    }
-
-    .deleteTitle{
+    .delete-Title{
         align-self: center;
         text-align: center;
         color: $grey;
@@ -52,39 +19,18 @@
         align-self: center;
     }
 
-    .deleteForm{
+    .delete-Form{
         margin-top: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
 
-        .deleteInput {
-            margin:1rem;
-            margin-bottom: 2rem;
-            align-self: center;
-            outline: none;
-            resize: none;
-            border: none;
-            overflow: auto;
-            color: $grey;
-            background: rgb(255,255,255);
-            text-align: center;
-            height: 2rem;
-            font-size: 1.3rem;
-            width: 80%;
-
-            &::placeholder {
-            color: $light-pink;
-            font-size: 1.3rem;
-            }
-        }
-
-        .deleteOptions{
+        .delete-Options{
             display: flex;
             flex-direction: row;
             justify-content: space-around;
 
-            .deleteButton{
+            .delete-Button{
                 align-self: center;
                 border: 0.1rem solid $white;
                 border-radius: .2rem;
@@ -96,7 +42,7 @@
                 text-align: center;
             }
 
-            .deleteButton:active{
+            .delete-Button:active{
                 background-color: $light-pink;
             }
 
@@ -105,6 +51,4 @@
             }
         }
     }
-
-
 }

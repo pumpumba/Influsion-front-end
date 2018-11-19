@@ -46,7 +46,7 @@ class ModifyForm extends React.Component {
     }
 
     componentDidMount(){
-        var url = "http://40.127.101.155/db/get_user?usrid=" + this.state.usrid
+        const url = "http://40.127.101.155/db/get_user?usrid=" + this.state.usrid
         fetch(url, {
             params: this.state.userid
         })
@@ -64,40 +64,41 @@ class ModifyForm extends React.Component {
 
     render() {
         return (
-            <form className="modifyForm">
-                <p className="inputTitle">Enter new username</p>
+            <form className="modify-Form">
+                <p className="input-Title">Enter new username</p>
                 <input className="input" placeholder="Username"
-                onChange={(e) => this.setState({ username: e.target.value })}
-                ></input>
+                onChange={(e) => this.setState({ username: e.target.value })}>
+                </input>
 
-                <p className="inputTitle">Enter new password</p>
+                <p className="input-Title">Enter new password</p>
                 <input className="input" placeholder="Password" type="password"
-                onChange={(e) => this.setState({ password: e.target.value })}
-                ></input>
+                onChange={(e) => this.setState({ password: e.target.value })}>
+                </input>
 
-                <p className="inputTitle">Enter new age</p>
+                <p className="input-Title">Enter new age</p>
                 <input className="input" placeholder="Age"
-                onChange={(e) => this.setState({ age: e.target.value })}
-                ></input>
+                onChange={(e) => this.setState({ age: e.target.value })}>
+                </input>
 
-                <p className="inputTitle">Enter new sex</p>
+                <p className="input-Title">Enter new sex</p>
                 <select name="sex" className="input"
                 onChange={(e) => this.setState({ sex: e.target.value })}>
+                    <option disabled default value> -- select a sex -- </option>
                     <option value='Male'>Male</option>
                     <option value='Female'>Female</option>
                 </select>
 
-                <p className="inputTitle">Enter new email</p>
+                <p className="input-Title">Enter new email</p>
                 <input className="input" placeholder="Email"
-                onChange={(e) => this.setState({ email: e.target.value })}
-                ></input>
+                onChange={(e) => this.setState({ email: e.target.value })}>
+                </input>
 
-                <div className="confirmForm">
-                    <p className="inputTitle">Enter password to confirm</p>
-                    <input className="inputConfirm" placeholder="Password" type="password"
+                <div className="confirm-Form">
+                    <p className="input-Title">Enter password to confirm</p>
+                    <input className="input-Confirm" placeholder="Password" type="password"
                         onChange={(e) => this.setState({ confirmPassword: e.target.value })}
                     ></input>
-                    <button className="modButton" onClick={this.confirmChanges}>Confirm</button>
+                <button className="mod-Button" onClick={this.confirmChanges}>Confirm</button>
                 </div>
             </form>
         )
