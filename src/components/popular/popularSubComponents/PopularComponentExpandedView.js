@@ -11,7 +11,7 @@ function ContentPlacer(props) {
             {props.platform == 'twitter' && <p>{props.caption}</p>}
             <img src={props.img} />
             {props.videoUrl &&
-                <div className="videoWrapper">
+                <div className="youtube-video-container">
                     <iframe
                         width="560"
                         height="349"
