@@ -30,13 +30,11 @@ class Index extends React.Component {
     }
 
     componentWillMount() {
-
         if (localStorage.getItem('userId') != null && this.state.userId == 0) {
             this.setState({
                 userId: localStorage.getItem('userId')
             })
         }
-
     }
 
     render() {
@@ -60,6 +58,7 @@ class Index extends React.Component {
                     <Route path='/search' render={(props) => <Search {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <Route path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                 </div>
             </Router>
