@@ -39,7 +39,7 @@ resetState() {
 render() {
     let objToRender;
     if (this.state.deleteSuccsessfull) {
-        objToRender = <ModifyAlert title='Account deleted' btnTxt='OK!' link='/settings' />
+        objToRender = <ModifyAlert title='Account deleted' btnTxt='OK!' link='/popular' />
     } else if(this.state.wrongPassword){
         objToRender = <ModifyAlert title="Wrong password" btnTxt='Try again!' resetState={this.resetState}/>
     } else {

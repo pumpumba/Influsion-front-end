@@ -23,8 +23,13 @@ class DeleteForm extends React.Component {
           body: JSON.stringify({ usrid: this.state.userid, password: this.state.password})
       })
       .then(response => response.json())
-      .then(response => (response.dbResults.deleteSuccess) ? this.props.deleteSuccsessfull() : this.props.wrongPassword())
-
+      .then(function(response){
+          if(!response.dbResults.deleteSuccess){
+              this.props.wrongPassword()
+          }else if(response.dbResults.deleteSuccess === undefined){
+              this.props.deleteSuccsessfull()
+          }
+      })
     }
 
     render() {
