@@ -1,6 +1,5 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import InfluencerComponent from './InfluencerComponent'
+import SearchSuggestionComponent from './SearchSuggestionComponent'
 
 class SearchSuggestions extends React.Component {
     constructor(props) {
@@ -648,7 +647,7 @@ class SearchSuggestions extends React.Component {
                 influencerName.push(this.state.searchResults[i])
             }
             feedContent = influencerName.map(curContent => {
-                return <InfluencerComponent
+                return <SearchSuggestionComponent
                     data={curContent}
                     key={curContent.inflid}
                 />

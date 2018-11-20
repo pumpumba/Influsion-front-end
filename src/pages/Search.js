@@ -1,8 +1,6 @@
 import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import InfluencerComponent from './../components/search/InfluencerComponent'
 import SearchSuggestions from './../components/search/SearchSuggestions'
 
 class Search extends React.Component {
