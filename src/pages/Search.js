@@ -1,15 +1,12 @@
 import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import SearchSuggestions from './../components/search/SearchSuggestions'
 
 class Search extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            options: false,
-        }
     }
 
     render() {
@@ -17,20 +14,12 @@ class Search extends React.Component {
             <div>
                 <Header />
                 <main className='search-content'>
-                    <form className='search-input-wrapper'>
-                            <input
-                                className='searchInput'
-                                placeholder="Search"
-                            />
-                            <button >
-                                <FontAwesomeIcon icon={'search'} />
-                            </button>
-                    </form>
+                    <SearchSuggestions />
                     <div className='info-text'>
                         Welcome to the world of searching and all we can give
                   <br />
                         <br />
-                        Search for the username of your favorite influncer and experince the magic!
+                        Start typing the name of your favorite influncer and experince the magic!
                 </div>
                 </main>
                 <Footer />
