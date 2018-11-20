@@ -61,10 +61,13 @@ class SimpleAreaChart extends React.Component {
 
 
 class Statistics extends React.Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return(
       <div>
-        <h1 className="statistics-header"> Site statistics!</h1>
+        <h1 className="statistics-header">{this.props.title}</h1>
         <div className="all-stat-charts">
           <div className="first-chart">
             <p className="statistics-title"> Followers on instagram </p>

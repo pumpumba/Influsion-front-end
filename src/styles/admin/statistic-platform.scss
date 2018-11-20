@@ -1,0 +1,49 @@
+.statistics-header{
+  text-align: center;
+  margin:auto;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+
+}
+
+.all-stat-charts{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+
+}
+.statistics-title{
+  text-align: center;
+  margin-left: auto;
+  margin-top: 3px;
+  margin-bottom:2px;
+}
+
+
+.first-chart,.second-chart,.third-chart{
+  border-bottom: 2px solid black;
+}
+
+.first-chart{
+  border-right: 2px solid black;
+  h1{
+    text-align: center;
+    margin-top: 5%;
+  }
+}
+.third-chart{
+  border-left: 2px solid black;
+  h1{
+    text-align: center;
+    margin-top: 5%;
+  }
+}
+
+.fourth-chart{
+  border-right: 2px solid black;
+  font-size: 1em;
+}
+
+.sixth-chart{
+  border-left: 2px solid black
+}
