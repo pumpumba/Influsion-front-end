@@ -42,10 +42,10 @@ class Index extends React.Component {
         if (this.state.userId == 0) {
             return (
                 <Router>
-                    <div>
+                    <Switch>
                         <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                       <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    </div>
+                        <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    </Switch>
                 </Router>
             )
         }
