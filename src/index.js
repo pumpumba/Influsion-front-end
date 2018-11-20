@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Popular from './pages/Popular'
 import Feed from './pages/Feed'
 import Search from './pages/Search'
@@ -42,25 +42,25 @@ class Index extends React.Component {
         if (this.state.userId == 0) {
             return (
                 <Router>
-                    <div>
+                    <Switch>
                         <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    </div>
+                    </Switch>
                 </Router>
             )
         }else{
             return (
-                <Router>
-                    <div>
-                        <Route exact path='/' render={(props) => <Popular {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/feed' render={(props) => <Feed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/search' render={(props) => <Search {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    </div>
-                </Router>
+              <Router>
+                  <Switch>
+                      <Route exact path='/' render={(props) => <Popular {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route exact path='/feed' render={(props) => <Feed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route exact path='/search' render={(props) => <Search {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route exact path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route exact path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                  </Switch>
+              </Router>
             )
         }
     }

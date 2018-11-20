@@ -1,0 +1,33 @@
+.search-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0.5em;
+        padding: .5rem;
+        border-radius: 25px;
+        background:rgba(255,255,255, 0.6);
+
+        a{
+          font-size: 1.2em;
+          color: $medium;
+        }
+
+        .search-platforms{
+          color: $medium;
+          font-size: 1em;
+          letter-spacing: 10px;
+          margin-left: auto;
+          margin-right: 1rem;
+        }
+
+        img {
+                border-radius: 99px;
+                border: 2px solid $hard;
+                height: 2em;
+                width: 2em;
+                margin-right: 0.7em;
+            }
+            * {
+                display: inline;
+            }
+}
