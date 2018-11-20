@@ -22,7 +22,7 @@ class Search extends React.Component {
                         Start typing the name of your favorite influncer and experince the magic!
                 </div>
                 </main>
-                <Footer />
+                <Footer/>
             </div>
         )
     }

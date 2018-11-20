@@ -42,28 +42,32 @@ class FilterFooter extends React.Component {
     }
 
     render() {
-        return (
-            <div className="filter">
-                <FontAwesomeIcon
-                    icon={['fab', 'twitter']}
-                    className="item"
-                    onClick={this.changeTwitter}
-                    data-state={this.state.twitter && 'active'}
-                />
-                <FontAwesomeIcon
-                    icon={['fab', 'instagram']}
-                    className="item"
-                    onClick={this.changeInstagram}
-                    data-state={this.state.instagram && 'active'}
-                />
-                <FontAwesomeIcon
-                    icon={['fab', 'youtube']}
-                    className="item"
-                    onClick={this.changeYoutube}
-                    data-state={this.state.youtube && 'active'}
-                />
-            </div>
-        )
+        if(this.props.showFilter){
+            return (
+                <div className="filter">
+                    <FontAwesomeIcon
+                        icon={['fab', 'twitter']}
+                        className="item"
+                        onClick={this.changeTwitter}
+                        data-state={this.state.twitter && 'active'}
+                    />
+                    <FontAwesomeIcon
+                        icon={['fab', 'instagram']}
+                        className="item"
+                        onClick={this.changeInstagram}
+                        data-state={this.state.instagram && 'active'}
+                    />
+                    <FontAwesomeIcon
+                        icon={['fab', 'youtube']}
+                        className="item"
+                        onClick={this.changeYoutube}
+                        data-state={this.state.youtube && 'active'}
+                    />
+                </div>
+            )
+        }else{
+            return null
+        }
     }
 }
 

@@ -62,7 +62,7 @@ class Feed extends React.Component {
                     <main className='feed'>
                         <h2>Nothing here to show, please follow a influencer...</h2>
                     </main>
-                    <Footer />
+                    <Footer showFilter='true'/>
                 </div>
 
             )

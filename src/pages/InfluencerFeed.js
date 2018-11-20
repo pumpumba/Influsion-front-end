@@ -50,7 +50,7 @@ class InfluencerFeed extends React.Component {
         <main>
           {feedContent}
         </main>
-        <Footer updateFeedFilters={this.updateFeedFilters} />
+        <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true'/>
       </div>
     )
   }
