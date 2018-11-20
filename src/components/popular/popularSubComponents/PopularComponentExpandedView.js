@@ -9,8 +9,7 @@ function ContentPlacer(props) {
     return (
         <div className='content-container'>
             {props.platform == 'twitter' && <p>{props.caption}</p>}
-            <img src={props.img} />
-            {props.videoUrl &&
+            {props.videoUrl ?
                 <div className="youtube-video-container">
                     <iframe
                         width="560"
@@ -20,6 +19,8 @@ function ContentPlacer(props) {
                         allowFullScreen>
                     </iframe>
                 </div>
+                :
+                <img src={props.img} />
             }
             {props.platform != 'twitter' && <p>{props.caption}</p>}
             <div className='meta-data'>

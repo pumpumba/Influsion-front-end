@@ -10,7 +10,6 @@ class Settings extends React.Component {
   }
 
   logOut() {
-    console.log('logga ut')
     this.props.updateUserId(0)
   }
 
