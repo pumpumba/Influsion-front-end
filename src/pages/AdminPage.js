@@ -3,9 +3,8 @@ import Popular from './Popular'
 import {AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area} from 'recharts'
 import Statistics from './../components/admin/Statistics'
 import CreateAd from './../components/admin/CreateAd'
-
-
-
+import InfluencerList from './../components/admin/InfluencerList'
+import ListOfAds from './../components/admin/ListOfAds'
 
 class AdminPage extends React.Component {
 
@@ -25,9 +24,11 @@ class AdminPage extends React.Component {
             <Statistics/>
           </div>
           <div className="admin-center-content">
+            <ListOfAds/>
             <CreateAd/>
           </div>
           <div className="admin-right-content">
+            <InfluencerList/>
           </div>
         </div>
      </div>

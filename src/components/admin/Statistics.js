@@ -24,9 +24,19 @@ const data02 = [{name: 'Group A', value: 2400}, {name: 'Group B', value: 4567},
 class TwoSimplePieChart extends React.Component{
 	render () {
   	return (
-    	<PieChart width={800} height={400}>
-        <Pie isAnimationActive={false} data={data01} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
-        <Pie data={data02} cx={500} cy={200} innerRadius={40} outerRadius={80} fill="#82ca9d"/>
+    	<PieChart width={250} height={250}>
+        <Pie isAnimationActive={false} data={data01} cx={125} cy={125} outerRadius={60} fill="#8884d8" label/>
+        <Tooltip/>
+       </PieChart>
+    );
+  }
+}
+
+class OneSimplePieChart extends React.Component{
+	render () {
+  	return (
+    	<PieChart width={250} height={250}>
+        <Pie data={data02} cx={125} cy={125} innerRadius={10} outerRadius={60} fill="#82ca9d"/>
         <Tooltip/>
        </PieChart>
     );
@@ -54,9 +64,34 @@ class Statistics extends React.Component {
   render() {
     return(
       <div>
-    <SimpleAreaChart/>
-    <TwoSimplePieChart/>
-    </div>
+        <h1 className="statistics-header"> Site statistics!</h1>
+        <div className="all-stat-charts">
+          <div className="first-chart">
+            <p className="statistics-title"> Followers on instagram </p>
+            <TwoSimplePieChart />
+          </div>
+          <div className="second-chart">
+          <p className="statistics-title"> Followers on instagram </p>
+            <OneSimplePieChart />
+          </div>
+          <div className="third-chart">
+          <p className="statistics-title"> Followers on instagram </p>
+            <TwoSimplePieChart/>'
+          </div>
+          <div className="fourth-chart">
+          <p className="statistics-title"> Followers on instagram </p>
+            <OneSimplePieChart/>
+          </div>
+          <div className="fifth-chart">
+          <p className="statistics-title"> Followers on instagram </p>
+            <TwoSimplePieChart/>
+          </div>
+          <div className="sixth-chart">
+          <p className="statistics-title"> Followers on instagram </p>
+            <OneSimplePieChart/>
+          </div>
+        </div>
+      </div>
     )
   }
 }

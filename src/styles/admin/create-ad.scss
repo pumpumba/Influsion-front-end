@@ -1,9 +1,9 @@
 .input-form-container{
-  height:40%;
+  height:35%;
   width: 90%;
   margin:auto;
   display: grid;
-  grid-auto-rows: 1fr 4fr 2fr;
+  grid-auto-rows: 1fr 3fr 2fr;
   grid-gap: 5px;
 
   input, textarea{
@@ -45,6 +45,8 @@
   padding: 1vw;
   text-align: left;
   font: inherit;
+  overflow-y: auto;
+  resize: none;
 }
 
 .submitAdButton{
@@ -55,4 +57,10 @@
   height: 5vh;
   border-radius: 25px;
   border: 1px solid $hard;
+}
+.create-ad-title{
+  text-align: center;
+  border-top: 1px solid black;
+  margin-bottom: 10px;
+  padding: 4px;
 }
