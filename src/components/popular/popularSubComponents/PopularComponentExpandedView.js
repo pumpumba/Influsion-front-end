@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimeAgo from 'react-timeago'
 import { StopPropagation } from 'react-clickable'
+import { NavLink } from 'react-router-dom'
 
 
 function ContentPlacer(props) {
@@ -10,7 +11,7 @@ function ContentPlacer(props) {
             {props.platform == 'twitter' && <p>{props.caption}</p>}
             <img src={props.img} />
             {props.videoUrl &&
-                <div className="videoWrapper">
+                <div className="youtube-video-container">
                     <iframe
                         width="560"
                         height="349"
@@ -70,9 +71,11 @@ class PopularComponentExpandedView extends React.Component {
             <div className='expanded-view'>
                 <div className='header'>
                     <img src={this.props.userProfileImageUrl} />
-                    <a href={`/${this.props.influencerId}`}> {this.props.userName}  </a>
+                    <NavLink to={`/${this.props.influencerId}`}> {this.props.userName}  </NavLink>
                     {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
-                    <a href={this.props.url}> {this.props.icon} </a>
+                    <a href={this.props.url} className='platform-link'>
+                        <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
+                    </a>
                 </div>
                 <ContentPlacer {...this.props} />
             </div>
