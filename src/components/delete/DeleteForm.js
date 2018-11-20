@@ -7,7 +7,7 @@ class DeleteForm extends React.Component {
         super(props)
         this.state = {
             password: '',
-            userid: 46
+            userid: this.props.userId
         }
         this.deleteAccount = this.deleteAccount.bind(this)
     }
@@ -23,13 +23,7 @@ class DeleteForm extends React.Component {
           body: JSON.stringify({ usrid: this.state.userid, password: this.state.password})
       })
       .then(response => response.json())
-      .then(function(response){
-          if(!response.dbResults.deleteSuccess){
-              this.props.wrongPassword()
-          }else if(response.dbResults.deleteSuccess === undefined){
-              this.props.deleteSuccsessfull()
-          }
-      })
+      .then(response => (response.dbResults.deleteSuccess === undefined)?this.props.deleteSuccsessfull():this.props.wrongPassword())
     }
 
     render() {
@@ -42,7 +36,7 @@ class DeleteForm extends React.Component {
                     type="password" className="delete-Input">
                 </input>
                 <div className="delete-Options">
-                    <Link  to='/delete' className="delete-Button" onClick={this.deleteAccount}>Confirm</Link>
+                    <button className="delete-Button" onClick={this.deleteAccount}>Confirm</button>
                     <Link to='/settings' className="delete-Button" > Gosh no, cancel </Link>
                 </div>
             </form>

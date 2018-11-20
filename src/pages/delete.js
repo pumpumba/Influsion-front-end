@@ -17,16 +17,23 @@ constructor(props){
     this.deleteSuccsessfull = this.deleteSuccsessfull.bind(this)
     this.wrongPassword = this.wrongPassword.bind(this)
     this.resetState = this.resetState.bind(this)
+    this.logout = this.logout.bind(this)
 }
 
 deleteSuccsessfull() {
-    console.log("Delete")
+    this.setState({
+        deleteSuccsessfull: true
+    })
 }
 
 wrongPassword(){
     this.setState({
         wrongPassword: true
     })
+}
+
+logout(){
+    this.props.updateUserId(0);
 }
 
 resetState() {
@@ -39,11 +46,11 @@ resetState() {
 render() {
     let objToRender;
     if (this.state.deleteSuccsessfull) {
-        objToRender = <ModifyAlert title='Account deleted' btnTxt='OK!' link='/popular' />
+        objToRender = <ModifyAlert title='Account deleted' btnTxt='OK!' link='/login' resetState={this.logout} />
     } else if(this.state.wrongPassword){
         objToRender = <ModifyAlert title="Wrong password" btnTxt='Try again!' resetState={this.resetState}/>
     } else {
-        objToRender =<DeleteForm modSuccsessfull={this.deleteSuccsessfull}
+        objToRender =<DeleteForm deleteSuccsessfull={this.deleteSuccsessfull}
         wrongPassword={this.wrongPassword}
         userId={this.props.userId}/>
     }

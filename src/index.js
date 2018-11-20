@@ -40,21 +40,6 @@ class Index extends React.Component {
     }
 
     render() {
-        return (
-                <Router>
-                    <div>
-                        <Route exact path='/' component={() => <Popular updateUserId={this.updateUserId} userId={this.state.userId} />}/>
-                        <Route path='/feed' component={() => <Feed updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/search' component={() => <Search updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/settings' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/login' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/register' component={() => <Register updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/modifyUser' component={() => <ModifyUser updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/delete' component={() => <Delete updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/influencer/:influencerid' component={InfluencerFeed} />
-                      </div>
-                </Router>
-         )
         if (this.state.userId == 0) {
             return (
                 <Router>
@@ -76,6 +61,7 @@ class Index extends React.Component {
                     <Route path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <Route path='/delete' render={(props) => <Delete {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                 </div>
             </Router>
         )

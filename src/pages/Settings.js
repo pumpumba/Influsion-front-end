@@ -12,7 +12,7 @@ class Settings extends React.Component {
   logOut() {
     console.log('logga ut')
     this.props.updateUserId(0)
-  } 
+  }
 
     render() {
         return (
@@ -22,7 +22,7 @@ class Settings extends React.Component {
                     <div className='settings'>
                         <h1>Settings</h1>
                         <Link to='/login' className='white-button'>Log in</Link>
-                        <button onClick={this.logOut} className='white-button'>Logga ut</button>
+                        <button onClick={this.logOut} className='white-button'>Log out</button>
                         <Link to='/modifyUser' className='white-button'>Edit information</Link>
                         <Link to='/delete' className='white-button' >Delete account</Link>
                     </div>
