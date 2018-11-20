@@ -50,7 +50,7 @@ class Popular extends React.Component {
                 <main className='popular-feed-content'>
                     {feedContent}
                 </main>
-                <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true'/>
+                <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
             </div>
         )
     }

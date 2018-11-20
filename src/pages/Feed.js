@@ -52,7 +52,7 @@ class Feed extends React.Component {
                     <main>
                         {feedContent}
                     </main>
-                    <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true'/>
+                    <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
                 </div>
             )
         } else {
@@ -62,7 +62,7 @@ class Feed extends React.Component {
                     <main className='feed'>
                         <h2>Nothing here to show, please follow a influencer...</h2>
                     </main>
-                    <Footer showFilter='true'/>
+                    <Footer showFilter='true' />
                 </div>
 
             )

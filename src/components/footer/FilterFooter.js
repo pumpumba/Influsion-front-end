@@ -42,7 +42,7 @@ class FilterFooter extends React.Component {
     }
 
     render() {
-        if(this.props.showFilter){
+        if (this.props.showFilter) {
             return (
                 <div className="filter">
                     <FontAwesomeIcon
@@ -65,7 +65,7 @@ class FilterFooter extends React.Component {
                     />
                 </div>
             )
-        }else{
+        } else {
             return null
         }
     }
