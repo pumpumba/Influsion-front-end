@@ -8,6 +8,8 @@
   margin-right: 3px;
   margin-top: 0.8vh;
   margin-bottom: 0.8vh;
+  cursor: pointer;
+
 
   img{
     height: 40px;
@@ -16,6 +18,34 @@
   }
   p{
     padding-top: 0.8vw;
+  }
+}
+.influencer-list-component:hover{
+  font-weight: bold;
+}
+
+.influencer-list-component-active{
+  display: grid;
+  grid-template-columns:0.5fr 1fr 3fr 1fr;
+  width: 100%;
+  grid-gap: 1px;
+  padding: 1px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 0.8vh;
+  margin-bottom: 0.8vh;
+  cursor: pointer;
+  font-weight: bold;
+  color: $medium;
+  border-bottom: 1px solid black;
+
+  img{
+    height: 50px;
+    width: 50px;
+  }
+  p{
+    padding-top: 0.8vw;
+    margin-left: 3px;
   }
 }
 
@@ -28,4 +58,11 @@
   border-bottom: 1px solid black;
   margin-bottom: 10px;
   padding: 4px;
+}
+.influencer-list-header{
+  display: grid;
+  background-color: $medium;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  margin-left: 20%;
 }

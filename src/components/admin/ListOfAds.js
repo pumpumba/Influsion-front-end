@@ -9,11 +9,11 @@ class ListOfAds extends React.Component {
       <div>
         <h1 className="ad-list-title">List of your ads</h1>
         <div className="ad-list">
-        <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
-        <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
-        <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
-        <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
-        <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
+          <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
+          <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
+          <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
+          <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
+          <ListOfAdsComponent date="27/11" title="cocacola ad" views="48"/>
         </div>
       </div>
     );

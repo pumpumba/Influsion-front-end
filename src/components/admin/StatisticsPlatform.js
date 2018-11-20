@@ -60,15 +60,15 @@ class SimpleAreaChart extends React.Component {
 }
 
 
-class Statistics extends React.Component {
+class StatisticsPlatform extends React.Component {
   render() {
     return(
       <div>
         <h1 className="statistics-header"> Site statistics!</h1>
         <div className="all-stat-charts">
           <div className="first-chart">
-            <p className="statistics-title"> Followers on instagram </p>
-            <TwoSimplePieChart />
+            <p className="statistics-title"> Amount of Users </p>
+            <h1>11235</h1>
           </div>
           <div className="second-chart">
           <p className="statistics-title"> Followers on instagram </p>
@@ -96,4 +96,4 @@ class Statistics extends React.Component {
   }
 }
 
-export default Statistics
+export default StatisticsPlatform
