@@ -35,52 +35,49 @@ class RegisterForm extends React.Component {
             },
             body: JSON.stringify(this.state)
         })
-        .then(response => response.json())
-        .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
-        .catch(error => this.props.registerUnsuccsessfull())
+            .then(response => response.json())
+            .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
+            .catch(error => this.props.registerUnsuccsessfull())
     }
 
     validateUsername(input) {
-      if( this.state.username.length <= 1) {
-        this.setState({ usernameError: 'Ditt användarnamn är för kort.'})
-      } else {
-        this.setState({usernameError: ''})
-      }
+        if (this.state.username.length <= 1) {
+            this.setState({ usernameError: 'Ditt användarnamn är för kort.' })
+        } else {
+            this.setState({ usernameError: '' })
+        }
     }
 
     validatePassword(input) {
-      if( this.state.password.length <= 6) {
-        this.setState({ passwordError: 'Ditt lösenord är för kort.'})
-      } else if (!this.hasNumber(this.state.password)) {
-        this.setState({ passwordError: 'Ditt lösenord saknar siffror.'})
-      } else if (this.hasCharacter(this.state.password)) {
-        this.setState({ passwordError: 'Ditt lösenord saknar bokstäver.'})
-      } else {
-        this.setState({passwordError: ''})
-      }
+        if (this.state.password.length <= 6) {
+            this.setState({ passwordError: 'Ditt lösenord är för kort.' })
+        } else if (!this.hasNumber(this.state.password)) {
+            this.setState({ passwordError: 'Ditt lösenord saknar siffror.' })
+        } else if (this.hasCharacter(this.state.password)) {
+            this.setState({ passwordError: 'Ditt lösenord saknar bokstäver.' })
+        } else {
+            this.setState({ passwordError: '' })
+        }
     }
 
     validateEmail(input) {
-      if(!this.isEmail(this.state.email)) {
-        this.setState({ emailError: 'Det är inte en rimlig adress.'})
-      } else {
-        this.setState({emailError: ''})
-      }
+        if (!this.isEmail(this.state.email)) {
+            this.setState({ emailError: 'Det är inte en rimlig adress.' })
+        } else {
+            this.setState({ emailError: '' })
+        }
     }
 
-    //Check if a string contains any characters.
     hasCharacter(myString) {
-      return /^[^a-zA-Z]*$/.test(myString)
+        return /^[^a-zA-Z]*$/.test(myString)
     }
 
-    //Check if a string contains any integers.
     hasNumber(myString) {
-      return /\d/.test(myString)
+        return /\d/.test(myString)
     }
 
-    //Check if it is a valid email.
     isEmail(email) {
-      return /\S+@\S+/.test(email)
+        return /\S+@\S+/.test(email)
     }
 
     render() {
@@ -88,22 +85,22 @@ class RegisterForm extends React.Component {
             <form>
                 <h2>Register</h2>
                 <input
-                    onChange={(e) => this.setState({ username: e.target.value }, this.validateUsername() )}
+                    onChange={(e) => this.setState({ username: e.target.value }, this.validateUsername())}
                     placeholder="Username"
                     type="text"
                 >
                 </input>
                 {this.state.usernameError &&
-                <span className='error'>{this.state.usernameError}</span>
+                    <span className='error'>{this.state.usernameError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ password: e.target.value }, this.validatePassword() )}
+                    onChange={(e) => this.setState({ password: e.target.value }, this.validatePassword())}
                     placeholder="Password"
                     type="password"
                 >
                 </input>
                 {this.state.passwordError &&
-                <span className='error'>{this.state.passwordError}</span>
+                    <span className='error'>{this.state.passwordError}</span>
                 }
                 <input
                     onChange={(e) => this.setState({ email: e.target.value }, this.validateEmail())}
@@ -112,7 +109,7 @@ class RegisterForm extends React.Component {
                 >
                 </input>
                 {this.state.emailError &&
-                <span className='error'>{this.state.emailError}</span>
+                    <span className='error'>{this.state.emailError}</span>
                 }
                 <input
                     onChange={(e) => this.setState({ age: e.target.value })}
