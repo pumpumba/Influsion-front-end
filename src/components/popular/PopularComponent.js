@@ -34,9 +34,9 @@ class PopularComponent extends React.Component {
             heart: !prevState.heart
         }))
         if (this.state.heart) {
-            unfollowInfluencer(this.props.userId, this.props.data.realInfluencerName)
+            unfollowInfluencer(this.props.userId, this.props.data.influencerID)
         } else {
-            followInfluencer(this.props.userId, this.props.data.realInfluencerName)
+            followInfluencer(this.props.userId, this.props.data.influencerID)
         }
     }
 
