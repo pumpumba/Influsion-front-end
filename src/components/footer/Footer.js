@@ -6,7 +6,7 @@ const Footer = (props) => {
 
     return (
         <footer>
-            <FilterFooter updateFeedFilters={props.updateFeedFilters} />
+            <FilterFooter updateFeedFilters={props.updateFeedFilters} showFilter={props.showFilter} />
             <SubFooter />
         </footer>
     )
