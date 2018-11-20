@@ -76,6 +76,7 @@ class PopularComponent extends React.Component {
                         platform={this.props.data.platform}
                         influencerId={this.props.data.influencerID}
                     />
+                    {this.state.open &&
                     <PopularComponentExpandedView
                         userProfileImageUrl={this.props.data.user_profile_image_url || this.props.data.video_thumbnail_url ||this.props.data.userProfileImageUrl}
                         userName={this.props.data.user_name || this.props.data.channel_title || this.props.data.userName}
@@ -94,6 +95,7 @@ class PopularComponent extends React.Component {
                         heart={this.state.heart}
                         influencerId={this.props.data.influencerID}
                     />
+                    }
                     <div className='blur-overlay'></div>
                 </div>
             )
