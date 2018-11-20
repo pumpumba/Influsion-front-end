@@ -6,13 +6,23 @@ class RegisterForm extends React.Component {
         super(props)
         this.state = {
             username: '',
+            usernameError: '',
             password: '',
+            passwordError: '',
             email: '',
+            emailError: '',
             age: '',
             sex: 'Male'
         }
 
         this.registerNewUser = this.registerNewUser.bind(this)
+        this.validateUsername = this.validateUsername.bind(this)
+        this.validatePassword = this.validatePassword.bind(this)
+        this.validateEmail = this.validateEmail.bind(this)
+        this.hasNumber = this.hasNumber.bind(this)
+        this.hasCharacter = this.hasCharacter.bind(this)
+        this.isEmail = this.isEmail.bind(this)
+
     }
 
     registerNewUser(e) {
@@ -25,9 +35,49 @@ class RegisterForm extends React.Component {
             },
             body: JSON.stringify(this.state)
         })
-        .then(response => response.json())
-        .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
-        .catch(error => this.props.registerUnsuccsessfull())
+            .then(response => response.json())
+            .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
+            .catch(error => this.props.registerUnsuccsessfull())
+    }
+
+    validateUsername(input) {
+        if (this.state.username.length <= 1) {
+            this.setState({ usernameError: 'Ditt användarnamn är för kort.' })
+        } else {
+            this.setState({ usernameError: '' })
+        }
+    }
+
+    validatePassword(input) {
+        if (this.state.password.length <= 6) {
+            this.setState({ passwordError: 'Ditt lösenord är för kort.' })
+        } else if (!this.hasNumber(this.state.password)) {
+            this.setState({ passwordError: 'Ditt lösenord saknar siffror.' })
+        } else if (this.hasCharacter(this.state.password)) {
+            this.setState({ passwordError: 'Ditt lösenord saknar bokstäver.' })
+        } else {
+            this.setState({ passwordError: '' })
+        }
+    }
+
+    validateEmail(input) {
+        if (!this.isEmail(this.state.email)) {
+            this.setState({ emailError: 'Det är inte en rimlig adress.' })
+        } else {
+            this.setState({ emailError: '' })
+        }
+    }
+
+    hasCharacter(myString) {
+        return /^[^a-zA-Z]*$/.test(myString)
+    }
+
+    hasNumber(myString) {
+        return /\d/.test(myString)
+    }
+
+    isEmail(email) {
+        return /\S+@\S+/.test(email)
     }
 
     render() {
@@ -35,19 +85,32 @@ class RegisterForm extends React.Component {
             <form>
                 <h2>Register</h2>
                 <input
-                    onChange={(e) => this.setState({ username: e.target.value })}
+                    onChange={(e) => this.setState({ username: e.target.value }, this.validateUsername())}
                     placeholder="Username"
+                    type="text"
                 >
                 </input>
+                {this.state.usernameError &&
+                    <span className='error'>{this.state.usernameError}</span>
+                }
                 <input
-                    onChange={(e) => this.setState({ password: e.target.value })}
+                    onChange={(e) => this.setState({ password: e.target.value }, this.validatePassword())}
                     placeholder="Password"
-                    type="password"></input>
-                <input
-                    onChange={(e) => this.setState({ email: e.target.value })}
-                    placeholder="Email"
+                    type="password"
                 >
                 </input>
+                {this.state.passwordError &&
+                    <span className='error'>{this.state.passwordError}</span>
+                }
+                <input
+                    onChange={(e) => this.setState({ email: e.target.value }, this.validateEmail())}
+                    placeholder="Email"
+                    type="text"
+                >
+                </input>
+                {this.state.emailError &&
+                    <span className='error'>{this.state.emailError}</span>
+                }
                 <input
                     onChange={(e) => this.setState({ age: e.target.value })}
                     placeholder="Age"
