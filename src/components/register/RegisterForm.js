@@ -30,7 +30,6 @@ class RegisterForm extends React.Component {
         .catch(error => this.props.registerUnsuccsessfull())
     }
 
-
     render() {
         return (
             <form>

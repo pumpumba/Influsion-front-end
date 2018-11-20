@@ -48,21 +48,21 @@ class Index extends React.Component {
                     </div>
                 </Router>
             )
+        }else{
+            return (
+                <Router>
+                    <div>
+                        <Route exact path='/' render={(props) => <Popular {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/feed' render={(props) => <Feed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/search' render={(props) => <Search {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    </div>
+                </Router>
+            )
         }
-
-        return (
-            <Router>
-                <div>
-                    <Route exact path='/' render={(props) => <Popular {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route path='/feed' render={(props) => <Feed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route path='/search' render={(props) => <Search {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                </div>
-            </Router>
-        )
     }
 }
 
