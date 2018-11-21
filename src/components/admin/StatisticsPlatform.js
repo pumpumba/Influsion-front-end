@@ -118,8 +118,8 @@ class StatisticsPlatform extends React.Component {
   }
   render() {
     return(
-      <div>
-        <h1 className="statistics-header">{this.props.title}</h1>
+      <div className='admin-box'>
+        <h1 className="section-title">{this.props.title}</h1>
         <div className="all-stat-charts">
           <div className="first-chart">
             <p className="statistics-title"> Amount of Users </p>
@@ -133,7 +133,7 @@ class StatisticsPlatform extends React.Component {
           </div>
           <div className="third-chart">
             <p className="statistics-title">Influencers connected </p>
-            <h1>11235</h1>
+            <h1>126</h1>
             <SimpleAreaChart data={dataAreaChartInfluencers}/>
           </div>
           <div className="fourth-chart">

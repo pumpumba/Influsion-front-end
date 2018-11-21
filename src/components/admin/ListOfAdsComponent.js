@@ -10,9 +10,9 @@ class ListOfAdsComponent extends React.Component {
   render () {
     return(
       <div className="ad-list-component">
-        <p>{this.props.date}</p>
-        <p>{this.props.title}</p>
-        <p>{this.props.views}</p>
+        <span>{this.props.date}</span>
+        <span>{this.props.title}</span>
+        <span>{this.props.views}</span>
       </div>
     );
   }

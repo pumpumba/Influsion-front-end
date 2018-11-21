@@ -6,15 +6,12 @@ import ListOfAdsComponent from './ListOfAdsComponent'
 class ListOfAds extends React.Component {
   render () {
     return(
-      <div>
-        <h1 className="ad-list-title">List of your ads</h1>
+      <div className='admin-box'>
+        <h1 className="section-title">List of your ads</h1>
           <div className="ad-list-header">
-            <p>
-              Title
-            </p>
-            <p>
-              Clicks
-            </p>
+            <span>Date</span>
+            <span>Title</span>
+            <span>Clicks</span>
           </div>
         <div className="ad-list">
 

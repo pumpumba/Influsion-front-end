@@ -13,7 +13,7 @@ class InfluencerListComponent extends React.Component {
 
     var classes = "influencer-list-component"
     if(this.props.isActive){
-      classes = "influencer-list-component-active"
+      classes = "influencer-list-component active"
     }
 
     return (

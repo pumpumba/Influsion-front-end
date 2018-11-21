@@ -66,8 +66,8 @@ class Statistics extends React.Component {
   }
   render() {
     return(
-      <div>
-        <h1 className="statistics-header">{this.props.title}</h1>
+      <div className='admin-box'>
+        <h1 className="section-title">{this.props.title}</h1>
         <div className="all-stat-charts">
           <div className="first-chart">
             <p className="statistics-title"> Amount of followers per country </p>

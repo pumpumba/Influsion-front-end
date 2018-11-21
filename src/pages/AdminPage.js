@@ -47,7 +47,6 @@ class AdminPage extends React.Component {
                     </div>
                     <div className="admin-center-content" onClick={this.rightClickContent}>
                         <InfluencerList />
-
                     </div>
                     <div className="admin-right-content">
                         <ListOfAds />

@@ -1,29 +1,15 @@
-  .title {
-    justify-content: center;
-    font-family: 'Pacifico', cursive;
+.settings{
     color: $white;
-    margin: 4rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $light-pink;
+    min-height: 100vh;
+    padding: 1rem;
+
+  h1 {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    margin: 4rem 0;
     font-size: 5rem;
   }
-
-  .setting{
-      justify-content: center;
-      margin: 1rem;
-      padding: 0.2rem;
-      border: 0.1rem solid $white;
-      border-radius: .2rem;
-      background: $white;
-      color: $grey;
-      font-size: 1.3rem;
-      width: 80%;
-      height: auto;
-      margin: 1rem;
-  }
-
-  .setting:hover{
-      background: $light-pink;
-  }
-
-  .setting:active{
-      background: $light-pink;
-  }
+}

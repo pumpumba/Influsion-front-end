@@ -1,66 +1,20 @@
-.input-form-container{
-  height:30%;
-  width: 90%;
-  margin:auto;
-  display: grid;
-  grid-auto-rows: 1fr 3fr 2fr;
-  grid-gap: 5px;
+.create-ad-container{
+  .white-form {
 
-  input, textarea{
-    box-shadow: 0 0 0 10px #f3c09c85 inset;
-    cursor: pointer;
+    input, select, textarea {
+      background-color: lighten($light-pink, 3%);
+      margin: 1rem 0;
+      border-bottom: 2px solid $medium;
+
+
+      &::placeholder {
+        color: $gs-hard;
+        font-size: 1.3rem;
+      }
+    }
+
+    .white-button {
+      background-color: lighten($light-pink, 3%);
+    }
   }
-}
-
-.ad-username{
-  background-color: $light;
-  border: none;
-  border-bottom: 1px solid grey;
-  padding: 1vw;
-}
-
-.ad-picture-container{
-  background-color: $light !important;
-  border-bottom: 1px solid grey;
-  padding: 1vw;
-  text-align: center;
-  box-shadow: 0 0 0 10px #f3c09c85 inset;
-  cursor: pointer;
-  img{
-    background-color: $light;
-    height: 200px;
-    overflow: hidden;
-  }
-  input{
-    box-shadow: none;
-    border:none;
-    background-color: $light;
-  }
-}
-.ad-picture-input{
-  width: 100%;
-}
-.ad-content-text{
-  background-color: $light;
-  padding: 1vw;
-  text-align: left;
-  font: inherit;
-  overflow-y: auto;
-  resize: none;
-}
-
-.submitAdButton{
-  width: 40%;
-  background-color: $medium;
-  margin:auto;
-  font-weight: bold;
-  height: 5vh;
-  border-radius: 25px;
-  border: 1px solid $hard;
-}
-.create-ad-title{
-  text-align: center;
-  border-top: 1px solid black;
-  margin-bottom: 10px;
-  padding: 4px;
 }
