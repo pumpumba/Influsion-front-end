@@ -42,16 +42,16 @@ jobs:
          docker_layer_caching: true
 
       - run:
-          name: Make chromedriver executable and start server
+          name: Start server
           command: |
             yarn
             yarn start &
 
       - run:
-          name: Run tests
+          name: Make chromedriver executable and run tests
           command: |
             cd seleniumMaven
-            chmod +x
+            chmod +x chromedriver
             mvn test
 
       - run:
