@@ -19,9 +19,9 @@ class FeedComponent extends React.Component {
             heart: !prevState.heart
         }))
         if (this.state.heart) {
-            unfollowInfluencer(this.props.userId, this.props.data.influencerID)
+            unfollowInfluencer(this.props.userId, this.props.data.inflid)
         } else {
-            followInfluencer(this.props.userId, this.props.data.influencerID)
+            followInfluencer(this.props.userId, this.props.data.inflid)
         }
     }
 
@@ -31,7 +31,7 @@ class FeedComponent extends React.Component {
                 <div className='feed-component-wrapper'>
                     <FeedComponentHeader
                         inflImgUrl={this.props.data.user_profile_image_url || this.props.data.video_thumbnail_url}
-                        inflId={this.props.data.influencerID}
+                        inflId={this.props.data.inflid}
                         inflName={this.props.data.user_name || this.props.data.channel_title}
                         contentUrl={this.props.data.tweet_url || this.props.data.post_url}
                         platform={this.props.platform}
