@@ -10,6 +10,10 @@
   z-index: 99;
   position: relative;
 
+  .back-to-login{
+      border: none;
+  }
+
   h1 {
     font-family: 'Pacifico', cursive;
     color: $white;
@@ -48,7 +52,7 @@
     }
   }
 
-  a, button {
+  button {
     text-align: center;
     background: transparent;
     color: $white;
@@ -60,6 +64,15 @@
     padding: 1rem;
     width: 80%;
     box-sizing: border-box;
+  }
+
+  .small-text {
+    color: $white;
+  }
+
+  .error{
+    color: $text;
+    display: block;
   }
 
 }
