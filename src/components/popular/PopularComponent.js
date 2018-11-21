@@ -75,7 +75,7 @@ class PopularComponent extends React.Component {
                         heart={this.state.heart}
                         platform={this.props.data.platform}
                         influencerId={this.props.data.influencerId}
-                    />
+                        />
                     {this.state.open &&
                     <PopularComponentExpandedView
                         userProfileImageUrl={this.props.data.video_thumbnail_url ||this.props.data.userProfileImageUrl}
