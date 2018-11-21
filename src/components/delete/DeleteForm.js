@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 class DeleteForm extends React.Component {
 
@@ -28,7 +28,7 @@ class DeleteForm extends React.Component {
 
     render() {
         return (
-            <form className="delete-Form">
+            <form className="white-form">
             <h2 className="delete-Title"> Are you sure that you want to delete your account? </h2>
                 <input
                     onChange={(e) => this.setState({ password: e.target.value })}
@@ -36,8 +36,8 @@ class DeleteForm extends React.Component {
                     type="password" className="delete-Input">
                 </input>
                 <div className="delete-Options">
-                    <button className="delete-Button" onClick={this.deleteAccount}>Confirm</button>
-                    <Link to='/settings' className="delete-Button" > Gosh no, cancel </Link>
+                    <button className="white-button" onClick={this.deleteAccount}>Confirm</button>
+                    <NavLink to='/settings' className="white-button" > Gosh no, cancel </NavLink>
                 </div>
             </form>
         )

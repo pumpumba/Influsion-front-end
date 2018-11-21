@@ -1,10 +1,13 @@
 .popular-component-wrapper {
+    background-color: white;
     background-size: cover;
     background-position: center center;
     width: 50%;
     float: left;
     display: flex;
     overflow: hidden;
+
+
 
     &:nth-child(4n+4), &:nth-child(4n+1) {
         background-color: lighten($light, 10%);

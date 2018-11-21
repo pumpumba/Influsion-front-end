@@ -1,8 +1,10 @@
 .white-button {
     background: $white;
+    border: none;
     border-radius: $borderRadius;
     border-bottom: 2px solid $light;
     color: $grey;
+    display: block;
     font-size: 1.3rem;
     height: auto;
     margin: 1rem 0;
