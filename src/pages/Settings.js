@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
+import NavLink from 'react-router-dom/NavLink';
 
 class Settings extends React.Component {
   constructor(props) {
@@ -20,10 +20,9 @@ class Settings extends React.Component {
                 <main>
                     <div className='settings'>
                         <h1>Settings</h1>
-                        <Link to='/login' className='white-button'>Log in</Link>
                         <button onClick={this.logOut} className='white-button'>Log out</button>
-                        <Link to='/modifyUser' className='white-button'>Edit information</Link>
-                        <Link to='/delete' className='white-button' >Delete account</Link>
+                        <NavLink to='/modify-user' className='white-button'>Edit information</NavLink>
+                        <NavLink to='/delete' className='white-button' >Delete account</NavLink>
                     </div>
                 </main>
                 <Footer />

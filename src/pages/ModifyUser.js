@@ -1,8 +1,6 @@
 import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
-import {Link} from 'react-router-dom'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import ModifyForm from './../components/modifyUser/ModifyForm'
 import ModifyAlert from './../components/modifyUser/ModifyAlert'
 

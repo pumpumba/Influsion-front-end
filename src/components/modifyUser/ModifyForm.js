@@ -10,13 +10,13 @@ class ModifyForm extends React.Component {
             email: '',
             age: 0,
             sex: '',
-            confirmPassword:''
+            confirmPassword: ''
         }
         this.sendChanges = this.sendChanges.bind(this);
         this.confirmChanges = this.confirmChanges.bind(this);
     }
 
-    confirmChanges(e){
+    confirmChanges(e) {
         e.preventDefault()
         fetch('http://40.127.101.155/db/login/', {
             method: 'post',
@@ -24,14 +24,14 @@ class ModifyForm extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username : this.state.username, password : this.state.confirmPassword})
+            body: JSON.stringify({ username: this.state.username, password: this.state.confirmPassword })
         })
             .then(response => response.json())
             .then(response => (response.dbResults.loginSuccess) ? this.sendChanges(e) : this.props.wrongPassword())
             .catch(error => this.loginUnsuccsessfull())
     }
 
-    sendChanges(e){
+    sendChanges(e) {
         e.preventDefault()
         fetch('http://40.127.101.155/db/modify_user/', {
             method: 'post',
@@ -41,64 +41,64 @@ class ModifyForm extends React.Component {
             },
             body: JSON.stringify(this.state)
         })
-        .then(response => response.json())
-        .then(response => (response.updateSuccess) ? this.props.modSuccsessfull() : this.props.modUnsuccsessfull())
+            .then(response => response.json())
+            .then(response => (response.updateSuccess) ? this.props.modSuccsessfull() : this.props.modUnsuccsessfull())
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const url = "http://40.127.101.155/db/get_user?usrid=" + this.state.usrid
         fetch(url, {
             params: this.state.userid
         })
-        .then(data => data.json())
-        .then(data => {
-            this.setState({
-                username: data.rows[0].usrname,
-                email: data.rows[0].email,
-                age: data.rows[0].age,
-                sex: data.rows[0].sex
+            .then(data => data.json())
+            .then(data => {
+                this.setState({
+                    username: data.rows[0].usrname,
+                    email: data.rows[0].email,
+                    age: data.rows[0].age,
+                    sex: data.rows[0].sex
+                })
             })
-        })
-        .then(data => console.log(data))
+            .then(data => console.log(data))
     }
 
     render() {
         return (
-            <form className="modify-Form">
-                <p className="input-Title">Enter new username</p>
+            <form className='white-form'>
+                <span>Enter new username</span>
                 <input className="input" placeholder="Username"
-                onChange={(e) => this.setState({ username: e.target.value })}>
+                    onChange={(e) => this.setState({ username: e.target.value })}>
                 </input>
 
-                <p className="input-Title">Enter new password</p>
+                <span>Enter new password</span>
                 <input className="input" placeholder="Password" type="password"
-                onChange={(e) => this.setState({ password: e.target.value })}>
+                    onChange={(e) => this.setState({ password: e.target.value })}>
                 </input>
 
-                <p className="input-Title">Enter new age</p>
+                <span>Enter new age</span>
                 <input className="input" placeholder="Age"
-                onChange={(e) => this.setState({ age: e.target.value })}>
+                    onChange={(e) => this.setState({ age: e.target.value })}>
                 </input>
 
-                <p className="input-Title">Enter new sex</p>
+                <span>Enter new sex</span>
                 <select name="sex" className="input"
-                onChange={(e) => this.setState({ sex: e.target.value })}>
+                    onChange={(e) => this.setState({ sex: e.target.value })}>
                     <option disabled default value> -- select a sex -- </option>
                     <option value='Male'>Male</option>
                     <option value='Female'>Female</option>
                 </select>
 
-                <p className="input-Title">Enter new email</p>
+                <span>Enter new email</span>
                 <input className="input" placeholder="Email"
-                onChange={(e) => this.setState({ email: e.target.value })}>
+                    onChange={(e) => this.setState({ email: e.target.value })}>
                 </input>
 
                 <div className="confirm-Form">
-                    <p className="input-Title">Enter password to confirm</p>
+                    <span>Enter password to confirm</span>
                     <input className="input-Confirm" placeholder="Password" type="password"
                         onChange={(e) => this.setState({ confirmPassword: e.target.value })}
                     ></input>
-                <button className="mod-Button" onClick={this.confirmChanges}>Confirm</button>
+                    <button className="white-button" onClick={this.confirmChanges}>Confirm</button>
                 </div>
             </form>
         )
