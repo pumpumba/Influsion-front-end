@@ -41,13 +41,29 @@ jobs:
       - setup_remote_docker:
          docker_layer_caching: true
 
+      - run:
+          name: Make chromedriver executable and start server
+          command: |
+            chmod +x
+            yarn
+            yarn start
 
-    #  - run:
-    #      name: Docker Build
-    #      command: |
-    #        docker build -t mezzersmite/$FRONT_END_IMAGE_NAME:$TAG .
-#
-    #  - run:
+            
+      working_directory: ~/repo/seleniumMaven
+
+      - run:
+          name: Run tests
+          command: |
+            mvn test
+
+      working_directory: ~/repo
+
+      - run:
+          name: Docker Build
+          command: |
+            docker build -t mezzersmite/$FRONT_END_IMAGE_NAME:$TAG .
+#§
+    #§  - run:
     #      name: Push to docker hub
     #      command: |
     #        docker login -u $DOCKER_LOGIN -p $DOCKER_PWD
