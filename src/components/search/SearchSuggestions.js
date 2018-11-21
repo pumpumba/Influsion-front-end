@@ -5,10 +5,12 @@ class SearchSuggestions extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchResults: []
+            searchResults: [],
+            inputEmpty: true
         }
         this.onChange = this.onChange.bind(this)
         this.checkForInfluencer = this.checkForInfluencer.bind(this)
+        this.inputText = React.createRef()
     }
 
     checkForInfluencer(searchString) {
@@ -633,7 +635,25 @@ class SearchSuggestions extends React.Component {
         if (searchString === "")
             return []
 
-        return searchResults
+        if (searchResults.length > 0)
+            return searchResults
+        else {
+            let noResult = []
+            noResult.push(
+            {
+                "influencername": "No matching influencers",
+                "realname": "No matching influencers",
+                "inflid": "search",
+                "pfaccs": {
+                    "platformaccounts": [{
+                        "actname": "",
+                        "platform": ""
+                    }]
+                },
+                "usrfollowinginfluencer": false
+            })
+            return noResult     
+        }
     }
     onChange(searchString) {
         this.setState({ searchResults: this.checkForInfluencer(searchString) })
@@ -659,6 +679,7 @@ class SearchSuggestions extends React.Component {
                     onChange={(e) => this.onChange(e.target.value)}
                     className='searchInput'
                     placeholder="Search"
+                    ref={(inputText) => { this.inputText = inputText }}
                 />
                 {feedContent}
             </form>
