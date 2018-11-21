@@ -70,7 +70,7 @@ class Statistics extends React.Component {
         <h1 className="statistics-header">{this.props.title}</h1>
         <div className="all-stat-charts">
           <div className="first-chart">
-            <p className="statistics-title"> Followers on instagram </p>
+            <p className="statistics-title"> Amount of followers per country </p>
             <TwoSimplePieChart />
           </div>
           <div className="second-chart">

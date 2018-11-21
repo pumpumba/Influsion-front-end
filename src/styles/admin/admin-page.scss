@@ -17,7 +17,7 @@
 
   .admin-content{
     display: grid;
-    grid-template-columns: 3fr 4fr 3fr;
+    grid-template-columns: 3fr 3fr 3fr;
     grid-gap: 2vw;
     margin-top: 2vw;
     margin-left: 1vw;
@@ -25,6 +25,10 @@
 
     div{
       background-color: white;
+    }
+
+    .admin-left-content{
+      width: 50vw;
     }
   }
 

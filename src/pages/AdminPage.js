@@ -13,20 +13,13 @@ class AdminPage extends React.Component {
     this.state = {
       isPageStatistics: true,
     }
-    this.statisticsChooser=this.statisticsChooser.bind(this)
     this.rightClickContent=this.rightClickContent.bind(this)
   }
 
-  statisticsChooser () {
-    if(this.state.isPageStatistics){
-      return(<StatisticsPlatform/>)
-    }else{
-      return(<Statistics/>)
-    }
-  }
+
 
   rightClickContent(){
-    console.log("clicked")
+
     const p = !this.state.isPageStatistics
     this.setState({isPageStatistics: p})
   }
@@ -50,19 +43,20 @@ class AdminPage extends React.Component {
       <div className="admin-page-container">
         <header>
           <h1>
-            Welcome to the AdminPage everybody!
+            Tv-operator Page!
           </h1>
         </header>
         <div className="admin-content">
           <div className="admin-left-content">
             {stats}
           </div>
-          <div className="admin-center-content">
+          <div className="admin-center-content" onClick={this.rightClickContent}>
+            <InfluencerList/>
+
+          </div>
+          <div className="admin-right-content">
             <ListOfAds/>
             <CreateAd/>
-          </div>
-          <div className="admin-right-content" onClick={this.rightClickContent}>
-            <InfluencerList/>
           </div>
         </div>
      </div>
