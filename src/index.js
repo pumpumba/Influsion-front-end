@@ -10,7 +10,6 @@ import Register from './pages/Register'
 import AdminPage from './pages/AdminPage'
 import AdminLogin from './pages/AdminLogin'
 import ModifyUser from './pages/ModifyUser'
-import Delete from './pages/Delete'
 import InfluencerFeed from './pages/InfluencerFeed'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -74,7 +73,6 @@ class Index extends React.Component {
                       <Route exact path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route exact path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                      <Route path='/delete' render={(props) => <Delete {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route path='/modify-user' render={(props) => <ModifyUser {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                   </Switch>
