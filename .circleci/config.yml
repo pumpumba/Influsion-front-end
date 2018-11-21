@@ -47,16 +47,12 @@ jobs:
             yarn
             yarn start
 
-            
-      working_directory: ~/seleniumMaven
-
       - run:
           name: Run tests
           command: |
+            cd seleniumMaven
             chmod +x
             mvn test
-
-      working_directory: ~/repo
 
       - run:
           name: Docker Build
