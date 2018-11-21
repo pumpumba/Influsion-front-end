@@ -25,7 +25,7 @@ public class FR1to11Test{
 	public void setUpTestEnviornment() throws InterruptedException {
 		// Change webdriver filepath to your own manually (Easy solution now in the start up phase)
 		// /Users/Gustaf/Desktop/SeleniumDrivers/chromedriver
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "chromedriver");
 		
 		ChromeOptions options = new ChromeOptions();  
 		options.addArguments("--headless");  
