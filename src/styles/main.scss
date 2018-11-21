@@ -15,17 +15,17 @@
 @import 'feed/components/feed-component-content';
 @import 'feed/components/feed-component-meta';
 @import 'register';
+@import 'settings';
+@import 'delete';
 @import 'feed';
+@import 'general-elements';
 
-html {
-    background-color: $light;
-}
 
 body {
     color: $gs-hard;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    background-color: $white;
+    background-color: $light-pink;
 }
 
 input {
@@ -56,10 +56,6 @@ img {
 main {
   margin-top: $headerHeight;
   margin-bottom: $footerHeight;
-}
-
-.small-text {
-    font-size: 0.8rem;
 }
 
 @media screen and (min-width: 480px) {

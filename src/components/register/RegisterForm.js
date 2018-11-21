@@ -115,9 +115,10 @@ class RegisterForm extends React.Component {
                     placeholder="Age"
                 >
                 </input>
-                <select name="sex">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                <select name="sex"
+                onChange={(e) => this.setState({ sex: e.target.value })}>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
                 <button onClick={this.registerNewUser}>Register</button>
             </form>

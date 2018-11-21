@@ -1,0 +1,50 @@
+.white-button {
+    background: $white;
+    border: none;
+    border-radius: $borderRadius;
+    border-bottom: 2px solid $light;
+    color: $grey;
+    display: block;
+    font-size: 1.3rem;
+    height: auto;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    text-align: center;
+    width: 100%;
+
+    &:hover{
+        background: $light-pink;
+    }
+
+    &:active{
+        background: $light-pink;
+    }
+}
+
+.white-form {
+    padding: 1rem;
+
+    span {
+        display: block;
+    }
+
+    input,select {
+      margin: 1rem 0 2rem;
+      align-self: center;
+      outline: none;
+      resize: none;
+      border: none;
+      overflow: auto;
+      color: $grey;
+      background: rgb(255,255,255);
+      text-align: center;
+      height: 2rem;
+      font-size: 1.3rem;
+      width: 100%;
+
+      &::placeholder {
+        color: $light-pink;
+        font-size: 1.3rem;
+      }
+    }
+}
