@@ -22,7 +22,6 @@ class RegisterForm extends React.Component {
         this.hasNumber = this.hasNumber.bind(this)
         this.hasCharacter = this.hasCharacter.bind(this)
         this.isEmail = this.isEmail.bind(this)
-
     }
 
     registerNewUser(e) {
@@ -42,7 +41,7 @@ class RegisterForm extends React.Component {
 
     validateUsername(input) {
         if (this.state.username.length <= 1) {
-            this.setState({ usernameError: 'Ditt användarnamn är för kort.' })
+            this.setState({ usernameError: '\n Your username is too short.' })
         } else {
             this.setState({ usernameError: '' })
         }
@@ -50,11 +49,11 @@ class RegisterForm extends React.Component {
 
     validatePassword(input) {
         if (this.state.password.length <= 6) {
-            this.setState({ passwordError: 'Ditt lösenord är för kort.' })
+            this.setState({ passwordError: '\n Your password needs to be at least 8 characters, of both letters ans numbers. ' })
         } else if (!this.hasNumber(this.state.password)) {
-            this.setState({ passwordError: 'Ditt lösenord saknar siffror.' })
+            this.setState({ passwordError: '\n You need to have at least two numbers :(' })
         } else if (this.hasCharacter(this.state.password)) {
-            this.setState({ passwordError: 'Ditt lösenord saknar bokstäver.' })
+            this.setState({ passwordError: '\n You need to have at least two letters..' })
         } else {
             this.setState({ passwordError: '' })
         }
@@ -62,7 +61,7 @@ class RegisterForm extends React.Component {
 
     validateEmail(input) {
         if (!this.isEmail(this.state.email)) {
-            this.setState({ emailError: 'Det är inte en rimlig adress.' })
+            this.setState({ emailError: ' \n That´s not what we call a proper email.. ' })
         } else {
             this.setState({ emailError: '' })
         }
@@ -112,7 +111,7 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.emailError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ age: e.target.value })}
+                    onChange={(e) => this.setState({ age: e.target.value }, this.validateAge())}
                     placeholder="Age"
                 >
                 </input>
