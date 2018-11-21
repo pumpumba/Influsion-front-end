@@ -53,10 +53,9 @@ class Register extends React.Component {
         }
 
         return (
-            <div className='register'>
+            <div className='register mobile-page'>
                 <h1>inFlusion</h1>
                 {objToRender}
-                <NavLink to="/login" className="small-text">Back to login</NavLink>
             </div>
         )
     }

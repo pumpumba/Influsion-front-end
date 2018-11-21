@@ -7,6 +7,8 @@ import Search from './pages/Search'
 import Settings from './pages/Settings'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import AdminPage from './pages/AdminPage'
+import AdminLogin from './pages/AdminLogin'
 import ModifyUser from './pages/ModifyUser'
 import Delete from './pages/Delete'
 import InfluencerFeed from './pages/InfluencerFeed'
@@ -21,7 +23,8 @@ class Index extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userId: 0
+            userId: 0,
+            adminId: 0
         }
         this.updateUserId = this.updateUserId.bind(this)
     }
@@ -31,10 +34,20 @@ class Index extends React.Component {
         localStorage.setItem('userId', newId)
     }
 
+    updateAdminId(newId) {
+        this.setState({ adminId: newId })
+        localStorage.setItem('adminId', newId)
+    }
+
     componentWillMount() {
         if (localStorage.getItem('userId') != null && this.state.userId == 0) {
             this.setState({
                 userId: localStorage.getItem('userId')
+            })
+        }
+        if (localStorage.getItem('adminId') != null && this.state.adminId == 0) {
+            this.setState({
+                adminId: localStorage.getItem('adminId')
             })
         }
     }
@@ -44,12 +57,14 @@ class Index extends React.Component {
             return (
                 <Router>
                     <Switch>
+                        <Route path='/admin' className="adminRoute" component={() => <AdminPage updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route path='/adminlogin' component={() => <AdminLogin updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                         <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     </Switch>
                 </Router>
             )
-        }else{
+        } else {
             return (
               <Router>
                   <Switch>

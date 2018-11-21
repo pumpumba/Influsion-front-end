@@ -42,7 +42,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="login">
+            <div className="login mobile-page">
                 <h1 className="loginTitle">inFlusion</h1>
                 <input
                     placeholder="Username"

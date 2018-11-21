@@ -1,4 +1,5 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
 class RegisterForm extends React.Component {
 
@@ -111,7 +112,7 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.emailError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ age: e.target.value }, this.validateAge())}
+                    onChange={(e) => this.setState({ age: e.target.value })}
                     placeholder="Age"
                 >
                 </input>
@@ -121,6 +122,7 @@ class RegisterForm extends React.Component {
                     <option value="Female">Female</option>
                 </select>
                 <button onClick={this.registerNewUser}>Register</button>
+                <NavLink to="/login" className="small-text">Back to login</NavLink>
             </form>
         )
     }
