@@ -34,9 +34,9 @@ class PopularComponent extends React.Component {
             heart: !prevState.heart
         }))
         if (this.state.heart) {
-            unfollowInfluencer(this.props.userId, this.props.data.influencerID)
+            unfollowInfluencer(this.props.userId, this.props.data.influencerId)
         } else {
-            followInfluencer(this.props.userId, this.props.data.influencerID)
+            followInfluencer(this.props.userId, this.props.data.influencerId)
         }
     }
 
@@ -74,7 +74,7 @@ class PopularComponent extends React.Component {
                         caption={this.props.data.tweet_text ||this.props.data.postText}
                         heart={this.state.heart}
                         platform={this.props.data.platform}
-                        influencerId={this.props.data.influencerID}
+                        influencerId={this.props.data.influencerId}
                     />
                     {this.state.open &&
                     <PopularComponentExpandedView
@@ -93,7 +93,7 @@ class PopularComponent extends React.Component {
                         changeHeart={this.changeHeart}
                         platform={this.props.data.platform}
                         heart={this.state.heart}
-                        influencerId={this.props.data.influencerID}
+                        influencerId={this.props.data.influencerId}
                     />
                     }
                     <div className='blur-overlay'></div>

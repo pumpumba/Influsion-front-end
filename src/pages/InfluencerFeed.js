@@ -45,7 +45,7 @@ class InfluencerFeed extends React.Component {
     }
 
     return (
-      <div>
+      <div className="mobile-page">
         <Header />
         <main>
           {feedContent}

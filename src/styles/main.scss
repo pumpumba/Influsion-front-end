@@ -15,17 +15,24 @@
 @import 'feed/components/feed-component-content';
 @import 'feed/components/feed-component-meta';
 @import 'register';
+@import 'settings';
+@import 'delete';
 @import 'feed';
+@import 'admin/admin-page.scss';
+@import 'admin/admin-login.scss';
+@import 'admin/statistics.scss';
+@import 'admin/create-ad.scss';
+@import 'admin/influencer-list.scss';
+@import 'admin/ad-list';
+@import 'admin/statistic-platform.scss';
+@import 'general-elements';
 
-html {
-    background-color: $light;
-}
 
 body {
     color: $gs-hard;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    background-color: $white;
+    background-color: $light-pink;
 }
 
 input {
@@ -60,6 +67,11 @@ main {
 
 @media screen and (min-width: 480px) {
 
+  .mobile-page{
+    max-width: 375px;
+    margin: 0 auto;
+
+
     body, header, footer {
         max-width: 375px;
     }
@@ -68,7 +80,5 @@ main {
         margin: 0 auto;
     }
 
-    html {
-        background: $gs-hard;
-    }
+}
 }

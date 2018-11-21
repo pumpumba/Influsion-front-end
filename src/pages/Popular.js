@@ -45,7 +45,7 @@ class Popular extends React.Component {
         }
 
         return (
-            <div>
+            <div className="mobile-page">
                 <Header title={'Popular'} />
                 <main className='popular-feed-content'>
                     {feedContent}

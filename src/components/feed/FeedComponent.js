@@ -19,9 +19,9 @@ class FeedComponent extends React.Component {
             heart: !prevState.heart
         }))
         if (this.state.heart) {
-            unfollowInfluencer(this.props.userId, this.props.data.influencerID)
+            unfollowInfluencer(this.props.userId, this.props.data.influencerId)
         } else {
-            followInfluencer(this.props.userId, this.props.data.influencerID)
+            followInfluencer(this.props.userId, this.props.data.influencerId)
         }
     }
 
@@ -30,21 +30,21 @@ class FeedComponent extends React.Component {
             return (
                 <div className='feed-component-wrapper'>
                     <FeedComponentHeader
-                        inflImgUrl={this.props.data.user_profile_image_url || this.props.data.video_thumbnail_url ||this.props.data.userProfileImageUrl}
+                        inflImgUrl={this.props.data.userProfileImageUrl || this.props.data.video_thumbnail_url}
                         inflId={this.props.data.influencerID}
-                        inflName={this.props.data.user_name || this.props.data.channel_title || this.props.data.userName}
-                        contentUrl={this.props.data.tweet_url || this.props.data.postUrl || this.props.data.video_url}
+                        inflName={this.props.data.channel_title || this.props.data.userName}
+                        contentUrl={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
                         platform={this.props.platform}
                     />
                     <FeedComponentContent
-                        caption={this.props.data.tweet_text ||this.props.data.postText || this.props.data.video_description}
-                        imageUrl={this.props.data.tweet_media || this.props.data.postMedia}
+                        caption={this.props.data.tweetText ||this.props.data.postText || this.props.data.video_description}
+                        imageUrl={this.props.data.tweetMedia || this.props.data.postMedia}
                         videoUrl={this.props.data.video_embeded_url}
                     />
                     <FeedComponentMeta
-                        noOfLikes={this.props.data.tweet_favorite_count || this.props.data.postLikeCount || this.props.data.video_like_count}
-                        noOfRetweets={this.props.data.tweet_retweet_count}
-                        timeStamp={this.props.data.tweet_created_at || this.props.data.postCreatedAt || this.props.data.video_created_at}
+                        noOfLikes={this.props.data.tweetFavoriteCount || this.props.data.postLikeCount || this.props.data.video_like_count}
+                        noOfRetweets={this.props.data.tweetRetweetCount}
+                        timeStamp={this.props.data.tweetCreatedAt || this.props.data.postCreatedAt || this.props.data.video_created_at}
                         changeHeart={this.changeHeart}
                         heart={this.state.heart}
                     />

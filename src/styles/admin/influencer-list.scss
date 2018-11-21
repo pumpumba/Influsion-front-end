@@ -1,0 +1,39 @@
+.influencer-list-component{
+  display: grid;
+  grid-template-columns:0.5fr 1.5fr 3fr 1fr;
+  padding: .5rem;
+  cursor: pointer;
+
+
+  img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  p{
+    padding-top: 0.8vw;
+  }
+
+  &.active, &:hover {
+    background-color: $light !important;
+  }
+
+}
+
+
+.influencer-list-component:nth-child(2n){
+  background-color: lighten($light-pink, 3%);
+}
+
+.influencer-list-title{
+  text-align: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  padding: 4px;
+}
+.influencer-list-header{
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 3fr 1fr;
+  font-weight: bold;
+  margin: 0 .5rem;
+}

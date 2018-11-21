@@ -1,4 +1,5 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
 class RegisterForm extends React.Component {
 
@@ -115,11 +116,13 @@ class RegisterForm extends React.Component {
                     placeholder="Age"
                 >
                 </input>
-                <select name="sex">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                <select name="sex"
+                onChange={(e) => this.setState({ sex: e.target.value })}>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
                 <button onClick={this.registerNewUser}>Register</button>
+                <NavLink to="/login" className="small-text">Back to login</NavLink>
             </form>
         )
     }
