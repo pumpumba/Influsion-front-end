@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:latest
+      - image: circleci/openjdk:8-jdk-browsers
 
      #   auth:
       #    username: $DOCKER_LOGIN
@@ -12,9 +13,19 @@ jobs:
     branches:
       only:
         - master
+        - test_maven
         
     steps:
       - checkout
+      
+      - run: mkdir test-reports
+      - run:
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          background: true
 
       # Download and cache dependencies
       - restore_cache:
@@ -31,16 +42,17 @@ jobs:
       - setup_remote_docker:
          docker_layer_caching: true
 
-      - run:
-          name: Docker Build
-          command: |
-            docker build -t mezzersmite/$FRONT_END_IMAGE_NAME:$TAG .
 
-      - run:
-          name: Push to docker hub
-          command: |
-            docker login -u $DOCKER_LOGIN -p $DOCKER_PWD
-            docker push mezzersmite/$FRONT_END_IMAGE_NAME:$TAG
+    #  - run:
+    #      name: Docker Build
+    #      command: |
+    #        docker build -t mezzersmite/$FRONT_END_IMAGE_NAME:$TAG .
+#
+    #  - run:
+    #      name: Push to docker hub
+    #      command: |
+    #        docker login -u $DOCKER_LOGIN -p $DOCKER_PWD
+    #        docker push mezzersmite/$FRONT_END_IMAGE_NAME:$TAG
 
       # run tests!
       #- run: fun tests go here
