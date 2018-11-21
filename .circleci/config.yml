@@ -45,7 +45,7 @@ jobs:
           name: Make chromedriver executable and start server
           command: |
             yarn
-            yarn start
+            yarn start &
 
       - run:
           name: Run tests
