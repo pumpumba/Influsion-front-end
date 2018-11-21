@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:latest
-      - image: circleci/openjdk:8-jdk-browsers
+      - image: circleci/openjdk:latest-node-browsers
 
      #   auth:
       #    username: $DOCKER_LOGIN
