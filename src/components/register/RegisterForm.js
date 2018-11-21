@@ -111,7 +111,7 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.emailError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ age: e.target.value }, this.validateAge())}
+                    onChange={(e) => this.setState({ age: e.target.value })}
                     placeholder="Age"
                 >
                 </input>
