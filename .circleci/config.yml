@@ -44,16 +44,16 @@ jobs:
       - run:
           name: Make chromedriver executable and start server
           command: |
-            chmod +x
             yarn
             yarn start
 
             
-      working_directory: ~/repo/seleniumMaven
+      working_directory: ~/seleniumMaven
 
       - run:
           name: Run tests
           command: |
+            chmod +x
             mvn test
 
       working_directory: ~/repo
