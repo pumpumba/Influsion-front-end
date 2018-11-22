@@ -31,7 +31,7 @@ class FeedComponent extends React.Component {
                 <div className='feed-component-wrapper'>
                     <FeedComponentHeader
                         inflImgUrl={this.props.data.userProfileImageUrl || this.props.data.video_thumbnail_url}
-                        inflId={this.props.data.influencerID}
+                        inflId={this.props.data.influencerId}
                         inflName={this.props.data.channel_title || this.props.data.userName}
                         contentUrl={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
                         platform={this.props.data.platform.toLowerCase()}
