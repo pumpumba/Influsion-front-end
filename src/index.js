@@ -5,6 +5,7 @@ import Popular from './pages/Popular'
 import Feed from './pages/Feed'
 import Search from './pages/Search'
 import Settings from './pages/Settings'
+import Delete from './pages/Delete'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import AdminPage from './pages/AdminPage'
@@ -71,6 +72,7 @@ class Index extends React.Component {
                       <Route exact path='/feed' render={(props) => <Feed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route exact path='/search' render={(props) => <Search {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route exact path='/settings' render={(props) => <Settings {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route exact path='/delete' render={(props) => <Delete {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route exact path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route path='/modify-user' render={(props) => <ModifyUser {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
