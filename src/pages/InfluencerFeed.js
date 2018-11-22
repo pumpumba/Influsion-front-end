@@ -45,12 +45,12 @@ class InfluencerFeed extends React.Component {
     }
 
     return (
-      <div>
+      <div className="mobile-page">
         <Header />
         <main>
           {feedContent}
         </main>
-        <Footer updateFeedFilters={this.updateFeedFilters} />
+        <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true'/>
       </div>
     )
   }

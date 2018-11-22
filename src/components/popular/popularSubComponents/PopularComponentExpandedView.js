@@ -20,7 +20,7 @@ function ContentPlacer(props) {
                     </iframe>
                 </div>
                 :
-                <img src={props.img} />
+                <img src={props.img[0]} />
             }
             {props.platform != 'twitter' && <p>{props.caption}</p>}
             <div className='meta-data'>

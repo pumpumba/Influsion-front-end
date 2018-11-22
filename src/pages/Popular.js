@@ -45,12 +45,12 @@ class Popular extends React.Component {
         }
 
         return (
-            <div>
+            <div className="mobile-page">
                 <Header title={'Popular'} />
                 <main className='popular-feed-content'>
                     {feedContent}
                 </main>
-                <Footer updateFeedFilters={this.updateFeedFilters} />
+                <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
             </div>
         )
     }

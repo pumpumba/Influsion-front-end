@@ -21,7 +21,7 @@ class Feed extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: 1, limit: 100 })
+            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: this.props.userId, limit: 100 })
         }).then(data => data.json())
             .then(data => this.setState({ data }))
 
@@ -47,22 +47,22 @@ class Feed extends React.Component {
 
         if (feedContent != null) {
             return (
-                <div>
+                <div className="mobile-page">
                     <Header />
                     <main>
                         {feedContent}
                     </main>
-                    <Footer updateFeedFilters={this.updateFeedFilters} />
+                    <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
                 </div>
             )
         } else {
             return (
-                <div>
+                <div className="mobile-page">
                     <Header />
                     <main className='feed'>
                         <h2>Nothing here to show, please follow a influencer...</h2>
                     </main>
-                    <Footer />
+                    <Footer showFilter='true' />
                 </div>
 
             )

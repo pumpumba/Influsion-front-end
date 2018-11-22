@@ -1,6 +1,7 @@
 import React from 'react'
 import RegisterForm from './../components/register/RegisterForm'
 import RegisterAlert from './../components/register/RegisterAlert'
+import { NavLink } from 'react-router-dom'
 
 class Register extends React.Component {
 
@@ -23,7 +24,8 @@ class Register extends React.Component {
 
     registerUnsuccsessfull() {
         this.setState({
-            registerUnsuccsessfull: true
+            registerUnsuccsessfull: true,
+            registerSuccsessfull: false
         })
     }
 
@@ -38,7 +40,7 @@ class Register extends React.Component {
         let objToRender;
 
         if (this.state.registerSuccsessfull) {
-            objToRender = <RegisterAlert title='Welcome!' btnTxt='Log in!' link='/login' />
+            objToRender = <RegisterAlert title='Welcome!' btnTxt='Log in!' link='/' />
         } else if (this.state.registerUnsuccsessfull) {
             objToRender = <RegisterAlert title='Something went wrong...' btnTxt='Try again!' resetState={this.resetState} />
         } else {
@@ -46,11 +48,12 @@ class Register extends React.Component {
                 <RegisterForm
                     registerSuccsessfull={this.registerSuccsessfull}
                     registerUnsuccsessfull={this.registerUnsuccsessfull}
+                    login={this.login}
                 />
         }
 
         return (
-            <div className='register'>
+            <div className='register mobile-page'>
                 <h1>inFlusion</h1>
                 {objToRender}
             </div>
