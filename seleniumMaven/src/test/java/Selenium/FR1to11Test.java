@@ -3,7 +3,9 @@ package Selenium;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+
 import java.util.List;
+
 import java.util.Random;
 
 import org.junit.After;
@@ -33,10 +35,10 @@ public class FR1to11Test{
 		options.addArguments("--headless");  
 		
 		
-	//	Map<String, String> mobileEmulation = new HashMap<>();
-	//	mobileEmulation.put("deviceName", "Nexus 5");
-	
-	//	options.setExperimentalOption("mobileEmulation", mobileEmulation);
+//		Map<String, String> mobileEmulation = new HashMap<>();
+//		mobileEmulation.put("deviceName", "Nexus 5");
+//	
+//		options.setExperimentalOption("mobileEmulation", mobileEmulation);
 		
 		
 		browser = new ChromeDriver(options);
@@ -320,7 +322,7 @@ public class FR1to11Test{
 		browser.get("http://localhost:8080/register");
 		Thread.sleep(1000);
 		
-		int uniqueUserID = randInt(1, 999);
+		int uniqueUserID = randInt(10000, 99999);
 		
 		browser.findElement(By.cssSelector("[placeholder='Username']")).sendKeys("TestUser" + uniqueUserID);
 		browser.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("TestPassword1234");
@@ -329,18 +331,17 @@ public class FR1to11Test{
 		browser.findElement(By.cssSelector("[name='sex']")).sendKeys("Female");
 		
 		browser.findElement(By.xpath("//button[contains(text(),'Register')]")).click();
-		
-		
-		browser.get("http://localhost:8080/login");
-		browser.findElement(By.cssSelector("[placeholder='Username']")).sendKeys("TestUser" + uniqueUserID);
-		browser.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("TestPassword");
 		Thread.sleep(1000);
+		browser.findElement(By.xpath("//a[contains(text(),'Log in!')]")).click();
+		
+		browser.findElement(By.cssSelector("[placeholder='Username']")).sendKeys("TestUser" + uniqueUserID);
+		browser.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("TestPassword1234");
 		browser.findElement(By.xpath("//button[contains(text(),'Lets go into the wilderness!')]")).click();
 		
 		Thread.sleep(1000);
 		List<WebElement> PopularFeed = browser.findElements(By.cssSelector(".popular-feed-content"));
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		assertEquals(100, PopularComponent.size());  
+		assertEquals(true, PopularComponent.size()>5);  
 		assertEquals(1, PopularFeed.size());
 		
 		
