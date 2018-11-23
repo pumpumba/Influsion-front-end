@@ -1,6 +1,7 @@
 import React from 'react'
 import RegisterForm from './../components/register/RegisterForm'
 import RegisterAlert from './../components/register/RegisterAlert'
+import { NavLink } from 'react-router-dom'
 
 class Register extends React.Component {
 
@@ -52,7 +53,7 @@ class Register extends React.Component {
         }
 
         return (
-            <div className='register'>
+            <div className='register mobile-page'>
                 <h1>inFlusion</h1>
                 {objToRender}
             </div>
