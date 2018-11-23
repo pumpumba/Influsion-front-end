@@ -9,12 +9,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    .delete-Form{
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-
         .delete-Title{
             align-self: center;
             text-align: center;
@@ -23,49 +17,9 @@
             align-self: center;
         }
 
-        .delete-Input{
-            align-self: center;
-            width: 20rem;
-            margin: 1rem;
-            background: rgb(255,255,255);
-            text-align: center;
-            outline: none;
-            resize: none;
-            border: none;
-            color: $text;
-            font-size: 1.3rem;
-            border-radius: $borderRadius;
-
-            &::placeholder {
-              color: #ffe6e6;
-              font-size: 1.3rem;
-            }
-        }
-
         .delete-Options{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: space-around;
-
-            .delete-Button{
-                align-self: center;
-                border: 0.1rem solid $white;
-                border-radius: .2rem;
-                background: $white;
-                color: $grey;
-                font-size: 1.3rem;
-                padding: .5rem;
-                margin:1rem;
-                text-align: center;
-            }
-
-            .delete-Button:active{
-                background-color: $light-pink;
-            }
-
-            .deleteButton:hover{
-                background-color: $light-pink;
-            }
         }
-    }
 }
