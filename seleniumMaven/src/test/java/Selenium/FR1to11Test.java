@@ -2,6 +2,7 @@ package Selenium;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -19,20 +20,30 @@ public class FR1to11Test{
 	WebDriver browser;
 	String username;
 	String password;
+	String startUrl;
 
 	//Run this code to setup the right test eniornmnet 
 	@Before
 	public void setUpTestEnviornment() throws InterruptedException {
-		// Change webdriver filepath to your own manually (Easy solution now in the start up phase)
 		// /Users/Gustaf/Desktop/SeleniumDrivers/chromedriver
+		//Server: chromedriver
 		System.setProperty("webdriver.chrome.driver", "chromedriver");
 		
 		ChromeOptions options = new ChromeOptions();  
 		options.addArguments("--headless");  
+		
+		
+	//	Map<String, String> mobileEmulation = new HashMap<>();
+	//	mobileEmulation.put("deviceName", "Nexus 5");
+	
+	//	options.setExperimentalOption("mobileEmulation", mobileEmulation);
+		
+		
 		browser = new ChromeDriver(options);
 		username="jonas";
 		password="1234";
-		browser.get("http://localhost:8080/");  
+		startUrl = "http://localhost:8080/";
+		browser.get(startUrl);
 		Thread.sleep(1000);
 	}
 	
@@ -40,9 +51,6 @@ public class FR1to11Test{
 	public void endTesting() {
 		browser.close();
 	}
-	
-	
-	
 	
 	@Test
 	public void FR1() throws InterruptedException {
@@ -81,7 +89,7 @@ public class FR1to11Test{
 			String url = browser.getCurrentUrl();
 			
 			System.out.println(url);
-			assertEquals(videolink,url);
+			assertEquals(url.contains("youtube"),true);
 		}
 		
 	
@@ -135,7 +143,27 @@ public class FR1to11Test{
 		
 	
 	@Test
-	public void FR3() throws InterruptedException {
+	public void FR3_instagram() throws InterruptedException {
+		
+		login(username, password, browser);
+		
+		Thread.sleep(1000);		
+		List<WebElement> Button =browser.findElements(By.cssSelector("[data-icon='instagram']"));
+		Button.get(Button.size()-1).click();
+		
+		
+		browser.get(startUrl);
+		Thread.sleep(1000);
+		Thread.sleep(500);
+		List<WebElement> Content =browser.findElements(By.cssSelector("[data-icon='instagram']"));
+		
+		assertEquals(true, Content.size()>2);	
+		
+		
+	}
+	
+	@Test
+	public void FR3_twitter() throws InterruptedException {
 		
 		login(username, password, browser);
 		
@@ -145,17 +173,28 @@ public class FR1to11Test{
 		Button.get(Button.size()-1).click();
 		
 		
-		browser.get("http://localhost:8080");
+		browser.get(startUrl);
+		Thread.sleep(500);
 		List<WebElement> Content =browser.findElements(By.cssSelector("[data-icon='twitter']"));
-		assertEquals(1, Content.size());
+		assertEquals(true, Content.size()>2);	
+		
+	}
+	
+	@Test
+	public void FR3_youtube() throws InterruptedException {
+		
+		login(username, password, browser);
+		
+		Thread.sleep(500);
+		
+		List<WebElement> Button =browser.findElements(By.cssSelector("[data-icon='youtube']"));
+		Button.get(Button.size()-1).click();
 		
 		
-		
-		
-		
-		
-		
-		
+		browser.get(startUrl);
+		Thread.sleep(500);
+		List<WebElement> Content =browser.findElements(By.cssSelector("[data-icon='youtube']"));
+		assertEquals(true,Content.size()>2);
 		
 	}
 	
@@ -247,7 +286,32 @@ public class FR1to11Test{
 		
 	}
 	
+	
 	// Functions tested in Test Case 6 are not implemented yet - search
+	@Test
+	public void FR6() throws InterruptedException {
+		login(username,password,browser);
+		browser.findElement(By.cssSelector("[data-icon='search']")).click();
+		browser.findElement(By.className("searchInput")).sendKeys("JustinBieber");
+		Thread.sleep(300);
+		assertEquals("Justin Bieber",browser.findElement(By.className("search-header")).getText());
+		
+		browser.get("http://localhost:8080/search");  
+		browser.findElement(By.cssSelector("[data-icon='search']")).click();
+		browser.findElement(By.className("searchInput")).sendKeys("JoeRogan");
+		Thread.sleep(300);
+		assertEquals("Joe Rogan",browser.findElement(By.className("search-header")).getText());
+
+		browser.get("http://localhost:8080/search");  
+		browser.findElement(By.cssSelector("[data-icon='search']")).click();
+		browser.findElement(By.className("searchInput")).sendKeys("Felix Kjellberg");
+		Thread.sleep(300);
+		assertEquals("Felix Kjellberg",browser.findElement(By.className("search-header")).getText());
+
+		
+		
+		
+	}
 	// Functions tested in Test Case 7 are not implemented yet - hashtag search
 	
 	
@@ -296,8 +360,33 @@ public class FR1to11Test{
 				
 	}
 	
-	//F10 - check that all calls starts a login page
-	//F11 - Ensure browser remembers your inlogged account
+	@Test
+	public void FR10() throws InterruptedException {
+		
+		ArrayList<WebElement> list = new ArrayList<WebElement>();
+		list.add((browser.findElement(By.cssSelector("[placeholder='Username']"))));
+		list.add(browser.findElement(By.cssSelector("[placeholder='Password']")));
+		list.add(browser.findElement(By.xpath("//button[contains(text(),'Lets go into the wilderness!')]")));
+		assertEquals(3,list.size());		
+		
+	}
+	
+
+	@Test
+	public void FR11() throws InterruptedException {
+		login(username, password, browser);
+		browser.get("http://localhost:8080/");
+		
+		Thread.sleep(2000);
+		List<WebElement> PopularFeed = browser.findElements(By.cssSelector(".popular-feed-content"));
+		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
+		assertEquals(100, PopularComponent.size());  
+		assertEquals(1, PopularFeed.size());
+		
+		
+		
+	}
+	
 	
 
 	
@@ -315,6 +404,8 @@ public class FR1to11Test{
 		browser.findElement(By.xpath("//button[contains(text(),'Lets go into the wilderness!')]")).click();
 		Thread.sleep(1000);
 	}
+	
+	
 
 
 
