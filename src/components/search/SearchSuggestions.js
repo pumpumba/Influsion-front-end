@@ -55,7 +55,7 @@ class SearchSuggestions extends React.Component {
                 },
                 'usrfollowinginfluencer': false
             })
-            return noResult     
+            return noResult
         }
     }
     onChange(searchString) {
