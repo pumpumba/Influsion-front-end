@@ -62,8 +62,12 @@ class Login extends React.Component {
                 <div className="small-text">
                     <p>What is my password?</p>
                     <Link to={'/register'} className="small-text">
-                        It is finally my time - lets get registered
-                  </Link>
+                        It is finally my time -
+                    </Link>
+                    <br/>
+                    <Link to={'/register'} className="small-text">
+                        let's get registered
+                    </Link>
                 </div>
             </div>
         )
