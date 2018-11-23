@@ -40,6 +40,12 @@ class DeleteForm extends React.Component {
                     <NavLink to='/settings' className="white-button" > Gosh no, cancel </NavLink>
                 </div>
             </form>
+
+            <div className='NotFound'>
+                <img className='NotFound-img' src='../../img/404Jonas.png/'></img>
+                <h2>404<br/> page not found</h2>
+                <NavLink to='/popular' className='white-button'>Go back</NavLink>
+            </div>
         )
     }
 }

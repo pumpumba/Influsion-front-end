@@ -1,0 +1,14 @@
+.NotFound{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .NotFound-title {
+        align-self: center;
+        text-align: center;
+        color: $grey;
+        font-size: 1.3rem;
+        align-self: center;
+    }
+}
