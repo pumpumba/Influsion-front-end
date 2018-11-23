@@ -35,7 +35,7 @@ class SearchSuggestions extends React.Component {
                 }
             }
         }
-        if (searchString === "")
+        if (searchString === '')
             return []
 
         if (searchResults.length > 0)
@@ -44,16 +44,16 @@ class SearchSuggestions extends React.Component {
             let noResult = []
             noResult.push(
             {
-                "influencername": "No matching influencers",
-                "realname": "No matching influencers",
-                "inflid": "search",
-                "pfaccs": {
-                    "platformaccounts": [{
-                        "actname": "",
-                        "platform": ""
+                'influencername': 'No matching influencers',
+                'realname': 'No matching influencers',
+                'inflid': 'search',
+                'pfaccs': {
+                    'platformaccounts': [{
+                        'actname': '',
+                        'platform': ''
                     }]
                 },
-                "usrfollowinginfluencer": false
+                'usrfollowinginfluencer': false
             })
             return noResult     
         }
@@ -89,7 +89,7 @@ class SearchSuggestions extends React.Component {
                 <input
                     onChange={(e) => this.onChange(e.target.value)}
                     className='searchInput'
-                    placeholder="Search"
+                    placeholder='Search'
                     ref={(inputText) => { this.inputText = inputText }}
                 />
                 {feedContent}

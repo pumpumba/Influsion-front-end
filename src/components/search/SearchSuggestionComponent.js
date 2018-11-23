@@ -8,16 +8,24 @@ class SearchSuggestionComponent extends React.Component {
       let twitter = false
       let instagram = false
       let youtube = false
+      let notFound = this.props.data.influencername === 'No matching influencers'
 
       for (let i = 0; i < this.props.data.pfaccs.platformaccounts.length; i++) {
-        !twitter ? twitter = this.props.data.pfaccs.platformaccounts[i].platform ==="twitter" : ''
-        !instagram ? instagram = this.props.data.pfaccs.platformaccounts[i].platform ==="instagram" : ''
-        !youtube ? youtube = this.props.data.pfaccs.platformaccounts[i].platform ==="youtube" : ' '
+        !twitter ? twitter = this.props.data.pfaccs.platformaccounts[i].platform ==='twitter' : ''
+        !instagram ? instagram = this.props.data.pfaccs.platformaccounts[i].platform ==='instagram' : ''
+        !youtube ? youtube = this.props.data.pfaccs.platformaccounts[i].platform ==='youtube' : ' '
+      }
+
+      let profileImage
+      if (!notFound) {
+        profileImage = <img src={'https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg'} /> 
+      } else {
+        profileImage = ''
       }
 
       return (
                 <div className='search-header'>
-                  <img src={'https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg'} />
+                  {profileImage}
                   <NavLink name='user-name' to={`/${this.props.data.inflid}`}> {this.props.data.influencername} </NavLink>
                   <div className='search-platforms' style={{justifyContent:'right', alignItems:'right', textalign:'right'}}>
                     { (twitter) ? <span><FontAwesomeIcon icon={['fab', 'twitter']}/> </span> : '' }
