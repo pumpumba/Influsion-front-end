@@ -10,13 +10,14 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import AdminPage from './pages/AdminPage'
 import AdminLogin from './pages/AdminLogin'
+import AdminSettings from './pages/AdminSettings'
 import ModifyUser from './pages/ModifyUser'
 import NotFound from './pages/NotFound'
 import InfluencerFeed from './pages/InfluencerFeed'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt, faThumbsUp, faThumbsDown, faEye, faComment } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt, faThumbsUp, faThumbsDown, faEye, faComment} from '@fortawesome/free-solid-svg-icons'
 library.add(fab, faCheckSquare, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt, faThumbsUp, faThumbsDown, faEye, faComment)
 
 class Index extends React.Component {
@@ -28,6 +29,7 @@ class Index extends React.Component {
             adminId: 0
         }
         this.updateUserId = this.updateUserId.bind(this)
+        this.updateAdminId = this.updateAdminId.bind(this)
     }
 
     updateUserId(newId) {
@@ -54,17 +56,26 @@ class Index extends React.Component {
     }
 
     render() {
-        if (this.state.userId == 0) {
+        if (this.state.adminId==0 && this.state.userId==0) {
             return (
                 <Router>
-                    <Switch>
-                        <Route path='/admin' className="adminRoute" component={() => <AdminPage updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/adminlogin' component={() => <AdminLogin updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    </Switch>
+                  <Switch>
+                      <Route path='/adminlogin' render={(props) => <AdminLogin {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route path='/admin' render={(props) => <AdminLogin {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                  </Switch>
                 </Router>
             )
+        } else if (this.state.adminId==1 && this.state.userId==0) {
+          return (
+              <Router>
+                <Switch>
+                    <Route path='/admin' className="adminRoute" component={() => <AdminPage updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <Route path='/admin-settings' render={(props) => <AdminSettings {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <Route path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                </Switch>
+              </Router>
+          )
         } else {
             return (
               <Router>

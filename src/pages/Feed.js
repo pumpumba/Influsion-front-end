@@ -56,17 +56,18 @@ class Feed extends React.Component {
                 </div>
             )
         } else {
-            return (
-                <div className="mobile-page">
-                    <Header />
-                    <main className='feed'>
-                        <h2>Nothing here to show, please follow a influencer...</h2>
-                    </main>
-                    <Footer showFilter='true' />
-                </div>
 
-            )
-        }
+        return (
+          <div className="mobile-page">
+              <Header />
+              <main>
+                hejhejehej
+              </main>
+              <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
+          </div>
+
+        )
+      }
     }
 }
 
