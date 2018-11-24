@@ -13,6 +13,9 @@ const AdminFooter = (props) => {
           <NavLink exact to='/admin-settings'>
               <FontAwesomeIcon icon={'cogs'} />
           </NavLink>
+          <NavLink exact to='/admin-search'>
+              <FontAwesomeIcon icon={'search'} />
+          </NavLink>
       </div>
   )
 }

@@ -1,8 +1,9 @@
 import React from 'react'
 import AdminFooter from './../components/admin/AdminFooter'
 import NavLink from 'react-router-dom/NavLink';
+import CreateAd from './../components/admin/CreateAd'
 
-class AdminSettings extends React.Component {
+class AdminCreate extends React.Component {
   constructor(props) {
     super(props)
     this.logOut = this.logOut.bind(this)
@@ -23,12 +24,8 @@ class AdminSettings extends React.Component {
               </header>
 
               <div className="admin-logout-content">
-                  <h1>Settings</h1>
-                  <a href='/admin-promote' className='white-button'>Promote Post</a>
-                  <a href='/admin-create' className='white-button'>Create New Post</a>
-                  <a href='/admin-block' className='white-button'>Block Influencer</a>
-                  <button onClick={this.logOut}  className='white-button'>Log out</button>
-
+                  <h1>Promote Content</h1>
+                  <CreateAd />
               </div>
             <AdminFooter />
           </div>
@@ -36,4 +33,4 @@ class AdminSettings extends React.Component {
     }
 }
 
-export default AdminSettings
+export default AdminCreate
