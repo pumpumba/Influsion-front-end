@@ -1,15 +1,21 @@
 package Selenium;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Date;
 import java.util.List;
-
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,31 +25,36 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class FR1to11Test{
-	WebDriver browser;
-	String username;
-	String password;
-	String startUrl;
+	 WebDriver browser;
+	 String username;
+	 String password;
+	 String startUrl;
+	 ChromeOptions options;
 
 	//Run this code to setup the right test eniornmnet 
-	@Before
-	public void setUpTestEnviornment() throws InterruptedException {
+	@BeforeClass
+	public static void setUpTests() throws InterruptedException {
 		// /Users/Gustaf/Desktop/SeleniumDrivers/chromedriver
 		//Server: chromedriver
-		System.setProperty("webdriver.chrome.driver", "chromedriver");
-		
-		ChromeOptions options = new ChromeOptions();  
-		options.addArguments("--headless");  
+		System.setProperty("webdriver.chrome.driver", "chromedriver");	
 		
 		
 //		Map<String, String> mobileEmulation = new HashMap<>();
 //		mobileEmulation.put("deviceName", "Nexus 5");
 //	
-//		options.setExperimentalOption("mobileEmulation", mobileEmulation);
+//		options.setExperimentalOption("mobileEmulation", mobileEmulation);	
 		
 		
+	}
+	
+	@Before
+	public void setUpTestEnviornment() throws InterruptedException {
+		ChromeOptions options = new ChromeOptions();  
+		options.addArguments("--headless");  
+		options.addArguments("window-size=360,640");	
 		browser = new ChromeDriver(options);
-		username="jonas";
-		password="1234";
+		username="testing12";
+		password="testing12";
 		startUrl = "http://localhost:8080/";
 		browser.get(startUrl);
 		Thread.sleep(1000);
@@ -314,7 +325,7 @@ public class FR1to11Test{
 		
 		
 	}
-	// Functions tested in Test Case 7 are not implemented yet - hashtag search
+
 	
 	
 	@Test
@@ -388,7 +399,192 @@ public class FR1to11Test{
 		
 	}
 	
+	@Test
+	public void FR13() throws InterruptedException {
+		login(username, password, browser);
+		
+		
+		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
+		
+		//check if follow or not, if not then follow
+		if (PopularComponent.get(0).findElement(By.className("fa-heart")).getAttribute("data-state").equals("active")) {
+			// already followed
+		} else {
+			//click the follow button
+			PopularComponent.get(0).findElement(By.className("fa-heart")).click();	
+		}
+		
+		PopularComponent.get(0).click();
+		Thread.sleep(200);
+		String content[] = PopularComponent.get(0).getText().split("\\r?\\n");
+		String nameKey = content[0];
+		
+		//go to follow page'
+		browser.findElement(By.className("blur-overlay")).click();
+		browser.findElement(By.className("subFooter")).findElement(By.className("fa-heart")).click();
+		Thread.sleep(500);
+
+		//see if there are any posts from this influencer
+		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
+		ArrayList<String> names = new ArrayList<String>();
+
+		for (WebElement comp : FeedComponent) {	
+			String conten[] = comp.getText().split("\\r?\\n");
+			String name = conten[0];
+			names.add(name);	
+		}
+		
+		//check if the followed influencer exist in the feed
+		assertTrue(names.contains(nameKey));
+	}
 	
+	
+	//FR14 check order of posts
+	@Test
+	public void FR14() throws InterruptedException, ParseException, NoSuchElementException {
+		login(username, password, browser);
+		
+		//go to follow page'
+		browser.findElement(By.className("subFooter")).findElement(By.className("fa-heart")).click();
+		Thread.sleep(500);
+		
+		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
+		ArrayList<Date> timestamps = new ArrayList<Date>();
+		boolean correctOrder = true;
+		
+		for (WebElement comp : FeedComponent) {
+			String time = comp.findElement(By.tagName("time")).getAttribute("datetime");	
+			String times[] = time.split("T");
+			String newtime = times[0] + " " + times [1];
+			Date datetime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(newtime);
+			timestamps.add(datetime);	
+		}
+		
+		for (Date date : timestamps) {
+			int indx = timestamps.indexOf(date);
+			if (indx < timestamps.size()-1) {	
+				if (date.compareTo(timestamps.get(indx+1)) < 0) {
+					correctOrder = false;
+				}	
+			}
+		}	
+		
+		assertEquals(true, correctOrder);
+	}
+	
+	
+	//FR15 unfollow functionality
+	@Test
+	public void FR15() throws InterruptedException {
+		login(username, password, browser);
+		
+		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
+		
+		//check if follow or not, if not then follow
+		if (PopularComponent.get(0).findElement(By.className("fa-heart")).getAttribute("data-state").equals("active")) {
+			//unfollow
+			PopularComponent.get(0).findElement(By.className("fa-heart")).click();	
+		} else {
+			//already not followed
+		}
+		
+		PopularComponent.get(0).click();
+		Thread.sleep(200);
+		String content[] = PopularComponent.get(0).getText().split("\\r?\\n");
+		String nameKey = content[0];
+		
+		//go to follow page'
+		browser.findElement(By.className("blur-overlay")).click();
+		browser.findElement(By.className("subFooter")).findElement(By.className("fa-heart")).click();
+		Thread.sleep(500);
+
+		//see if there are any posts from this influencer
+		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
+		ArrayList<String> names = new ArrayList<String>();
+	
+		for (WebElement comp : FeedComponent) {		
+			String conten[] = comp.getText().split("\\r?\\n");
+			String name = conten[0];
+			names.add(name);	
+		}
+		
+		//check if the unfollowed influencer exist in the feed
+		assertFalse(names.contains(nameKey));
+		
+	}
+	
+	
+	//FR16 settings page and functionality
+	@Test
+	public void FR16() throws InterruptedException {	
+		login(username, password, browser);
+				
+		//go to settings page'
+		browser.findElement(By.className("subFooter")).findElement(By.className("fa-cogs")).click();
+		Thread.sleep(500);
+		
+		WebElement settings = browser.findElement(By.tagName("a"));
+		String settingsPage = settings.getText();
+		
+		boolean exists = false;
+		
+		if (settingsPage.equals("Edit information")) {
+			settings.click();
+			exists = true;
+		}
+		
+		assertTrue(exists);
+	}	
+	
+
+	//FR18 Logout
+	@Test
+	public void FR18() throws InterruptedException {
+		login(username, password, browser);
+				
+		//go to settings page'
+		browser.findElement(By.className("subFooter")).findElement(By.className("fa-cogs")).click();
+		browser.findElement(By.tagName("button")).click();
+		assertTrue(browser.findElements(By.className("login")).size() > 0);
+
+	}
+	
+	
+
+	
+
+	
+	
+	@Test
+	public void FR42() throws InterruptedException {
+		login(username, password, browser);
+		
+		List<WebElement> TwitterContent =browser.findElements(By.cssSelector("[data-icon='twitter']"));
+		TwitterContent.remove(TwitterContent.size()-1);
+		WebElement TwitterPost = TwitterContent.get(randInt(0, TwitterContent.size()-1));
+		WebElement thePost = TwitterPost.findElement(By.xpath(".."));
+		thePost = thePost.findElement(By.xpath(".."));
+		thePost = thePost.findElement(By.xpath(".."));	
+		thePost = thePost.findElement(By.xpath(".."));	
+
+		
+//		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
+//		WebElement thePost = PopularComponent.get(randInt(0,PopularComponent.size()));
+		
+		((JavascriptExecutor) browser).executeScript("arguments[0].scrollIntoView(true);", thePost);
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,-100)","");
+		thePost.click();
+		WebElement theHeader = browser.findElement(By.className("header"));
+		List<WebElement> theName = thePost.findElements(By.tagName("a"));
+		theName.get(1).click();
+		Thread.sleep(1300);
+
+		
+		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
+		assertEquals(true, FeedComponent.size()>0);
+		
+		
+	}
 
 	
 	
@@ -408,7 +604,8 @@ public class FR1to11Test{
 	
 	
 
-
+//FR35,42,44
+	
 
 
 }
