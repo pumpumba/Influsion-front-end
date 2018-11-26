@@ -29,6 +29,7 @@
     height: 2rem;
     font-size: 1.3rem;
     border-radius: 0.2em;
+    min-height: 2rem;
 
     &::placeholder {
       color: $white;
@@ -42,6 +43,7 @@
     color: $gs-hard;
     font-weight: bold;
     padding: 1rem .5rem;
+    color: $white;
 
   }
 

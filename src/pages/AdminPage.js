@@ -6,6 +6,8 @@ import CreateAd from './../components/admin/CreateAd'
 import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
+import AdminFooter from './../components/admin/AdminFooter'
+
 
 class AdminPage extends React.Component {
     constructor() {
@@ -52,6 +54,9 @@ class AdminPage extends React.Component {
                         <ListOfAds />
                         <CreateAd />
                     </div>
+                </div>
+                <div>
+                    <AdminFooter />
                 </div>
             </div>
 

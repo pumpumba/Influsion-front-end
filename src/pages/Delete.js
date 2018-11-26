@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {Link} from 'react-router-dom'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import ModifyAlert from './../components/modifyUser/ModifyAlert'
 import DeleteForm from './../components/delete/DeleteForm'
 
@@ -21,15 +21,11 @@ class Delete extends React.Component {
     }
 
     deleteSuccsessfull() {
-        this.setState({
-            deleteSuccsessfull: true
-        })
+        this.setState({deleteSuccsessfull: true})
     }
 
     wrongPassword() {
-        this.setState({
-            wrongPassword: true
-        })
+        this.setState({wrongPassword: true})
     }
 
     logout() {
@@ -37,33 +33,26 @@ class Delete extends React.Component {
     }
 
     resetState() {
-        this.setState({
-            wrongPassword: false,
-            deleteSuccsessfull: false
-        })
+        this.setState({wrongPassword: false, deleteSuccsessfull: false})
     }
 
     render() {
         let objToRender;
         if (this.state.deleteSuccsessfull) {
-            objToRender = <ModifyAlert title='Account deleted' btnTxt='OK!' link='/login' resetState={this.logout} />
+            objToRender = <ModifyAlert title='Account deleted' btnTxt='OK!' link='/login' resetState={this.logout}/>
         } else if (this.state.wrongPassword) {
-            objToRender = <ModifyAlert title="Wrong password" btnTxt='Try again!' resetState={this.resetState} />
+            objToRender = <ModifyAlert title='Wrong password' btnTxt='Try again!' resetState={this.resetState}/>
         } else {
-            objToRender = <DeleteForm deleteSuccsessfull={this.deleteSuccsessfull}
-                wrongPassword={this.wrongPassword}
-                userId={this.props.userId} />
+            objToRender = <DeleteForm deleteSuccsessfull={this.deleteSuccsessfull} wrongPassword={this.wrongPassword} userId={this.props.userId}/>
         }
 
-        return (
-            <div className="bg">
-                <Header />
-                <main className="delete">
-                    {objToRender}
-                </main>
-                <Footer />
-            </div>
-        )
+        return (<div className='bg'>
+            <Header/>
+            <main className='delete'>
+                {objToRender}
+            </main>
+            <Footer/>
+        </div>)
     }
 }
 export default Delete

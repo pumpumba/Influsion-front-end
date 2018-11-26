@@ -1,5 +1,25 @@
+.bg{
+    height: 90vh;
+    background-color: $light-pink;
+    top: 2rem;
+    bottom: 1rem;
+}
+
 .delete{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+        .delete-Title{
+            align-self: center;
+            text-align: center;
+            color: $grey;
+            font-size: 1.3rem;
+            align-self: center;
+        }
+
+        .delete-Options{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
 }
