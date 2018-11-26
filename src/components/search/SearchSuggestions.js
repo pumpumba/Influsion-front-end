@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchSuggestionComponent from './SearchSuggestionComponent'
+import {BACKEND_URL} from './../../constants'
 
 class SearchSuggestions extends React.Component {
     constructor(props) {
@@ -64,7 +65,7 @@ class SearchSuggestions extends React.Component {
 
     componentDidMount() {
 
-        fetch('http://40.127.101.155/db/get_for_autosearch?user_id=1', {})
+        fetch(BACKEND_URL + 'db/get_for_autosearch?user_id=1', {})
             .then(response => response.json())
             .then(response => this.setState({ response }))
 

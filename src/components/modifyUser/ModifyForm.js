@@ -1,4 +1,5 @@
 import React from 'react'
+import {BACKEND_URL} from './../../constants'
 
 class ModifyForm extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class ModifyForm extends React.Component {
 
     confirmChanges(e) {
         e.preventDefault()
-        fetch('http://40.127.101.155/db/login/', {
+        fetch(BACKEND_URL + 'db/login/', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -33,7 +34,7 @@ class ModifyForm extends React.Component {
 
     sendChanges(e) {
         e.preventDefault()
-        fetch('http://40.127.101.155/db/modify_user/', {
+        fetch(BACKEND_URL + 'db/modify_user/', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -46,7 +47,7 @@ class ModifyForm extends React.Component {
     }
 
     componentDidMount() {
-        const url = "http://40.127.101.155/db/get_user?usrid=" + this.state.usrid
+        const url = BACKEND_URL + 'db/get_user?usrid=' + this.state.usrid
         fetch(url, {
             params: this.state.userid
         })

@@ -1,0 +1,1 @@
+export const BACKEND_URL = 'http://40.127.101.155/'

@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import {BACKEND_URL} from './../../constants'
 
 class RegisterForm extends React.Component {
 
@@ -27,7 +28,7 @@ class RegisterForm extends React.Component {
 
     registerNewUser(e) {
         e.preventDefault()
-        fetch('http://40.127.101.155/db/register_user/', {
+        fetch(BACKEND_URL + 'db/register_user/', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',

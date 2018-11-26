@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {BACKEND_URL} from './../constants'
 
 class Login extends React.Component {
 
@@ -17,7 +18,7 @@ class Login extends React.Component {
 
     login(e) {
         e.preventDefault()
-        fetch('http://40.127.101.155/db/login/', {
+        fetch(BACKEND_URL + 'db/login/', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
