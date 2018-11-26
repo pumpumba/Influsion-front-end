@@ -66,6 +66,7 @@ class Index extends React.Component {
                   <Switch>
                       <Route path='/adminlogin' render={(props) => <AdminLogin {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route path='/admin' render={(props) => <AdminLogin {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                        <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
                   </Switch>
                 </Router>
