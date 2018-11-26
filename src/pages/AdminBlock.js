@@ -1,16 +1,13 @@
 import React from 'react'
 import AdminFooter from './../components/admin/AdminFooter'
-import NavLink from 'react-router-dom/NavLink';
+import NavLink from 'react-router-dom/NavLink'
+import BlockSuggestions from './../components/admin/BlockSuggestions'
 
 class AdminBlock extends React.Component {
   constructor(props) {
     super(props)
-    this.logOut = this.logOut.bind(this)
-  }
-
-  logOut() {
-    this.props.updateAdminId(0)
-    window.location.href = '/admin'
+    this.state = {
+    }
   }
 
     render() {
@@ -22,9 +19,13 @@ class AdminBlock extends React.Component {
                   </h1>
               </header>
 
-              <div className="admin-logout-content">
+              <div className="admin-block-content">
                   <h1>Block Influencer</h1>
+                  <h2> Enter the name of the influencer you whish to block. </h2>
               </div>
+                  <div className='block-content'>
+                      <BlockSuggestions />
+                  </div>
             <AdminFooter />
           </div>
         )
