@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchSuggestionComponent from './SearchSuggestionComponent'
+import {BACKEND_URL} from './../../constants'
 
 class SearchSuggestions extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class SearchSuggestions extends React.Component {
         }
         this.onChange = this.onChange.bind(this)
         this.checkForInfluencer = this.checkForInfluencer.bind(this)
+        this.inputText = React.createRef()
     }
 
     checkForInfluencer(searchString) {
@@ -34,10 +36,28 @@ class SearchSuggestions extends React.Component {
                 }
             }
         }
-        if (searchString === "")
+        if (searchString === '')
             return []
 
-        return searchResults
+        if (searchResults.length > 0)
+            return searchResults
+        else {
+            let noResult = []
+            noResult.push(
+            {
+                'influencername': 'No matching influencers',
+                'realname': 'No matching influencers',
+                'inflid': 'search',
+                'pfaccs': {
+                    'platformaccounts': [{
+                        'actname': '',
+                        'platform': ''
+                    }]
+                },
+                'usrfollowinginfluencer': false
+            })
+            return noResult
+        }
     }
     onChange(searchString) {
         this.setState({ searchResults: this.checkForInfluencer(searchString) })
@@ -45,7 +65,7 @@ class SearchSuggestions extends React.Component {
 
     componentDidMount() {
 
-        fetch('http://40.127.101.155/db/get_for_autosearch?user_id=1', {})
+        fetch(BACKEND_URL + 'db/get_for_autosearch?user_id=1', {})
             .then(response => response.json())
             .then(response => this.setState({ response }))
 
@@ -70,7 +90,8 @@ class SearchSuggestions extends React.Component {
                 <input
                     onChange={(e) => this.onChange(e.target.value)}
                     className='searchInput'
-                    placeholder="Search"
+                    placeholder='Search'
+                    ref={(inputText) => { this.inputText = inputText }}
                 />
                 {feedContent}
             </form>

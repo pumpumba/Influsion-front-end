@@ -25,11 +25,15 @@
 @import 'admin/influencer-list.scss';
 @import 'admin/ad-list';
 @import 'admin/statistic-platform.scss';
+@import 'admin/admin-footer';
 @import 'general-elements';
+@import 'not-found';
+@import 'modify-user';
+
 
 
 body {
-    color: $gs-hard;
+    color: $grey;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     background-color: $light-pink;
@@ -41,6 +45,7 @@ input {
 
 h1, h2, h3, h4, h5 {
     font-family: 'Montserrat', sans-serif;
+    color: $grey;
 }
 
 p {
@@ -53,6 +58,7 @@ a {
 
 @font-face {
   font-family: 'Pacifico', cursive;
+  color: $grey;
   src: url('https://fonts.googleapis.com/css?family=Pacifico')
 }
 
