@@ -16,7 +16,6 @@ class Feed extends React.Component {
     }
 
     componentDidMount() {
-        console.log(BACKEND_URL)
         fetch(BACKEND_URL + 'aggregate/content', {
             method: 'post',
             headers: {
