@@ -300,7 +300,7 @@ public class FR1to11Test{
 	}
 	
 	
-	// Functions tested in Test Case 6 are not implemented yet - search
+	
 	@Test
 	public void FR6() throws InterruptedException {
 		login(username,password,browser);
@@ -550,8 +550,15 @@ public class FR1to11Test{
 	}
 	
 	
-
-	
+	@Test
+	public void FR35() throws InterruptedException {
+		login(username,password,browser);
+		browser.findElement(By.cssSelector("[data-icon='search']")).click();
+		browser.findElement(By.className("searchInput")).sendKeys("tgtg34t34h");
+		Thread.sleep(300);
+		assertEquals("No matching influencers",browser.findElement(By.className("search-header")).getText());
+		
+	}
 
 	
 	
@@ -585,6 +592,56 @@ public class FR1to11Test{
 		
 		
 	}
+	
+	
+	@Test
+	public void PR1() {
+		boolean loadingcheck=false;
+	
+	long start = System.currentTimeMillis();
+
+	browser.get("http://localhost:8080/");  
+
+	long finish = System.currentTimeMillis();
+	Long loadtime = (Long)((JavascriptExecutor)browser).executeScript("return performance.timing.loadEventEnd - performance.timing.navigationStart;");
+	if (loadtime<=2000) {
+		loadingcheck=true;
+		
+	}
+	assertEquals(true,loadingcheck);
+	
+	
+
+	}
+	
+	@Test
+	public void PR2() throws InterruptedException {
+		boolean responsecheck=false;
+		
+		
+
+	browser.get("http://localhost:8080/");
+	login(username, password, browser);
+	Thread.sleep(1000);
+	
+	List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
+	
+	long start = System.currentTimeMillis();
+	
+	PopularComponent.get(0).click();
+	List<WebElement> Component = browser.findElements(By.className("content-container"));
+	
+
+	long finish = System.currentTimeMillis();
+	long responsetime = finish-start;
+	if (responsetime<=2000) {
+		responsecheck=true;
+		
+	}
+
+	assertEquals(true,responsecheck);
+
+	}
 
 	
 	
@@ -604,7 +661,7 @@ public class FR1to11Test{
 	
 	
 
-//FR35,42,44
+
 	
 
 
