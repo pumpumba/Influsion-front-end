@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import PopularComponent from './../components/popular/PopularComponent'
+import {BACKEND_URL} from '../constants'
 
 class Popular extends React.Component {
 
@@ -19,7 +20,7 @@ class Popular extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://40.127.101.155/aggregate/content', {
+        fetch(BACKEND_URL + 'aggregate/content', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',

@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
+import {BACKEND_URL} from './../constants'
 
 class Feed extends React.Component {
 
@@ -15,7 +16,8 @@ class Feed extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://40.127.101.155/aggregate/content', {
+        console.log(BACKEND_URL)
+        fetch(BACKEND_URL + 'aggregate/content', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
