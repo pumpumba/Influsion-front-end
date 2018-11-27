@@ -66,9 +66,10 @@ class Index extends React.Component {
                   <Switch>
                       <Route path='/adminlogin' render={(props) => <AdminLogin {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route path='/admin' render={(props) => <AdminLogin {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                        <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route path='/' component={() => <Login updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                  </Switch>
+                      <Route path='/*' render={(props) => <NotFound {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    </Switch>
                 </Router>
             )
         } else if (this.state.adminId==1 && this.state.userId==0) {
@@ -98,8 +99,8 @@ class Index extends React.Component {
                       <Route exact path='/login' component={() => <Settings updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                       <Route path='/modify-user' render={(props) => <ModifyUser {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                      <Route path='/NotFound' render={(props) => <NotFound {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                      <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route path='/infl/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} /><Route path='/NotFound' render={(props) => <NotFound {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                      <Route render={(props) => <NotFound {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                   </Switch>
               </Router>
             )

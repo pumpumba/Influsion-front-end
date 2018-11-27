@@ -1,3 +1,31 @@
 .NotFound{
-    padding: 1rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align horizontal */
+    align-items: center;
+    /* align vertical */
+
+    .NotFound-title {
+        align-self: center;
+        text-align: center;
+        color: $grey;
+        font-size: 1.3rem;
+        align-self: center;
+    }
+
+    .white-button{
+        max-width: $maxWidth;
+    }
+
+    .Inspiration{
+        margin: auto;
+        text-align: center;
+    }
+
+    .img{
+        align-self: center;
+        margin: auto;
+    }
 }
