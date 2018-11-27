@@ -7,6 +7,7 @@ import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
 import AdminFooter from './../components/admin/AdminFooter'
+import SearchSuggestions from './../components/search/SearchSuggestions'
 
 
 class AdminPage extends React.Component {
@@ -16,6 +17,11 @@ class AdminPage extends React.Component {
             isPageStatistics: true,
         }
         this.rightClickContent = this.rightClickContent.bind(this)
+        this.logOut = this.logOut.bind(this)
+    }
+
+    logOut() {
+      this.props.updateAdminId(0)
     }
 
     rightClickContent() {
@@ -39,15 +45,16 @@ class AdminPage extends React.Component {
         return (
             <div className="admin-page-container">
                 <header>
-                    <h1>
+                    <div className="admin-title">
                         inFlusion: Admin
-                    </h1>
+                        <button onClick={this.logOut}  className='admin-log-out'>Log out</button>
+                    </div>
                 </header>
                 <div className="admin-content">
                     <div className="admin-left-content">
                         {stats}
                     </div>
-                    <div className="admin-center-content" onClick={this.rightClickContent}>
+                    <div className="admin-center-content">
                         <InfluencerList />
                     </div>
                     <div className="admin-right-content">
@@ -55,11 +62,17 @@ class AdminPage extends React.Component {
                         <CreateAd />
                     </div>
                 </div>
-                <div>
-                    <AdminFooter />
+                <div className="admin-content">
+                    <div className="admin-left-content">
+                        <a href='/admin-promote' className='white-button'>Promote Post</a>
+                        <a href='/admin-create' className='white-button'>Create New Post</a>
+                        <a href='/admin-block' className='white-button'>Block Influencer</a>
+                    </div>
+                    <div className="admin-center-content search-content" >
+                        <SearchSuggestions />
+                    </div>
                 </div>
             </div>
-
         )
     }
 }
