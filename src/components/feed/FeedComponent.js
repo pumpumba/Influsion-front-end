@@ -50,8 +50,18 @@ class FeedComponent extends React.Component {
                     />
                 </div>
             )
-        } else return null
-    }
-}
+        } else {
+            return (
+                <div className="mobile-page">
+                    <Header />
+                    <main className='feed'>
+                        <h2>Nothing here to show, please follow a influencer...</h2>
+                    </main>
+                    <Footer showFilter='true' />
+                </div>
 
+            )
+        }
+  }
+}
 export default FeedComponent
