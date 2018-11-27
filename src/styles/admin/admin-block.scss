@@ -1,54 +1,24 @@
-.admin-block-content {
-  display: flex;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  padding-top: 4em;
-  line-height: 25px;
-
-  input, select {
-    width: 25rem;
-    margin: 1rem;
-    background: rgba(255,255,255,0.2);
-    outline: none;
-    resize: none;
-    border: none;
-    color: $medium;
-    overflow: auto;
-    text-align: center;
-    height: 2rem;
-    margin-top: 2em;
-    font-size: 1.3rem;
-    border-radius: 0.5em;
-
-    &::placeholder {
-      color: $medium;
-      font-size: 1.3rem;
-    }
-
-  }
-
-}
-
-.block-content{
-  width: 50%;
-  margin:auto;
+.block-content {
+  height: 800px;
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  grid-gap: 2vw;
+  margin: 2em;
 
   .search-input-wrapper {
-    margin: 1rem;
-
     input {
-      width: 100%;
+      width: 70%;
       height: 2.5em;
       border: white;
       text-align: center;
+      align-items: center;
       color: $text;
       font-size: 1.3rem;
-      border-radius: $borderRadius 0 0 $borderRadius;
+      margin-top: 2em;
+
       border-right: 1px solid #eee;
       box-sizing: border-box;
+      border-radius: 0.5em;
 
       &::placeholder {
         color: #ffe6e6;
@@ -56,8 +26,10 @@
       }
     }
   }
+}
 
-
+.search-header{
+  width: 68%;
 }
 
 .block-msg{
@@ -67,15 +39,27 @@
 
 .blockButton {
   text-align: center;
-  background: $medium;
-  color: $white;
-  border: 0.1em solid $white;
+  background: $light;
+  color: white;
+  border: 0.1em solid white;
   border-radius: 0.5em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
   font-size: 1.5rem;
   width: 80%;
   box-sizing: border-box;
-  letter-spacing: 2px;
-  div.blockbutton:hover {
-    color:red;
-  }
+  letter-spacing: 1px;
+}
+
+.unblockButton {
+  text-align: center;
+  background: $light;
+  border: 0.1em solid $white;
+  border-radius: 0.5em;
+  font-size: 1.5rem;
+  color: $white;
+  padding-top: 0.2em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  box-sizing: border-box;
 }

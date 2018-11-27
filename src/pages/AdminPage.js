@@ -7,6 +7,8 @@ import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
 import AdminFooter from './../components/admin/AdminFooter'
+import BlockInfluencer from './../components/admin/BlockInfluencer'
+import ListOfBlocked from './../components/admin/ListOfBlocked'
 
 
 class AdminPage extends React.Component {
@@ -55,8 +57,9 @@ class AdminPage extends React.Component {
                         <CreateAd />
                     </div>
                 </div>
-                <div>
-                    <AdminFooter />
+                <div className="block-content">
+                    <BlockInfluencer />
+                    <ListOfBlocked />
                 </div>
             </div>
 
