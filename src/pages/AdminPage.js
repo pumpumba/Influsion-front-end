@@ -63,11 +63,10 @@ class AdminPage extends React.Component {
                         <CreateAd />
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div className="block-content">
                     <BlockInfluencer />
                     <ListOfBlocked />
-=======
+                </div>
                 <div className="admin-content">
                     <div className="admin-left-content">
                         <a href='/admin-promote' className='white-button'>Promote Post</a>
@@ -75,9 +74,8 @@ class AdminPage extends React.Component {
                         <a href='/admin-block' className='white-button'>Block Influencer</a>
                     </div>
                     <div className="admin-center-content search-content" >
-                        <SearchSuggestions />
+                        
                     </div>
->>>>>>> dd170798cc3553289f76f299d3a66bcbc6d920be
                 </div>
             </div>
         )

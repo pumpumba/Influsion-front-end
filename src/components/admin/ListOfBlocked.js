@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import BlockedListComponent from './BlockedListComponent'
+import {BACKEND_URL} from './../../constants'
 
 
 class ListOfBlocked extends React.Component {
@@ -24,19 +25,21 @@ class ListOfBlocked extends React.Component {
   render() {
 
     let blockContent = null
-    if (this.state.data.length > 0) {
+    if (this.state.response.length > 0) {
         let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
         blockContent = filteredContent.map(curContent => {
             return <BlockedListComponent
-                influencerName={curContent.postid}
-                index={curContent.id}
-                } />
+                      influencerName="Bieber" index="8"
+                 />
         })
     }
 
     return (
       <div className='blocked-box'>
-        <h1 className="section-title"> Currently Blocked Influencers</h1>
+        <div className="admin-block-content">
+            <h1> Currently Blocked Influencers</h1>
+            Theese Influencers are currently blocked by you.
+        </div>    
         {blockContent}
         <BlockedListComponent influencerName="Lady Gaga" index="8" />
         <BlockedListComponent influencerName="Jolina Olaussen" index="9"/>
