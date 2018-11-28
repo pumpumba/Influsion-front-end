@@ -1,8 +1,8 @@
 import React from 'react'
-import SearchSuggestionComponent from './SearchSuggestionComponent'
+import BlockSuggestionComponent from './BlockSuggestionComponent'
 import {BACKEND_URL} from './../../constants'
 
-class SearchSuggestions extends React.Component {
+class BlockSuggestions extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -64,6 +64,7 @@ class SearchSuggestions extends React.Component {
     }
 
     componentDidMount() {
+
         fetch(BACKEND_URL + 'db/get_for_autosearch?user_id=1', {})
             .then(response => response.json())
             .then(response => this.setState({ response }))
@@ -77,7 +78,7 @@ class SearchSuggestions extends React.Component {
                 influencerName.push(this.state.searchResults[i])
             }
             feedContent = influencerName.map(curContent => {
-                return <SearchSuggestionComponent
+                return <BlockSuggestionComponent
                     data={curContent}
                     key={curContent.inflid}
                 />
@@ -97,4 +98,4 @@ class SearchSuggestions extends React.Component {
     }
 }
 
-export default SearchSuggestions
+export default BlockSuggestions

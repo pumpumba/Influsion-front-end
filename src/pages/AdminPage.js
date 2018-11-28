@@ -7,7 +7,8 @@ import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
 import AdminFooter from './../components/admin/AdminFooter'
-import SearchSuggestions from './../components/search/SearchSuggestions'
+import BlockInfluencer from './../components/admin/BlockInfluencer'
+import ListOfBlocked from './../components/admin/ListOfBlocked'
 
 
 class AdminPage extends React.Component {
@@ -62,6 +63,10 @@ class AdminPage extends React.Component {
                         <CreateAd />
                     </div>
                 </div>
+                <div className="block-content">
+                    <BlockInfluencer />
+                    <ListOfBlocked />
+                </div>
                 <div className="admin-content">
                     <div className="admin-left-content">
                         <a href='/admin-promote' className='white-button'>Promote Post</a>
@@ -69,7 +74,7 @@ class AdminPage extends React.Component {
                         <a href='/admin-block' className='white-button'>Block Influencer</a>
                     </div>
                     <div className="admin-center-content search-content" >
-                        <SearchSuggestions />
+                        
                     </div>
                 </div>
             </div>
