@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchSuggestionComponent from './SearchSuggestionComponent'
-import {BACKEND_URL} from './../../constants'
+import {BACKEND_URL} from './../../../constants'
 
 class SearchSuggestions extends React.Component {
     constructor(props) {

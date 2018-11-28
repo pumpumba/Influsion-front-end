@@ -304,6 +304,7 @@ public class FR1to11Test{
 	@Test
 	public void FR6() throws InterruptedException {
 		login(username,password,browser);
+		browser.get("http://localhost:8080/search");  
 		browser.findElement(By.cssSelector("[data-icon='search']")).click();
 		browser.findElement(By.className("searchInput")).sendKeys("JustinBieber");
 		Thread.sleep(300);
