@@ -15,7 +15,7 @@ class ListOfBlocked extends React.Component {
 
   componentDidMount() {
       fetch(BACKEND_URL + 'db/list_all_excluded_influencers', {
-        method: 'post',
+        method: 'get',
         headers: {
           'Accept': 'application/json, text/plain, */*',
           'Content-Type': 'application/json'
