@@ -19,7 +19,7 @@ class Search extends React.Component {
                         Welcome to the world of searching and all we can give
                   <br />
                         <br />
-                        Start typing the name of your favorite influncer and experince the magic!
+                        Start typing the name of your favorite influencer and experience the magic!
                 </div>
                 </main>
                 <Footer />
