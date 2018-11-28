@@ -4,6 +4,25 @@ import { NavLink } from 'react-router-dom'
 
 class SearchSuggestionComponent extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            inflid: 0,
+        }
+        this.setInflId = this.setInflId.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(param, e) {
+        e.preventDefault()
+        this.setInflId(e, param)
+    }
+    
+    setInflId(e, influencer) {
+        this.props.sendId(influencer)
+        this.props.sendInfluencerClicked(true)
+    }
+
     render() {
         let twitter = false
         let instagram = false
@@ -26,7 +45,7 @@ class SearchSuggestionComponent extends React.Component {
         return (
             <div className='search-header'>
                 {profileImage}
-                <NavLink name='user-name' to={`/${this.props.data.inflid}`}> {this.props.data.influencername} </NavLink>
+                <button name='user-name' onClick={this.handleClick.bind(this, this.props.data.inflid )}> {this.props.data.influencername} </button>
                 <div className='search-platforms' style={{ justifyContent: 'right', alignItems: 'right', textalign: 'right' }}>
                     {(twitter) ? <span><FontAwesomeIcon icon={['fab', 'twitter']} /> </span> : ''}
                     {(instagram) ? <span><FontAwesomeIcon icon={['fab', 'instagram']} /> </span> : ''}

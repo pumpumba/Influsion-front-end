@@ -7,13 +7,16 @@ class SearchSuggestions extends React.Component {
         super(props)
         this.state = {
             response: [],
-            searchResults: []
+            searchResults: [],
+            noInput: ''
         }
         this.onChange = this.onChange.bind(this)
         this.checkForInfluencer = this.checkForInfluencer.bind(this)
-        this.inputText = React.createRef()
+        this.getId = this.getId.bind(this)
+        this.getInfluencerClicked = this.getInfluencerClicked.bind(this)
     }
 
+    
     checkForInfluencer(searchString) {
 
         let influData = this.state.response
@@ -61,6 +64,18 @@ class SearchSuggestions extends React.Component {
     }
     onChange(searchString) {
         this.setState({ searchResults: this.checkForInfluencer(searchString) })
+        this.setState({ noInput: searchString})
+    }
+
+    getId(val) {
+        this.props.sendId(val)
+    }
+
+    getInfluencerClicked(val) {
+        if (val) {
+            this.setState({searchResults: []})
+            this.setState({noInput: ''})
+        }
     }
 
     componentDidMount() {
@@ -80,8 +95,11 @@ class SearchSuggestions extends React.Component {
             }
             feedContent = influencerName.map(curContent => {
                 return <SearchSuggestionComponent
+                    inflid={this.props.inflid}
                     data={curContent}
                     key={curContent.inflid}
+                    sendId={this.getId}
+                    sendInfluencerClicked={this.getInfluencerClicked}
                 />
             })
         }
@@ -91,7 +109,7 @@ class SearchSuggestions extends React.Component {
                     onChange={(e) => this.onChange(e.target.value)}
                     className='searchInput'
                     placeholder='Search'
-                    ref={(inputText) => { this.inputText = inputText }}
+                    value={this.state.noInput}
                 />
                 {feedContent}
             </form>

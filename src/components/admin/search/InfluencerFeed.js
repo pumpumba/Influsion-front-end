@@ -11,20 +11,28 @@ class InfluencerFeed extends React.Component {
       filters: ['twitter', 'youtube', 'instagram']
     }
     this.updateFeedFilters = this.updateFeedFilters.bind(this)
+    this.mountAndUpdate = this.mountAndUpdate.bind(this)
   }
 
-
-  componentDidMount() {
+  mountAndUpdate() {
     fetch(BACKEND_URL + 'aggregate/content', {
       method: 'post',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ assetType: ['all'], filterType: ['influencer'], filterValue: [/*this.props.match.params.influencerid*/ 1, 1], limit: 100 })
+      body: JSON.stringify({ assetType: ['all'], filterType: ['influencer'], filterValue: [this.props.inflid, 1], limit: 100 })
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
+  
+  componentDidMount() {
+    this.mountAndUpdate()
+    }
+
+  componentDidUpdate() {
+    this.mountAndUpdate()
+    }
 
   updateFeedFilters(newFilters) {
     this.setState({ filters: newFilters })

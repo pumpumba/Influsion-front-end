@@ -1,8 +1,7 @@
 import React from 'react'
-// import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfollowInfluencer'
 import FeedComponentHeader from './../../../components/feed/components/FeedComponentHeader'
 import FeedComponentContent from './../../../components/feed/components/FeedComponentContent'
-import FeedComponentMeta from './../../../components/feed/components/FeedComponentMeta'
+import FeedComponentMeta from './FeedComponentMeta'
 
 class FeedComponent extends React.Component {
     constructor(props) {
@@ -10,20 +9,7 @@ class FeedComponent extends React.Component {
         this.state = {
             heart: true
         }
-
-        // this.changeHeart = this.changeHeart.bind(this)
     }
-
-    // changeHeart() {
-    //     this.setState(prevState => ({
-    //         heart: !prevState.heart
-    //     }))
-    //     if (this.state.heart) {
-    //         unfollowInfluencer(this.props.userId, this.props.data.influencerId)
-    //     } else {
-    //         followInfluencer(this.props.userId, this.props.data.influencerId)
-    //     }
-    // }
 
     render() {
         if (this.props.data != null) {
@@ -45,8 +31,7 @@ class FeedComponent extends React.Component {
                         noOfLikes={this.props.data.tweetFavoriteCount || this.props.data.postLikeCount || this.props.data.video_like_count}
                         noOfRetweets={this.props.data.tweetRetweetCount}
                         timeStamp={this.props.data.tweetCreatedAt || this.props.data.postCreatedAt || this.props.data.video_created_at}
-                        // changeHeart={this.changeHeart}
-                        heart={this.state.heart}
+                        postId={this.props.data.tweetId || this.props.data.postId || this.props.data.video_id}
                     />
                 </div>
             )
@@ -57,9 +42,8 @@ class FeedComponent extends React.Component {
                         <h2>Nothing here to show, please follow a influencer...</h2>
                     </main>
                 </div>
-
             )
         }
-  }
+    }
 }
 export default FeedComponent

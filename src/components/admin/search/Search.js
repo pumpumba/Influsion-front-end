@@ -8,15 +8,23 @@ class Search extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            inflid: 0
+        }
+        this.getId = this.getId.bind(this)
+    }
+
+    getId(val){
+        this.setState({inflid: val})
     }
 
     render() {
         return (
             <div>
                 <main className='search-content'>
-                    <SearchSuggestions />
+                    <SearchSuggestions inflid={this.state.inflid} sendId={this.getId}/>
                     <div className='influencer-feed'>
-                        <Feed/>
+                        <Feed inflid={this.state.inflid}/>
                 </div>
                 </main>
             </div>

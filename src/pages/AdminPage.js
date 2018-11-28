@@ -80,7 +80,6 @@ class AdminPage extends React.Component {
                     
                                     
                 </div>
-                    {/* <AdminFooter /> */}
                 <div className="admin-content">
                     <div className="admin-left-content">
                         <a href='/admin-promote' className='white-button'>Promote Post</a>
