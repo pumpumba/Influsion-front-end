@@ -1,26 +1,30 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from 'react-router-dom'
+import {BACKEND_URL} from './../../constants'
 
 class BlockSuggestionComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
     }
-    this.block = this.block.bind(this)
     this.blockTrue = this.blockTrue.bind(this)
   }
 
-  block(e) {
-    fetch(BACKEND_URL + 'db/exclude_influencer', {})
-    .then(response => response.json())
-    .then(response => (response.createSuccess) ? this.blockTrue : '')
-  }
 
   blockTrue() {
     this.setState({
       blockSuccess: true
     })
+    fetch(BACKEND_URL + 'db/exclude_influencer', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({influencerId: this.props.data.inflid})
+    })
+    .then(response => response.json())
   }
 
     render() {
@@ -37,10 +41,9 @@ class BlockSuggestionComponent extends React.Component {
             <div className='search-header'>
                 {profileImage}
                 {this.props.data.influencername}
-                {this.state.blockFail && <p className='block-msg'> Please try again</p>}
                 <div className='block-platforms'>
                   {this.state.blockSuccess && <p className='block-msg'>Block succesfull!</p>}
-                  {!this.state.blockSuccess && <div className="blockButton" onClick={this.block}>
+                  {!this.state.blockSuccess && <div className="blockButton" onClick={this.blockTrue} >
                     Block
                   </div> }
                 </div>

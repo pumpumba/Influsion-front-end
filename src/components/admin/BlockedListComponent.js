@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {BACKEND_URL} from './../../constants'
 
 class BlockedListComponent extends React.Component {
   constructor(props){
@@ -10,8 +11,10 @@ class BlockedListComponent extends React.Component {
     this.unBlock = this.unBlock.bind(this)
   }
 
-
-  unBlock(e) {
+  unBlock() {
+      this.setState({
+        unblockSuccess: true
+      })
       fetch(BACKEND_URL + 'db/remove_excluded_or_promoted_influencer', {
         method: 'post',
         headers: {
@@ -21,13 +24,6 @@ class BlockedListComponent extends React.Component {
         body: JSON.stringify({influencerId: this.props.index })
       })
       .then(response => response.json())
-      .then(response => (response.createSuccess) ? this.unblockTrue : '')
-    }
-
-    unblockTrue() {
-      this.setState({
-        unblockSuccess: true
-      })
     }
 
   render () {

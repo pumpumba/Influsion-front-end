@@ -64,11 +64,9 @@ class SearchSuggestions extends React.Component {
     }
 
     componentDidMount() {
-
         fetch(BACKEND_URL + 'db/get_for_autosearch?user_id=1', {})
             .then(response => response.json())
             .then(response => this.setState({ response }))
-
     }
 
     render() {
