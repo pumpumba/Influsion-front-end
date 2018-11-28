@@ -30,12 +30,8 @@ class BlockSuggestionComponent extends React.Component {
     render() {
 
         let notFound = this.props.data.influencername === 'No matching influencers'
-        let profileImage
-        if (!notFound) {
-            profileImage = <img src={'https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg'} />
-        } else {
-            profileImage = ''
-        }
+        let profileImage = <img src={'https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg'} />
+      
 
         return (
             <div className='search-header'>
