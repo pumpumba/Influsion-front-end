@@ -1,6 +1,7 @@
 import React from 'react'
 import AdminFooter from './../components/admin/AdminFooter'
 import NavLink from 'react-router-dom/NavLink';
+import PromoteAd from './../components/admin/PromoteAd'
 
 class AdminPromote extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class AdminPromote extends React.Component {
               </header>
 
               <div className="admin-logout-content">
-                  <h1>Promote Content</h1>
+                  <PromoteAd />
               </div>
             <AdminFooter />
           </div>

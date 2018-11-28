@@ -24,7 +24,6 @@ class AdminCreate extends React.Component {
               </header>
 
               <div className="admin-logout-content">
-                  <h1>Promote Content</h1>
                   <CreateAd />
               </div>
             <AdminFooter />

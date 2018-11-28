@@ -4,9 +4,7 @@ import CreateAdInputForm from './CreateAdInputForm'
 class CreateAd extends React.Component {
   constructor(){
     super();
-    }
-
-
+  }
 
   render(){
     return(
@@ -17,4 +15,5 @@ class CreateAd extends React.Component {
     );
   }
 }
+
 export default CreateAd;
