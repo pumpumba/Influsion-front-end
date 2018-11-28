@@ -8,13 +8,21 @@ class BlockSuggestionComponent extends React.Component {
     this.state = {
     }
     this.block = this.block.bind(this)
+    this.blockTrue = this.blockTrue.bind(this)
   }
 
   block(e) {
+    fetch(BACKEND_URL + 'db/exclude_influencer', {})
+    .then(response => response.json())
+    .then(response => (response.createSuccess) ? this.blockTrue : '')
+  }
+
+  blockTrue() {
     this.setState({
       blockSuccess: true
     })
   }
+
     render() {
 
         let notFound = this.props.data.influencername === 'No matching influencers'

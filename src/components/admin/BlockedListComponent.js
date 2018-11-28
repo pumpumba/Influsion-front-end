@@ -10,25 +10,34 @@ class BlockedListComponent extends React.Component {
     this.unBlock = this.unBlock.bind(this)
   }
 
+
   unBlock(e) {
-    this.setState({
-      unblockSuccess: true
-    })
-  }
-
-  render () {
-
-    var classes = "influencer-list-component"
-    if(this.props.isActive){
-      classes = "influencer-list-component active"
+      fetch(BACKEND_URL + 'db/remove_excluded_or_promoted_influencer', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({influencerId: this.props.index })
+      })
+      .then(response => response.json())
+      .then(response => (response.createSuccess) ? this.unblockTrue : '')
     }
 
+    unblockTrue() {
+      this.setState({
+        unblockSuccess: true
+      })
+    }
+
+  render () {
+    var classes = "influencer-list-component"
     return (
       <div className={classes}
           onClick={() => this.props.onClick()}
         >
         <p>{this.props.index}</p>
-        <img src="https://scontent-arn2-1.cdninstagram.com/vp/a775df49ed4c6966eeb7c43f83b15850/5C8B539B/t51.2885-19/11017586_953035901381515_1619288648_a.jpg"/>
+        <img src={this.props.pic} />
         <p>{this.props.influencerName}</p>
         {this.state.unblockSuccess && <p className='block-platforms'>Unblock succesfull!</p>}
         {!this.state.unblockSuccess && <div className="unblockButton" onClick={this.unBlock}>

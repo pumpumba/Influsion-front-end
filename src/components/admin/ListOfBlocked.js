@@ -29,7 +29,9 @@ class ListOfBlocked extends React.Component {
         let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
         blockContent = filteredContent.map(curContent => {
             return <BlockedListComponent
-                      influencerName="Bieber" index="8"
+                  influencerName={curContent.influencername}
+                  index={curContent.influencerid}
+                  pic={curContent.piclink}
                  />
         })
     }
@@ -39,11 +41,11 @@ class ListOfBlocked extends React.Component {
         <div className="admin-block-content">
             <h1> Currently Blocked Influencers</h1>
             Theese Influencers are currently blocked by you.
-        </div>    
+        </div>
         {blockContent}
-        <BlockedListComponent influencerName="Lady Gaga" index="8" />
-        <BlockedListComponent influencerName="Jolina Olaussen" index="9"/>
-        <BlockedListComponent influencerName="Jonas Olaussen" index="10" />
+        <BlockedListComponent influencerName="Lady Gaga" index="8" pic='https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg'/>
+        <BlockedListComponent influencerName="Jolina Olaussen" index="9" pic='https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg' />
+        <BlockedListComponent influencerName="Jonas Olaussen" index="10" pic='https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg' />
       </div>
 
 
