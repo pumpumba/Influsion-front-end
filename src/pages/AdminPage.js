@@ -7,7 +7,11 @@ import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
 import AdminFooter from './../components/admin/AdminFooter'
-
+import MostClicked from './../components/admin/10MostClicked'
+import MostFollowed from './../components/admin/10MostFollowed'
+import Search from './../components/admin/Search'
+import Feed from './InfluencerFeed'
+import './../styles/admin/most-clicked-followed-search.scss'
 
 class AdminPage extends React.Component {
     constructor() {
@@ -55,8 +59,21 @@ class AdminPage extends React.Component {
                         <CreateAd />
                     </div>
                 </div>
+                <div className='most-clicked-and-search'>
+                    <div className='10-most-clicked'>
+                        <MostClicked />  
+                    </div>
+                    <div className='10-most-followed'>
+                        <MostFollowed/>
+                    </div>
+                    <div className='search-and-feed'>
+                        <Search/>
+                    </div>
+                    
+                                    
+                </div>
                 <div>
-                    <AdminFooter />
+                    {/* <AdminFooter /> */}
                 </div>
             </div>
 

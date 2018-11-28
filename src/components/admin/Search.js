@@ -1,0 +1,28 @@
+import React from 'react'
+import SearchSuggestions from './SearchSuggestions'
+import './../../styles/admin/search.scss'
+
+class Search extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <div>
+                <main className='search-content'>
+                    <SearchSuggestions />
+                    <div className='info-text'>
+                        Welcome to the world of searching and all we can give
+                  <br />
+                        <br />
+                        Start typing the name of your favorite influncer and experince the magic!
+                </div>
+                </main>
+            </div>
+        )
+    }
+}
+
+export default Search
