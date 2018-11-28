@@ -33,9 +33,7 @@ class CreateAdInputForm extends React.Component {
                                  textdescription: this.state.textDescription, additionalinformation: this.state.additionalInformation,
                                  showinpopularfeed: this.state.showInPopular, showinfollowingfeed: this.state.showInFollowing})
       })
-          // .then(response => response.json())
-          // .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
-          // .catch(error => this.props.registerUnsuccsessfull())
+
   }
 
   onInsertOfPicture(picUrl) {
