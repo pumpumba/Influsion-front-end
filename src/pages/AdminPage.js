@@ -18,6 +18,11 @@ class AdminPage extends React.Component {
             isPageStatistics: true,
         }
         this.rightClickContent = this.rightClickContent.bind(this)
+        this.logOut = this.logOut.bind(this)
+    }
+
+    logOut() {
+      this.props.updateAdminId(0)
     }
 
     rightClickContent() {
@@ -41,15 +46,16 @@ class AdminPage extends React.Component {
         return (
             <div className="admin-page-container">
                 <header>
-                    <h1>
+                    <div className="admin-title">
                         inFlusion: Admin
-                    </h1>
+                        <button onClick={this.logOut}  className='admin-log-out'>Log out</button>
+                    </div>
                 </header>
                 <div className="admin-content">
                     <div className="admin-left-content">
                         {stats}
                     </div>
-                    <div className="admin-center-content" onClick={this.rightClickContent}>
+                    <div className="admin-center-content">
                         <InfluencerList />
                     </div>
                     <div className="admin-right-content">
@@ -57,12 +63,23 @@ class AdminPage extends React.Component {
                         <CreateAd />
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div className="block-content">
                     <BlockInfluencer />
                     <ListOfBlocked />
+=======
+                <div className="admin-content">
+                    <div className="admin-left-content">
+                        <a href='/admin-promote' className='white-button'>Promote Post</a>
+                        <a href='/admin-create' className='white-button'>Create New Post</a>
+                        <a href='/admin-block' className='white-button'>Block Influencer</a>
+                    </div>
+                    <div className="admin-center-content search-content" >
+                        <SearchSuggestions />
+                    </div>
+>>>>>>> dd170798cc3553289f76f299d3a66bcbc6d920be
                 </div>
             </div>
-
         )
     }
 }

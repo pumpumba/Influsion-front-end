@@ -10,6 +10,7 @@ class NotFound extends React.Component {
         return (
             <div className='NotFound'>
                 <img className='NotFound-img' src={image}></img>
+                <p className="Inspiration">&quot;If you were to be lost in the river, Jonas, <br/>your memories would not be lost with you. Memories are forever&quot;</p>
                 <NavLink to='/' className='white-button'>Go back</NavLink>
             </div>
         )
