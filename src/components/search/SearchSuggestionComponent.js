@@ -24,7 +24,7 @@ class SearchSuggestionComponent extends React.Component {
         }
 
         return (
-            <div className='search-header'>
+            <div className='search-header' to={`/infl/${this.props.data.inflid}`}>
                 {profileImage}
                 <NavLink name='user-name' to={`/infl/${this.props.data.inflid}`}> {this.props.data.influencername} </NavLink>
                 <div className='search-platforms' style={{ justifyContent: 'right', alignItems: 'right', textalign: 'right' }}>
