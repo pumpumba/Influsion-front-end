@@ -46,12 +46,6 @@ class PopularComponent extends React.Component {
             let backgroundUrl = ['']
             backgroundUrl = this.props.data.tweetMedia ? this.props.data.tweetMedia : this.props.data.postMedia
 
-            /* if (this.props.data.platform.toLowerCase() == 'instagram') {
-                if (this.props.data.postMedia.contains("mp4")) {
-
-                }
-            } */
-
             if (this.props.data.platform.toLowerCase() == 'youtube') {
                 let imageArr = []
                 imageArr.push(this.props.data.video_thumbnail_url)
