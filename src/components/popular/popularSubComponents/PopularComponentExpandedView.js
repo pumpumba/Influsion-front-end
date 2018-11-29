@@ -22,7 +22,7 @@ function ContentPlacer(props) {
                 :
                 (props.img[0] ? (props.img[0].includes("mp4") ?
                     <iframe
-                        autoplay="false"
+                        autoPlay={false}
                         width="320"
                         height="400"
                         frameBorder="0"
