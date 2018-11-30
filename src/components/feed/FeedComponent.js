@@ -8,10 +8,15 @@ class FeedComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            heart: true
+            heart: false
         }
 
         this.changeHeart = this.changeHeart.bind(this)
+    }
+    componentWillMount() {
+        this.setState(({
+            heart: this.props.userFollowing
+        }))
     }
 
     changeHeart() {
