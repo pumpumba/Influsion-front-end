@@ -12,6 +12,7 @@ class SearchSuggestions extends React.Component {
         this.onChange = this.onChange.bind(this)
         this.checkForInfluencer = this.checkForInfluencer.bind(this)
         this.inputText = React.createRef()
+        this.handleKeyPress = this.handleKeyPress.bind(this)
     }
 
     checkForInfluencer(searchString) {
@@ -63,6 +64,12 @@ class SearchSuggestions extends React.Component {
         this.setState({ searchResults: this.checkForInfluencer(searchString) })
     }
 
+    handleKeyPress(e){
+        if(e.charCode==13){
+            e.preventDefault()
+        }
+    }
+
     componentDidMount() {
         fetch(BACKEND_URL + 'db/get_for_autosearch?user_id=1', {})
             .then(response => response.json())
@@ -87,6 +94,7 @@ class SearchSuggestions extends React.Component {
             <form className='search-input-wrapper'>
                 <input
                     onChange={(e) => this.onChange(e.target.value)}
+                    onKeyPress={this.handleKeyPress}
                     className='searchInput'
                     placeholder='Search'
                     ref={(inputText) => { this.inputText = inputText }}
