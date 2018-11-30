@@ -8,17 +8,18 @@ class CreateAdInputForm extends React.Component {
     super();
     this.state = {
       title: '',
-      tvOperatorId: 0,
+      tvOperatorId: 1,
       imageUrl: '',
       textDescription: '',
       additionalInformation: '',
-      showInPopular: true,
-      showInFollowing: true,
-      feed: 'Both',
+      popularFeed: false,
+      followingFeed: false,
       imageVisible: false
     }
-    this.changeFeed = this.changeFeed.bind(this)
+
     this.createNewAd = this.createNewAd.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+
   }
 
   createNewAd(e) {
@@ -29,9 +30,9 @@ class CreateAdInputForm extends React.Component {
               'Accept': 'application/json, text/plain, */*',
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ title: this.state.title, tvoperatorid: this.state.tvOperatorId, imgurl: this.state.imageUrl,
+          body: JSON.stringify({ title: this.state.title, tvoperatorid: this.state.tvOperatorId, imgurl: this.state.imgUrl,
                                  textdescription: this.state.textDescription, additionalinformation: this.state.additionalInformation,
-                                 showinpopularfeed: this.state.showInPopular, showinfollowingfeed: this.state.showInFollowing})
+                                 showinpopularfeed: this.state.popularFeed, showinfollowingfeed: this.state.followingFeed })
       })
 
   }
@@ -42,18 +43,17 @@ class CreateAdInputForm extends React.Component {
     });
   }
 
-  changeFeed(input) {
-      if (this.state.feed === "Popular") {
-          this.setState({ showInFollowing: false })
-          this.setState({ showInPopular: true })
-      } else if (this.state.feed === "Following") {
-          this.setState({ showInPopular: false })
-          this.setState({ showInFollowing: true })
-      } else {
-        this.setState({ showInPopular: true })
-        this.setState({ showInPopular: true })
-      }
-      console.log(this)
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+    console.log(this)
+
   }
 
   render() {
@@ -88,15 +88,25 @@ class CreateAdInputForm extends React.Component {
             placeholder="Additional information"
             onChange={(e) => this.setState({ additionalInformation: e.target.value })}
           />
+
           <label>
-            <select name="feed"
-                onChange={(e) => this.setState({ feed: e.target.value }, this.changeFeed())}>
-                <option value="Both">Both</option>
-                <option value="Popular">Popular</option>
-                <option value="Following">Following</option>
-                </select>
-                Feed
+            Popular feed:
+            <input
+              name="popularFeed"
+              type="checkbox"
+              checked={this.state.popularFeed}
+              onChange={this.handleInputChange} />
           </label>
+
+          <label>
+            Following feed:
+            <input
+              name="followingFeed"
+              type="checkbox"
+              checked={this.state.followingFeed}
+              onChange={this.handleInputChange} />
+          </label>
+
           <button onClick={this.createNewAd}>Submit</button>
         </form>
       </div>

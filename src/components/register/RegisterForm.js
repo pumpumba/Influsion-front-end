@@ -36,9 +36,9 @@ class RegisterForm extends React.Component {
             },
             body: JSON.stringify(this.state)
         })
-            .then(response => response.json())
-            .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
-            .catch(error => this.props.registerUnsuccsessfull())
+        .then(response => response.json())
+        .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
+        .catch(error => this.props.registerUnsuccsessfull())
     }
 
     validateUsername(input) {

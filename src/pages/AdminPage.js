@@ -3,6 +3,7 @@ import Popular from './Popular'
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts'
 import Statistics from './../components/admin/Statistics'
 import CreateAd from './../components/admin/CreateAd'
+import PromoteAd from './../components/admin/PromoteAd'
 import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
@@ -44,22 +45,18 @@ class AdminPage extends React.Component {
                     </h1>
                 </header>
                 <div className="admin-content">
-                    <div className="admin-left-content">
-                        {stats}
-                    </div>
-                    <div className="admin-center-content" onClick={this.rightClickContent}>
-                        <InfluencerList />
-                    </div>
-                    <div className="admin-right-content">
-                        <ListOfAds />
+                    <div className="create-ad">
                         <CreateAd />
                     </div>
+                    <div className="create-ad">
+                        <PromoteAd />
+                    </div>
+
                 </div>
                 <div>
                     <AdminFooter />
                 </div>
             </div>
-
         )
     }
 }
