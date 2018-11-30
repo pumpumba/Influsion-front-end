@@ -13,6 +13,8 @@ import Search from './../components/admin/search/Search'
 import Feed from './../components/admin/search/InfluencerFeed'
 import './../styles/admin/most-clicked-followed-search.scss'
 import SearchSuggestions from './../components/admin/search/SearchSuggestions'
+import BlockInfluencer from './../components/admin/BlockInfluencer'
+import ListOfBlocked from './../components/admin/ListOfBlocked'
 
 
 class AdminPage extends React.Component {
@@ -77,8 +79,11 @@ class AdminPage extends React.Component {
                     <div className='search-and-feed'>
                         <Search/>
                     </div>
-                    
+                    </div>
                                     
+                <div className="block-content">
+                    <BlockInfluencer />
+                    <ListOfBlocked />
                 </div>
                 <div className="admin-content">
                     <div className="admin-left-content">
@@ -87,7 +92,7 @@ class AdminPage extends React.Component {
                         <a href='/admin-block' className='white-button'>Block Influencer</a>
                     </div>
                     <div className="admin-center-content search-content" >
-                        <SearchSuggestions />
+                        
                     </div>
                 </div>
             </div>

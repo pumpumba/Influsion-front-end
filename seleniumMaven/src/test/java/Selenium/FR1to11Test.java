@@ -550,6 +550,611 @@ public class FR1to11Test{
 
 	}
 	
+	@Test
+	public void FR24() throws InterruptedException {
+		
+		 login(username, password, browser);
+		 Thread.sleep(1000);
+		
+
+		browser.findElement(By.className("fa-search")).click();
+		WebElement Searchexp = browser.findElement(By.className("info-text"));	
+		assertEquals(Searchexp.getText().substring(0,7) ,"Welcome");	
+	}
+	
+	@Test
+	public void FR27() throws InterruptedException {
+		 login(username, password, browser);
+		browser.findElement(By.className("fa-star")).click();
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
+
+		for (WebElement filterButton : filterButtons) {
+
+			if (filterButton.getAttribute("data-icon").equals("instagram") ||
+
+				filterButton.getAttribute("data-icon").equals("youtube")) {
+
+				if (filterButton.getAttribute("data-state").equals("active")) {
+
+					filterButton.click();
+
+				}
+
+			}
+
+		}
+
+		List<WebElement> instaContent = browser.findElements(By.className("popular-component-wrapper"));
+
+		instaContent.get(0).click();
+
+		Thread.sleep(300);
+
+
+		WebElement metaData = instaContent.get(0).findElement(By.className("meta-data"));
+
+		List<WebElement> metaDataTypes = metaData.findElements(By.tagName("span"));
+ 
+
+		String likes = "";
+
+		String date = "";
+
+		String retweets = "";
+
+		String comments = "";
+
+		String hashtags = "";
+
+				
+		for (WebElement data : metaDataTypes) {
+
+			if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("heart")) {
+
+				likes = data.getText();
+
+			} else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("calendar-alt")) {
+
+				date = data.getText();
+
+			} //else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("retweet")) {
+
+				//retweets = data.getText();
+
+		//	} else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("comments")) {
+
+				//comments = data.getText();
+
+		//	}	
+
+			//where will the hashtags be shown?
+					
+		}	
+		boolean correctMeta = true;	
+
+		//likes
+
+		if (!(Integer.parseInt(likes) >= 0)) {
+
+			correctMeta = false;
+		}
+		//date
+		if (date == null || date.equals("")) {
+
+			correctMeta = false;
+
+		}		
+
+		//comments
+
+	//	if (!(Integer.parseInt(comments) >= 0)) {
+
+	//		correctMeta = false;
+
+	//	}
+
+		//retweets
+
+	//	if (!(Integer.parseInt(retweets) >= 0)) {
+
+	//		correctMeta = false;
+
+	//	}
+		//verify that there are hashtags
+		assertTrue(correctMeta);	
+	}
+	
+	
+	//FR28 twitter post content
+	@Test
+	public void FR28() throws InterruptedException {
+		login(username, password, browser);
+		
+		browser.findElement(By.className("fa-star")).click();
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
+
+		for (WebElement filterButton : filterButtons) {
+
+			if (filterButton.getAttribute("data-icon").equals("instagram") ||
+
+				filterButton.getAttribute("data-icon").equals("youtube")) {
+
+				if (filterButton.getAttribute("data-state").equals("active")) {
+
+					filterButton.click();
+
+				}
+
+			}
+
+		}
+
+		List<WebElement> instaContent = browser.findElements(By.className("popular-component-wrapper"));
+
+		instaContent.get(0).click();
+
+		Thread.sleep(300);	
+
+		WebElement expand = instaContent.get(0).findElement(By.className("expanded-view"));
+		//name
+
+		String name = expand.findElement(By.xpath(".//div[@class='header']/a[1]")).getAttribute("href");
+
+		//text
+
+		String text = expand.findElement(By.className("content-container")).findElement(By.tagName("p")).getText();
+
+		//img
+
+		String imgsrc = expand.findElement(By.className("content-container")).findElement(By.tagName("img")).getAttribute("src");	
+
+		//verified account (tag?)	
+
+		boolean correctContent = true;	
+
+		if (name.equals(null)) {
+
+			correctContent = false;
+
+		}
+
+		if (text.equals(null)&&imgsrc.equals(null)) {
+
+			correctContent = false;
+
+		}
+		//verified account (tag?
+		assertTrue(correctContent);		
+	}
+	
+	@Test
+	public void FR29() throws InterruptedException {
+		login(username, password, browser);
+
+		browser.findElement(By.className("fa-star")).click();
+
+		Thread.sleep(500);
+
+		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
+
+		for (WebElement filterButton : filterButtons) {
+
+			if (filterButton.getAttribute("data-icon").equals("twitter") ||
+
+				filterButton.getAttribute("data-icon").equals("instagram")) {
+
+				if (filterButton.getAttribute("data-state").equals("active")) {
+
+					filterButton.click();
+
+				}
+
+			}
+
+		}
+
+		
+
+		List<WebElement> youtubeContent = browser.findElements(By.className("popular-component-wrapper"));
+
+		youtubeContent.get(0).click();
+
+		Thread.sleep(200);
+
+		
+
+		WebElement expand = youtubeContent.get(0).findElement(By.className("expanded-view"));
+
+		
+
+		//name
+
+		String name = expand.findElement(By.xpath(".//div[@class='header']/a[1]")).getAttribute("href");
+
+		//video
+
+		String videosrc = expand.findElement(By.className("content-container")).findElement(By.tagName("iframe")).getAttribute("src");
+
+		//text
+
+		String text = expand.findElement(By.className("content-container")).findElement(By.tagName("p")).getText();
+
+		//verified account
+
+		//username
+
+		
+
+		boolean correctContent = true;
+
+		
+
+		if (name.equals(null)) {
+
+			correctContent = false;
+
+		}
+
+		if (text.equals(null)) {
+
+			correctContent = false;
+
+		}
+
+		if (videosrc.equals(null)) {
+
+			correctContent = false;
+
+		}
+
+		//username
+
+		//verified account (tag?)
+
+		
+
+		assertTrue(correctContent);		
+
+	}
+	
+	@Test
+	public void FR30() throws InterruptedException {
+	login(username,password,browser);
+	browser.findElement(By.className("fa-star")).click();
+
+		Thread.sleep(300);
+	
+
+		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
+
+		for (WebElement filterButton : filterButtons) {
+
+			if (filterButton.getAttribute("data-icon").equals("twitter") ||
+
+				filterButton.getAttribute("data-icon").equals("instagram")) {
+
+				if (filterButton.getAttribute("data-state").equals("active")) {
+
+					filterButton.click();
+
+				}
+
+			}
+
+		}
+
+		
+
+		List<WebElement> youtubeContent = browser.findElements(By.className("popular-component-wrapper"));
+
+		youtubeContent.get(0).click();
+
+		Thread.sleep(300);
+
+		
+
+		WebElement metaData = youtubeContent.get(0).findElement(By.className("meta-data"));
+
+		List<WebElement> metaDataTypes = metaData.findElements(By.tagName("span"));
+
+		 
+
+		String likes = "";
+
+		String date = "";
+
+		String comments = "";
+
+		String hashtags = "";
+
+		
+
+		//where will the hashtags be shown?
+
+		
+
+		for (WebElement data : metaDataTypes) {
+
+			if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("heart")) {
+
+				likes = data.getText();
+				//System.out.println(likes);
+
+			} else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("calendar-alt")) {
+
+				date = data.getText();
+				//System.out.println(data);
+
+			} //else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("comments")) {
+
+		//		comments = data.getText();
+
+		//	} 
+
+		}
+
+		
+
+		boolean correctMeta = true;
+
+		
+
+		//likes
+
+		if (!(Integer.parseInt(likes) >= 0)) {
+
+			correctMeta = false;
+
+		}
+
+		//date
+
+		if (date == null) {
+
+			correctMeta = false;
+
+		}
+
+		
+
+	//comments
+
+	//	if (!(Integer.parseInt(comments) >= 0)) {
+
+	//		correctMeta = false;
+
+	//	}
+
+	//verify that there are hashtags
+
+		
+
+		assertTrue(correctMeta);	
+
+	}
+	
+	@Test
+	public void FR31() throws InterruptedException {
+		login(username,password,browser);
+		
+		browser.findElement(By.className("fa-star")).click();
+		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (WebElement filterButton : filterButtons) {
+
+			if (filterButton.getAttribute("data-icon").equals("twitter") ||
+
+				filterButton.getAttribute("data-icon").equals("youtube")) {
+
+				if (filterButton.getAttribute("data-state").equals("active")) {
+
+					filterButton.click();
+
+				}
+
+			}
+
+		}
+
+		
+
+		List<WebElement> instaContent = browser.findElements(By.className("popular-component-wrapper"));
+
+		instaContent.get(0).click();
+
+		Thread.sleep(500);
+
+		
+
+		WebElement expand = instaContent.get(0).findElement(By.className("expanded-view"));
+
+		
+
+		//name
+
+		String name = expand.findElement(By.xpath(".//div[@class='header']/a[1]")).getAttribute("href");
+
+		//img
+
+		String imgsrc = expand.findElement(By.className("content-container")).findElement(By.tagName("img")).getAttribute("src");
+
+		//text
+
+		String text = expand.findElement(By.className("content-container")).findElement(By.tagName("p")).getText();
+
+		//verified account
+
+		//username
+
+		
+
+		boolean correctContent = true;
+
+		
+
+		if (name.equals(null)) {
+
+			correctContent = false;
+
+		}
+
+		if (text.equals(null)) {
+
+			correctContent = false;
+
+		}
+
+		if (imgsrc.equals(null)) {
+
+			correctContent = false;
+
+		}
+
+		//username
+
+		//verified account (tag?)
+
+		
+
+		assertTrue(correctContent);		
+
+	}
+	
+	@Test
+	public void FR32() throws InterruptedException {	
+		login(username,password,browser);
+		
+		browser.findElement(By.className("fa-star")).click();
+		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (WebElement filterButton : filterButtons) {
+
+			if (filterButton.getAttribute("data-icon").equals("twitter") ||
+
+				filterButton.getAttribute("data-icon").equals("youtube")) {
+
+				if (filterButton.getAttribute("data-state").equals("active")) {
+
+					filterButton.click();
+
+				}
+
+			}
+
+		}
+
+		
+
+		List<WebElement> instaContent = browser.findElements(By.className("popular-component-wrapper"));
+
+		instaContent.get(0).click();
+
+		Thread.sleep(500);
+
+		
+
+		WebElement metaData = instaContent.get(0).findElement(By.className("meta-data"));
+
+		List<WebElement> metaDataTypes = metaData.findElements(By.tagName("span"));
+
+		 
+
+		String likes = "";
+
+		String date = "";
+
+		String comments = "";
+
+		String hashtags = "";
+
+		
+
+		//where will the hashtags be shown?
+
+		
+
+		for (WebElement data : metaDataTypes) {
+
+			if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("heart")) {
+
+				likes = data.getText();
+
+			} else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("calendar-alt")) {
+
+				date = data.getText();
+
+			} //else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("comments")) {
+
+		//		comments = data.getText();
+
+		//	} 
+
+		}
+
+		
+
+		boolean correctMeta = true;
+
+		
+
+		//likes
+
+		if (!(Integer.parseInt(likes) >= 0)) {
+
+			correctMeta = false;
+
+		}
+
+		//date
+
+		if (date == null) {
+
+			correctMeta = false;
+
+		}
+
+		
+
+	//comments
+
+	//	if (!(Integer.parseInt(comments) >= 0)) {
+
+	//		correctMeta = false;
+
+	//	}
+
+	//verify that there are hashtags
+
+			
+
+		assertTrue(correctMeta);	
+
+	}
+
+	
 	
 	@Test
 	public void FR35() throws InterruptedException {

@@ -62,7 +62,6 @@ class Feed extends React.Component {
           <div className="mobile-page">
               <Header />
               <main>
-                hejhejehej
               </main>
               <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
           </div>
