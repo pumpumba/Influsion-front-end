@@ -45,7 +45,7 @@ class SearchSuggestionComponent extends React.Component {
         return (
             <div className='search-header'>
                 {profileImage}
-                <button name='user-name' onClick={this.handleClick.bind(this, this.props.data.inflid )}> {this.props.data.influencername} </button>
+                <button className='name-button' onClick={this.handleClick.bind(this, this.props.data.inflid )}> {this.props.data.influencername} </button>
                 <div className='search-platforms' style={{ justifyContent: 'right', alignItems: 'right', textalign: 'right' }}>
                     {(twitter) ? <span><FontAwesomeIcon icon={['fab', 'twitter']} /> </span> : ''}
                     {(instagram) ? <span><FontAwesomeIcon icon={['fab', 'instagram']} /> </span> : ''}

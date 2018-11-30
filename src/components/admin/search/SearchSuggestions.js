@@ -104,7 +104,7 @@ class SearchSuggestions extends React.Component {
             })
         }
         return (
-            <form className='search-input-wrapper'>
+            <form className='admin-search-input-wrapper'>
                 <input
                     onChange={(e) => this.onChange(e.target.value)}
                     className='searchInput'

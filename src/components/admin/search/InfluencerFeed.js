@@ -8,7 +8,8 @@ class InfluencerFeed extends React.Component {
     super(props)
     this.state = {
       data: [],
-      filters: ['twitter', 'youtube', 'instagram']
+      filters: ['twitter', 'youtube', 'instagram'],
+      influencerid: this.props.inflid
     }
     this.updateFeedFilters = this.updateFeedFilters.bind(this)
     this.mountAndUpdate = this.mountAndUpdate.bind(this)
@@ -31,8 +32,11 @@ class InfluencerFeed extends React.Component {
     }
 
   componentDidUpdate() {
-    this.mountAndUpdate()
-    }
+      if (this.state.influencerid !== this.props.inflid) {
+        this.setState({influencerid: this.props.inflid})
+        this.mountAndUpdate()
+      }
+    } 
 
   updateFeedFilters(newFilters) {
     this.setState({ filters: newFilters })
