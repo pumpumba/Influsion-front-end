@@ -10,7 +10,8 @@ class PopularComponent extends React.Component {
         super(props)
         this.state = {
             open: false,
-            heart: false
+            heart: false,
+            isInstagramVideo: false
         }
 
         this.onClick = this.onClick.bind(this)
@@ -40,6 +41,7 @@ class PopularComponent extends React.Component {
         }
     }
 
+
     render() {
         if (this.props.data != null) {
 
@@ -59,10 +61,13 @@ class PopularComponent extends React.Component {
                 }
             }
 
+            let isInstagramVideo = false
+
             if (this.props.data.postMedia) {
                 if (this.props.data.postMedia[0].includes("mp4")) {
+                    isInstagramVideo = true
                     styles = {
-                        backgroundImage: "url('https://image.shutterstock.com/mosaic_250/0/0/1024284199.jpg')"
+                        backgroundImage: `url(${this.props.data.userProfileImageUrl})`
                     }
                 } else {
                     styles = {
@@ -70,6 +75,7 @@ class PopularComponent extends React.Component {
                     }
                 }
             }
+
             return (
                 <div
                     className='popular-component-wrapper'
@@ -86,6 +92,7 @@ class PopularComponent extends React.Component {
                         heart={this.state.heart}
                         platform={this.props.data.platform}
                         influencerId={this.props.data.influencerId}
+                        isInstagramVideo={isInstagramVideo}
                     />
                     {this.state.open &&
                         <PopularComponentExpandedView

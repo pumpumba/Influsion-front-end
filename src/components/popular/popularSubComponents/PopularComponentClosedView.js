@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { StopPropagation } from 'react-clickable';
+import { StopPropagation } from 'react-clickable'
 
 class PopularComponentHeader extends React.Component {
     render() {
@@ -9,6 +9,9 @@ class PopularComponentHeader extends React.Component {
                 <div className='header'>
                     <img src={this.props.userProfileImageUrl} />
                 </div>
+                {this.props.isInstagramVideo &&
+                    <FontAwesomeIcon icon={['fab', 'play']} />
+                }
                 <StopPropagation>
                     <a href={this.props.url}>
                         <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
