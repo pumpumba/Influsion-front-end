@@ -82,14 +82,16 @@ class PopularComponentExpandedView extends React.Component {
         const plat = this.props.platform
         return (
             <div className='expanded-view'>
-                <div className='header'>
+                <NavLink to={`/infl/${this.props.influencerId}`} className='header'>
                     <img src={this.props.userProfileImageUrl} />
-                    <NavLink to={`/infl/${this.props.influencerId}`}> {this.props.userName}  </NavLink>
+                    {this.props.userName}
                     {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
+                    <StopPropagation>
                     <a href={this.props.url} className='platform-link'>
                         <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
                     </a>
-                </div>
+                    </StopPropagation>
+                </NavLink>
                 <ContentPlacer {...this.props} />
             </div>
         )
