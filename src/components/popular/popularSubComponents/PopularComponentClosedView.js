@@ -10,7 +10,9 @@ class PopularComponentHeader extends React.Component {
                     <img src={this.props.userProfileImageUrl} />
                 </div>
                 {this.props.isInstagramVideo &&
-                    <FontAwesomeIcon icon={'play'} />
+                    <div className='play-icon-wrapper'>
+                        <FontAwesomeIcon icon={'play'} />
+                    </div>
                 }
                 <StopPropagation>
                     <a href={this.props.url}>
