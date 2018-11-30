@@ -15,6 +15,16 @@ class ModifyForm extends React.Component {
         }
         this.sendChanges = this.sendChanges.bind(this);
         this.confirmChanges = this.confirmChanges.bind(this);
+        this.checkPasswordEmpty = this.checkPasswordEmpty.bind(this);
+    }
+
+    checkPasswordEmpty(e){
+        if(this.state.password === ""){
+            this.setState({
+                this.state.password: this.state.confirmPassword
+            })
+        }
+        this.confirmChanges(e)
     }
 
     confirmChanges(e) {
@@ -33,7 +43,6 @@ class ModifyForm extends React.Component {
     }
 
     sendChanges(e) {
-        e.preventDefault()
         fetch(BACKEND_URL + 'db/modify_user/', {
             method: 'post',
             headers: {
@@ -54,13 +63,12 @@ class ModifyForm extends React.Component {
             .then(data => data.json())
             .then(data => {
                 this.setState({
-                    username: data.rows[0].usrname,
-                    email: data.rows[0].email,
-                    age: data.rows[0].age,
-                    sex: data.rows[0].sex
+                    username: data[0].usrname,
+                    email: data[0].email,
+                    age: data[0].age,
+                    sex: data[0].sex
                 })
             })
-            .then(data => console.log(data))
     }
 
     render() {
@@ -97,9 +105,9 @@ class ModifyForm extends React.Component {
                 <div className="confirm-Form">
                     <span>Enter password to confirm</span>
                     <input className="input-Confirm" placeholder="Password" type="password"
-                        onChange={(e) => this.setState({ confirmPassword: e.target.value })}
+                        onChange={(e) => this.setState({ confirmPassword: e.target.value})}
                     ></input>
-                    <button className="white-button" onClick={this.confirmChanges}>Confirm</button>
+                <button className="white-button" onClick={this.checkPasswordEmpty}>Confirm</button>
                 </div>
             </form>
         )
