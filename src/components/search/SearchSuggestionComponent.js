@@ -12,9 +12,6 @@ class SearchSuggestionComponent extends React.Component {
       this.onClick = this.onClick.bind(this)
   }
 
-  onClick() {
-  }
-
     render() {
         let twitter = false
         let instagram = false
