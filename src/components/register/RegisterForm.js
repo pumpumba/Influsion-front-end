@@ -14,7 +14,8 @@ class RegisterForm extends React.Component {
             email: '',
             emailError: '',
             age: '',
-            sex: 'Male'
+            sex: 'Male',
+            registerOK: false
         }
 
         this.registerNewUser = this.registerNewUser.bind(this)
@@ -24,6 +25,29 @@ class RegisterForm extends React.Component {
         this.hasNumber = this.hasNumber.bind(this)
         this.hasCharacter = this.hasCharacter.bind(this)
         this.isEmail = this.isEmail.bind(this)
+        this.registerOK = this.registerOK.bind(this)
+        this.register = this.register.bind(this)
+    }
+
+    registerOK(){
+        if( this.state.username != '' &&
+            this.state.password != '' &&
+            this.state.age != '' &&
+            this.state.email != '' &&
+            this.state.usernameError === '' &&
+            this.state.passwordError === '' &&
+            this.state.emailError === ''
+        ){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    register(e){
+        if(this.registerOK()){
+            this.registerNewUser(e)
+        }
     }
 
     registerNewUser(e) {
@@ -37,8 +61,7 @@ class RegisterForm extends React.Component {
             body: JSON.stringify(this.state)
         })
             .then(response => response.json())
-            .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
-            .catch(error => this.props.registerUnsuccsessfull())
+            .then(response => (response.createSuccess) ? this.props.registerSuccsessfull(this.state.username,this.state.password) : this.props.registerUnsuccsessfull())
     }
 
     validateUsername(input) {
@@ -122,7 +145,7 @@ class RegisterForm extends React.Component {
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
-                <button onClick={this.registerNewUser}>Register</button>
+                <button onClick={this.register}>Register</button>
                 <NavLink to="/login" className="small-text">Back to login</NavLink>
             </form>
         )
