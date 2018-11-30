@@ -26,7 +26,7 @@ class Popular extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId,0], limit: 100 })
+            body: JSON.stringify({ assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId,this.props.adminId], limit: 100 })
         }).then(data => data.json())
             .then(data => this.setState({data}))
     }

@@ -42,7 +42,6 @@ class PopularComponent extends React.Component {
 
     render() {
         if (this.props.data != null && this.props.data.tweetText != "") {
-            console.log(this.props.data);
 
             let backgroundUrl = ['']
             backgroundUrl = this.props.data.tweetMedia ? this.props.data.tweetMedia : this.props.data.postMedia
