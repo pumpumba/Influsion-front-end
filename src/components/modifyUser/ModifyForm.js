@@ -83,7 +83,7 @@ class ModifyForm extends React.Component {
 
     validateUsername(input) {
         if (this.state.username.length <= 1) {
-            this.setState({ usernameError: '\n Your username is too short.' })
+            this.setState({ usernameError: 'Your username is too short.' })
         } else {
             this.setState({ usernameError: '' })
         }
@@ -91,11 +91,11 @@ class ModifyForm extends React.Component {
 
     validatePassword(input) {
         if (this.state.password.length <= 6) {
-            this.setState({ passwordError: '\n Your password needs to be at least 8 characters, of both letters ans numbers. ' })
+            this.setState({ passwordError: 'Your password needs to be at least 8 characters, of both letters ans numbers. ' })
         } else if (!this.hasNumber(this.state.password)) {
-            this.setState({ passwordError: '\n You need to have at least two numbers :(' })
+            this.setState({ passwordError: 'You need to have at least two numbers :(' })
         } else if (this.hasCharacter(this.state.password)) {
-            this.setState({ passwordError: '\n You need to have at least two letters..' })
+            this.setState({ passwordError: 'You need to have at least two letters..' })
         } else {
             this.setState({ passwordError: '' })
         }
@@ -103,7 +103,7 @@ class ModifyForm extends React.Component {
 
     validateEmail(input) {
         if (!this.isEmail(this.state.email)) {
-            this.setState({ emailError: ' \n That´s not what we call a proper email.. ' })
+            this.setState({ emailError: 'That´s not what we call a proper email.. ' })
         } else {
             this.setState({ emailError: '' })
         }
@@ -111,9 +111,9 @@ class ModifyForm extends React.Component {
 
     validateAge(input){
         if(this.state.age < 13){
-            this.setState({ageError:' \n You have to be older than 13'})
+            this.setState({ageError:'You have to be older than 13'})
         }else if (this.state.age > 164) {
-            this.setState({ageError:' \n How are you still alive!?'})
+            this.setState({ageError:'How are you still alive!?'})
         }else{
             this.setState({ageError:''})
         }
