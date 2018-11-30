@@ -45,6 +45,27 @@
                 }
             }
 
+            .play-icon-wrapper {
+                background-color: $hard;
+                width: 4rem;
+                height: 4rem;
+                border-radius: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                border: 2px solid $white;
+                top: 50%;
+                right: 50%;
+                margin-right: -2rem;
+                margin-top: -2rem;
+
+
+                svg {
+                    color: white;
+                }
+            }
+
             .text-wrapper{
               display: flex;
               align-items: center;

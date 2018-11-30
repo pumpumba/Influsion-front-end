@@ -3,6 +3,8 @@ import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfo
 import FeedComponentHeader from './components/FeedComponentHeader'
 import FeedComponentContent from './components/FeedComponentContent'
 import FeedComponentMeta from './components/FeedComponentMeta'
+import Header from '../header/Header'
+import Footer from '../footer/Footer'
 
 class FeedComponent extends React.Component {
     constructor(props) {
