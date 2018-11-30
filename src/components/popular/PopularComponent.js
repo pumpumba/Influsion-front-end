@@ -10,7 +10,8 @@ class PopularComponent extends React.Component {
         super(props)
         this.state = {
             open: false,
-            heart: false
+            heart: false,
+            isInstagramVideo: false
         }
 
         this.onClick = this.onClick.bind(this)
@@ -40,6 +41,7 @@ class PopularComponent extends React.Component {
         }
     }
 
+
     render() {
         if (this.props.data != null && this.props.data.tweetText != "") {
 
@@ -53,33 +55,49 @@ class PopularComponent extends React.Component {
             }
 
             let styles = null
-            if (backgroundUrl) {
+            if (backgroundUrl && !this.props.data.postMedia) {
                 styles = {
                     backgroundImage: 'url(' + backgroundUrl[0] + ')'
                 }
             }
 
+            let isInstagramVideo = false
+
+            if (this.props.data.postMedia) {
+                if (this.props.data.postMedia[0].includes("mp4")) {
+                    isInstagramVideo = true
+                    styles = {
+                        backgroundImage: `url(${this.props.data.userProfileImageUrl})`
+                    }
+                } else {
+                    styles = {
+                        backgroundImage: 'url(' + backgroundUrl[0] + ')'
+                    }
+                }
+            }
+
             return (
-                    <div
-                        className='popular-component-wrapper'
-                        style={styles}
-                        data-state={this.state.open ? 'open' : 'closed'}
-                        onClick={this.onClick}
-                    >
-                        <PopularComponentClosedView
-                            backgroundImage={backgroundUrl}
-                            userProfileImageUrl={ this.props.data.video_thumbnail_url ||this.props.data.userProfileImageUrl}
-                            url={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
-                            changeHeart={this.changeHeart}
-                            caption={this.props.data.tweetText ||this.props.data.postText}
-                            heart={this.state.heart}
-                            platform={this.props.data.platform}
-                            influencerId={this.props.data.influencerId}
-                            />
-                        {this.state.open &&
+                <div
+                    className='popular-component-wrapper'
+                    style={styles}
+                    data-state={this.state.open ? 'open' : 'closed'}
+                    onClick={this.onClick}
+                >
+                    <PopularComponentClosedView
+                        backgroundImage={backgroundUrl}
+                        userProfileImageUrl={this.props.data.video_thumbnail_url || this.props.data.userProfileImageUrl}
+                        url={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
+                        changeHeart={this.changeHeart}
+                        caption={this.props.data.tweetText || this.props.data.postText}
+                        heart={this.state.heart}
+                        platform={this.props.data.platform}
+                        influencerId={this.props.data.influencerId}
+                        isInstagramVideo={isInstagramVideo}
+                    />
+                    {this.state.open &&
                         <PopularComponentExpandedView
-                            userProfileImageUrl={this.props.data.video_thumbnail_url ||this.props.data.userProfileImageUrl}
-                            userName={ this.props.data.channel_title || this.props.data.userName}
+                            userProfileImageUrl={this.props.data.video_thumbnail_url || this.props.data.userProfileImageUrl}
+                            userName={this.props.data.channel_title || this.props.data.userName}
                             userVerified={this.props.data.userVerified}
                             url={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
                             caption={this.props.data.tweetText || this.props.data.postText || this.props.data.video_description}
@@ -95,9 +113,9 @@ class PopularComponent extends React.Component {
                             heart={this.state.heart}
                             influencerId={this.props.data.influencerId}
                         />
-                        }
-                        <div className='blur-overlay'></div>
-                    </div>
+                    }
+                    <div className='blur-overlay'></div>
+                </div>
             )
         } else return null
     }
