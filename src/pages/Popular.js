@@ -42,7 +42,8 @@ class Popular extends React.Component {
                     key={curContent.postid}
                     data={curContent.platformcontent}
                     userId={this.props.userId}
-                    userFollowing={curContent.usrfollowinginfluencer} />
+                    userFollowing={curContent.usrfollowinginfluencer}
+                    />
             })
           }
         }

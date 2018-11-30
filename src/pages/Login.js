@@ -61,7 +61,6 @@ class Login extends React.Component {
                 {this.state.loginFailed && <span className='error-msg'>Something went wrong... Please try again</span>}
 
                 <div className="small-text">
-                    <p>What is my password?</p>
                     <Link to={'/register'} className="small-text">
                         It is finally my time -
                     </Link>
