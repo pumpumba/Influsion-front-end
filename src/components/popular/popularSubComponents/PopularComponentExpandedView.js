@@ -21,14 +21,13 @@ function ContentPlacer(props) {
                 </div>
                 :
                 (props.img[0] ? (props.img[0].includes("mp4") ?
-                    <iframe
-                        autoPlay={false}
-                        width="320"
-                        height="400"
-                        frameBorder="0"
+                    <video
+                        controls
+                        autoPlay={true}
+                        width="100%"
                         allowFullScreen={false}
                         src={props.img[0]}>
-                    </iframe>
+                    </video>
                     :
                     <img src={props.img[0]} />
                 ) : '')
