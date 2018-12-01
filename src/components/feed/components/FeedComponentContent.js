@@ -7,7 +7,6 @@ class FeedComponentContent extends React.Component {
     }
 
     renderImage(curImageUrl) {
-        console.log(curImageUrl[0])
         return curImageUrl[0] ?
             (curImageUrl[0].includes("mp4") ?
                 <div className='instagram-video-container'>
@@ -19,10 +18,8 @@ class FeedComponentContent extends React.Component {
                         src={curImageUrl[0]}>
                     </video>
                 </div>
-                :
-                <img src={curImageUrl} />)
-            :
-            ''
+                : <img src={curImageUrl} />)
+            : ''
     }
 
     renderVideo(curVideoUrl) {
