@@ -421,7 +421,7 @@ public class FR1to11Test{
 		String nameKey = content[0];
 		
 		//go to follow page'
-		browser.findElement(By.className("blur-overlay")).click();
+		browser.get("http://localhost:8080/");
 		browser.findElement(By.className("subFooter")).findElement(By.className("fa-heart")).click();
 		Thread.sleep(500);
 
@@ -477,10 +477,10 @@ public class FR1to11Test{
 	//FR15 unfollow functionality
 	@Test
 	public void FR15() throws InterruptedException {
-		login(username, password, browser);
-		
+		login(username,password,browser);
+			
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		
+			
 		//check if follow or not, if not then follow
 		if (PopularComponent.get(0).findElement(By.className("fa-heart")).getAttribute("data-state").equals("active")) {
 			//unfollow
@@ -488,32 +488,31 @@ public class FR1to11Test{
 		} else {
 			//already not followed
 		}
-		
+			
 		PopularComponent.get(0).click();
 		Thread.sleep(200);
 		String content[] = PopularComponent.get(0).getText().split("\\r?\\n");
 		String nameKey = content[0];
-		
+			
 		//go to follow page'
-		browser.findElement(By.className("blur-overlay")).click();
+		browser.get("http://localhost:8080/");
 		browser.findElement(By.className("subFooter")).findElement(By.className("fa-heart")).click();
 		Thread.sleep(500);
 
 		//see if there are any posts from this influencer
 		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
 		ArrayList<String> names = new ArrayList<String>();
-	
+		
 		for (WebElement comp : FeedComponent) {		
 			String conten[] = comp.getText().split("\\r?\\n");
 			String name = conten[0];
 			names.add(name);	
 		}
-		
+			
 		//check if the unfollowed influencer exist in the feed
 		assertFalse(names.contains(nameKey));
-		
+			
 	}
-	
 	
 	//FR16 settings page and functionality
 	@Test
@@ -1120,6 +1119,56 @@ public class FR1to11Test{
 	
 	
 	@Test
+	public void FR37() throws InterruptedException {		
+		login(username,password,browser);
+		logout(browser);
+		browser.get("http://localhost:8080/admin");
+		adminLogin("admin", "1234", browser);
+		String titleText = browser.findElement(By.className("admin-title")).getText();
+		String content[] = titleText.split("\\r?\\n");
+		String title = content[0];
+		assertEquals("inFlusion: Admin", title);
+		
+	}
+	
+	//FR38 Admin stays logged in
+		@Test
+		public void FR38() throws InterruptedException {		
+			login(username,password,browser);
+			logout(browser);
+			browser.get("http://localhost:8080/admin");
+			adminLogin("admin", "1234", browser);
+			browser.get("http://localhost:8080/admin");
+
+			String titleText = browser.findElement(By.className("admin-title")).getText();
+			String content[] = titleText.split("\\r?\\n");
+			String title = content[0];
+			assertEquals("inFlusion: Admin", title);
+			
+		}
+		
+		//FR40 logout admin
+		@Test
+		public void FR40() throws InterruptedException {		
+			login(username,password,browser);	
+			logout(browser);
+			browser.get("http://localhost:8080/admin");
+			adminLogin("admin", "1234", browser);
+			browser.findElement(By.className("admin-log-out")).click();
+			Thread.sleep(1000);
+			
+			ArrayList<String> texts = new ArrayList<String>();
+
+			String text = browser.findElement(By.className("admin-login-container")).getText();
+			String content[] = text.split("\\r?\\n");
+			for (String s : content) {
+				texts.add(s);
+			}
+			assertTrue(texts.contains("Admin Login"));
+			
+		}
+	
+	@Test
 	public void FR42() throws InterruptedException {
 		login(username, password, browser);
 		
@@ -1214,6 +1263,21 @@ public class FR1to11Test{
 		browser.findElement(By.cssSelector("[placeholder='Password']")).sendKeys(password);
 		browser.findElement(By.xpath("//button[contains(text(),'Lets go into the wilderness!')]")).click();
 		Thread.sleep(1000);
+	}
+	
+	public static void adminLogin(String username, String password, WebDriver browser) throws InterruptedException {
+		
+		browser.findElement(By.cssSelector("[placeholder='username']")).sendKeys(username);
+		browser.findElement(By.cssSelector("[placeholder='password']")).sendKeys(password);
+		browser.findElement(By.xpath("//button[contains(text(),'Login')]")).click();;
+		Thread.sleep(1000);
+	}
+	
+	public static void logout(WebDriver browser) {
+
+		//go to settings page'
+		browser.findElement(By.className("subFooter")).findElement(By.className("fa-cogs")).click();
+		browser.findElement(By.tagName("button")).click();
 	}
 	
 	
