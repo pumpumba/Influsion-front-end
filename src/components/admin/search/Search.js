@@ -21,11 +21,11 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <main className='search-content'>
+                <main className='admin-search-content'>
                     <SearchSuggestions inflid={this.state.inflid} sendId={this.getId}/>
-                    <div className='influencer-feed'>
+                    <div className='admin-influencer-feed'>
                         <Feed inflid={this.state.inflid}/>
-                </div>
+                    </div>
                 </main>
             </div>
         )

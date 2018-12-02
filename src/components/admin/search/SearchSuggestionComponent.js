@@ -43,7 +43,7 @@ class SearchSuggestionComponent extends React.Component {
         }
 
         return (
-            <div className='search-header'>
+            <div className='admin-search-header'>
                 {profileImage}
                 <button className='name-button' onClick={this.handleClick.bind(this, this.props.data.inflid )}> {this.props.data.influencername} </button>
                 <div className='search-platforms' style={{ justifyContent: 'right', alignItems: 'right', textalign: 'right' }}>

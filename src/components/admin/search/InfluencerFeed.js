@@ -32,7 +32,7 @@ class InfluencerFeed extends React.Component {
     }
 
   componentDidUpdate() {
-      if (this.state.influencerid !== this.props.inflid) {
+      if (this.state.influencerid !== this.props.inflid && this.props.inflid != 'search') {
         this.setState({influencerid: this.props.inflid})
         this.mountAndUpdate()
       }
@@ -56,7 +56,7 @@ class InfluencerFeed extends React.Component {
     }
 
     return (
-      <div className="mobile-page">
+      <div className="feed-page">
         <main>
           {feedContent}
         </main>

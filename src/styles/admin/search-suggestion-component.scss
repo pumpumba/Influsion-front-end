@@ -2,13 +2,13 @@
     background-color: transparent;
     border: none;
     color: $medium;
-    // padding: 15px 32px;
     text-align: left;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     padding: 1em 2em;
-    box-sizing: border-box;   
+    box-sizing: border-box;  
+    position: relative;
 }
 
 .admin-search-input-wrapper {
@@ -31,15 +31,17 @@
         }
       }
 }
-.search-header{
+.admin-search-header{
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 0px;
     padding: 0px;
     border-radius: 25px;
-    background:rgba(255,255,255, 0.6);
-    z-index: 99;
+    background:rgba(255,255,255, 0.9);
+    position: relative;
+    z-index:99;
+    margin:3px;
 
     a{
       font-size: 1.2em;
@@ -64,8 +66,4 @@
         * {
             display: inline;
         }
-}
-.feed-component-wrapper {
-  z-index:0;
-  // position: fixed;
 }
