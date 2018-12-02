@@ -26,7 +26,7 @@ class FeedComponent extends React.Component {
     }
 
     render() {
-        if (this.props.data != null) {
+        if (this.props.data != null && this.props.data.tweetText != "") {
             return (
                 <div className='feed-component-wrapper'>
                     <FeedComponentHeader
