@@ -71,7 +71,7 @@ class Popular extends React.Component {
                 />
             })
           }
-        }
+
 
         return (
             <div className="mobile-page">
