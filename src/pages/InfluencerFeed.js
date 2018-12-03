@@ -41,6 +41,7 @@ class InfluencerFeed extends React.Component {
           key={curContent.postid}
           data={curContent.platformcontent}
           userId={this.props.userId}
+          inflFeed='true'
         />
       })
     }
