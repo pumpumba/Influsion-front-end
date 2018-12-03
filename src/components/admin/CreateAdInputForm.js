@@ -1,15 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {BACKEND_URL} from './../../constants'
 
 class CreateAdInputForm extends React.Component {
+
   constructor() {
     super();
     this.state = {
-      adUsername: "",
-      adText: "",
-      imageUrl: "",
+      title: '',
+      tvOperatorId: 1,
+      imageUrl: '',
+      textDescription: '',
+      additionalInformation: '',
+      popularFeed: false,
+      followingFeed: false,
       imageVisible: false
     }
+
+    this.createNewAd = this.createNewAd.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+
+  }
+
+  createNewAd(e) {
+      e.preventDefault()
+      fetch(BACKEND_URL + 'db/create_ad/', {
+          method: 'post',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ title: this.state.title, tvoperatorid: this.state.tvOperatorId, imgurl: this.state.imageUrl,
+                                 textdescription: this.state.textDescription, additionalinformation: this.state.additionalInformation,
+                                 showinpopularfeed: this.state.popularFeed, showinfollowingfeed: this.state.followingFeed })
+      })
   }
 
   onInsertOfPicture(picUrl) {
@@ -18,40 +42,69 @@ class CreateAdInputForm extends React.Component {
     });
   }
 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+  }
+
   render() {
+
     return (
       <div className="create-ad-container">
         <form className='white-form'>
           <input
-            className="ad-username"
+            className="ad-title"
             type="text"
-            placeholder="Ad title"
+            placeholder="Title"
             min="0"
             max="20"
-            onChange={(e) => this.setState({ adUsername: e.target.value })}
+            onChange={(e) => this.setState({ title: e.target.value })}
           />
+          <input
+            className="ad-picture-input"
+            type="text"
+            placeholder="Picture url"
+            onChange={(e) => this.setState({ imageUrl: e.target.value })}
+          />
+          <img className="pictureForAd" src={this.state.imageUrl} />
+          <input
+            className="text-description"
+            type="text"
+            placeholder="Description"
+            onChange={(e) => this.setState({ textDescription: e.target.value })}
+          />
+          <input
+            className="additional-information"
+            type="text"
+            placeholder="Additional information"
+            onChange={(e) => this.setState({ additionalInformation: e.target.value })}
+          />
+          <label>
+            Popular feed
             <input
-              className="ad-picture-input"
-              type="text"
-              placeholder="Picture url"
-              onChange={(e) => this.setState({ imageUrl: e.target.value })}
-            />
-            <img className="pictureForAd" src={this.state.imageUrl} />
-
-          <textarea
-            className="ad-content-text"
-            type="textarea"
-            placeholder="Put content text here"
-            onChange={(e) => this.setState({ adText: e.target.value })}
-          />
-
-          <button className="white-button" >
-            Submit Ad
-        </button>
+              name="popularFeed"
+              type="checkbox"
+              checked={this.state.popularFeed}
+              onChange={this.handleInputChange} />
+          </label>
+          <label>
+            Following feed
+            <input
+              name="followingFeed"
+              type="checkbox"
+              checked={this.state.followingFeed}
+              onChange={this.handleInputChange} />
+          </label>
+          <button className="ad-button" onClick={this.createNewAd}>Submit</button>
         </form>
       </div>
     );
-
   }
 }
 
