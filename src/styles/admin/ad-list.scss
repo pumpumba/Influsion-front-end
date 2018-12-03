@@ -7,7 +7,7 @@
 
 .ad-list-component{
   display: grid;
-  grid-template-columns: 0.3fr 3fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 2.5fr 0.5fr 0.5fr 0.5fr;
   grid-gap: 1px;
   padding: .5rem;
 
@@ -31,11 +31,15 @@
 .ad-list-header{
   padding: 0 .5rem;
   display: grid;
-  grid-template-columns: 1.8fr 0.2fr 0.4fr 0.5fr;
+  grid-template-columns: 1.45fr 0.2fr 0.4fr 0.5fr;
   font-weight: bold;
+  .title-span{
+    font-size:1em;
 
+  }
   span{
     font-size: 0.7em;
+
   }
 }
 

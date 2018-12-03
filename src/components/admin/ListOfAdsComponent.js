@@ -46,7 +46,6 @@ class ListOfAdsComponent extends React.Component {
   render() {
     return (
       <div className="ad-list-component">
-        <span>{this.props.index + 1}.</span>
         <span onClick={this.getClicksOnAds}>{this.props.data.title}</span>
         <span title="Database id of Ad">{this.props.data.adid}</span>
         <span title="Total amount of clicks on ad">{this.state.totalClicks}</span>
