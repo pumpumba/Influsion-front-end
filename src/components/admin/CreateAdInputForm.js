@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {BACKEND_URL} from './../../constants'
 
 class CreateAdInputForm extends React.Component {
+
   constructor() {
     super();
     this.state = {
@@ -133,7 +134,6 @@ class CreateAdInputForm extends React.Component {
           </form>
       </div>
     );
-
   }
 }
 

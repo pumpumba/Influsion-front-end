@@ -3,6 +3,7 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import FeedComponent from './../components/feed/FeedComponent'
 import {BACKEND_URL} from './../constants'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Feed extends React.Component {
 
@@ -62,6 +63,7 @@ class Feed extends React.Component {
           <div className="mobile-page">
               <Header />
               <main>
+                  <p className="not-following">You do not follow any influencers yet. Press the <FontAwesomeIcon icon={'heart'} /> icon on an influencer in the popular feed to start following!</p>
               </main>
               <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
           </div>

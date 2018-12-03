@@ -3,10 +3,15 @@ import Popular from './Popular'
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts'
 import Statistics from './../components/admin/Statistics'
 import CreateAd from './../components/admin/CreateAd'
+import PromoteAd from './../components/admin/PromoteAd'
 import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
 import AdminFooter from './../components/admin/AdminFooter'
+import MostClicked from './../components/admin/10MostClicked'
+import MostFollowed from './../components/admin/10MostFollowed'
+import Search from './../components/admin/search/Search'
+import './../styles/admin/most-clicked-followed-search.scss'
 import BlockInfluencer from './../components/admin/BlockInfluencer'
 import ListOfBlocked from './../components/admin/ListOfBlocked'
 
@@ -62,7 +67,23 @@ class AdminPage extends React.Component {
                         <ListOfAds />
                         <CreateAd />
                     </div>
+                    <div className="create-ad">
+                        <PromoteAd />
+                    </div>
+
                 </div>
+                <div className='most-clicked-and-search'>
+                    <div className='10-most-clicked'>
+                        <MostClicked />
+                    </div>
+                    <div className='10-most-followed'>
+                        <MostFollowed/>
+                    </div>
+                    <div className='search-and-feed'>
+                        <Search/>
+                    </div>
+                    </div>
+
                 <div className="block-content">
                     <BlockInfluencer />
                     <ListOfBlocked />
@@ -74,7 +95,7 @@ class AdminPage extends React.Component {
                         <a href='/admin-block' className='white-button'>Block Influencer</a>
                     </div>
                     <div className="admin-center-content search-content" >
-                        
+
                     </div>
                 </div>
             </div>
