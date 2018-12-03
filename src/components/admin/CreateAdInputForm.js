@@ -30,11 +30,10 @@ class CreateAdInputForm extends React.Component {
               'Accept': 'application/json, text/plain, */*',
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ title: this.state.title, tvoperatorid: this.state.tvOperatorId, imgurl: this.state.imgUrl,
+          body: JSON.stringify({ title: this.state.title, tvoperatorid: this.state.tvOperatorId, imgurl: this.state.imageUrl,
                                  textdescription: this.state.textDescription, additionalinformation: this.state.additionalInformation,
                                  showinpopularfeed: this.state.popularFeed, showinfollowingfeed: this.state.followingFeed })
       })
-
   }
 
   onInsertOfPicture(picUrl) {
@@ -51,8 +50,6 @@ class CreateAdInputForm extends React.Component {
     this.setState({
       [name]: value
     });
-
-    console.log(this)
 
   }
 
@@ -88,26 +85,23 @@ class CreateAdInputForm extends React.Component {
             placeholder="Additional information"
             onChange={(e) => this.setState({ additionalInformation: e.target.value })}
           />
-
           <label>
-            Popular feed:
+            Popular feed
             <input
               name="popularFeed"
               type="checkbox"
               checked={this.state.popularFeed}
               onChange={this.handleInputChange} />
           </label>
-
           <label>
-            Following feed:
+            Following feed
             <input
               name="followingFeed"
               type="checkbox"
               checked={this.state.followingFeed}
               onChange={this.handleInputChange} />
           </label>
-
-          <button onClick={this.createNewAd}>Submit</button>
+          <button className="ad-button" onClick={this.createNewAd}>Submit</button>
         </form>
       </div>
     );

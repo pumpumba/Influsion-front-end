@@ -8,8 +8,8 @@ class PromoteAd extends React.Component {
 
   render(){
     return(
-      <div className='admin-box'>
-        <h1 className='section-title'> Promote stuff </h1>
+      <div className='promote-post'>
+        <h1 className='section-title'> Promote post </h1>
         <PromoteAdInputForm/>
       </div>
     );

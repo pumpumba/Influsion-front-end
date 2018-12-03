@@ -8,8 +8,8 @@ class CreateAd extends React.Component {
 
   render(){
     return(
-      <div className='admin-box'>
-        <h1 className='section-title'> Create new advertisment here </h1>
+      <div className='create-ad'>
+        <h1 className='section-title'> Create new advertisment </h1>
         <CreateAdInputForm/>
       </div>
     );

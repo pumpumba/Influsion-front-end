@@ -7,42 +7,95 @@ class PromoteAdInputForm extends React.Component {
   constructor() {
     super();
     this.state = {
-
+      postId: '',
+      popularFeed: false,
+      followingFeed: false
     }
+
+    this.promoteNewAd = this.promoteNewAd.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
 
   }
 
-  // promoteNewAd(e) {
-  //     e.preventDefault()
-  //     fetch(BACKEND_URL + 'db/create_ad/', {
-  //         method: 'post',
-  //         headers: {
-  //             'Accept': 'application/json, text/plain, */*',
-  //             'Content-Type': 'application/json'
-  //         },
-  //         body: JSON.stringify({ title: this.state.title, tvoperatorid: this.state.tvOperatorId, imgurl: this.state.imageUrl,
-  //                                textdescription: this.state.textDescription, additionalinformation: this.state.additionalInformation,
-  //                                showinpopularfeed: this.state.showInPopular, showinfollowingfeed: this.state.showInFollowing})
-  //     })
-  //         // .then(response => response.json())
-  //         // .then(response => (response.createSuccess) ? this.props.registerSuccsessfull() : this.props.registerUnsuccsessfull())
-  //         // .catch(error => this.props.registerUnsuccsessfull())
-  // }
+  promoteNewAd(e) {
+    e.preventDefault()
+    if (this.state.popularFeed === true && this.state.followingFeed === false) {
+      fetch(BACKEND_URL + 'db/promote_post_popular/', {
+          method: 'post',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ postid: this.state.postId})
+      })
+    } else if (this.state.popularFeed === false && this.state.followingFeed === true) {
+      fetch(BACKEND_URL + 'db/promote_post_following/', {
+          method: 'post',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ postid: this.state.postId})
+      })
+    } else if (this.state.popularFeed === true && this.state.followingFeed === true) {
+      fetch(BACKEND_URL + 'db/promote_post_following/', {
+          method: 'post',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ postid: this.state.postId})
+      })
+      fetch(BACKEND_URL + 'db/promote_post_popular/', {
+          method: 'post',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ postid: this.state.postId})
+      })
+    }
+  }
 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+  }
 
   render() {
 
     return (
-      <div className="create-ad-container">
+      <div className="promote-post-container">
         <form className='white-form'>
-          <input
-            className="ad-title"
-            type="text"
-            placeholder="Title"
-            min="0"
-            max="20"
-          />
-          <button onClick={this.promoteNewAd}>Submit</button>
+        <input
+          className="post-id"
+          type="text"
+          placeholder="Post id"
+          onChange={(e) => this.setState({ postId: e.target.value })}
+        />
+          <label>
+            Popular feed
+            <input
+              name="popularFeed"
+              type="checkbox"
+              checked={this.state.popularFeed}
+              onChange={this.handleInputChange} />
+          </label>
+          <label>
+            Following feed
+            <input
+              name="followingFeed"
+              type="checkbox"
+              checked={this.state.followingFeed}
+              onChange={this.handleInputChange} />
+          </label>
+          <button className="post-button" onClick={this.promoteNewAd}>Submit</button>
         </form>
       </div>
     );
