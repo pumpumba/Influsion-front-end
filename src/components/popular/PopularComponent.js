@@ -3,6 +3,7 @@ import PopularComponentClosedView from './popularSubComponents/PopularComponentC
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
 import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfollowInfluencer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {BACKEND_URL} from './../../constants'
 
 
 class PopularComponent extends React.Component {
@@ -14,8 +15,23 @@ class PopularComponent extends React.Component {
             isInstagramVideo: false
         }
 
+        this.addUserVisit = this.addUserVisit.bind(this)
         this.onClick = this.onClick.bind(this)
         this.changeHeart = this.changeHeart.bind(this)
+
+    }
+
+    addUserVisit(e) {
+        e.preventDefault()
+        fetch(BACKEND_URL + 'db/add_user_visit/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({influencer_id: this.props.data.influencerId, user_id: this.props.userId})
+        })
+
     }
 
     componentWillMount() {
@@ -28,6 +44,12 @@ class PopularComponent extends React.Component {
         this.setState(prevState => ({
             open: !prevState.open
         }))
+
+        if (this.state.open) {
+          this.addUserVisit
+          console.log(this)
+        }
+
     }
 
     changeHeart() {
