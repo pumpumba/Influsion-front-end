@@ -45,12 +45,12 @@ class PopularComponent extends React.Component {
     render() {
         let styles = null
         let backgroundUrl = ['']
-        if(this.props.data.adid > 0){
+        if(this.props.data.adid){
             styles = {
                 backgroundImage: 'url(' + this.props.data.imgurl[0] + ')'
             }
             if (this.props.imgurl === 'undefined'){
-                backgroundUrl = '../../../../img/404Jonas.png'
+                backgroundUrl = '../../../img/404Jonas-7a6e7fcf.png'
             }else{
                 backgroundUrl = this.props.data.imgurl
             }
@@ -63,19 +63,15 @@ class PopularComponent extends React.Component {
                 >
                     <PopularComponentClosedView
                         imgurl={backgroundUrl}
-                        backgroundImage={backgroundUrl}
-                        userProfileImageUrl={backgroundUrl}
-                        url={backgroundUrl}
                         caption={this.props.data.textdescription}
                         isAd='true'
                     />
                     {this.state.open &&
                         <PopularComponentExpandedView
-                            userProfileImageUrl={backgroundUrl}
+                            imgurl={backgroundUrl}
                             userName='Advertisement'
-                            url={backgroundUrl}
+                            readmoreurl={this.props.data.readmoreurl}
                             caption={this.props.data.textdescription}
-                            img={backgroundUrl}
                             isAd='true'
                         />
                     }

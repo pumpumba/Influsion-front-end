@@ -27,6 +27,23 @@ class FeedComponent extends React.Component {
 
     render() {
         if (this.props.data != null && this.props.data.tweetText != "") {
+            if(this.props.data.adid){
+                return(
+                    <div className='feed-component-wrapper'>
+                        <FeedComponentHeader
+                            imgurl={this.props.data.imgurl}
+                            readmoreurl={this.props.data.readmoreurl}
+                            isAd='true'
+                        />
+                        <FeedComponentContent
+                            caption={this.props.data.textdescription}
+                            imageUrl={this.props.data.imgurl}
+                            isAd='true'
+                        />
+                    </div>
+                )
+            }
+
             return (
                 <div className='feed-component-wrapper'>
                     <FeedComponentHeader
@@ -52,14 +69,7 @@ class FeedComponent extends React.Component {
             )
         } else {
             return (
-                <div className="mobile-page">
-                    <Header />
-                    <main className='feed'>
-                        <h2>Nothing here to show, please follow a influencer...</h2>
-                    </main>
-                    <Footer showFilter='true' />
-                </div>
-
+                <div></div>
             )
         }
   }

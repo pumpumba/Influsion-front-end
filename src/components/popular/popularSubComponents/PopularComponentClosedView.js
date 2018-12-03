@@ -9,7 +9,7 @@ class PopularComponentHeader extends React.Component {
             return(
                 <div className='closed-view'>
                     <div className='header'>
-                        <img src={this.props.imgurl} />
+                        <p>Advertisement<br></br></p>
                     </div>
                         <img src={this.props.imgurl} />
                 </div>

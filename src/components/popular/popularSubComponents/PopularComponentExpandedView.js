@@ -80,16 +80,15 @@ class PopularComponentExpandedView extends React.Component {
     render() {
 
         if(this.props.isAd){
-            console.log(this.props)
             return (
                 <div className='expanded-view'>
-                    <NavLink to={'/'} className='header'>
-                        <img src={this.props.userProfileImageUrl} />
+                    <NavLink to={this.props.readmoreurl} className='header'>
+                        <img src={this.props.imgurl} />
                         {this.props.userName}
                     </NavLink>
                     <div className='content-container'>
                             <p>{this.props.caption}</p>
-                            <img src={this.props.userProfileImageUrl} />
+                            <img src={this.props.imgurl} />
                     </div>
                 </div>
             )

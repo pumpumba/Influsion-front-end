@@ -27,7 +27,6 @@ class ModifyForm extends React.Component {
     }
 
     checkPasswordEmpty(e){
-        console.log(this.state)
         if(this.state.password === ""){
             this.setState({
                 password: this.state.confirmPassword

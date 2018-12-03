@@ -56,8 +56,7 @@ class Popular extends React.Component {
     }
 
     filterContent(content){
-        if(content.adid || content.promotedfollowing || content.promotedpopular){
-            console.log(content)
+        if(content.showinpopularfeed || content.promotedpopular){
             return true
         }else if(this.state.filters.includes(content.platform.toLowerCase())){
             return true
@@ -74,7 +73,7 @@ class Popular extends React.Component {
             )
             feedContent = filteredContent.map((curContent,index) => {
                 return <PopularComponent
-                    key={curContent.postid || index}
+                    key={curContent.postid || index+1000}
                     data={curContent.platformcontent || curContent}
                     userId={this.props.userId}
                     userFollowing={curContent.usrfollowinginfluencer}
