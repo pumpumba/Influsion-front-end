@@ -1,18 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 class ListOfAdsComponent extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
+    this.state = {
+      amountOfClicks: null
+    }
   }
 
+  
 
-  render () {
-    return(
+  render() {
+    return (
       <div className="ad-list-component">
-        <span>{this.props.date}</span>
-        <span>{this.props.title}</span>
-        <span>{this.props.views}</span>
+        <span>{this.props.index}</span>
+        <span>{this.props.data.title}</span>
+        <span>{this.props.data.adid}</span>
+        <span onClick={() => this.props.onClick()}>
+          <FontAwesomeIcon className="trashIcon" icon={'trash'}/></span>
       </div>
     );
   }

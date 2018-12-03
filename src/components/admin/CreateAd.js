@@ -9,6 +9,7 @@ class CreateAd extends React.Component {
 
 
   render(){
+
     return(
       <div className='admin-box'>
         <h1 className='section-title'> Create new advertisment here </h1>

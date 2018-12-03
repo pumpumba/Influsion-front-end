@@ -1,15 +1,26 @@
 .ad-list{
   margin-bottom: 10px;
+  overflow-y: scroll;
+  max-height: 40vh;
+
 }
 
 .ad-list-component{
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
   grid-gap: 1px;
   padding: .5rem;
 
+  span{
+    font-size: 0.85em;
+  }
   p{
     padding-top: 0.8vw;
+  }
+  .trashIcon:hover{
+    color: red;
+    cursor: pointer;
+
   }
 }
 
@@ -22,4 +33,11 @@
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   font-weight: bold;
+}
+
+.status-text{
+  text-align: center;
+  margin-bottom: 6px;
+  color: $harder;
+  text-decoration: underline;
 }
