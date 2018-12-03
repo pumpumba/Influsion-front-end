@@ -11,11 +11,11 @@ class BlockSuggestionComponent extends React.Component {
     this.blockTrue = this.blockTrue.bind(this)
   }
 
-
   blockTrue() {
     this.setState({
       blockSuccess: true
     })
+
     fetch(BACKEND_URL + 'db/exclude_influencer', {
         method: 'post',
         headers: {
@@ -28,14 +28,12 @@ class BlockSuggestionComponent extends React.Component {
   }
 
     render() {
-
         let notFound = this.props.data.influencername === 'No matching influencers'
-        let profileImage = <img src={'https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg'} />
-      
+    
 
         return (
             <div className='search-header'>
-                {profileImage}
+                <img src={this.props.data.pfaccs.platformaccounts[0].img_url} />
                 {this.props.data.influencername}
                 <div className='block-platforms'>
                   {this.state.blockSuccess && <p className='block-msg'>Block succesfull!</p>}
