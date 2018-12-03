@@ -3,6 +3,7 @@ import Popular from './Popular'
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts'
 import Statistics from './../components/admin/Statistics'
 import CreateAd from './../components/admin/CreateAd'
+import PromoteAd from './../components/admin/PromoteAd'
 import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
@@ -72,6 +73,10 @@ class AdminPage extends React.Component {
                         <ListOfAds />
                         <CreateAd />
                     </div>
+                    <div className="create-ad">
+                        <PromoteAd />
+                    </div>
+
                 </div>
                 <div className='most-clicked-and-search'>
                     <div className='10-most-clicked'>
@@ -84,7 +89,7 @@ class AdminPage extends React.Component {
                         <Search inflid={this.state.inflidClicked}/>
                     </div>
                     </div>
-                                    
+
                 <div className="block-content">
                     <BlockInfluencer />
                     <ListOfBlocked />
@@ -96,7 +101,7 @@ class AdminPage extends React.Component {
                         <a href='/admin-block' className='white-button'>Block Influencer</a>
                     </div>
                     <div className="admin-center-content search-content" >
-                        
+
                     </div>
                 </div>
             </div>
