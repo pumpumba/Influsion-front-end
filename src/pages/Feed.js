@@ -14,6 +14,7 @@ class Feed extends React.Component {
             filters: ['twitter', 'youtube', 'instagram']
         }
         this.updateFeedFilters = this.updateFeedFilters.bind(this)
+        this.filterContent = this.filterContent.bind(this)
     }
 
     componentDidMount() {
@@ -33,10 +34,18 @@ class Feed extends React.Component {
         this.setState({ filters: newFilters })
     }
 
+    filterContent(content){
+        if(this.state.filters.includes(content.platform.toLowerCase()) || content.promotedfollowing || content.promotedpopular){
+            return true
+        }else{
+            return false
+        }
+    }
+
     render() {
         let feedContent = null
         if (this.state.data.length > 0) {
-            let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
+            let filteredContent = this.state.data.filter(content => this.filterContent(content))
             feedContent = filteredContent.map(curContent => {
                 return <FeedComponent
                     key={curContent.postid}

@@ -43,9 +43,48 @@ class PopularComponent extends React.Component {
 
 
     render() {
-        if (this.props.data != null && this.props.data.tweetText != "") {
+        let styles = null
+        let backgroundUrl = ['']
+        if(this.props.data.adid > 0){
+            styles = {
+                backgroundImage: 'url(' + this.props.data.imgurl[0] + ')'
+            }
+            if (this.props.imgurl === 'undefined'){
+                backgroundUrl = '../../../../img/404Jonas.png'
+            }else{
+                backgroundUrl = this.props.data.imgurl
+            }
+            return (
+                <div
+                    className='popular-component-wrapper'
+                    style={styles}
+                    data-state={this.state.open ? 'open' : 'closed'}
+                    onClick={this.onClick}
+                >
+                    <PopularComponentClosedView
+                        imgurl={backgroundUrl}
+                        backgroundImage={backgroundUrl}
+                        userProfileImageUrl={backgroundUrl}
+                        url={backgroundUrl}
+                        caption={this.props.data.textdescription}
+                        isAd='true'
+                    />
+                    {this.state.open &&
+                        <PopularComponentExpandedView
+                            userProfileImageUrl={backgroundUrl}
+                            userName='Advertisement'
+                            url={backgroundUrl}
+                            caption={this.props.data.textdescription}
+                            img={backgroundUrl}
+                            isAd='true'
+                        />
+                    }
+                    <div className='blur-overlay'></div>
+                </div>
+            )
+        }
+        else if (this.props.data != null && this.props.data.tweetText != "") {
 
-            let backgroundUrl = ['']
             backgroundUrl = this.props.data.tweetMedia ? this.props.data.tweetMedia : this.props.data.postMedia
 
             if (this.props.data.platform.toLowerCase() == 'youtube') {
@@ -76,6 +115,8 @@ class PopularComponent extends React.Component {
                 }
             }
 
+
+
             return (
                 <div
                     className='popular-component-wrapper'
@@ -85,10 +126,10 @@ class PopularComponent extends React.Component {
                 >
                     <PopularComponentClosedView
                         backgroundImage={backgroundUrl}
-                        userProfileImageUrl={this.props.data.video_thumbnail_url || this.props.data.userProfileImageUrl}
-                        url={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
+                        userProfileImageUrl={this.props.data.video_thumbnail_url || this.props.data.userProfileImageUrl || this.props.data.imgurl}
+                        url={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url || this.props.data.imgurl}
                         changeHeart={this.changeHeart}
-                        caption={this.props.data.tweetText || this.props.data.postText}
+                        caption={this.props.data.tweetText || this.props.data.postText || this.props.data.textdescription}
                         heart={this.state.heart}
                         platform={this.props.data.platform}
                         influencerId={this.props.data.influencerId}

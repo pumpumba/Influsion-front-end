@@ -78,22 +78,39 @@ class PopularComponentExpandedView extends React.Component {
     }
 
     render() {
-        const plat = this.props.platform
-        return (
-            <div className='expanded-view'>
-                <NavLink to={`/infl/${this.props.influencerId}`} className='header'>
-                    <img src={this.props.userProfileImageUrl} />
-                    {this.props.userName}
-                    {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
-                    <StopPropagation>
-                    <a href={this.props.url} className='platform-link'>
-                        <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
-                    </a>
-                    </StopPropagation>
-                </NavLink>
-                <ContentPlacer {...this.props} />
-            </div>
-        )
+
+        if(this.props.isAd){
+            console.log(this.props)
+            return (
+                <div className='expanded-view'>
+                    <NavLink to={'/'} className='header'>
+                        <img src={this.props.userProfileImageUrl} />
+                        {this.props.userName}
+                    </NavLink>
+                    <div className='content-container'>
+                            <p>{this.props.caption}</p>
+                            <img src={this.props.userProfileImageUrl} />
+                    </div>
+                </div>
+            )
+        }else{
+            const plat = this.props.platform
+            return (
+                <div className='expanded-view'>
+                    <NavLink to={`/infl/${this.props.influencerId}`} className='header'>
+                        <img src={this.props.userProfileImageUrl} />
+                        {this.props.userName}
+                        {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
+                        <StopPropagation>
+                        <a href={this.props.url} className='platform-link'>
+                            <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
+                        </a>
+                        </StopPropagation>
+                    </NavLink>
+                    <ContentPlacer {...this.props} />
+                </div>
+            )
+        }
     }
 }
 
