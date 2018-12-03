@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from 'react-router-dom'
+import placeHolder from './../../../img/placeholder.png'
 
 class SearchSuggestionComponent extends React.Component {
 
@@ -18,11 +19,15 @@ class SearchSuggestionComponent extends React.Component {
 
         let profileImage = ''
         if (!notFound) {
+            let pictureFound = false
             for (let i = 0; i < this.props.data.pfaccs.platformaccounts.length; i++) {
-                if (this.props.data.pfaccs.platformaccounts[i].img_url !== null) {
+                if (this.props.data.pfaccs.platformaccounts[i].img_url != null) {
                     profileImage = <img src = {this.props.data.pfaccs.platformaccounts[i].img_url}></img>
                     break
                 }
+            }
+            if (!pictureFound) {
+                profileImage = <img src={placeHolder} />
             }
         }
 
