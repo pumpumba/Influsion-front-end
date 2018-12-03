@@ -70,6 +70,7 @@ class Popular extends React.Component {
                     userFollowing={curContent.usrfollowinginfluencer}
                 />
             })
+          }
         }
 
         return (
