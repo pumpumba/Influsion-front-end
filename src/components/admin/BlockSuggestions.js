@@ -1,8 +1,8 @@
 import React from 'react'
-import SearchSuggestionComponent from './SearchSuggestionComponent'
+import BlockSuggestionComponent from './BlockSuggestionComponent'
 import {BACKEND_URL} from './../../constants'
 
-class SearchSuggestions extends React.Component {
+class BlockSuggestions extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -12,7 +12,6 @@ class SearchSuggestions extends React.Component {
         this.onChange = this.onChange.bind(this)
         this.checkForInfluencer = this.checkForInfluencer.bind(this)
         this.inputText = React.createRef()
-        this.handleKeyPress = this.handleKeyPress.bind(this)
     }
 
     checkForInfluencer(searchString) {
@@ -64,13 +63,8 @@ class SearchSuggestions extends React.Component {
         this.setState({ searchResults: this.checkForInfluencer(searchString) })
     }
 
-    handleKeyPress(e){
-        if(e.charCode==13){
-            e.preventDefault()
-        }
-    }
-
     componentDidMount() {
+
         fetch(BACKEND_URL + 'db/get_for_autosearch?user_id=1', {})
             .then(response => response.json())
             .then(response => this.setState({ response }))
@@ -84,7 +78,7 @@ class SearchSuggestions extends React.Component {
                 influencerName.push(this.state.searchResults[i])
             }
             feedContent = influencerName.map(curContent => {
-                return <SearchSuggestionComponent
+                return <BlockSuggestionComponent
                     data={curContent}
                     key={curContent.inflid}
                 />
@@ -94,7 +88,6 @@ class SearchSuggestions extends React.Component {
             <form className='search-input-wrapper'>
                 <input
                     onChange={(e) => this.onChange(e.target.value)}
-                    onKeyPress={this.handleKeyPress}
                     className='searchInput'
                     placeholder='Search'
                     ref={(inputText) => { this.inputText = inputText }}
@@ -105,4 +98,4 @@ class SearchSuggestions extends React.Component {
     }
 }
 
-export default SearchSuggestions
+export default BlockSuggestions

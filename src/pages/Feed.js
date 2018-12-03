@@ -22,7 +22,7 @@ class Feed extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: this.props.userId, limit: 100 })
+            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: [this.props.userId, this.props.adminId], limit: 100 })
         }).then(data => data.json())
             .then(data => this.setState({ data }))
 
@@ -62,7 +62,6 @@ class Feed extends React.Component {
           <div className="mobile-page">
               <Header />
               <main>
-                hejhejehej
               </main>
               <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
           </div>

@@ -6,13 +6,39 @@
   .inFlusion-header{
     display: none;
   }
+
   header{
     margin-top: 0px;
-    display: block;
     height: 60px;
     position: static;
+    background-color: $light;
+    display: grid;
+
+    .admin-title{
+      font-family: 'Pacifico', cursive;
+      color: white;
+      margin-top: 0.5em;
+      margin-bottom: 0.8em;
+      font-size: 2em;
+      text-align: right;
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+    }
+
+    button{
+      text-align: center;
+      background: transparent;
+      margin-left: auto;
+      margin-right: 3em;
+      color: $white;
+      border: 0.1em solid $white;
+      border-radius: 0.5em;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
 
   }
+
 
   .admin-content{
     display: grid;
@@ -34,27 +60,6 @@
     text-align: center;
     background-color: $light;
     margin-bottom: 1rem;
-  }
-}
-
-.admin-logout-content{
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 99;
-  position: relative;
-
-  h1{
-    text-align: center;
-  }
-
-  button, a {
-    width: 10em;
   }
 }
 

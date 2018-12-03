@@ -26,22 +26,25 @@ class Popular extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId], limit: 100 })
+            body: JSON.stringify({ assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId,this.props.adminId], limit: 100 })
         }).then(data => data.json())
-            .then(data => this.setState({ data }))
+            .then(data => this.setState({data}))
     }
 
     render() {
 
         let feedContent = null
-        if (this.state.data.length > 0) {
-            let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
+        if(this.state.data != null){
+            let filteredContent = this.state.data.filter(content =>
+                    this.state.filters.includes(content.platform.toLowerCase())
+            )
             feedContent = filteredContent.map(curContent => {
                 return <PopularComponent
                     key={curContent.postid}
                     data={curContent.platformcontent}
                     userId={this.props.userId}
-                    userFollowing={curContent.usrfollowinginfluencer} />
+                    userFollowing={curContent.usrfollowinginfluencer}
+                    />
             })
         }
 

@@ -8,6 +8,12 @@ import InfluencerList from './../components/admin/InfluencerList'
 import ListOfAds from './../components/admin/ListOfAds'
 import StatisticsPlatform from './../components/admin/StatisticsPlatform'
 import AdminFooter from './../components/admin/AdminFooter'
+import MostClicked from './../components/admin/10MostClicked'
+import MostFollowed from './../components/admin/10MostFollowed'
+import Search from './../components/admin/search/Search'
+import './../styles/admin/most-clicked-followed-search.scss'
+import BlockInfluencer from './../components/admin/BlockInfluencer'
+import ListOfBlocked from './../components/admin/ListOfBlocked'
 
 
 class AdminPage extends React.Component {
@@ -17,6 +23,11 @@ class AdminPage extends React.Component {
             isPageStatistics: true,
         }
         this.rightClickContent = this.rightClickContent.bind(this)
+        this.logOut = this.logOut.bind(this)
+    }
+
+    logOut() {
+      this.props.updateAdminId(0)
     }
 
     rightClickContent() {
@@ -40,12 +51,20 @@ class AdminPage extends React.Component {
         return (
             <div className="admin-page-container">
                 <header>
-                    <h1>
+                    <div className="admin-title">
                         inFlusion: Admin
-                    </h1>
+                        <button onClick={this.logOut}  className='admin-log-out'>Log out</button>
+                    </div>
                 </header>
                 <div className="admin-content">
-                    <div className="create-ad">
+                    <div className="admin-left-content">
+                        {stats}
+                    </div>
+                    <div className="admin-center-content">
+                        <InfluencerList />
+                    </div>
+                    <div className="admin-right-content">
+                        <ListOfAds />
                         <CreateAd />
                     </div>
                     <div className="create-ad">
@@ -53,8 +72,31 @@ class AdminPage extends React.Component {
                     </div>
 
                 </div>
-                <div>
-                    <AdminFooter />
+                <div className='most-clicked-and-search'>
+                    <div className='10-most-clicked'>
+                        <MostClicked />
+                    </div>
+                    <div className='10-most-followed'>
+                        <MostFollowed/>
+                    </div>
+                    <div className='search-and-feed'>
+                        <Search/>
+                    </div>
+                    </div>
+
+                <div className="block-content">
+                    <BlockInfluencer />
+                    <ListOfBlocked />
+                </div>
+                <div className="admin-content">
+                    <div className="admin-left-content">
+                        <a href='/admin-promote' className='white-button'>Promote Post</a>
+                        <a href='/admin-create' className='white-button'>Create New Post</a>
+                        <a href='/admin-block' className='white-button'>Block Influencer</a>
+                    </div>
+                    <div className="admin-center-content search-content" >
+
+                    </div>
                 </div>
             </div>
         )

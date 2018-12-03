@@ -20,7 +20,18 @@ function ContentPlacer(props) {
                     </iframe>
                 </div>
                 :
-                <img src={props.img[0]} />
+                (props.img[0] ? (props.img[0].includes("mp4") ?
+                    <video
+                        controls
+                        autoPlay={true}
+                        width="100%"
+                        allowFullScreen={false}
+                        src={props.img[0]}>
+                    </video>
+                    :
+                    <img src={props.img[0]} />
+                ) : '')
+
             }
             {props.platform != 'twitter' && <p>{props.caption}</p>}
             <div className='meta-data'>
@@ -70,14 +81,16 @@ class PopularComponentExpandedView extends React.Component {
         const plat = this.props.platform
         return (
             <div className='expanded-view'>
-                <div className='header'>
+                <NavLink to={`/infl/${this.props.influencerId}`} className='header'>
                     <img src={this.props.userProfileImageUrl} />
-                    <NavLink to={`/${this.props.influencerId}`}> {this.props.userName}  </NavLink>
+                    {this.props.userName}
                     {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
+                    <StopPropagation>
                     <a href={this.props.url} className='platform-link'>
                         <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
                     </a>
-                </div>
+                    </StopPropagation>
+                </NavLink>
                 <ContentPlacer {...this.props} />
             </div>
         )
