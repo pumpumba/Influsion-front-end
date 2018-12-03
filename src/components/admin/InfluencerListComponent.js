@@ -10,11 +10,12 @@ class InfluencerListComponent extends React.Component {
 
 
   render () {
-
+    // console.log('props in list: ', this.props)
     var classes = "influencer-list-component"
     if(this.props.isActive){
       classes = "influencer-list-component active"
     }
+    // if (this.props.imageUrl !== undefined)
 
     return (
       <div className={classes}

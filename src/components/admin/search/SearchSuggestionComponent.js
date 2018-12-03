@@ -35,11 +35,14 @@ class SearchSuggestionComponent extends React.Component {
             !youtube ? youtube = this.props.data.pfaccs.platformaccounts[i].platform === 'youtube' : ' '
         }
 
-        let profileImage
+        let profileImage = ''
         if (!notFound) {
-            profileImage = <img src={'https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg'} />
-        } else {
-            profileImage = ''
+            for (let i = 0; i < this.props.data.pfaccs.platformaccounts.length; i++) {
+                if (this.props.data.pfaccs.platformaccounts[i].img_url !== null) {
+                    profileImage = <img src = {this.props.data.pfaccs.platformaccounts[i].img_url}></img>
+                    break
+                }
+            }
         }
 
         return (
