@@ -80,8 +80,8 @@ class ListOfAds extends React.Component {
         <h1 className="section-title">List of your ads</h1>
         <p className="status-text">{statusText}</p>
         <div className="ad-list-header">
-          <span>Date</span>
           <span>Title</span>
+          <span>ID</span>
           <span>Clicks</span>
         </div>
         <div className="ad-list">
