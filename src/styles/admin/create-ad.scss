@@ -1,13 +1,6 @@
 .create-ad-container{
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 99;
-  position: relative;
+  background-color: white;
+  .white-form {
 
     .all-checkboxes{
       width: 100%;
@@ -46,12 +39,18 @@
       background-color: lighten($light-pink, 3%);
       margin: 1rem 0;
       border-bottom: 2px solid $medium;
+      
 
-    &::placeholder {
-      color: $white;
-      font-size: 1.3rem;
+
+      &::placeholder {
+        color: $gs-hard;
+        font-size: 1.3rem;
+      }
     }
 
+    .white-button {
+      background-color: lighten($light-pink, 3%);
+    }
   }
   .status-text{
     text-align: center;
