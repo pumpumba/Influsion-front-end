@@ -22,7 +22,8 @@ class SearchSuggestionComponent extends React.Component {
             let pictureFound = false
             for (let i = 0; i < this.props.data.pfaccs.platformaccounts.length; i++) {
                 if (this.props.data.pfaccs.platformaccounts[i].img_url != null) {
-                    profileImage = <img src = {this.props.data.pfaccs.platformaccounts[i].img_url}></img>
+                    profileImage = <img src = {this.props.data.pfaccs.platformaccounts[i].img_url}/>
+                    pictureFound = true
                     break
                 }
             }
