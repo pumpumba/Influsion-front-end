@@ -4,30 +4,24 @@ import PropTypes from 'prop-types'
 class InfluencerListComponent extends React.Component {
   constructor(props){
     super(props);
-
   }
 
-
-
   render () {
-    // console.log('props in list: ', this.props)
     var classes = "influencer-list-component"
     if(this.props.isActive){
       classes = "influencer-list-component active"
     }
-    // if (this.props.imageUrl !== undefined)
+    let curIndex = this.props.index + 1
 
     return (
       <div className={classes}
         onClick={() => this.props.onClick()}
         >
-        <p>{this.props.index}</p>
-        <img src="https://scontent-arn2-1.cdninstagram.com/vp/a775df49ed4c6966eeb7c43f83b15850/5C8B539B/t51.2885-19/11017586_953035901381515_1619288648_a.jpg"/>
+        <p>{curIndex}</p>
+        <img src={this.props.imageUrl} />
         <p>{this.props.influencerName}</p>
         <p>{this.props.numberOfFollowers}</p>
       </div>
-
-
     );
 
   }

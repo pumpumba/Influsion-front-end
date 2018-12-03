@@ -20,9 +20,15 @@ class AdminPage extends React.Component {
         super();
         this.state = {
             isPageStatistics: true,
+            inflidClicked: 0,
         }
         this.rightClickContent = this.rightClickContent.bind(this)
         this.logOut = this.logOut.bind(this)
+        this.getId = this.getId.bind(this)
+    }
+
+    getId(val){
+        this.setState({inflidClicked: val})
     }
 
     logOut() {
@@ -69,13 +75,13 @@ class AdminPage extends React.Component {
                 </div>
                 <div className='most-clicked-and-search'>
                     <div className='10-most-clicked'>
-                        <MostClicked />  
+                        <MostClicked sendId={this.getId}/>  
                     </div>
                     <div className='10-most-followed'>
-                        <MostFollowed/>
+                        <MostFollowed sendId={this.getId}/>
                     </div>
                     <div className='search-and-feed'>
-                        <Search/>
+                        <Search inflid={this.state.inflidClicked}/>
                     </div>
                     </div>
                                     

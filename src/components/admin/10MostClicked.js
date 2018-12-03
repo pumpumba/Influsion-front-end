@@ -11,40 +11,36 @@ class InfluencerList extends React.Component {
       lastActive: null,
       response: [],
     }
+    this.setInflId = this.setInflId.bind(this)
 
   }
 
+  setInflId(influencer) {
+    this.props.sendId(influencer)
+}
+  
   handleClick(i) {
-    // const ar = this.state.isActive.slice()
-    // ar[i] = !ar[i]
-    // if (i != this.state.lastActive) {
-    //   ar[this.state.lastActive] = false
-    // }
-    // this.setState({ isActive: ar })
-    // this.setState({ lastActive: i })
+    this.setInflId(i)
   }
 
   componentDidMount() {
-    fetch(BACKEND_URL + 'db/get_top_clicked_influencers', {})
+    fetch(BACKEND_URL + 'db/get_top_clicked_influencers?limit=10', {})
         .then(response => response.json())
-        // .then(response => console.log(response.rows.length))
         .then(response => this.setState({ response }))
   }
 
   render() {
     let listContent = null
-    // console.log(this.state.response.rows)
     if (this.state.response.rows !== undefined) {
       if (this.state.response.rows.length > 0) {
-        listContent = this.state.response.rows.map(curContent => {
-          let curIndex = 0
+        listContent = this.state.response.rows.map((curContent, index) => {
           return <InfluencerListComponent
                     key={curContent.influencerid}
-                    index={curIndex++}
+                    index={index}
                     influencerName={curContent.influencername}
-                    isActive={false}
-                    numberOfClicks={curContent.nrclicks}
-                    // imageUrl={curContent.piclink}
+                    numberOfFollowers={curContent.nrclicks}
+                    imageUrl={curContent.img.platformaccounts[0].imgurl}
+                    onClick={() => this.handleClick(curContent.influencerid)}
                   />
         })
       }
@@ -59,7 +55,7 @@ class InfluencerList extends React.Component {
             Influencer
           </span>
           <span>
-            Followers
+            Clicks
           </span>
         </div>
         {listContent}
