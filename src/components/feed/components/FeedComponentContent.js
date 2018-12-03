@@ -7,15 +7,27 @@ class FeedComponentContent extends React.Component {
     }
 
     renderImage(curImageUrl) {
-        return curImageUrl ? <img src={curImageUrl} /> : ''
+        return curImageUrl[0] ?
+            (curImageUrl[0].includes("mp4") ?
+                <div className='instagram-video-container'>
+                    <video
+                        controls
+                        autoPlay={false}
+                        width="100%"
+                        allowFullScreen={true}
+                        src={curImageUrl[0]}>
+                    </video>
+                </div>
+                : <img src={curImageUrl} />)
+            : ''
     }
 
     renderVideo(curVideoUrl) {
         return curVideoUrl ?
-                <div className='youtube-video-container'>
-                    <iframe allow="fullscreen" src={curVideoUrl}></iframe>
-                </div>
-                : ''
+            <div className='youtube-video-container'>
+                <iframe allow="fullscreen" src={curVideoUrl}></iframe>
+            </div>
+            : ''
     }
 
     render() {

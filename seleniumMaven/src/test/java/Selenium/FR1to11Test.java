@@ -73,7 +73,7 @@ public class FR1to11Test{
 		System.out.println(PopularFeed.size());
 		
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		assertEquals(100,PopularComponent.size());  
+		assertEquals(54,PopularComponent.size());  
 		assertEquals(1,PopularFeed.size());
 	}
 	
@@ -344,11 +344,11 @@ public class FR1to11Test{
 		
 		browser.findElement(By.xpath("//button[contains(text(),'Register')]")).click();
 		Thread.sleep(1000);
-		browser.findElement(By.xpath("//a[contains(text(),'Log in!')]")).click();
+		browser.findElement(By.xpath("//a[contains(text(),'OK!')]")).click();
 		
-		browser.findElement(By.cssSelector("[placeholder='Username']")).sendKeys("TestUser" + uniqueUserID);
-		browser.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("TestPassword1234");
-		browser.findElement(By.xpath("//button[contains(text(),'Lets go into the wilderness!')]")).click();
+//		browser.findElement(By.cssSelector("[placeholder='Username']")).sendKeys("TestUser" + uniqueUserID);
+//		browser.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("TestPassword1234");
+//		browser.findElement(By.xpath("//button[contains(text(),'Lets go into the wilderness!')]")).click();
 		
 		Thread.sleep(1000);
 		List<WebElement> PopularFeed = browser.findElements(By.cssSelector(".popular-feed-content"));
@@ -368,7 +368,7 @@ public class FR1to11Test{
 		
 		List<WebElement> PopularFeed = browser.findElements(By.cssSelector(".popular-feed-content"));
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		assertEquals(100, PopularComponent.size());  
+		assertEquals(54, PopularComponent.size());  
 		assertEquals(1, PopularFeed.size());
 				
 	}
@@ -393,7 +393,7 @@ public class FR1to11Test{
 		Thread.sleep(2000);
 		List<WebElement> PopularFeed = browser.findElements(By.cssSelector(".popular-feed-content"));
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		assertEquals(100, PopularComponent.size());  
+		assertEquals(54, PopularComponent.size());  
 		assertEquals(1, PopularFeed.size());
 		
 		
@@ -421,7 +421,7 @@ public class FR1to11Test{
 		String nameKey = content[0];
 		
 		//go to follow page'
-		browser.findElement(By.className("blur-overlay")).click();
+		browser.get("http://localhost:8080/");
 		browser.findElement(By.className("subFooter")).findElement(By.className("fa-heart")).click();
 		Thread.sleep(500);
 
@@ -477,10 +477,10 @@ public class FR1to11Test{
 	//FR15 unfollow functionality
 	@Test
 	public void FR15() throws InterruptedException {
-		login(username, password, browser);
-		
+		login(username,password,browser);
+			
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		
+			
 		//check if follow or not, if not then follow
 		if (PopularComponent.get(0).findElement(By.className("fa-heart")).getAttribute("data-state").equals("active")) {
 			//unfollow
@@ -488,32 +488,31 @@ public class FR1to11Test{
 		} else {
 			//already not followed
 		}
-		
+			
 		PopularComponent.get(0).click();
 		Thread.sleep(200);
 		String content[] = PopularComponent.get(0).getText().split("\\r?\\n");
 		String nameKey = content[0];
-		
+			
 		//go to follow page'
-		browser.findElement(By.className("blur-overlay")).click();
+		browser.get("http://localhost:8080/");
 		browser.findElement(By.className("subFooter")).findElement(By.className("fa-heart")).click();
 		Thread.sleep(500);
 
 		//see if there are any posts from this influencer
 		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
 		ArrayList<String> names = new ArrayList<String>();
-	
+		
 		for (WebElement comp : FeedComponent) {		
 			String conten[] = comp.getText().split("\\r?\\n");
 			String name = conten[0];
 			names.add(name);	
 		}
-		
+			
 		//check if the unfollowed influencer exist in the feed
 		assertFalse(names.contains(nameKey));
-		
+			
 	}
-	
 	
 	//FR16 settings page and functionality
 	@Test
@@ -742,43 +741,22 @@ public class FR1to11Test{
 	
 	@Test
 	public void FR29() throws InterruptedException {
-		login(username, password, browser);
+		login(username,password,browser);
+		List<WebElement> youtubeContent =browser.findElements(By.cssSelector("[data-icon='youtube']"));
+		youtubeContent.remove(youtubeContent.size()-1);
+		WebElement TwitterPost = youtubeContent.get(randInt(0, youtubeContent.size()-1));
+		WebElement thePost = TwitterPost.findElement(By.xpath(".."));
+		thePost = thePost.findElement(By.xpath(".."));
+		thePost = thePost.findElement(By.xpath(".."));	
+		thePost = thePost.findElement(By.xpath(".."));	
+		((JavascriptExecutor) browser).executeScript("arguments[0].scrollIntoView(true);", thePost);
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,-100)","");
+		thePost.click();
 
-		browser.findElement(By.className("fa-star")).click();
+			Thread.sleep(1000);
 
-		Thread.sleep(500);
 
-		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
-
-		for (WebElement filterButton : filterButtons) {
-
-			if (filterButton.getAttribute("data-icon").equals("twitter") ||
-
-				filterButton.getAttribute("data-icon").equals("instagram")) {
-
-				if (filterButton.getAttribute("data-state").equals("active")) {
-
-					filterButton.click();
-
-				}
-
-			}
-
-		}
-
-		
-
-		List<WebElement> youtubeContent = browser.findElements(By.className("popular-component-wrapper"));
-
-		youtubeContent.get(0).click();
-
-		Thread.sleep(200);
-
-		
-
-		WebElement expand = youtubeContent.get(0).findElement(By.className("expanded-view"));
-
-		
+		WebElement expand = thePost.findElement(By.className("expanded-view"));
 
 		//name
 
@@ -833,40 +811,22 @@ public class FR1to11Test{
 	@Test
 	public void FR30() throws InterruptedException {
 	login(username,password,browser);
-	browser.findElement(By.className("fa-star")).click();
+	List<WebElement> youtubeContent =browser.findElements(By.cssSelector("[data-icon='youtube']"));
+	youtubeContent.remove(youtubeContent.size()-1);
+	WebElement TwitterPost = youtubeContent.get(randInt(0, youtubeContent.size()-1));
+	WebElement thePost = TwitterPost.findElement(By.xpath(".."));
+	thePost = thePost.findElement(By.xpath(".."));
+	thePost = thePost.findElement(By.xpath(".."));	
+	thePost = thePost.findElement(By.xpath(".."));	
+	((JavascriptExecutor) browser).executeScript("arguments[0].scrollIntoView(true);", thePost);
+	((JavascriptExecutor) browser).executeScript("window.scrollBy(0,-100)","");
+	thePost.click();
 
-		Thread.sleep(300);
-	
-
-		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
-
-		for (WebElement filterButton : filterButtons) {
-
-			if (filterButton.getAttribute("data-icon").equals("twitter") ||
-
-				filterButton.getAttribute("data-icon").equals("instagram")) {
-
-				if (filterButton.getAttribute("data-state").equals("active")) {
-
-					filterButton.click();
-
-				}
-
-			}
-
-		}
+		Thread.sleep(1000);
 
 		
 
-		List<WebElement> youtubeContent = browser.findElements(By.className("popular-component-wrapper"));
-
-		youtubeContent.get(0).click();
-
-		Thread.sleep(300);
-
-		
-
-		WebElement metaData = youtubeContent.get(0).findElement(By.className("meta-data"));
+		WebElement metaData = thePost.findElement(By.className("meta-data"));
 
 		List<WebElement> metaDataTypes = metaData.findElements(By.tagName("span"));
 
@@ -949,42 +909,21 @@ public class FR1to11Test{
 	@Test
 	public void FR31() throws InterruptedException {
 		login(username,password,browser);
-		
-		browser.findElement(By.className("fa-star")).click();
-		List<WebElement> filterButtons = browser.findElement(By.className("filter")).findElements(By.tagName("svg"));
-		try {
-			Thread.sleep(300);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for (WebElement filterButton : filterButtons) {
+		List<WebElement> instaContent =browser.findElements(By.cssSelector("[data-icon='instagram']"));
+		instaContent.remove(instaContent.size()-1);
+		WebElement instaPost = instaContent.get(randInt(0, instaContent.size()-1));
+		WebElement thePost = instaPost.findElement(By.xpath(".."));
+		thePost = thePost.findElement(By.xpath(".."));
+		thePost = thePost.findElement(By.xpath(".."));	
+		thePost = thePost.findElement(By.xpath(".."));	
+		((JavascriptExecutor) browser).executeScript("arguments[0].scrollIntoView(true);", thePost);
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,-100)","");
+		thePost.click();
 
-			if (filterButton.getAttribute("data-icon").equals("twitter") ||
+			Thread.sleep(2000);
 
-				filterButton.getAttribute("data-icon").equals("youtube")) {
 
-				if (filterButton.getAttribute("data-state").equals("active")) {
-
-					filterButton.click();
-
-				}
-
-			}
-
-		}
-
-		
-
-		List<WebElement> instaContent = browser.findElements(By.className("popular-component-wrapper"));
-
-		instaContent.get(0).click();
-
-		Thread.sleep(500);
-
-		
-
-		WebElement expand = instaContent.get(0).findElement(By.className("expanded-view"));
+		WebElement expand = thePost.findElement(By.className("expanded-view"));
 
 		
 
@@ -994,7 +933,7 @@ public class FR1to11Test{
 
 		//img
 
-		String imgsrc = expand.findElement(By.className("content-container")).findElement(By.tagName("img")).getAttribute("src");
+//		String imgsrc = expand.findElement(By.className("content-container")).findElement(By.tagName("img")).getAttribute("src");
 
 		//text
 
@@ -1022,11 +961,11 @@ public class FR1to11Test{
 
 		}
 
-		if (imgsrc.equals(null)) {
-
-			correctContent = false;
-
-		}
+//		if (imgsrc.equals(null)) {
+//
+//			correctContent = false;
+//
+//		}
 
 		//username
 
@@ -1165,8 +1104,69 @@ public class FR1to11Test{
 		assertEquals("No matching influencers",browser.findElement(By.className("search-header")).getText());
 		
 	}
-
 	
+//	@Test
+//	public void FR37() throws InterruptedException {
+//		
+//	ChromeOptions options = null;
+//	options.addArguments("--headless");  	
+//	WebDriver browserWEB = new ChromeDriver(options);
+//	browserWEB.get(startUrl + "admin");
+//	
+//	
+//
+//	}
+	
+	
+	@Test
+	public void FR37() throws InterruptedException {		
+		login(username,password,browser);
+		logout(browser);
+		browser.get("http://localhost:8080/admin");
+		adminLogin("admin", "1234", browser);
+		String titleText = browser.findElement(By.className("admin-title")).getText();
+		String content[] = titleText.split("\\r?\\n");
+		String title = content[0];
+		assertEquals("inFlusion: Admin", title);
+		
+	}
+	
+	//FR38 Admin stays logged in
+		@Test
+		public void FR38() throws InterruptedException {		
+			login(username,password,browser);
+			logout(browser);
+			browser.get("http://localhost:8080/admin");
+			adminLogin("admin", "1234", browser);
+			browser.get("http://localhost:8080/admin");
+
+			String titleText = browser.findElement(By.className("admin-title")).getText();
+			String content[] = titleText.split("\\r?\\n");
+			String title = content[0];
+			assertEquals("inFlusion: Admin", title);
+			
+		}
+		
+		//FR40 logout admin
+		@Test
+		public void FR40() throws InterruptedException {		
+			login(username,password,browser);	
+			logout(browser);
+			browser.get("http://localhost:8080/admin");
+			adminLogin("admin", "1234", browser);
+			browser.findElement(By.className("admin-log-out")).click();
+			Thread.sleep(1000);
+			
+			ArrayList<String> texts = new ArrayList<String>();
+
+			String text = browser.findElement(By.className("admin-login-container")).getText();
+			String content[] = text.split("\\r?\\n");
+			for (String s : content) {
+				texts.add(s);
+			}
+			assertTrue(texts.contains("Admin Login"));
+			
+		}
 	
 	@Test
 	public void FR42() throws InterruptedException {
@@ -1263,6 +1263,21 @@ public class FR1to11Test{
 		browser.findElement(By.cssSelector("[placeholder='Password']")).sendKeys(password);
 		browser.findElement(By.xpath("//button[contains(text(),'Lets go into the wilderness!')]")).click();
 		Thread.sleep(1000);
+	}
+	
+	public static void adminLogin(String username, String password, WebDriver browser) throws InterruptedException {
+		
+		browser.findElement(By.cssSelector("[placeholder='username']")).sendKeys(username);
+		browser.findElement(By.cssSelector("[placeholder='password']")).sendKeys(password);
+		browser.findElement(By.xpath("//button[contains(text(),'Login')]")).click();;
+		Thread.sleep(1000);
+	}
+	
+	public static void logout(WebDriver browser) {
+
+		//go to settings page'
+		browser.findElement(By.className("subFooter")).findElement(By.className("fa-cogs")).click();
+		browser.findElement(By.tagName("button")).click();
 	}
 	
 	

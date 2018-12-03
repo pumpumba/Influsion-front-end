@@ -3,6 +3,7 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import ModifyForm from './../components/modifyUser/ModifyForm'
 import ModifyAlert from './../components/modifyUser/ModifyAlert'
+import {NavLink} from 'react-router-dom'
 
 class ModifyUser extends React.Component {
 
@@ -49,7 +50,7 @@ class ModifyUser extends React.Component {
         let objToRender;
 
         if (this.state.modSuccsessfull) {
-            objToRender = <ModifyAlert title='Changes made!' btnTxt='OK!' link='/settings' />
+            objToRender = <ModifyAlert title='Changes made!' btnTxt='OK!' resetState={this.resetState} />
         } else if (this.state.modUnsuccsessfull) {
             objToRender = <ModifyAlert title='Something went wrong...' btnTxt='Try again!' resetState={this.resetState} />
         } else if(this.state.wrongPassword){
@@ -69,6 +70,7 @@ class ModifyUser extends React.Component {
                 <Header />
                 <main className="modify">
                     {objToRender}
+    				<NavLink to='/settings'  className='white-button' >Go back to settings</NavLink>
                 </main>
                 <Footer/>
             </div>
