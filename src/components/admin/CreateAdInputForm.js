@@ -45,6 +45,7 @@ class CreateAdInputForm extends React.Component {
       adUsername: "",
       adText: "",
       imageUrl: "",
+      url: "",
       imageVisible: false,
       inPopularFeed: false,
       inFollowingFeed: false
@@ -68,7 +69,8 @@ class CreateAdInputForm extends React.Component {
         textdescription: this.state.adText,
         additionalinformation: "",
         showinpopularfeed: this.state.inPopularFeed,
-        showinfollowingfeed: this.state.inFollowingFeed
+        showinfollowingfeed: this.state.inFollowingFeed,
+        read_more_url:this.state.url
       })
     }).then(response => response.json())
     .then(response => (response.createSuccess) ? this.addSubmitted() : console.log("Was not able to add this Ad"))
@@ -96,6 +98,11 @@ class CreateAdInputForm extends React.Component {
               placeholder="Picture url"
               value={this.state.imageUrl}
               onChange={(e) => this.setState({imageUrl: e.target.value})}/>
+            <input className="ad-url-input"
+                type="text"
+                placeholder="Url Link"
+                value={this.state.url}
+                onChange={(e) => this.setState({url: e.target.value})}/>
             <img className="pictureForAd" src={this.state.imageUrl}/>
 
             <textarea className="ad-content-text"

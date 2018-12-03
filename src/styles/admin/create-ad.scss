@@ -1,5 +1,7 @@
-.create-ad-container{
+.create-ad{
   background-color: white;
+}
+.create-ad-container{
   .white-form {
 
     .all-checkboxes{
@@ -39,7 +41,7 @@
       background-color: lighten($light-pink, 3%);
       margin: 1rem 0;
       border-bottom: 2px solid $medium;
-      
+
 
 
       &::placeholder {
@@ -50,6 +52,10 @@
 
     .white-button {
       background-color: lighten($light-pink, 3%);
+      cursor: pointer;
+    }
+    .white-button:hover{
+      border:1px solid $medium;
     }
   }
   .status-text{
