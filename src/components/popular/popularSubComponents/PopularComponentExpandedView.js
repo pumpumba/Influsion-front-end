@@ -87,8 +87,9 @@ class PopularComponentExpandedView extends React.Component {
                         {this.props.userName}
                     </NavLink>
                     <div className='content-container'>
-                            <p>{this.props.caption}</p>
                             <img src={this.props.imgurl} />
+                            <p>{this.props.caption}</p>
+                            
                     </div>
                 </div>
             )

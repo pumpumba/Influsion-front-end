@@ -36,7 +36,7 @@ class FeedComponent extends React.Component {
                             isAd='true'
                         />
                         <FeedComponentContent
-                            caption={this.props.data.textdescription}
+                            textdescription={this.props.data.textdescription}
                             imageUrl={this.props.data.imgurl}
                             isAd='true'
                         />
