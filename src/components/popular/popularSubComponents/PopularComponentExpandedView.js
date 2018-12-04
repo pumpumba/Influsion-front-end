@@ -49,7 +49,7 @@ function ContentPlacer(props) {
                 }
                 {props.noOfLikes &&
                     <span>
-                        <FontAwesomeIcon className="metaIcon" icon={'heart'} />
+                        <FontAwesomeIcon className="metaIcon" icon={'thumbs-up'} />
                         {props.noOfLikes}
                     </span>
                 }

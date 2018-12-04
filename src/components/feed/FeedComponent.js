@@ -52,6 +52,7 @@ class FeedComponent extends React.Component {
                         inflName={this.props.data.channel_title || this.props.data.userName}
                         contentUrl={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
                         platform={this.props.data.platform.toLowerCase()}
+                        inflFeed={this.props.inflFeed}
                     />
                     <FeedComponentContent
                         caption={this.props.data.tweetText ||this.props.data.postText || this.props.data.video_description}

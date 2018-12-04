@@ -3,19 +3,43 @@ import PopularComponentClosedView from './popularSubComponents/PopularComponentC
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
 import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfollowInfluencer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {BACKEND_URL} from './../../constants'
 
 
 class PopularComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            typeOfVisit: '',
             open: false,
             heart: false,
             isInstagramVideo: false
         }
 
+        this.addUserVisit = this.addUserVisit.bind(this)
         this.onClick = this.onClick.bind(this)
         this.changeHeart = this.changeHeart.bind(this)
+
+    }
+
+    addUserVisit(e) {
+        if (this.props.data.platform === "twitter") {
+          this.state.typeOfVisit = "twitterpost"
+        } else if (this.props.data.platform === "Youtube") {
+          this.state.typeOfVisit = "youtubevideo"
+        } else if (this.props.data.platform === "instagram") {
+          this.state.typeOfVisit = "instagrampost"
+        }
+        e.preventDefault()
+        fetch(BACKEND_URL + 'db/add_user_visit/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({influencer_id: this.props.data.influencerId, user_id: this.props.userId,
+                                  type_of_visit: this.state.typeOfVisit})
+        })
     }
 
     componentWillMount() {
@@ -24,10 +48,15 @@ class PopularComponent extends React.Component {
         }))
     }
 
-    onClick() {
+    onClick(e) {
         this.setState(prevState => ({
             open: !prevState.open
         }))
+
+        if (this.state.open) {
+          this.addUserVisit(e)
+        }
+
     }
 
     changeHeart() {
