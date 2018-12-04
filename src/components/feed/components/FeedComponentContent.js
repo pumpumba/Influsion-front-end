@@ -39,6 +39,7 @@ class FeedComponentContent extends React.Component {
                     <p>{this.props.caption}</p>
                     <img src={this.props.imageUrl} />
                     <p>{this.props.textdescription}</p>
+                    <a href={this.props.readMoreUrl} className='read-more' target='_blank'>Read more</a>
                 </div>
             )
         }

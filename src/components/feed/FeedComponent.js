@@ -36,20 +36,19 @@ class FeedComponent extends React.Component {
     render() {
         if (this.props.data != null && this.props.data.tweetText != "") {
             if(this.props.data.adid){
-                console.log(this.props.data.imgurl)
                 return(
                     <div className='feed-component-wrapper'>
-                    <NavLink to={this.props.data.readmoreurl}>
                         <FeedComponentHeader
                             imgurl={this.props.data.imgurl}
                             isAd={true}
-                        />
+                            readMoreUrl={this.props.readmoreurl}
+                            />
                         <FeedComponentContent
                             textdescription={this.props.data.textdescription}
                             imageUrl={this.props.data.imgurl}
                             isAd={true}
+                            readMoreUrl={this.props.readmoreurl}
                         />
-                    </NavLink>
                     </div>
                 )
             }
