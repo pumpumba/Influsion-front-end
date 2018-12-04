@@ -1,4 +1,10 @@
 .popular-feed-content {
     display: flex;
     flex-wrap: wrap;
+
+    .bottom-feed {
+        padding: 3rem 0;
+        text-align: center;
+        width: 100%;
+    }
 }
