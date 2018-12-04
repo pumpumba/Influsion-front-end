@@ -4,6 +4,7 @@ class FeedComponentContent extends React.Component {
     constructor(props) {
         super(props)
         this.renderImage = this.renderImage.bind(this)
+        this.openAd = this.openAd.bind(this)
     }
 
     renderImage(curImageUrl) {
@@ -32,6 +33,10 @@ class FeedComponentContent extends React.Component {
             : ''
     }
 
+    openAd(){
+        window.open(this.props.readmoreurl)
+    }
+
     render() {
         if(this.props.isAd){
             return (
@@ -39,7 +44,7 @@ class FeedComponentContent extends React.Component {
                     <p>{this.props.caption}</p>
                     <img src={this.props.imageUrl} />
                     <p>{this.props.textdescription}</p>
-                    <a href={this.props.readMoreUrl} className='read-more' target='_blank'>Read more</a>
+                    <button className='read-more' onClick={this.openAd}>Read more</button>
                 </div>
             )
         }
