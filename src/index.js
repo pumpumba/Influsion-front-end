@@ -16,8 +16,8 @@ import InfluencerFeed from './pages/InfluencerFeed'
 import './styles/main.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt, faThumbsUp, faThumbsDown, faEye, faComment, faPlay, faHashtag, faTrash} from '@fortawesome/free-solid-svg-icons'
-library.add(fab, faCheckSquare, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt, faThumbsUp, faThumbsDown, faEye, faComment, faPlay, faHashtag, faTrash)
+import { faCheckSquare, faCoffee, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt, faThumbsUp, faThumbsDown, faEye, faComment, faPlay, faHashtag, faTrash, faAd} from '@fortawesome/free-solid-svg-icons'
+library.add(fab, faCheckSquare, faStar, faHeart, faSearch, faCogs, faRetweet, faCalendarAlt, faThumbsUp, faThumbsDown, faEye, faComment, faPlay, faHashtag, faTrash, faAd)
 
 class Index extends React.Component {
 
