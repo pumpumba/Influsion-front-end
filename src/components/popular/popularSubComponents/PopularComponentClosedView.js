@@ -5,16 +5,16 @@ import { StopPropagation } from 'react-clickable'
 class PopularComponentHeader extends React.Component {
     render() {
 
-        if(this.props.isAd){
-            return(
+        if (this.props.isAd) {
+            return (
                 <div className='closed-view'>
                     <div className='header'>
-                        <p>Advertisement<br></br></p>
+                        <FontAwesomeIcon icon={['fas', 'ad']} />
                     </div>
-                        <img src={this.props.imgurl} />
+                    <img src={this.props.imgurl} />
                 </div>
             )
-        }else{
+        } else {
             return (
                 <div className='closed-view'>
                     <div className='header'>
