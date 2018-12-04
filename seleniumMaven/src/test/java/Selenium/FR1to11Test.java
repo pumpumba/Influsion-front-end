@@ -789,7 +789,7 @@ public class FR1to11Test{
 		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
 		Thread.sleep(200);
 		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
-		Thread.sleep(200);
+		Thread.sleep(500);
 		
 		List<WebElement> youtubeContent =browser.findElements(By.cssSelector("[data-icon='instagram']"));
 		youtubeContent.remove(youtubeContent.size()-1);
@@ -1306,9 +1306,6 @@ public class FR1to11Test{
 		ChromeOptions options = new ChromeOptions();  
 		options.addArguments("--headless");  	
 		ChromeDriver browserWeb = new ChromeDriver(options);
-		username="testing12";
-		password="testing12";
-		startUrl = "http://localhost:8080/";
 		browserWeb.get(startUrl + "admin");
 		Thread.sleep(1000);
 		adminLogin("admin", "1234", browserWeb);
@@ -1335,9 +1332,6 @@ public class FR1to11Test{
 		ChromeOptions options = new ChromeOptions();  
 		options.addArguments("--headless");  	
 		ChromeDriver browserWeb = new ChromeDriver(options);
-		username="testing12";
-		password="testing12";
-		startUrl = "http://localhost:8080/";
 		browserWeb.get(startUrl + "admin");
 		Thread.sleep(1000);
 		adminLogin("admin", "1234", browserWeb);
