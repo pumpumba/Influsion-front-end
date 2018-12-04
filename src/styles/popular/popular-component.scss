@@ -8,13 +8,14 @@
     overflow: hidden;
 
 
-
     &:nth-child(4n+4), &:nth-child(4n+1) {
         background-color: lighten($light, 10%);
     }
 
     .expanded-view {
         display: none;
+        overflow: scroll;
+        max-height: 80%;
     }
 
     .social-media-source{

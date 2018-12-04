@@ -74,8 +74,8 @@ function ContentPlacer(props) {
 class PopularComponentExpandedView extends React.Component {
     constructor() {
         super()
-
     }
+
 
     render() {
 
