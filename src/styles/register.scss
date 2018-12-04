@@ -1,7 +1,7 @@
 .register {
   background-image: linear-gradient(135deg, #FFF886 10%, #F072B6 100%);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

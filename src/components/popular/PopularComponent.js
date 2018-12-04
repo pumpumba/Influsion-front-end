@@ -85,10 +85,21 @@ class PopularComponent extends React.Component {
         }
     }
 
+    componentWillUnmount(){
+        document.body.className = 'scroll'
+    }
+
 
     render() {
         let styles = null
         let backgroundUrl = ['']
+
+        if(this.state.open){
+            document.body.className = 'noscroll'
+        }else{
+            document.body.className = 'scroll'
+        }
+
         if(this.props.data.adid){
             styles = {
                 backgroundImage: 'url(' + this.props.data.imgurl[0] + ')'

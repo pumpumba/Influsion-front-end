@@ -140,7 +140,7 @@ class ModifyForm extends React.Component {
                 }
                 <input
                     onChange={(e) => this.setState({ username: e.target.value }, () => {this.validateUsername()})}
-                    placeholder="Username"
+                    placeholder={this.state.username}
                     type="text"
                 >
                 </input>
@@ -162,7 +162,7 @@ class ModifyForm extends React.Component {
                 }
                 <input
                     onChange={(e) => this.setState({ email: e.target.value },() => { this.validateEmail()})}
-                    placeholder="Email"
+                    placeholder={this.state.email}
                     type="text"
                 >
                 </input>
@@ -173,7 +173,7 @@ class ModifyForm extends React.Component {
                 }
                 <input
                     onChange={(e) => this.setState({ age: e.target.value }, () => {this.validateAge()})}
-                    placeholder="Age"
+                    placeholder={this.state.age}
                 >
                 </input>
 

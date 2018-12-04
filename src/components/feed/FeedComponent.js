@@ -3,16 +3,23 @@ import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfo
 import FeedComponentHeader from './components/FeedComponentHeader'
 import FeedComponentContent from './components/FeedComponentContent'
 import FeedComponentMeta from './components/FeedComponentMeta'
+import Header from '../header/Header'
+import Footer from '../footer/Footer'
 import { NavLink } from 'react-router-dom'
 
 class FeedComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            heart: true
+            heart: false
         }
 
         this.changeHeart = this.changeHeart.bind(this)
+    }
+    componentWillMount() {
+        this.setState(({
+            heart: this.props.userFollowing
+        }))
     }
 
     changeHeart() {
@@ -29,20 +36,19 @@ class FeedComponent extends React.Component {
     render() {
         if (this.props.data != null && this.props.data.tweetText != "") {
             if(this.props.data.adid){
-                console.log(this.props.data.imgurl)
                 return(
                     <div className='feed-component-wrapper'>
-                    <NavLink to={this.props.data.readmoreurl}>
                         <FeedComponentHeader
                             imgurl={this.props.data.imgurl}
                             isAd={true}
-                        />
+                            readMoreUrl={this.props.readmoreurl}
+                            />
                         <FeedComponentContent
                             textdescription={this.props.data.textdescription}
                             imageUrl={this.props.data.imgurl}
                             isAd={true}
+                            readMoreUrl={this.props.readmoreurl}
                         />
-                    </NavLink>
                     </div>
                 )
             }
@@ -56,6 +62,7 @@ class FeedComponent extends React.Component {
                         contentUrl={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
                         platform={this.props.data.platform.toLowerCase()}
                         inflFeed={this.props.inflFeed}
+                        inflid={this.props.inflid}
                     />
                     <FeedComponentContent
                         caption={this.props.data.tweetText ||this.props.data.postText || this.props.data.video_description}

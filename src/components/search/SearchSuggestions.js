@@ -62,6 +62,11 @@ class SearchSuggestions extends React.Component {
     }
     onChange(searchString) {
         this.setState({ searchResults: this.checkForInfluencer(searchString) })
+        if (searchString != '') {
+            this.props.sendCurrentlySearching(true)
+        } else {
+            this.props.sendCurrentlySearching(false)
+        }
     }
 
     handleKeyPress(e){

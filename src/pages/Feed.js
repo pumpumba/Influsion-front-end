@@ -11,23 +11,51 @@ class Feed extends React.Component {
         super(props)
         this.state = {
             data: [],
-            filters: ['twitter', 'youtube', 'instagram']
+            filters: ['twitter', 'youtube', 'instagram'],
+            limit: 10
         }
         this.updateFeedFilters = this.updateFeedFilters.bind(this)
         this.filterContent = this.filterContent.bind(this)
+        this.isBottom = this.isBottom.bind(this)
+        this.trackScrolling = this.trackScrolling.bind(this)
+        this.fetchFromApi = this.fetchFromApi.bind(this)
+        this.filterContent = this.filterContent.bind(this)
     }
 
-    componentDidMount() {
+    isBottom(el) {
+        return el.getBoundingClientRect().bottom <= window.innerHeight + 100
+    }
+
+    trackScrolling() {
+        const wrappedElement = document.getElementById('feed-content')
+        if (this.isBottom(wrappedElement)) {
+
+            this.setState(prevState => ({
+                limit: prevState.limit + 10
+            }), () => this.fetchFromApi())
+        }
+    }
+
+    fetchFromApi() {
         fetch(BACKEND_URL + 'aggregate/content', {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: [this.props.userId, 1], limit: 10 })
+            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: [this.props.userId, 1], limit: this.state.limit })
         }).then(data => data.json())
             .then(data => this.setState({ data }))
+    }
 
+
+    componentDidMount() {
+        document.addEventListener('scroll', this.trackScrolling)
+        this.fetchFromApi()
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.trackScrolling);
     }
 
     updateFeedFilters(newFilters) {
@@ -54,6 +82,8 @@ class Feed extends React.Component {
                     data={curContent.platformcontent||curContent}
                     userId={this.props.userId}
                     platform={curContent.platform}
+                    userFollowing= {true}
+                    inflid={this.props.inflid}
                 />
             })
         }
@@ -62,7 +92,7 @@ class Feed extends React.Component {
             return (
                 <div className="mobile-page">
                     <Header />
-                    <main>
+                    <main id='feed-content'>
                         {feedContent}
                     </main>
                     <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />

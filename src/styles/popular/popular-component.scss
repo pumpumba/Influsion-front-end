@@ -1,3 +1,10 @@
+body.noscroll{
+    overflow: hidden;
+}
+body.scroll{
+    overflow: visible;
+}
+
 .popular-component-wrapper {
     background-color: white;
     background-size: cover;
@@ -8,13 +15,14 @@
     overflow: hidden;
 
 
-
     &:nth-child(4n+4), &:nth-child(4n+1) {
         background-color: lighten($light, 10%);
     }
 
     .expanded-view {
         display: none;
+        overflow: scroll;
+        max-height: 80%;
     }
 
     .social-media-source{
@@ -34,6 +42,8 @@
             width: 100%;
 
             .header {
+                position: relative;
+
                 img {
                     border-radius: 99px;
                     border: 2px solid $hard;
@@ -43,6 +53,18 @@
                 * {
                     display: inline;
                 }
+
+                svg {
+                    position: absolute;
+                    top: .125em;
+                    right: .125em;
+                    font-size: 2em;
+                    color: $hard;
+                    background-color: $white;
+                    padding: 0px 3px;
+                    border-radius: $borderRadius;
+                }
+
             }
 
             .play-icon-wrapper {
@@ -117,6 +139,22 @@
             width: 90%;
             box-sizing: border-box;
             border-radius: 3px;
+
+            &.ad {
+                svg {
+                    font-size: 2em;
+                    color: $hard;
+                    background-color: $white;
+                    padding: 0px 3px;
+                    border-radius: $borderRadius;
+                }
+
+                a {
+                    font-size: .75rem;
+                    text-align: center;
+                    margin-left: 0;
+                }
+            }
 
             .header {
                 align-items: center;
