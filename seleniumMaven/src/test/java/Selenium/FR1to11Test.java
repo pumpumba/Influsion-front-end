@@ -1352,61 +1352,86 @@ public class FR1to11Test{
 	}
 	
 	@Test
-    public void FR68() throws InterruptedException {        
-    
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");      
-        ChromeDriver browserWeb = new ChromeDriver(options);
-        username="testing12";
-        password="testing12";
-        startUrl = "http://localhost:8080/";
-        browserWeb.get(startUrl + "admin");
-        adminLogin("admin", "1234", browserWeb);
+	public void FR58() throws InterruptedException {	
+		
+		ChromeOptions options = new ChromeOptions();  
+		options.addArguments("--headless");  	
+		ChromeDriver browserWeb = new ChromeDriver(options);
+		browserWeb.get(startUrl + "admin");
+		Thread.sleep(1000);
+		adminLogin("admin", "1234", browserWeb);
+		Thread.sleep(1000);
+		
+		WebElement blockDiv = browserWeb.findElement(By.xpath("//div[contains(@class,'-most-followed')]"));
+				
+		((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+		((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
+		
+		List<WebElement> listElements = blockDiv.findElements(By.className("influencer-list-component"));
 
-        WebElement blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-        ((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
-        
-        String searchKey = "Justin Bieber";
-        WebElement searchField = blockDiv.findElement(By.className("searchInput"));
-        searchField.sendKeys(searchKey);
-        
-        WebElement searchheader = blockDiv.findElement(By.className("search-header"));
-        browserWeb.findElement(By.className("blockButton")).click();
-        Thread.sleep(2000);
-        
-        browserWeb.get(startUrl + "admin");
-        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-        Thread.sleep(500);
-        List<WebElement> blocked = browserWeb.findElements(By.className("unblockButton"));
-
-        for (WebElement b : blocked) {        
-            WebElement item = b.findElement(By.xpath(".."));    
-            String name = item.findElement(By.xpath(".//p[2]")).getText();    
-            if (name.equals(searchKey)) {
-                item.findElement(By.className("unblockButton")).click();
-                Thread.sleep(500);
-            }
-        }
-        
-        browserWeb.get(startUrl + "admin");
-        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-        Thread.sleep(500);
-        List<WebElement> blockedNew = browserWeb.findElements(By.className("unblockButton"));
-        
-        ArrayList<String> namesNew = new ArrayList<>();
-        for (WebElement b : blockedNew) {        
-            WebElement item = b.findElement(By.xpath(".."));    
-            namesNew.add(item.findElement(By.xpath(".//p[2]")).getText());    
-        }
-        
-        browserWeb.close();
-        
-        assertFalse(namesNew.contains(searchKey));
-    }
+		browserWeb.close();
+		assertEquals(10, listElements.size());
+		
+		
+		
+	}
 	
+//	@Test
+//    public void FR68() throws InterruptedException {        
+//    
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--headless");      
+//        ChromeDriver browserWeb = new ChromeDriver(options);
+//        username="testing12";
+//        password="testing12";
+//        startUrl = "http://localhost:8080/";
+//        browserWeb.get(startUrl + "admin");
+//        adminLogin("admin", "1234", browserWeb);
+//
+//        WebElement blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+//        ((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
+//        
+//        String searchKey = "Justin Bieber";
+//        WebElement searchField = blockDiv.findElement(By.className("searchInput"));
+//        searchField.sendKeys(searchKey);
+//        
+//        WebElement searchheader = blockDiv.findElement(By.className("search-header"));
+//        browserWeb.findElement(By.className("blockButton")).click();
+//        Thread.sleep(2000);
+//        
+//        browserWeb.get(startUrl + "admin");
+//        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+//        Thread.sleep(500);
+//        List<WebElement> blocked = browserWeb.findElements(By.className("unblockButton"));
+//
+//        for (WebElement b : blocked) {        
+//            WebElement item = b.findElement(By.xpath(".."));    
+//            String name = item.findElement(By.xpath(".//p[2]")).getText();    
+//            if (name.equals(searchKey)) {
+//                item.findElement(By.className("unblockButton")).click();
+//                Thread.sleep(500);
+//            }
+//        }
+//        
+//        browserWeb.get(startUrl + "admin");
+//        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+//        Thread.sleep(500);
+//        List<WebElement> blockedNew = browserWeb.findElements(By.className("unblockButton"));
+//        
+//        ArrayList<String> namesNew = new ArrayList<>();
+//        for (WebElement b : blockedNew) {        
+//            WebElement item = b.findElement(By.xpath(".."));    
+//            namesNew.add(item.findElement(By.xpath(".//p[2]")).getText());    
+//        }
+//        
+//        browserWeb.close();
+//        
+//        assertFalse(namesNew.contains(searchKey));
+//    }
+//	
 	
 	@Test
 	public void FR67() throws InterruptedException {		
