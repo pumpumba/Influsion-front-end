@@ -96,7 +96,7 @@ class RegisterForm extends React.Component {
 
     validateAge(input){
         if(this.state.age < 13){
-            this.setState({ageError:'You have to be older than 13'})
+            this.setState({ageError:'You have to be 13 or older'})
         }else if (this.state.age > 164) {
             this.setState({ageError:'How are you still alive!?'})
         }else{
@@ -121,7 +121,7 @@ class RegisterForm extends React.Component {
             <form>
                 <h2>Register</h2>
                 <input
-                    onChange={(e) => this.setState({ username: e.target.value }, this.validateUsername())}
+                    onChange={(e) => this.setState({ username: e.target.value }, () => {this.validateUsername()})}
                     placeholder="Username"
                     type="text"
                 >
@@ -130,7 +130,7 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.usernameError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ password: e.target.value }, this.validatePassword())}
+                    onChange={(e) => this.setState({ password: e.target.value }, () => {this.validatePassword()})}
                     placeholder="Password"
                     type="password"
                 >
@@ -139,7 +139,7 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.passwordError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ email: e.target.value }, this.validateEmail())}
+                    onChange={(e) => this.setState({ email: e.target.value }, () => {this.validateEmail()})}
                     placeholder="Email"
                     type="text"
                 >
@@ -148,7 +148,7 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.emailError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ age: e.target.value }, this.validateAge())}
+                    onChange={(e) => this.setState({ age: e.target.value },() => {this.validateAge()})}
                     placeholder="Age"
                 >
                 </input>
