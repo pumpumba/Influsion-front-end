@@ -1,8 +1,10 @@
 import React from 'react'
+import {BACKEND_URL} from './../../../constants'
 
 class FeedComponentContent extends React.Component {
     constructor(props) {
         super(props)
+        this.addAdClick = this.addAdClick.bind(this)
         this.renderImage = this.renderImage.bind(this)
     }
 
@@ -32,6 +34,19 @@ class FeedComponentContent extends React.Component {
             : ''
     }
 
+    addAdClick(e) {
+      console.log(this)
+        e.preventDefault()
+        fetch(BACKEND_URL + 'db/add_ad_click/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({user_id: this.props.userId, ad_id: this.props.isAd})
+        })
+    }
+
     render() {
         if(this.props.isAd){
             return (
@@ -39,7 +54,7 @@ class FeedComponentContent extends React.Component {
                     <p>{this.props.caption}</p>
                     <img src={this.props.imageUrl} />
                     <p>{this.props.textdescription}</p>
-                    <a href={this.props.readMoreUrl} className='read-more' target='_blank'>Read more</a>
+                    <a href={this.props.readMoreUrl} className='read-more' onClick={this.addAdClick} target='_blank'>Read more</a>
                 </div>
             )
         }

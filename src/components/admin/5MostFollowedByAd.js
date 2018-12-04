@@ -23,7 +23,7 @@ class InfluencerList extends React.Component {
   }
 
   componentDidMount() {
-    fetch(BACKEND_URL + 'db/get_most_followed_users_clicked_promo?limit=5&ad_id=41', {
+    fetch(BACKEND_URL + 'db/get_most_followed_users_clicked_promo?limit=5&ad_id=56', {
       method: 'get',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -45,6 +45,7 @@ class InfluencerList extends React.Component {
                     influencerName={curContent.influencername}
                     numberOfFollowers={curContent.nrfollowing}
 
+                    imgs={curContent.img}
 
                     onClick={() => this.handleClick(curContent.inflid)}
                   />

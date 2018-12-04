@@ -13,10 +13,25 @@ class InfluencerFeed extends React.Component {
       filters: ['twitter', 'youtube', 'instagram']
     }
     this.updateFeedFilters = this.updateFeedFilters.bind(this)
+    this.postToBackEnd = this.postToBackEnd.bind(this)
   }
 
+  postToBackEnd() {
+
+    fetch(BACKEND_URL + 'db/add_user_visit/', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({influencer_id: this.state.data[0].inflid, user_id: this.props.userId,
+                              type_of_visit: 'profilevisit'})
+    })
+
+  }
 
   componentDidMount() {
+
     fetch(BACKEND_URL + 'aggregate/content', {
       method: 'post',
       headers: {
@@ -25,7 +40,8 @@ class InfluencerFeed extends React.Component {
       },
       body: JSON.stringify({ assetType: ['all'], filterType: ['influencer'], filterValue: [this.props.match.params.influencerid, this.props.userId], limit: 60 })
     }).then(data => data.json())
-      .then(data => this.setState({ data }))
+      .then(data => this.setState({ data }, () => this.postToBackEnd()))
+
   }
 
   updateFeedFilters(newFilters) {

@@ -26,7 +26,7 @@ class InfluencerFeed extends React.Component {
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
-  
+
   componentDidMount() {
     this.mountAndUpdate()
     }
@@ -36,7 +36,7 @@ class InfluencerFeed extends React.Component {
         this.setState({influencerid: this.props.inflid})
         this.mountAndUpdate()
       }
-    } 
+    }
 
   updateFeedFilters(newFilters) {
     this.setState({ filters: newFilters })
