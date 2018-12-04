@@ -33,6 +33,15 @@ class FeedComponentContent extends React.Component {
     }
 
     render() {
+        if(this.props.isAd){
+            return (
+                <div className='content'>
+                    <p>{this.props.caption}</p>
+                    <img src={this.props.imageUrl} />
+                    <p>{this.props.textdescription}</p>
+                </div>
+            )
+        }
         return (
             <div className='content'>
                 <p>{this.props.caption}</p>

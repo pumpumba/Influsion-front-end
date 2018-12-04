@@ -28,5 +28,9 @@
             margin-top: 1rem;
             border-radius: $borderRadius;
         }
+
+        p{
+            word-wrap:break-word;
+        }
     }
 }
