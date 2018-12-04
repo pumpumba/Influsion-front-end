@@ -46,19 +46,21 @@ class InfluencerList extends React.Component {
       }
     }
     return (
-      <div className='admin-box'>
-        <h1 className="section-title"> The top 10 most followed influencers</h1>
-        <div className="influencer-list-header">
-          <span>Rank</span>
-          <span></span>
-          <span>
-            Influencer
-          </span>
-          <span>
-            Followers
-          </span>
+      <div className="ten-most-followed">
+        <div className='admin-box'>
+          <h1 className="section-title"> The top 10 most followed influencers</h1>
+          <div className="influencer-list-header">
+            <span>Rank</span>
+            <span></span>
+            <span>
+              Influencer
+            </span>
+            <span>
+              Followers
+            </span>
+          </div>
+          {listContent}
         </div>
-        {listContent}
       </div>
     );
   }
