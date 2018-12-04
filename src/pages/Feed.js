@@ -27,7 +27,6 @@ class Feed extends React.Component {
             body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: [this.props.userId, 1], limit: 10 })
         }).then(data => data.json())
             .then(data => this.setState({ data }))
-
     }
 
     updateFeedFilters(newFilters) {
@@ -54,6 +53,8 @@ class Feed extends React.Component {
                     data={curContent.platformcontent||curContent}
                     userId={this.props.userId}
                     platform={curContent.platform}
+                    userFollowing= {true}
+                    inflid={this.props.inflid}
                 />
             })
         }
