@@ -7,6 +7,7 @@ class CreateAd extends React.Component {
   }
 
   render(){
+
     return(
       <div className='create-ad'>
         <h1 className='section-title'> Create new advertisment </h1>

@@ -2,8 +2,16 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from 'react-router-dom'
 import placeHolder from './../../../img/placeholder.png'
+import { StopPropagation } from 'react-clickable';
 
 class SearchSuggestionComponent extends React.Component {
+
+  constructor(props) {
+      super(props)
+      this.state = {
+      }
+      this.onClick = this.onClick.bind(this)
+  }
 
     render() {
         let twitter = false
@@ -33,15 +41,15 @@ class SearchSuggestionComponent extends React.Component {
         }
 
         return (
-            <div className='search-header'>
+            <NavLink className='search-header'  to={`/infl/${this.props.data.inflid}`}>
                 {profileImage}
-                <NavLink name='user-name' to={`/infl/${this.props.data.inflid}`}> {this.props.data.influencername} </NavLink>
-                <div className='search-platforms' style={{ justifyContent: 'right', alignItems: 'right', textalign: 'right' }}>
-                    {(twitter) ? <span><FontAwesomeIcon icon={['fab', 'twitter']} /> </span> : ''}
-                    {(instagram) ? <span><FontAwesomeIcon icon={['fab', 'instagram']} /> </span> : ''}
-                    {(youtube) ? <span><FontAwesomeIcon icon={['fab', 'youtube']} /> </span> : ''}
-                </div>
-            </div>
+                <h2> {this.props.data.influencername} </h2> 
+                  <div className='search-platforms' style={{ justifyContent: 'right', alignItems: 'right', textalign: 'right' }}>
+                      {(twitter) ? <span><FontAwesomeIcon icon={['fab', 'twitter']} /> </span> : ''}
+                      {(instagram) ? <span><FontAwesomeIcon icon={['fab', 'instagram']} /> </span> : ''}
+                      {(youtube) ? <span><FontAwesomeIcon icon={['fab', 'youtube']} /> </span> : ''}
+                  </div>
+            </NavLink>
         )
     }
 }
