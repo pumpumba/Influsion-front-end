@@ -38,8 +38,6 @@ class InfluencerFeed extends React.Component {
     if (this.state.data.length > 0) {
       let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
       feedContent = filteredContent.map(curContent => {
-        console.log("This should be printed in console!");
-        console.log(curContent.usrfollowinginfluencer);
         return <FeedComponent
           key={curContent.postid}
           data={curContent.platformcontent}

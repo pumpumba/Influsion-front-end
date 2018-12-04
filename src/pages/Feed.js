@@ -42,7 +42,8 @@ class Feed extends React.Component {
                     data={curContent.platformcontent}
                     userId={this.props.userId}
                     platform={curContent.platform}
-                    userFollowing= 'true'
+                    userFollowing= {true}
+                    inflid={this.props.inflid}
                 />
             })
         }
