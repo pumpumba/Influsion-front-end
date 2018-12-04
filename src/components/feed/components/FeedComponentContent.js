@@ -19,7 +19,7 @@ class FeedComponentContent extends React.Component {
                         src={curImageUrl[0]}>
                     </video>
                 </div>
-                : <img src={curImageUrl} />)
+                : <img src={curImageUrl[0]} />)
             : ''
         }
     }
