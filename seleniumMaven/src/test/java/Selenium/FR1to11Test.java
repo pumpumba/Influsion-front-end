@@ -575,7 +575,7 @@ public class FR1to11Test{
 	public void FR23() throws InterruptedException {	
 		
 		ChromeOptions options = new ChromeOptions();  
-//		options.addArguments("--headless");  	
+		options.addArguments("--headless");  	
 		ChromeDriver browserWeb = new ChromeDriver(options);
 		username="testing12";
 		password="testing12";
@@ -805,6 +805,14 @@ public class FR1to11Test{
 	@Test
 	public void FR29() throws InterruptedException {
 		login(username,password,browser);
+		
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);		
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);
+		
 		List<WebElement> youtubeContent =browser.findElements(By.cssSelector("[data-icon='youtube']"));
 		youtubeContent.remove(youtubeContent.size()-1);
 		WebElement TwitterPost = youtubeContent.get(randInt(0, youtubeContent.size()-1));
@@ -874,6 +882,14 @@ public class FR1to11Test{
 	@Test
 	public void FR30() throws InterruptedException {
 	login(username,password,browser);
+	
+	((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+	Thread.sleep(200);		
+	((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+	Thread.sleep(200);
+	((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+	Thread.sleep(200);
+	
 	List<WebElement> youtubeContent =browser.findElements(By.cssSelector("[data-icon='youtube']"));
 	youtubeContent.remove(youtubeContent.size()-1);
 	WebElement TwitterPost = youtubeContent.get(randInt(0, youtubeContent.size()-1));
@@ -972,6 +988,14 @@ public class FR1to11Test{
 	@Test
 	public void FR31() throws InterruptedException {
 		login(username,password,browser);
+		
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);		
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);
+		
 		List<WebElement> instaContent =browser.findElements(By.cssSelector("[data-icon='instagram']"));
 		instaContent.remove(instaContent.size()-1);
 		WebElement instaPost = instaContent.get(randInt(0, instaContent.size()-1));
@@ -992,7 +1016,7 @@ public class FR1to11Test{
 
 		//name
 
-		String name = expand.findElement(By.xpath(".//div[@class='header']/a[1]")).getAttribute("href");
+		String name = expand.findElement(By.xpath(".//a[@class='header']")).getText();
 
 		//img
 
@@ -1089,7 +1113,7 @@ public class FR1to11Test{
 
 		for (WebElement data : metaDataTypes) {
 
-			if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("heart")) {
+			if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("thumbs-up")) {
 
 				likes = data.getText();
 				System.out.println(likes);
