@@ -73,7 +73,7 @@ public class FR1to11Test{
 		System.out.println(PopularFeed.size());
 		
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		assertEquals(10,PopularComponent.size());  
+		assertEquals(true,PopularComponent.size()>9);  
 		assertEquals(1,PopularFeed.size());
 	}
 	
@@ -388,7 +388,7 @@ public class FR1to11Test{
 		
 		List<WebElement> PopularFeed = browser.findElements(By.cssSelector(".popular-feed-content"));
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		assertEquals(10, PopularComponent.size());  
+		assertEquals(true, PopularComponent.size()>9);  
 		assertEquals(1, PopularFeed.size());
 				
 	}
@@ -413,7 +413,7 @@ public class FR1to11Test{
 		Thread.sleep(2000);
 		List<WebElement> PopularFeed = browser.findElements(By.cssSelector(".popular-feed-content"));
 		List<WebElement> PopularComponent = browser.findElements(By.className("popular-component-wrapper"));
-		assertEquals(10, PopularComponent.size());  
+		assertEquals(true, PopularComponent.size()>9);  
 		assertEquals(1, PopularFeed.size());
 		
 		
@@ -1273,6 +1273,62 @@ public class FR1to11Test{
 		
 		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
 		assertEquals(true, FeedComponent.size()>0);
+		
+		
+	}
+	@Test
+	public void FR48() throws InterruptedException {	
+		
+		ChromeOptions options = new ChromeOptions();  
+		options.addArguments("--headless");  	
+		ChromeDriver browserWeb = new ChromeDriver(options);
+		username="testing12";
+		password="testing12";
+		startUrl = "http://localhost:8080/";
+		browserWeb.get(startUrl + "admin");
+		Thread.sleep(1000);
+		adminLogin("admin", "1234", browserWeb);
+		Thread.sleep(1000);
+		
+		WebElement blockDiv = browserWeb.findElement(By.xpath("//div[contains(@class,'-most-clicked')]"));
+				
+		((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+		((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
+		
+		List<WebElement> listElements = blockDiv.findElements(By.className("influencer-list-component"));
+		
+
+		browserWeb.close();
+		assertEquals(10, listElements.size());
+		
+		
+		
+	}
+	
+	@Test
+	public void FR50() throws InterruptedException {	
+		
+		ChromeOptions options = new ChromeOptions();  
+		options.addArguments("--headless");  	
+		ChromeDriver browserWeb = new ChromeDriver(options);
+		username="testing12";
+		password="testing12";
+		startUrl = "http://localhost:8080/";
+		browserWeb.get(startUrl + "admin");
+		Thread.sleep(1000);
+		adminLogin("admin", "1234", browserWeb);
+		Thread.sleep(1000);
+		
+		WebElement blockDiv = browserWeb.findElement(By.xpath("//div[contains(@class,'most-followed')]"));
+				
+		((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+		((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
+		
+		List<WebElement> listElements = blockDiv.findElements(By.className("influencer-list-component"));
+
+		browserWeb.close();
+		assertEquals(10, listElements.size());
+		
 		
 		
 	}
