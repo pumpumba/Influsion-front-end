@@ -44,6 +44,15 @@ class ListOfBlocked extends React.Component {
             <h1> Currently Blocked Influencers</h1>
             Theese Influencers are currently blocked by you.
         </div>
+        <div className="influencer-list-header">
+          <span>ID</span>
+          <span>
+            Influencer
+          </span>
+          <span>
+
+          </span>
+        </div>
         {blockContent}
       </div>
 

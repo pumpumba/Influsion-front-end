@@ -10,7 +10,6 @@ class SearchSuggestionComponent extends React.Component {
       super(props)
       this.state = {
       }
-      this.onClick = this.onClick.bind(this)
   }
 
     render() {
@@ -43,7 +42,7 @@ class SearchSuggestionComponent extends React.Component {
         return (
             <NavLink className='search-header'  to={`/infl/${this.props.data.inflid}`}>
                 {profileImage}
-                <h2> {this.props.data.influencername} </h2> 
+                <h2> {this.props.data.influencername} </h2>
                   <div className='search-platforms' style={{ justifyContent: 'right', alignItems: 'right', textalign: 'right' }}>
                       {(twitter) ? <span><FontAwesomeIcon icon={['fab', 'twitter']} /> </span> : ''}
                       {(instagram) ? <span><FontAwesomeIcon icon={['fab', 'instagram']} /> </span> : ''}

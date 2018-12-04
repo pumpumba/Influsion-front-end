@@ -3,7 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const FeedComponentHeader = (props) => {
-    if(props.inflFeed){
+    if(props.isAd){
+        return(
+            <div className='header'>
+                <h1>Advertisement</h1>
+            </div>
+        )
+    }
+    else if(props.inflFeed){
         return (
             <div className='header'>
                 <img src={props.inflImgUrl} />
@@ -20,6 +27,5 @@ const FeedComponentHeader = (props) => {
             </div>
         )
     }
-
 }
 export default FeedComponentHeader

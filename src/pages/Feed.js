@@ -14,6 +14,7 @@ class Feed extends React.Component {
             filters: ['twitter', 'youtube', 'instagram']
         }
         this.updateFeedFilters = this.updateFeedFilters.bind(this)
+        this.filterContent = this.filterContent.bind(this)
     }
 
     componentDidMount() {
@@ -23,7 +24,7 @@ class Feed extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: [this.props.userId, this.props.adminId], limit: 100 })
+            body: JSON.stringify({ assetType: ['all'], filterType: ['user'], filterValue: [this.props.userId, 1], limit: 10 })
         }).then(data => data.json())
             .then(data => this.setState({ data }))
 
@@ -33,14 +34,24 @@ class Feed extends React.Component {
         this.setState({ filters: newFilters })
     }
 
+    filterContent(content){
+        if(content.showinfollowingfeed || content.promotedfollowing){
+            return true
+        }else if(this.state.filters.includes(content.platform.toLowerCase())){
+            return true
+        }else{
+            return false
+        }
+    }
+
     render() {
         let feedContent = null
         if (this.state.data.length > 0) {
-            let filteredContent = this.state.data.filter(content => this.state.filters.includes(content.platform.toLowerCase()))
-            feedContent = filteredContent.map(curContent => {
+            let filteredContent = this.state.data.filter(content => this.filterContent(content))
+            feedContent = filteredContent.map((curContent,index) => {
                 return <FeedComponent
-                    key={curContent.postid}
-                    data={curContent.platformcontent}
+                    key={index}
+                    data={curContent.platformcontent||curContent}
                     userId={this.props.userId}
                     platform={curContent.platform}
                 />

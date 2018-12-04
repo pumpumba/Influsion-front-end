@@ -17,6 +17,7 @@ class Popular extends React.Component {
         this.isBottom = this.isBottom.bind(this)
         this.trackScrolling = this.trackScrolling.bind(this)
         this.fetchFromApi = this.fetchFromApi.bind(this)
+        this.filterContent = this.filterContent.bind(this)
     }
 
     updateFeedFilters(newFilters) {
@@ -44,7 +45,7 @@ class Popular extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId, this.props.adminId], limit: this.state.limit })
+            body: JSON.stringify({ assetType: ['all'], filterType: ['popular'], filterValue: [this.props.userId, 1], limit: this.state.limit })
         }).then(data => data.json())
             .then(data => this.setState({ data }))
     }
@@ -52,20 +53,28 @@ class Popular extends React.Component {
     componentDidMount() {
         document.addEventListener('scroll', this.trackScrolling)
         this.fetchFromApi()
+    }
 
+    filterContent(content){
+        if(content.showinpopularfeed || content.promotedpopular){
+            return true
+        }else if(this.state.filters.includes(content.platform.toLowerCase())){
+            return true
+        }else{
+            return false
+        }
     }
 
     render() {
-
         let feedContent = null
         if (this.state.data != null) {
             let filteredContent = this.state.data.filter(content =>
-                this.state.filters.includes(content.platform.toLowerCase())
+                this.filterContent(content)
             )
-            feedContent = filteredContent.map(curContent => {
+            feedContent = filteredContent.map((curContent,index) => {
                 return <PopularComponent
-                    key={curContent.postid}
-                    data={curContent.platformcontent}
+                    key={index}
+                    data={curContent.platformcontent || curContent}
                     userId={this.props.userId}
                     userFollowing={curContent.usrfollowinginfluencer}
                 />

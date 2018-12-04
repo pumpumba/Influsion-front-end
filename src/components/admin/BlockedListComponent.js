@@ -27,11 +27,8 @@ class BlockedListComponent extends React.Component {
     }
 
   render () {
-    var classes = "influencer-list-component"
     return (
-      <div className={classes}
-          onClick={() => this.props.onClick()}
-        >
+      <div className="influencer-list-component">
         <p>{this.props.index}</p>
         <img src={this.props.pic} />
         <p>{this.props.influencerName}</p>
