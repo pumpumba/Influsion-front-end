@@ -1,12 +1,19 @@
+body.noscroll{
+    overflow: hidden;
+}
+body.scroll{
+    overflow: visible;
+}
+
 .popular-component-wrapper {
     background-color: white;
     background-size: cover;
     background-position: center center;
-    width: 50%;
+    width: 50vw;
+    height: 50vw;
     float: left;
     display: flex;
     overflow: hidden;
-
 
 
     &:nth-child(4n+4), &:nth-child(4n+1) {
@@ -15,6 +22,8 @@
 
     .expanded-view {
         display: none;
+        overflow: scroll;
+        max-height: 80%;
     }
 
     .social-media-source{
@@ -116,7 +125,6 @@
         a {
             color: $gs-hard;
             font-size: 1.25em;
-            margin-left: 1rem;
           }
 
         .expanded-view{
@@ -141,7 +149,7 @@
                     border-radius: $borderRadius;
                 }
 
-                a {
+                button {
                     font-size: .75rem;
                     text-align: center;
                     margin-left: 0;
@@ -152,27 +160,33 @@
                 align-items: center;
                 display: flex;
                 margin-bottom: 1em;
+                position: relative;
 
                 img {
                     border-radius: 99px;
                     border: 2px solid $hard;
                     height: 2.5em;
                     width: 2.5em;
+                    margin-right: 1em;
                 }
 
                 h3 {
                     color: $gs-hard;
                     font-size: 1.25em;
-                    margin-left: 1rem;
                 }
 
                 .verifiedIcon{
-                  height: 1rem;
-                  border: 0;
+                    position: absolute;
+                    height: 1rem;
+                    border: 0;
+                    right: 18px;
+                    top: 12px;
                 }
 
                 .platform-link {
-                    margin: 0 1rem 0 auto;
+                    position: absolute;
+                    right: 7px;
+                    top: 12px;
                 }
 
                 a svg {

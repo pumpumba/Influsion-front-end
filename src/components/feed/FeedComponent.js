@@ -11,14 +11,16 @@ class FeedComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            heart: false
+            heart: false,
+            dummyTrigger: true
         }
 
         this.changeHeart = this.changeHeart.bind(this)
     }
     componentWillMount() {
         this.setState(({
-            heart: this.props.userFollowing
+            heart: this.props.userFollowing,
+            dummyTrigger: this.props.dummyTrigger
         }))
     }
 
@@ -31,25 +33,26 @@ class FeedComponent extends React.Component {
         } else {
             followInfluencer(this.props.userId, this.props.data.influencerId)
         }
+        this.props.updateFeed()
     }
 
     render() {
         if (this.props.data != null && this.props.data.tweetText != "") {
             if(this.props.data.adid){
-                console.log(this.props.data.imgurl)
                 return(
                     <div className='feed-component-wrapper'>
-                    <NavLink to={this.props.data.readmoreurl}>
                         <FeedComponentHeader
                             imgurl={this.props.data.imgurl}
-                            isAd={true}
-                        />
+                            isAd={this.props.data.adid}
+                            readMoreUrl={this.props.data.readmoreurl}
+                            />
                         <FeedComponentContent
                             textdescription={this.props.data.textdescription}
                             imageUrl={this.props.data.imgurl}
-                            isAd={true}
+                            userId={this.props.userId}
+                            isAd={this.props.data.adid}
+                            readMoreUrl={this.props.data.readmoreurl}
                         />
-                    </NavLink>
                     </div>
                 )
             }

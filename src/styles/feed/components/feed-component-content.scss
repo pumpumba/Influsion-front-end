@@ -32,5 +32,16 @@
         p{
             word-wrap:break-word;
         }
+
+        .read-more {
+            font-size: .75rem;
+            margin-top: 1rem;
+            display: block;
+            border:none;
+            text-decoration: none;
+            background: none;
+            box-shadow: none;
+            color:$grey;
+        }
     }
 }

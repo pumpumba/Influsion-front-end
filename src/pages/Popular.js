@@ -3,6 +3,7 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import PopularComponent from './../components/popular/PopularComponent'
 import { BACKEND_URL } from '../constants'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Popular extends React.Component {
 
@@ -21,11 +22,13 @@ class Popular extends React.Component {
     }
 
     updateFeedFilters(newFilters) {
-        this.setState({ filters: newFilters })
+        this.setState({ filters: newFilters, limit: 30 })
+        this.fetchFromApi()
+
     }
 
     isBottom(el) {
-        return el.getBoundingClientRect().bottom <= window.innerHeight - 100
+        return el.getBoundingClientRect().bottom <= window.innerHeight + 100
     }
 
     trackScrolling() {
@@ -91,6 +94,11 @@ class Popular extends React.Component {
                 <Header title={'Popular'} />
                 <main className='popular-feed-content' id='popular-feed-content'>
                     {feedContent}
+                    <div className='bottom-feed'>
+                        <p>
+                            You have reached the end of the feed...
+                        </p>
+                    </div>
                 </main>
                 <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
             </div>

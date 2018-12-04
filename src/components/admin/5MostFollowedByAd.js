@@ -10,8 +10,10 @@ class InfluencerList extends React.Component {
       isActive: Array(9).fill(false),
       lastActive: null,
       response: [],
+      adId: ''
     }
     this.setInflId = this.setInflId.bind(this)
+    this.getMostFollowedByAd = this.getMostFollowedByAd.bind(this)
   }
 
   setInflId(influencer) {
@@ -22,8 +24,9 @@ class InfluencerList extends React.Component {
     this.setInflId(i)
   }
 
-  componentDidMount() {
-    fetch(BACKEND_URL + 'db/get_most_followed_users_clicked_promo?limit=5&ad_id=41', {
+  getMostFollowedByAd(e) {
+    e.preventDefault()
+    fetch(BACKEND_URL + 'db/get_most_followed_users_clicked_promo?limit=5&ad_id=' + this.state.adId, {
       method: 'get',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -45,6 +48,7 @@ class InfluencerList extends React.Component {
                     influencerName={curContent.influencername}
                     numberOfFollowers={curContent.nrfollowing}
 
+                    imgs={curContent.img}
 
                     onClick={() => this.handleClick(curContent.inflid)}
                   />
@@ -52,7 +56,16 @@ class InfluencerList extends React.Component {
       }
     }
     return (
-      <div className='admin-box'>
+        <div className='admin-box'>
+        <form>
+          <input
+            className="ad-id"
+            type="text"
+            placeholder="Ad id"
+            onChange={(e) => this.setState({ adId: e.target.value })}
+          />
+          <button onClick={this.getMostFollowedByAd}>Submit</button>
+        </form>
         <h1 className="section-title"> Top 5 most followed influencers by ad</h1>
         <div className="influencer-list-header">
           <span>Rank</span>
