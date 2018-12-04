@@ -95,7 +95,6 @@ class RegisterForm extends React.Component {
     }
 
     validateAge(input){
-        console.log(this.state.age)
         if(this.state.age < 13){
             this.setState({ageError:'You have to be 13 or older'})
         }else if (this.state.age > 164) {
