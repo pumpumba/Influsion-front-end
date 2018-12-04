@@ -74,11 +74,14 @@ function ContentPlacer(props) {
 class PopularComponentExpandedView extends React.Component {
     constructor() {
         super()
+        this.openAd = this.openAd.bind(this)
     }
 
+    openAd(){
+        window.open(this.props.readmoreurl)
+    }
 
     render() {
-
         if (this.props.isAd) {
             return (
                 <div className='expanded-view ad'>
@@ -90,9 +93,7 @@ class PopularComponentExpandedView extends React.Component {
                         <p>{this.props.caption}</p>
 
                         {this.props.readmoreurl &&
-                            <NavLink to={this.props.readmoreurl}>
-                                Read more
-                        </NavLink>
+                            <button onClick={this.openAd}>Read more</button>
                         }
                     </div>
                 </div>

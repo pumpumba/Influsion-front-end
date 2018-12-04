@@ -44,14 +44,14 @@ class FeedComponent extends React.Component {
                         <FeedComponentHeader
                             imgurl={this.props.data.imgurl}
                             isAd={this.props.data.adid}
-                            readMoreUrl={this.props.readmoreurl}
+                            readMoreUrl={this.props.data.readmoreurl}
                             />
                         <FeedComponentContent
                             textdescription={this.props.data.textdescription}
                             imageUrl={this.props.data.imgurl}
                             userId={this.props.userId}
                             isAd={this.props.data.adid}
-                            readMoreUrl={this.props.readmoreurl}
+                            readMoreUrl={this.props.data.readmoreurl}
                         />
                     </div>
                 )

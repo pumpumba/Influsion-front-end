@@ -6,6 +6,7 @@ class FeedComponentContent extends React.Component {
         super(props)
         this.addAdClick = this.addAdClick.bind(this)
         this.renderImage = this.renderImage.bind(this)
+        this.openAd = this.openAd.bind(this)
     }
 
     renderImage(curImageUrl) {
@@ -34,6 +35,7 @@ class FeedComponentContent extends React.Component {
             : ''
     }
 
+
     addAdClick(e) {
       console.log(this)
         e.preventDefault()
@@ -45,6 +47,10 @@ class FeedComponentContent extends React.Component {
             },
             body: JSON.stringify({user_id: this.props.userId, ad_id: this.props.isAd})
         })
+      }
+
+    openAd(){
+        window.open(this.props.readmoreurl)
     }
 
     render() {
@@ -54,7 +60,7 @@ class FeedComponentContent extends React.Component {
                     <p>{this.props.caption}</p>
                     <img src={this.props.imageUrl} />
                     <p>{this.props.textdescription}</p>
-                    <a href={this.props.readMoreUrl} className='read-more' onClick={this.addAdClick} target='_blank'>Read more</a>
+                    <button className='read-more' onClick={this.openAd}>Read more</button>
                 </div>
             )
         }
