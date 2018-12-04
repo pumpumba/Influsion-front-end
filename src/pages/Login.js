@@ -44,8 +44,7 @@ class Login extends React.Component {
 
     setUnsuccsessfull(){
         this.setState({
-          loginFailed: true,
-          errorCounter: this.state.errorCounter+1
+          loginFailed: true
         })
     }
 
