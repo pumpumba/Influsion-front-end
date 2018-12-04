@@ -55,12 +55,16 @@ class Popular extends React.Component {
         this.fetchFromApi()
     }
 
-    filterContent(content){
-        if(content.showinpopularfeed || content.promotedpopular){
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.trackScrolling);
+    }
+
+    filterContent(content) {
+        if (content.showinpopularfeed || content.promotedpopular) {
             return true
-        }else if(this.state.filters.includes(content.platform.toLowerCase())){
+        } else if (this.state.filters.includes(content.platform.toLowerCase())) {
             return true
-        }else{
+        } else {
             return false
         }
     }
@@ -71,7 +75,7 @@ class Popular extends React.Component {
             let filteredContent = this.state.data.filter(content =>
                 this.filterContent(content)
             )
-            feedContent = filteredContent.map((curContent,index) => {
+            feedContent = filteredContent.map((curContent, index) => {
                 return <PopularComponent
                     key={index}
                     data={curContent.platformcontent || curContent}
@@ -79,7 +83,7 @@ class Popular extends React.Component {
                     userFollowing={curContent.usrfollowinginfluencer}
                 />
             })
-          }
+        }
 
 
         return (
