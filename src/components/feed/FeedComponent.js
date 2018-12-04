@@ -11,14 +11,16 @@ class FeedComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            heart: false
+            heart: false,
+            dummyTrigger: true
         }
 
         this.changeHeart = this.changeHeart.bind(this)
     }
     componentWillMount() {
         this.setState(({
-            heart: this.props.userFollowing
+            heart: this.props.userFollowing,
+            dummyTrigger: this.props.dummyTrigger
         }))
     }
 
@@ -31,6 +33,7 @@ class FeedComponent extends React.Component {
         } else {
             followInfluencer(this.props.userId, this.props.data.influencerId)
         }
+        this.props.updateFeed()
     }
 
     render() {
