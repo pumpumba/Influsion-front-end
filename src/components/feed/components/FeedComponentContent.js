@@ -38,6 +38,7 @@ class FeedComponentContent extends React.Component {
                 <p>{this.props.caption}</p>
                 {this.renderImage(this.props.imageUrl)}
                 {this.renderVideo(this.props.videoUrl)}
+                <p>{this.props.textdescription}</p>
             </div>
         )
     }
