@@ -23,7 +23,7 @@ class InfluencerList extends React.Component {
   }
 
   componentDidMount() {
-    fetch(BACKEND_URL + 'db/get_most_followed_users_clicked_promo?limit=5&ad_id=1', {
+    fetch(BACKEND_URL + 'db/get_most_followed_users_clicked_promo?limit=5&ad_id=41', {
       method: 'get',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -31,22 +31,22 @@ class InfluencerList extends React.Component {
       },
     })
     .then(response => response.json())
-    .then(response => console.log(response))
     .then(response => this.setState({ response }))
   }
 
   render() {
     let listContent = null
-    if (this.state.response !== undefined) {
-      if (this.state.response.length > 0) {
-        listContent = this.state.response.map((curContent, index) => {
+    if (this.state.response.rows !== undefined) {
+      if (this.state.response.rows.length > 0) {
+        listContent = this.state.response.rows.map((curContent, index) => {
           return <InfluencerListComponent
-                    key={curContent.influencerid}
+                    key={curContent.inflid}
                     index={index}
                     influencerName={curContent.influencername}
                     numberOfFollowers={curContent.nrfollowing}
-                    imgs={curContent.imgs}
-                    onClick={() => this.handleClick(curContent.influencerid)}
+
+
+                    onClick={() => this.handleClick(curContent.inflid)}
                   />
         })
       }
