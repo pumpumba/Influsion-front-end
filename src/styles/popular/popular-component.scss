@@ -1,3 +1,10 @@
+body.noscroll{
+    overflow: hidden;
+}
+body.scroll{
+    overflow: visible;
+}
+
 .popular-component-wrapper {
     background-color: white;
     background-size: cover;
