@@ -3,6 +3,7 @@ import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfo
 import FeedComponentHeader from './components/FeedComponentHeader'
 import FeedComponentContent from './components/FeedComponentContent'
 import FeedComponentMeta from './components/FeedComponentMeta'
+import { NavLink } from 'react-router-dom'
 
 class FeedComponent extends React.Component {
     constructor(props) {
@@ -30,16 +31,17 @@ class FeedComponent extends React.Component {
             if(this.props.data.adid){
                 return(
                     <div className='feed-component-wrapper'>
+                    <NavLink to={this.props.data.readmoreurl}>
                         <FeedComponentHeader
                             imgurl={this.props.data.imgurl}
-                            readmoreurl={this.props.data.readmoreurl}
-                            isAd='true'
+                            isAd={true}
                         />
                         <FeedComponentContent
                             textdescription={this.props.data.textdescription}
                             imageUrl={this.props.data.imgurl}
-                            isAd='true'
+                            isAd={true}
                         />
+                    </NavLink>
                     </div>
                 )
             }

@@ -6,7 +6,7 @@ const FeedComponentHeader = (props) => {
     if(props.isAd){
         return(
             <div className='header'>
-                <a href={props.readmoreurl}>Advertisement</a>
+                <h1>Advertisement</h1>
             </div>
         )
     }

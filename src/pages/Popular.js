@@ -11,7 +11,7 @@ class Popular extends React.Component {
         this.state = {
             data: [],
             filters: ['twitter', 'youtube', 'instagram'],
-            limit: 100
+            limit: 10
         }
         this.updateFeedFilters = this.updateFeedFilters.bind(this)
         this.isBottom = this.isBottom.bind(this)
@@ -73,7 +73,7 @@ class Popular extends React.Component {
             )
             feedContent = filteredContent.map((curContent,index) => {
                 return <PopularComponent
-                    key={curContent.postid || index+1000}
+                    key={index}
                     data={curContent.platformcontent || curContent}
                     userId={this.props.userId}
                     userFollowing={curContent.usrfollowinginfluencer}

@@ -93,7 +93,7 @@ class PopularComponent extends React.Component {
                     <PopularComponentClosedView
                         imgurl={backgroundUrl}
                         caption={this.props.data.textdescription}
-                        isAd='true'
+                        isAd={true}
                     />
                     {this.state.open &&
                         <PopularComponentExpandedView
@@ -101,7 +101,7 @@ class PopularComponent extends React.Component {
                             userName='Advertisement'
                             readmoreurl={this.props.data.readmoreurl}
                             caption={this.props.data.textdescription}
-                            isAd='true'
+                            isAd={true}
                         />
                     }
                     <div className='blur-overlay'></div>
