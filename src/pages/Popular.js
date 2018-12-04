@@ -94,7 +94,7 @@ class Popular extends React.Component {
                     {feedContent}
                     <div className='bottom-feed'>
                         <p>
-                            You have reached the end of the field...
+                            You have reached the end of the feed...
                         </p>
                     </div>
                 </main>

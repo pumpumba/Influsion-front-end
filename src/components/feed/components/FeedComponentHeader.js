@@ -7,7 +7,7 @@ const FeedComponentHeader = (props) => {
     if(props.isAd){
         return(
             <div className='header'>
-                <h1>Advertisement</h1>
+                <FontAwesomeIcon className='twitter-icon' icon={['fas', 'ad']} />
             </div>
         )
     }
