@@ -1,3 +1,10 @@
+body.noscroll{
+    overflow: hidden;
+}
+body.scroll{
+    overflow: visible;
+}
+
 .popular-component-wrapper {
     background-color: white;
     background-size: cover;
@@ -8,13 +15,15 @@
     overflow: hidden;
 
 
-
     &:nth-child(4n+4), &:nth-child(4n+1) {
         background-color: lighten($light, 10%);
     }
 
     .expanded-view {
         display: none;
+        overflow: scroll;
+        max-height: 80%;
+        max-width: 25%;
     }
 
     .social-media-source{
