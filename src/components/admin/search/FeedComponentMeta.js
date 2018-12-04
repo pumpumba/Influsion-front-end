@@ -9,7 +9,7 @@ const FeedComponentMeta = (props) => {
   return (
     <div className='meta-data'>
       {props.noOfLikes &&
-        <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'thumbs-up'} />
+        <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />
           {props.noOfLikes}
         </span>
       }
@@ -23,9 +23,11 @@ const FeedComponentMeta = (props) => {
         <TimeAgo date={props.timeStamp} />
       </span>
       }
-      <StopPropagation>
-        <FontAwesomeIcon icon={'heart'} className="follow_heart" onClick={props.changeHeart} data-state={props.heart && 'active'} />
-      </StopPropagation>
+      {props.postId &&
+      <span className='post-id'><FontAwesomeIcon className="metaIcon" icon={'hashtag'} />
+      {props.postId}
+      </span>
+      }
     </div>
   )
 }

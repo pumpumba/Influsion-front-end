@@ -1,20 +1,22 @@
 import React from 'react'
 import SearchSuggestionComponent from './SearchSuggestionComponent'
-import {BACKEND_URL} from './../../constants'
+import {BACKEND_URL} from './../../../constants'
 
 class SearchSuggestions extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             response: [],
-            searchResults: []
+            searchResults: [],
+            noInput: ''
         }
         this.onChange = this.onChange.bind(this)
         this.checkForInfluencer = this.checkForInfluencer.bind(this)
-        this.inputText = React.createRef()
-        this.handleKeyPress = this.handleKeyPress.bind(this)
+        this.getId = this.getId.bind(this)
+        this.getInfluencerClicked = this.getInfluencerClicked.bind(this)
     }
 
+    
     checkForInfluencer(searchString) {
 
         let influData = this.state.response
@@ -62,18 +64,26 @@ class SearchSuggestions extends React.Component {
     }
     onChange(searchString) {
         this.setState({ searchResults: this.checkForInfluencer(searchString) })
+        this.setState({ noInput: searchString})
     }
 
-    handleKeyPress(e){
-        if(e.charCode==13){
-            e.preventDefault()
+    getId(val) {
+        this.props.sendId(val)
+    }
+
+    getInfluencerClicked(val) {
+        if (val) {
+            this.setState({searchResults: []})
+            this.setState({noInput: ''})
         }
     }
 
     componentDidMount() {
+
         fetch(BACKEND_URL + 'db/get_for_autosearch?user_id=1', {})
             .then(response => response.json())
             .then(response => this.setState({ response }))
+
     }
 
     render() {
@@ -85,19 +95,22 @@ class SearchSuggestions extends React.Component {
             }
             feedContent = influencerName.map(curContent => {
                 return <SearchSuggestionComponent
+                    inflid={this.props.inflid}
                     data={curContent}
                     key={curContent.inflid}
-                />
+                    sendId={this.getId}
+                    sendInfluencerClicked={this.getInfluencerClicked}
+                    />
             })
+            
         }
         return (
-            <form className='search-input-wrapper'>
+            <form className='admin-search-input-wrapper'>
                 <input
                     onChange={(e) => this.onChange(e.target.value)}
-                    onKeyPress={this.handleKeyPress}
                     className='searchInput'
                     placeholder='Search'
-                    ref={(inputText) => { this.inputText = inputText }}
+                    value={this.state.noInput}
                 />
                 {feedContent}
             </form>

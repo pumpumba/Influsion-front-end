@@ -1,8 +1,6 @@
 import React from 'react'
-import Header from './../components/header/Header'
-import Footer from './../components/footer/Footer'
-import FeedComponent from './../components/feed/FeedComponent'
-import {BACKEND_URL} from './../constants'
+import FeedComponent from './FeedComponent'
+import {BACKEND_URL} from './../../../constants'
 
 class InfluencerFeed extends React.Component {
 
@@ -10,23 +8,35 @@ class InfluencerFeed extends React.Component {
     super(props)
     this.state = {
       data: [],
-      filters: ['twitter', 'youtube', 'instagram']
+      filters: ['twitter', 'youtube', 'instagram'],
+      influencerid: this.props.inflid
     }
     this.updateFeedFilters = this.updateFeedFilters.bind(this)
+    this.mountAndUpdate = this.mountAndUpdate.bind(this)
   }
 
-
-  componentDidMount() {
+  mountAndUpdate() {
     fetch(BACKEND_URL + 'aggregate/content', {
       method: 'post',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ assetType: ['all'], filterType: ['influencer'], filterValue: [this.props.match.params.influencerid, 1], limit: 100 })
+      body: JSON.stringify({ assetType: ['all'], filterType: ['influencer'], filterValue: [this.props.inflid, 1], limit: 100 })
     }).then(data => data.json())
       .then(data => this.setState({ data }))
   }
+  
+  componentDidMount() {
+    this.mountAndUpdate()
+    }
+
+  componentDidUpdate() {
+      if (this.state.influencerid !== this.props.inflid && this.props.inflid != 'search') {
+        this.setState({influencerid: this.props.inflid})
+        this.mountAndUpdate()
+      }
+    } 
 
   updateFeedFilters(newFilters) {
     this.setState({ filters: newFilters })
@@ -41,18 +51,15 @@ class InfluencerFeed extends React.Component {
           key={curContent.postid}
           data={curContent.platformcontent}
           userId={this.props.userId}
-          inflFeed='true'
         />
       })
     }
 
     return (
-      <div className="mobile-page">
-        <Header />
+      <div className="feed-page">
         <main>
           {feedContent}
         </main>
-        <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true'/>
       </div>
     )
   }

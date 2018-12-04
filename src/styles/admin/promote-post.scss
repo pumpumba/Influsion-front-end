@@ -1,0 +1,47 @@
+.promote-post-container{
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 99;
+  position: relative;
+
+  input, select {
+    width: 80%;
+    margin: 1rem;
+    background: rgba(255,255,255,0.2);
+    outline: none;
+    resize: none;
+    border: none;
+    color: $white;
+    overflow: auto;
+    text-align: center;
+    height: 2rem;
+    font-size: 1.3rem;
+    border-radius: none;
+
+    &::placeholder {
+      color: $white;
+      font-size: 1.3rem;
+    }
+
+  }
+
+  button {
+    text-align: center;
+    background: transparent;
+    color: $white;
+    border: 0.1em solid $white;
+    border-radius: 0.5em;
+    font-size: 1.5rem;
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 80%;
+    box-sizing: border-box;
+  }
+
+
+}

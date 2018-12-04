@@ -3,19 +3,56 @@ import PopularComponentClosedView from './popularSubComponents/PopularComponentC
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
 import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfollowInfluencer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {BACKEND_URL} from './../../constants'
 
 
 class PopularComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            typeOfVisit: '',
             open: false,
             heart: false,
             isInstagramVideo: false
         }
 
+        this.addUserVisit = this.addUserVisit.bind(this)
         this.onClick = this.onClick.bind(this)
         this.changeHeart = this.changeHeart.bind(this)
+        this.addAdClick = this.addAdClick.bind(this)
+
+    }
+
+    addUserVisit(e) {
+        if (this.props.data.platform === "twitter") {
+          this.state.typeOfVisit = "twitterpost"
+        } else if (this.props.data.platform === "Youtube") {
+          this.state.typeOfVisit = "youtubevideo"
+        } else if (this.props.data.platform === "instagram") {
+          this.state.typeOfVisit = "instagrampost"
+        }
+        e.preventDefault()
+        fetch(BACKEND_URL + 'db/add_user_visit/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({influencer_id: this.props.data.influencerId, user_id: this.props.userId,
+                                  type_of_visit: this.state.typeOfVisit})
+        })
+    }
+
+    addAdClick(e) {
+        e.preventDefault()
+        fetch(BACKEND_URL + 'db/add_ad_click/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({user_id: this.props.userId, ad_id: this.props.data.adid})
+        })
     }
 
     componentWillMount() {
@@ -24,10 +61,17 @@ class PopularComponent extends React.Component {
         }))
     }
 
-    onClick() {
+    onClick(e) {
         this.setState(prevState => ({
             open: !prevState.open
         }))
+
+        if (this.state.open && this.props.data.adid) {
+          this.addAdClick(e)
+        } else if (this.state.open) {
+          this.addUserVisit(e)
+        }
+
     }
 
     changeHeart() {
@@ -43,9 +87,44 @@ class PopularComponent extends React.Component {
 
 
     render() {
-        if (this.props.data != null) {
+        let styles = null
+        let backgroundUrl = ['']
+        if(this.props.data.adid){
+            styles = {
+                backgroundImage: 'url(' + this.props.data.imgurl[0] + ')'
+            }
+            if (this.props.imgurl === 'undefined'){
+                backgroundUrl = '../../../img/404Jonas-7a6e7fcf.png'
+            }else{
+                backgroundUrl = this.props.data.imgurl
+            }
+            return (
+                <div
+                    className='popular-component-wrapper'
+                    style={styles}
+                    data-state={this.state.open ? 'open' : 'closed'}
+                    onClick={this.onClick}
+                >
+                    <PopularComponentClosedView
+                        imgurl={backgroundUrl}
+                        caption={this.props.data.textdescription}
+                        isAd={true}
+                    />
+                    {this.state.open &&
+                        <PopularComponentExpandedView
+                            imgurl={backgroundUrl}
+                            userName='Advertisement'
+                            readmoreurl={this.props.data.readmoreurl}
+                            caption={this.props.data.textdescription}
+                            isAd={true}
+                        />
+                    }
+                    <div className='blur-overlay'></div>
+                </div>
+            )
+        }
+        else if (this.props.data != null && this.props.data.tweetText != "") {
 
-            let backgroundUrl = ['']
             backgroundUrl = this.props.data.tweetMedia ? this.props.data.tweetMedia : this.props.data.postMedia
 
             if (this.props.data.platform.toLowerCase() == 'youtube') {
@@ -76,6 +155,8 @@ class PopularComponent extends React.Component {
                 }
             }
 
+
+
             return (
                 <div
                     className='popular-component-wrapper'
@@ -85,10 +166,10 @@ class PopularComponent extends React.Component {
                 >
                     <PopularComponentClosedView
                         backgroundImage={backgroundUrl}
-                        userProfileImageUrl={this.props.data.video_thumbnail_url || this.props.data.userProfileImageUrl}
-                        url={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
+                        userProfileImageUrl={this.props.data.video_thumbnail_url || this.props.data.userProfileImageUrl || this.props.data.imgurl}
+                        url={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url || this.props.data.imgurl}
                         changeHeart={this.changeHeart}
-                        caption={this.props.data.tweetText || this.props.data.postText}
+                        caption={this.props.data.tweetText || this.props.data.postText || this.props.data.textdescription}
                         heart={this.state.heart}
                         platform={this.props.data.platform}
                         influencerId={this.props.data.influencerId}

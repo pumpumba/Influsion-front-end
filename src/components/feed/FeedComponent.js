@@ -3,6 +3,7 @@ import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfo
 import FeedComponentHeader from './components/FeedComponentHeader'
 import FeedComponentContent from './components/FeedComponentContent'
 import FeedComponentMeta from './components/FeedComponentMeta'
+import { NavLink } from 'react-router-dom'
 
 class FeedComponent extends React.Component {
     constructor(props) {
@@ -26,7 +27,26 @@ class FeedComponent extends React.Component {
     }
 
     render() {
-        if (this.props.data != null) {
+        if (this.props.data != null && this.props.data.tweetText != "") {
+            if(this.props.data.adid){
+                console.log(this.props.data.imgurl)
+                return(
+                    <div className='feed-component-wrapper'>
+                    <NavLink to={this.props.data.readmoreurl}>
+                        <FeedComponentHeader
+                            imgurl={this.props.data.imgurl}
+                            isAd={true}
+                        />
+                        <FeedComponentContent
+                            textdescription={this.props.data.textdescription}
+                            imageUrl={this.props.data.imgurl}
+                            isAd={true}
+                        />
+                    </NavLink>
+                    </div>
+                )
+            }
+
             return (
                 <div className='feed-component-wrapper'>
                     <FeedComponentHeader
@@ -35,6 +55,7 @@ class FeedComponent extends React.Component {
                         inflName={this.props.data.channel_title || this.props.data.userName}
                         contentUrl={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url}
                         platform={this.props.data.platform.toLowerCase()}
+                        inflFeed={this.props.inflFeed}
                     />
                     <FeedComponentContent
                         caption={this.props.data.tweetText ||this.props.data.postText || this.props.data.video_description}
@@ -52,14 +73,7 @@ class FeedComponent extends React.Component {
             )
         } else {
             return (
-                <div className="mobile-page">
-                    <Header />
-                    <main className='feed'>
-                        <h2>Nothing here to show, please follow a influencer...</h2>
-                    </main>
-                    <Footer showFilter='true' />
-                </div>
-
+                <div></div>
             )
         }
   }

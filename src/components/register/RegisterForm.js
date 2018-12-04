@@ -14,6 +14,7 @@ class RegisterForm extends React.Component {
             email: '',
             emailError: '',
             age: '',
+            ageError: '',
             sex: 'Male',
             registerOK: false
         }
@@ -22,6 +23,7 @@ class RegisterForm extends React.Component {
         this.validateUsername = this.validateUsername.bind(this)
         this.validatePassword = this.validatePassword.bind(this)
         this.validateEmail = this.validateEmail.bind(this)
+        this.validateAge = this.validateAge.bind(this)
         this.hasNumber = this.hasNumber.bind(this)
         this.hasCharacter = this.hasCharacter.bind(this)
         this.isEmail = this.isEmail.bind(this)
@@ -66,7 +68,7 @@ class RegisterForm extends React.Component {
 
     validateUsername(input) {
         if (this.state.username.length <= 1) {
-            this.setState({ usernameError: '\n Your username is too short.' })
+            this.setState({ usernameError: 'Your username is too short.' })
         } else {
             this.setState({ usernameError: '' })
         }
@@ -74,11 +76,11 @@ class RegisterForm extends React.Component {
 
     validatePassword(input) {
         if (this.state.password.length <= 6) {
-            this.setState({ passwordError: '\n Your password needs to be at least 8 characters, of both letters ans numbers. ' })
+            this.setState({ passwordError: 'Your password needs to be at least 8 characters, of both letters ans numbers. ' })
         } else if (!this.hasNumber(this.state.password)) {
-            this.setState({ passwordError: '\n You need to have at least two numbers :(' })
+            this.setState({ passwordError: 'You need to have at least two numbers :(' })
         } else if (this.hasCharacter(this.state.password)) {
-            this.setState({ passwordError: '\n You need to have at least two letters..' })
+            this.setState({ passwordError: 'You need to have at least two letters..' })
         } else {
             this.setState({ passwordError: '' })
         }
@@ -86,9 +88,19 @@ class RegisterForm extends React.Component {
 
     validateEmail(input) {
         if (!this.isEmail(this.state.email)) {
-            this.setState({ emailError: ' \n That´s not what we call a proper email.. ' })
+            this.setState({ emailError: 'That´s not what we call a proper email.. ' })
         } else {
             this.setState({ emailError: '' })
+        }
+    }
+
+    validateAge(input){
+        if(this.state.age < 13){
+            this.setState({ageError:'You have to be 13 or older'})
+        }else if (this.state.age > 164) {
+            this.setState({ageError:'How are you still alive!?'})
+        }else{
+            this.setState({ageError:''})
         }
     }
 
@@ -109,7 +121,7 @@ class RegisterForm extends React.Component {
             <form>
                 <h2>Register</h2>
                 <input
-                    onChange={(e) => this.setState({ username: e.target.value }, this.validateUsername())}
+                    onChange={(e) => this.setState({ username: e.target.value }, () => {this.validateUsername()})}
                     placeholder="Username"
                     type="text"
                 >
@@ -118,7 +130,7 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.usernameError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ password: e.target.value }, this.validatePassword())}
+                    onChange={(e) => this.setState({ password: e.target.value }, () => {this.validatePassword()})}
                     placeholder="Password"
                     type="password"
                 >
@@ -127,7 +139,7 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.passwordError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ email: e.target.value }, this.validateEmail())}
+                    onChange={(e) => this.setState({ email: e.target.value }, () => {this.validateEmail()})}
                     placeholder="Email"
                     type="text"
                 >
@@ -136,10 +148,13 @@ class RegisterForm extends React.Component {
                     <span className='error'>{this.state.emailError}</span>
                 }
                 <input
-                    onChange={(e) => this.setState({ age: e.target.value })}
+                    onChange={(e) => this.setState({ age: e.target.value },() => {this.validateAge()})}
                     placeholder="Age"
                 >
                 </input>
+                {this.state.ageError &&
+                    <span className='error'>{this.state.ageError}</span>
+                }
                 <select name="sex"
                 onChange={(e) => this.setState({ sex: e.target.value })}>
                     <option value="Male">Male</option>
