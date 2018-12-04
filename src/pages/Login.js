@@ -9,8 +9,7 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            loginFailed: false,
-            errorCounter: 0
+            loginFailed: false
         }
         this.login = this.login.bind(this)
         this.loginSuccsessfull = this.loginSuccsessfull.bind(this)
