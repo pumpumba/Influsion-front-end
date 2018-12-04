@@ -125,7 +125,6 @@ body.scroll{
         a {
             color: $gs-hard;
             font-size: 1.25em;
-            margin-left: 1rem;
           }
 
         .expanded-view{
@@ -161,27 +160,33 @@ body.scroll{
                 align-items: center;
                 display: flex;
                 margin-bottom: 1em;
+                position: relative;
 
                 img {
                     border-radius: 99px;
                     border: 2px solid $hard;
                     height: 2.5em;
                     width: 2.5em;
+                    margin-right: 1em;
                 }
 
                 h3 {
                     color: $gs-hard;
                     font-size: 1.25em;
-                    margin-left: 1rem;
                 }
 
                 .verifiedIcon{
-                  height: 1rem;
-                  border: 0;
+                    position: absolute;
+                    height: 1rem;
+                    border: 0;
+                    right: 18px;
+                    top: 12px;
                 }
 
                 .platform-link {
-                    margin: 0 1rem 0 auto;
+                    position: absolute;
+                    right: 7px;
+                    top: 12px;
                 }
 
                 a svg {
