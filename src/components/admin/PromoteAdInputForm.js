@@ -95,7 +95,7 @@ class PromoteAdInputForm extends React.Component {
               checked={this.state.followingFeed}
               onChange={this.handleInputChange} />
           </label>
-          <button className="post-button" onClick={this.promoteNewAd}>Submit</button>
+          <button className="white-button" onClick={this.promoteNewAd}>Submit</button>
         </form>
       </div>
     );
