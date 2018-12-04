@@ -14,7 +14,7 @@ import Search from './../components/admin/search/Search'
 import './../styles/admin/most-clicked-followed-search.scss'
 import BlockInfluencer from './../components/admin/BlockInfluencer'
 import ListOfBlocked from './../components/admin/ListOfBlocked'
-
+import MostFollowedAd from './../components/admin/5MostFollowedByAd'
 
 class AdminPage extends React.Component {
     constructor() {
@@ -76,11 +76,13 @@ class AdminPage extends React.Component {
                     <div className="create-ad">
                         <PromoteAd />
                     </div>
-
+                    <div className='most-followed-ad'>
+                        <MostFollowedAd/>
+                    </div>
                 </div>
                 <div className='most-clicked-and-search'>
                     <div className='10-most-clicked'>
-                        <MostClicked sendId={this.getId}/>  
+                        <MostClicked sendId={this.getId}/>
                     </div>
                     <div className='10-most-followed'>
                         <MostFollowed sendId={this.getId}/>

@@ -43,6 +43,8 @@ body.scroll{
             width: 100%;
 
             .header {
+                position: relative;
+
                 img {
                     border-radius: 99px;
                     border: 2px solid $hard;
@@ -52,6 +54,18 @@ body.scroll{
                 * {
                     display: inline;
                 }
+
+                svg {
+                    position: absolute;
+                    top: .125em;
+                    right: .125em;
+                    font-size: 2em;
+                    color: $hard;
+                    background-color: $white;
+                    padding: 0px 3px;
+                    border-radius: $borderRadius;
+                }
+
             }
 
             .play-icon-wrapper {
@@ -126,6 +140,22 @@ body.scroll{
             width: 90%;
             box-sizing: border-box;
             border-radius: 3px;
+
+            &.ad {
+                svg {
+                    font-size: 2em;
+                    color: $hard;
+                    background-color: $white;
+                    padding: 0px 3px;
+                    border-radius: $borderRadius;
+                }
+
+                a {
+                    font-size: .75rem;
+                    text-align: center;
+                    margin-left: 0;
+                }
+            }
 
             .header {
                 align-items: center;

@@ -19,6 +19,7 @@ class PopularComponent extends React.Component {
         this.addUserVisit = this.addUserVisit.bind(this)
         this.onClick = this.onClick.bind(this)
         this.changeHeart = this.changeHeart.bind(this)
+        this.addAdClick = this.addAdClick.bind(this)
 
     }
 
@@ -42,6 +43,18 @@ class PopularComponent extends React.Component {
         })
     }
 
+    addAdClick(e) {
+        e.preventDefault()
+        fetch(BACKEND_URL + 'db/add_ad_click/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({user_id: this.props.userId, ad_id: this.props.data.adid})
+        })
+    }
+
     componentWillMount() {
         this.setState(({
             heart: this.props.userFollowing
@@ -53,7 +66,9 @@ class PopularComponent extends React.Component {
             open: !prevState.open
         }))
 
-        if (this.state.open) {
+        if (this.state.open && this.props.data.adid) {
+          this.addAdClick(e)
+        } else if (this.state.open) {
           this.addUserVisit(e)
         }
 

@@ -3,6 +3,7 @@ import Header from './../components/header/Header'
 import Footer from './../components/footer/Footer'
 import PopularComponent from './../components/popular/PopularComponent'
 import { BACKEND_URL } from '../constants'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Popular extends React.Component {
 
@@ -25,7 +26,7 @@ class Popular extends React.Component {
     }
 
     isBottom(el) {
-        return el.getBoundingClientRect().bottom <= window.innerHeight - 100
+        return el.getBoundingClientRect().bottom <= window.innerHeight + 100
     }
 
     trackScrolling() {
@@ -55,12 +56,16 @@ class Popular extends React.Component {
         this.fetchFromApi()
     }
 
-    filterContent(content){
-        if(content.showinpopularfeed || content.promotedpopular){
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.trackScrolling);
+    }
+
+    filterContent(content) {
+        if (content.showinpopularfeed || content.promotedpopular) {
             return true
-        }else if(this.state.filters.includes(content.platform.toLowerCase())){
+        } else if (this.state.filters.includes(content.platform.toLowerCase())) {
             return true
-        }else{
+        } else {
             return false
         }
     }
@@ -71,7 +76,7 @@ class Popular extends React.Component {
             let filteredContent = this.state.data.filter(content =>
                 this.filterContent(content)
             )
-            feedContent = filteredContent.map((curContent,index) => {
+            feedContent = filteredContent.map((curContent, index) => {
                 return <PopularComponent
                     key={index}
                     data={curContent.platformcontent || curContent}
@@ -79,7 +84,7 @@ class Popular extends React.Component {
                     userFollowing={curContent.usrfollowinginfluencer}
                 />
             })
-          }
+        }
 
 
         return (
@@ -87,6 +92,11 @@ class Popular extends React.Component {
                 <Header title={'Popular'} />
                 <main className='popular-feed-content' id='popular-feed-content'>
                     {feedContent}
+                    <div className='bottom-feed'>
+                        <p>
+                            You have reached the end of the field...
+                        </p>
+                    </div>
                 </main>
                 <Footer updateFeedFilters={this.updateFeedFilters} showFilter='true' />
             </div>

@@ -79,22 +79,25 @@ class PopularComponentExpandedView extends React.Component {
 
     render() {
 
-        if(this.props.isAd){
+        if (this.props.isAd) {
             return (
-                <div className='expanded-view'>
-                    <NavLink to={this.props.readmoreurl}>
+                <div className='expanded-view ad'>
                     <div className='header'>
-                        <img src={this.props.imgurl} />
-                        {this.props.userName}
+                        <FontAwesomeIcon icon={['fas', 'ad']} />
                     </div>
                     <div className='content-container'>
                         <img src={this.props.imgurl} />
                         <p>{this.props.caption}</p>
+
+                        {this.props.readmoreurl &&
+                            <NavLink to={this.props.readmoreurl}>
+                                Read more
+                        </NavLink>
+                        }
                     </div>
-                    </NavLink>
                 </div>
             )
-        }else{
+        } else {
             const plat = this.props.platform
             return (
                 <div className='expanded-view'>
@@ -103,9 +106,9 @@ class PopularComponentExpandedView extends React.Component {
                         {this.props.userName}
                         {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
                         <StopPropagation>
-                        <a href={this.props.url} className='platform-link'>
-                            <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
-                        </a>
+                            <a href={this.props.url} className='platform-link'>
+                                <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
+                            </a>
                         </StopPropagation>
                     </NavLink>
                     <ContentPlacer {...this.props} />
