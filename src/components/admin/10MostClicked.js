@@ -18,7 +18,7 @@ class InfluencerList extends React.Component {
   setInflId(influencer) {
     this.props.sendId(influencer)
 }
-  
+
   handleClick(i) {
     this.setInflId(i)
   }
@@ -33,13 +33,14 @@ class InfluencerList extends React.Component {
     let listContent = null
     if (this.state.response.rows !== undefined) {
       if (this.state.response.rows.length > 0) {
+
         listContent = this.state.response.rows.map((curContent, index) => {
           return <InfluencerListComponent
                     key={curContent.influencerid}
                     index={index}
                     influencerName={curContent.influencername}
                     numberOfFollowers={curContent.nrclicks}
-                    imageUrl={curContent.img.platformaccounts[0].imgurl}
+                    imgs={curContent.img}
                     onClick={() => this.handleClick(curContent.influencerid)}
                   />
         })
