@@ -51,7 +51,7 @@ public class FR1to11Test{
 	public void setUpTestEnviornment() throws InterruptedException {
 		ChromeOptions options = new ChromeOptions();  
 		options.addArguments("--headless");  
-		options.addArguments("window-size=360,640");	
+		options.addArguments("window-size=375,812");	
 		browser = new ChromeDriver(options);
 		username="testing12";
 		password="testing12";
@@ -1044,6 +1044,13 @@ public class FR1to11Test{
 	public void FR32() throws InterruptedException {	
 		login(username,password,browser);
 		
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);		
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);
+		((JavascriptExecutor) browser).executeScript("window.scrollBy(0,10000)","");
+		Thread.sleep(200);
+		
 		List<WebElement> instaContent =browser.findElements(By.cssSelector("[data-icon='instagram']"));
 		instaContent.remove(instaContent.size()-1);
 		WebElement instaPost = instaContent.get(randInt(0, instaContent.size()-1));
@@ -1060,7 +1067,7 @@ public class FR1to11Test{
 
 		
 
-		WebElement metaData = instaContent.get(0).findElement(By.className("meta-data"));
+		WebElement metaData = browser.findElement(By.className("meta-data"));
 
 		List<WebElement> metaDataTypes = metaData.findElements(By.tagName("span"));
 
@@ -1082,13 +1089,15 @@ public class FR1to11Test{
 
 		for (WebElement data : metaDataTypes) {
 
-			if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("thumbs-up")) {
+			if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("heart")) {
 
 				likes = data.getText();
+				System.out.println(likes);
 
 			} else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("calendar-alt")) {
 
 				date = data.getText();
+				System.out.println(date);
 
 			} //else if (data.findElement(By.tagName("svg")).getAttribute("data-icon").equals("comments")) {
 
