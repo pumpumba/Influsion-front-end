@@ -9,7 +9,7 @@ class Search extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            inflid: 0
+            inflid: this.props.inflid
         }
         this.getId = this.getId.bind(this)
     }
@@ -17,6 +17,13 @@ class Search extends React.Component {
     getId(val){
         this.setState({inflid: val})
     }
+
+    componentDidUpdate(oldProps) {
+        const newProps = this.props
+        if(oldProps.inflid !== newProps.inflid) {
+          this.setState({inflid:newProps.inflid})
+        }
+      }
 
     render() {
         return (
