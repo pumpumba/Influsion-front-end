@@ -14,13 +14,14 @@ class InfluencerListComponent extends React.Component {
       classes = "influencer-list-component active"
     }
     let curIndex = this.props.index + 1
-    let imageUrl = null
+    let imageUrl = placeHolder
 
     if (this.props.imgs != null && this.props.imgs != undefined) {
         for (let i = 0; i < this.props.imgs.platformaccounts.length; i++) {
-          if (this.props.imgs.platformaccounts[i].imgurl != null) {
-            imageUrl = this.props.imgs.platformaccounts[i].imgurl
-            break
+          if (this.props.imgs.platformaccounts[i].imgurl != null &&
+              this.props.imgs.platformaccounts[i].imgurl != undefined) {
+                imageUrl = this.props.imgs.platformaccounts[i].imgurl
+                break
           }
         }
     }
