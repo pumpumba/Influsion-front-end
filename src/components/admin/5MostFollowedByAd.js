@@ -48,6 +48,7 @@ class InfluencerList extends React.Component {
                     influencerName={curContent.influencername}
                     numberOfFollowers={curContent.nrfollowing}
 
+                    imgs={curContent.img}
 
                     onClick={() => this.handleClick(curContent.inflid)}
                   />

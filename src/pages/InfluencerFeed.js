@@ -14,26 +14,25 @@ class InfluencerFeed extends React.Component {
       limit: 10
     }
     this.updateFeedFilters = this.updateFeedFilters.bind(this)
-    this.isBottom = this.isBottom.bind(this)
-    this.trackScrolling = this.trackScrolling.bind(this)
-    this.fetchFromApi = this.fetchFromApi.bind(this)
+    this.postToBackEnd = this.postToBackEnd.bind(this)
   }
 
-  isBottom(el) {
-    return el.getBoundingClientRect().bottom <= window.innerHeight + 100
+  postToBackEnd() {
+
+    fetch(BACKEND_URL + 'db/add_user_visit/', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({influencer_id: this.state.data[0].inflid, user_id: this.props.userId,
+                              type_of_visit: 'profilevisit'})
+    })
+
   }
 
-  trackScrolling() {
-    const wrappedElement = document.getElementById('feed-content')
-    if (this.isBottom(wrappedElement)) {
+  componentDidMount() {
 
-      this.setState(prevState => ({
-        limit: prevState.limit + 10
-      }), () => this.fetchFromApi())
-    }
-  }
-
-  fetchFromApi() {
     fetch(BACKEND_URL + 'aggregate/content', {
       method: 'post',
       headers: {
@@ -42,7 +41,8 @@ class InfluencerFeed extends React.Component {
       },
       body: JSON.stringify({ assetType: ['all'], filterType: ['influencer'], filterValue: [this.props.match.params.influencerid, this.props.userId], limit: this.state.limit })
     }).then(data => data.json())
-      .then(data => this.setState({ data }))
+      .then(data => this.setState({ data }, () => this.postToBackEnd()))
+
   }
 
   componentDidMount() {

@@ -1,8 +1,10 @@
 import React from 'react'
+import {BACKEND_URL} from './../../../constants'
 
 class FeedComponentContent extends React.Component {
     constructor(props) {
         super(props)
+        this.addAdClick = this.addAdClick.bind(this)
         this.renderImage = this.renderImage.bind(this)
         this.openAd = this.openAd.bind(this)
     }
@@ -32,6 +34,20 @@ class FeedComponentContent extends React.Component {
             </div>
             : ''
     }
+
+
+    addAdClick(e) {
+      console.log(this)
+        e.preventDefault()
+        fetch(BACKEND_URL + 'db/add_ad_click/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({user_id: this.props.userId, ad_id: this.props.isAd})
+        })
+      }
 
     openAd(){
         window.open(this.props.readmoreurl)

@@ -43,14 +43,15 @@ class FeedComponent extends React.Component {
                     <div className='feed-component-wrapper'>
                         <FeedComponentHeader
                             imgurl={this.props.data.imgurl}
-                            isAd={true}
-                            readmoreurl={this.props.data.readmoreurl}
+                            isAd={this.props.data.adid}
+                            readMoreUrl={this.props.data.readmoreurl}
                             />
                         <FeedComponentContent
                             textdescription={this.props.data.textdescription}
                             imageUrl={this.props.data.imgurl}
-                            isAd={true}
-                            readmoreurl={this.props.data.readmoreurl}
+                            userId={this.props.userId}
+                            isAd={this.props.data.adid}
+                            readMoreUrl={this.props.data.readmoreurl}
                         />
                     </div>
                 )
