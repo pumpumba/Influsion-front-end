@@ -22,7 +22,9 @@ class Popular extends React.Component {
     }
 
     updateFeedFilters(newFilters) {
-        this.setState({ filters: newFilters })
+        this.setState({ filters: newFilters, limit: 30 })
+        this.fetchFromApi()
+
     }
 
     isBottom(el) {

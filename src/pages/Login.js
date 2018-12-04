@@ -14,6 +14,8 @@ class Login extends React.Component {
         this.login = this.login.bind(this)
         this.loginSuccsessfull = this.loginSuccsessfull.bind(this)
         this.loginUnsuccsessfull = this.loginUnsuccsessfull.bind(this)
+        this.setUnsuccsessfull = this.setUnsuccsessfull.bind(this)
+        this.resetError = this.resetError.bind(this)
     }
 
     login(e) {
@@ -35,10 +37,21 @@ class Login extends React.Component {
         this.props.updateUserId(userInfo.usrid)
     }
 
-    loginUnsuccsessfull() {
-      this.setState({
-        loginFailed: true
-      })
+    loginUnsuccsessfull(e) {
+      this.setUnsuccsessfull()
+      this.resetError(e)
+    }
+
+    setUnsuccsessfull(){
+        this.setState({
+          loginFailed: true
+        })
+    }
+
+    resetError(e){
+        setTimeout(function(){
+             this.setState({loginFailed:false});
+        }.bind(this),1984);
     }
 
     render() {
@@ -58,7 +71,7 @@ class Login extends React.Component {
                 <button onClick={this.login}>
                     Lets go into the wilderness!
                 </button>
-                {this.state.loginFailed && <span className='error-msg'>Something went wrong... Please try again</span>}
+                {this.state.loginFailed && <span className='error-msg'>Something went wrong...Please try again</span>}
 
                 <div className="small-text">
                     <Link to={'/register'} className="small-text">
