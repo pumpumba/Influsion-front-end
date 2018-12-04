@@ -29,11 +29,18 @@ class BlockSuggestionComponent extends React.Component {
 
     render() {
         let notFound = this.props.data.influencername === 'No matching influencers'
+        let img_url
 
+        for (var i = 0; i < this.props.data.pfaccs.platformaccounts.length; i++) {
+          if(this.props.data.pfaccs.platformaccounts[i].img_url!=null){
+            img_url=this.props.data.pfaccs.platformaccounts[i].img_url
+            break;
+          }
+        }
 
         return (
             <div className='search-header'>
-                <img src={this.props.data.pfaccs.platformaccounts[0].img_url} />
+                <img src={img_url} />
                 {this.props.data.influencername}
                 <div className='block-platforms'>
                   {this.state.blockSuccess && <p className='block-msg'>Block succesfull!</p>}
