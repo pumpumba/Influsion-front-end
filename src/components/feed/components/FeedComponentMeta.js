@@ -9,7 +9,7 @@ const FeedComponentMeta = (props) => {
   return (
     <div className='meta-data'>
       {props.noOfLikes &&
-        <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'heart'} />
+        <span className='no-of-likes'><FontAwesomeIcon className="metaIcon" icon={'thumbs-up'} />
           {props.noOfLikes}
         </span>
       }

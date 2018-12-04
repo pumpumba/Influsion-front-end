@@ -45,6 +45,7 @@ class InfluencerFeed extends React.Component {
           data={curContent.platformcontent}
           userId={this.props.userId}
           userFollowing={curContent.usrfollowinginfluencer}
+          inflFeed='true'
         />
       })
     }
