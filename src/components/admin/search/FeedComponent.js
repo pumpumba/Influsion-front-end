@@ -39,7 +39,6 @@ class FeedComponent extends React.Component {
             return (
                 <div className="mobile-page">
                     <main className='feed'>
-                        <h2>Nothing here to show, please follow a influencer...</h2>
                     </main>
                 </div>
             )

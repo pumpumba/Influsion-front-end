@@ -29,7 +29,7 @@ class BlockSuggestionComponent extends React.Component {
 
     render() {
         let notFound = this.props.data.influencername === 'No matching influencers'
-    
+
 
         return (
             <div className='search-header'>
