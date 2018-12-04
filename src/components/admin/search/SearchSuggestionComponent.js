@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from 'react-router-dom'
+import placeHolder from './../../../../img/placeholder.png'
 
 class SearchSuggestionComponent extends React.Component {
 
@@ -35,12 +36,21 @@ class SearchSuggestionComponent extends React.Component {
             !youtube ? youtube = this.props.data.pfaccs.platformaccounts[i].platform === 'youtube' : ' '
         }
 
-        let profileImage
+        let profileImage = ''
         if (!notFound) {
-            profileImage = <img src={'https://pbs.twimg.com/media/DoGZoooXgAACCV3.jpg'} />
-        } else {
-            profileImage = ''
+            let pictureFound = false
+            for (let i = 0; i < this.props.data.pfaccs.platformaccounts.length; i++) {
+                if (this.props.data.pfaccs.platformaccounts[i].img_url != null) {
+                    profileImage = <img src = {this.props.data.pfaccs.platformaccounts[i].img_url}></img>
+                    pictureFound = true;
+                    break
+                }
+            } 
+            if (!pictureFound) {
+                profileImage = <img src={placeHolder}/>
+            }
         }
+    
 
         return (
             <div className='admin-search-header'>

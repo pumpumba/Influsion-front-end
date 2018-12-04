@@ -19,7 +19,7 @@ class FeedComponentContent extends React.Component {
                         src={curImageUrl[0]}>
                     </video>
                 </div>
-                : <img src={curImageUrl} />)
+                : <img src={curImageUrl[0]} />)
             : ''
         }
     }
@@ -33,11 +33,21 @@ class FeedComponentContent extends React.Component {
     }
 
     render() {
+        if(this.props.isAd){
+            return (
+                <div className='content'>
+                    <p>{this.props.caption}</p>
+                    <img src={this.props.imageUrl} />
+                    <p>{this.props.textdescription}</p>
+                </div>
+            )
+        }
         return (
             <div className='content'>
                 <p>{this.props.caption}</p>
                 {this.renderImage(this.props.imageUrl)}
                 {this.renderVideo(this.props.videoUrl)}
+                <p>{this.props.textdescription}</p>
             </div>
         )
     }

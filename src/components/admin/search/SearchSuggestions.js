@@ -100,8 +100,9 @@ class SearchSuggestions extends React.Component {
                     key={curContent.inflid}
                     sendId={this.getId}
                     sendInfluencerClicked={this.getInfluencerClicked}
-                />
+                    />
             })
+            
         }
         return (
             <form className='admin-search-input-wrapper'>
