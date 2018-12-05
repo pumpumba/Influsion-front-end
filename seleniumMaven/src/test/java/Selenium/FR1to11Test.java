@@ -1364,7 +1364,7 @@ public class FR1to11Test{
 		       adminLogin("admin", "1234", browserWeb);
 
 		        String imgsrc="https://i.imgur.com/7EbnoBp.jpg";
-		        String title="cocacola";
+		        String title="cocacola"+ randInt(1000,100000);
 		        String text="cocacola123";
 		        
 		       browserWeb.findElement(By.className("ad-tab")).click();
