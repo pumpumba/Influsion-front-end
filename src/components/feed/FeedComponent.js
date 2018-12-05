@@ -58,7 +58,7 @@ class FeedComponent extends React.Component {
             }
 
             return (
-                <div className='feed-component-wrapper'>
+                <div className='feed-component-wrapper' data-ispromoted={this.props.isPromoted}>
                     <FeedComponentHeader
                         inflImgUrl={this.props.data.userProfileImageUrl || this.props.data.video_thumbnail_url}
                         inflId={this.props.data.influencerId}

@@ -84,6 +84,7 @@ class Popular extends React.Component {
                     data={curContent.platformcontent || curContent}
                     userId={this.props.userId}
                     userFollowing={curContent.usrfollowinginfluencer}
+                    isPromoted={curContent.promotedpopular}
                 />
             })
         }
