@@ -12,9 +12,13 @@ class AdminPageNew extends React.Component {
 
     }
     this.clickOnTab=this.clickOnTab.bind(this)
+    this.logOut = this.logOut.bind(this)
   }
   clickOnTab(tab){
     this.setState({tabVariable: tab})
+  }
+  logOut() {
+    this.props.updateAdminId(0)
   }
 
   render() {
@@ -43,7 +47,7 @@ class AdminPageNew extends React.Component {
           </div>
         </header>
         <div className="tab-header">
-          <h2 className={startTabClasses} onClick={() => this.clickOnTab("start")}>start page</h2>
+          <h2 className={startTabClasses} onClick={() => this.clickOnTab("start")}>Start page</h2>
           <div className={promoteTabClasses} onClick={() => this.clickOnTab("promote")}><h2>Promote page</h2></div>
           <h2 className={adTabClasses} onClick={() => this.clickOnTab("ad")}>Ad page</h2>
         </div>
