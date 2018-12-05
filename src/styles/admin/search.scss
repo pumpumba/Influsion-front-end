@@ -1,4 +1,4 @@
-@import './../vars.scss'; 
+@import './../vars.scss';
 
 .admin-search-content {
     background-color: #ffe6e6;
@@ -18,6 +18,9 @@
       position: absolute;
       top: 52px;
       padding-top: 0%;
+  }
+  .input{
+    border-radius: 0.5em;
   }
 
   .info-text {
