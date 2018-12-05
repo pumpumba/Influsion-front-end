@@ -12,9 +12,13 @@ class AdminPageNew extends React.Component {
 
     }
     this.clickOnTab=this.clickOnTab.bind(this)
+    this.logOut = this.logOut.bind(this)
   }
   clickOnTab(tab){
     this.setState({tabVariable: tab})
+  }
+  logOut() {
+    this.props.updateAdminId(0)
   }
 
   render() {
