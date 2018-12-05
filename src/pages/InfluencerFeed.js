@@ -32,7 +32,6 @@ class InfluencerFeed extends React.Component {
   }
 
   componentDidMount() {
-
     fetch(BACKEND_URL + 'aggregate/content', {
       method: 'post',
       headers: {
@@ -43,15 +42,6 @@ class InfluencerFeed extends React.Component {
     }).then(data => data.json())
       .then(data => this.setState({ data }, () => this.postToBackEnd()))
 
-  }
-
-  componentDidMount() {
-    document.addEventListener('scroll', this.trackScrolling)
-    this.fetchFromApi()
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('scroll', this.trackScrolling);
   }
 
   updateFeedFilters(newFilters) {
