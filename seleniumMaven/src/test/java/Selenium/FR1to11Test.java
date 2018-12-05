@@ -2,6 +2,7 @@ package Selenium;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.text.ParseException;
@@ -622,12 +623,14 @@ public class FR1to11Test{
 		ChromeOptions options = new ChromeOptions();  
 		options.addArguments("--headless");  	
 		ChromeDriver browserWeb = new ChromeDriver(options);
-		username="testing12";
-		password="testing12";
-		startUrl = "http://localhost:8080/";
 		browserWeb.get(startUrl + "admin");
 		Thread.sleep(1000);
 		adminLogin("admin", "1234", browserWeb);
+		boolean checker=false;
+		
+		try {
+		
+		browserWeb.findElement(By.className("promote-tab")).click();
 		
 		
 		WebElement blockDiv = browserWeb.findElement(By.className("admin-block-content"));	
@@ -639,18 +642,28 @@ public class FR1to11Test{
 		
 		WebElement searchheader = blockDiv.findElement(By.className("search-header"));
 		browserWeb.findElement(By.className("blockButton")).click();
-		boolean checker=true;
 		
-		Thread.sleep(1000);
+		
+		
+		
 		
 		browserWeb.get(startUrl + "admin");
+		Thread.sleep(1000);
+		browserWeb.findElement(By.className("promote-tab")).click();
 		Thread.sleep(1000);
 		
 		WebElement blockedbox = browserWeb.findElement(By.className("blocked-box"));	
 		((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockedbox);
 		((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
 		
+
+		
+		checker=true;
 		browserWeb.close();
+		
+		} catch(Exception e) {
+			checker=false;
+		}
 		assertEquals(true, checker);
 		
 		
@@ -668,6 +681,43 @@ public class FR1to11Test{
 		WebElement Searchexp = browser.findElement(By.className("info-text"));	
 		assertEquals(Searchexp.getText().substring(0,7) ,"Welcome");	
 	}
+	
+	
+	@Test
+    public void FR26() throws InterruptedException {
+       ChromeOptions options = new ChromeOptions();
+       options.addArguments("--headless");
+       ChromeDriver browserWeb = new ChromeDriver(options);
+       browserWeb.get(startUrl + "admin");
+       adminLogin("admin", "1234", browserWeb);
+       
+       browserWeb.findElement(By.className("ad-tab")).click();
+		
+        //browser.findElement(By.className("admin-log-out")).click();
+        List<WebElement> adlist = browser.findElements(By.className("ad-list-component"));
+        //List<WebElement>  deletelist = adlist.get(2).findElements(By.tagName("span"));        
+
+        String Clicks = "";
+        //boolean correctMeta=true;
+        
+
+        for (WebElement data : adlist) {
+            List<WebElement>  list = data.findElements(By.tagName("span"));
+            for(WebElement li : list) {
+                if (li.getAttribute("title").equals("Total amount of clicks on ad")) {
+
+                Clicks = li.getText();
+                System.out.println("sss"+Clicks);
+                assertNotNull(Clicks);
+            }
+            }
+            
+
+        }
+        
+        browserWeb.close();
+        
+    }
 	
 	@Test
 	public void FR27() throws InterruptedException {
@@ -1256,6 +1306,8 @@ public class FR1to11Test{
 			logout(browser);
 			browser.get("http://localhost:8080/admin");
 			adminLogin("admin", "1234", browser);
+			
+			
 			browser.findElement(By.className("admin-log-out")).click();
 			Thread.sleep(1000);
 			
@@ -1298,8 +1350,69 @@ public class FR1to11Test{
 		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
 		assertEquals(true, FeedComponent.size()>0);
 		
-		
 	}
+	 @Test
+	 public void FR44o45o46o47o63() throws InterruptedException {
+
+		        ChromeOptions options = new ChromeOptions();
+		       options.addArguments("--headless");
+		       ChromeDriver browserWeb = new ChromeDriver(options);
+		       username="testing12";
+		       password="testing12";
+		       startUrl = "http://localhost:8080/";
+		       browserWeb.get(startUrl + "admin");
+		       adminLogin("admin", "1234", browserWeb);
+
+		        String imgsrc="https://i.imgur.com/7EbnoBp.jpg";
+		        String title="cocacola";
+		        String text="cocacola123";
+		        
+		       browserWeb.findElement(By.className("ad-tab")).click();
+
+		       WebElement adContainer = browserWeb.findElement(By.className("create-ad-container"));
+		       WebElement titleinput = adContainer.findElement(By.xpath(".//form[@class='white-form']/input[@class='ad-username']"));
+		       titleinput.sendKeys(title);
+		       WebElement imginput = adContainer.findElement(By.xpath(".//form[@class='white-form']/input[@class='ad-picture-input']"));
+		       imginput.sendKeys(imgsrc);
+		       WebElement contentinput = adContainer.findElement(By.xpath(".//form[@class='white-form']/textarea[@class='ad-content-text']"));
+		       ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", contentinput);
+		       contentinput.sendKeys(text);
+		       WebElement feedinput = adContainer.findElement(By.className("on-popular-feed-box"));
+		       ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", feedinput);
+		       feedinput.click();
+		       adContainer.findElement(By.className("white-button")).click();
+		        Thread.sleep(200);
+		       browserWeb.get(startUrl + "admin");
+		       browserWeb.findElement(By.className("ad-tab")).click();
+		        Thread.sleep(200);
+		       List<WebElement> ads = browserWeb.findElements(By.className("ad-list-component"));
+
+		       for (WebElement ad : ads) {
+		           ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", ad);
+		           Thread.sleep(50);
+
+		           if (ad.findElement(By.xpath(".//span[1]")).getText().equals(title)) {
+		               ad.findElement(By.xpath(".//span[4]")).click();
+		               Thread.sleep(50);
+
+		           }
+		       }
+
+		       browserWeb.get(startUrl + "admin");
+		       browserWeb.findElement(By.className("ad-tab")).click();
+		        Thread.sleep(200);
+		       List<WebElement> adsNew = browserWeb.findElements(By.className("ad-list-component"));
+		       ArrayList<String> adtitles = new ArrayList<String>();
+		       for (WebElement ad : adsNew) {
+		           adtitles.add(ad.findElement(By.xpath(".//span[1]")).getText());
+		       }
+
+		       browserWeb.close();
+		       assertFalse(adtitles.contains(title));
+
+		    }
+		
+
 	@Test
 	public void FR48() throws InterruptedException {	
 		
@@ -1349,7 +1462,53 @@ public class FR1to11Test{
 		
 		
 		
+		
 	}
+	
+	@Test
+    public void FR51() throws InterruptedException {
+		ChromeOptions options = new ChromeOptions();  
+		options.addArguments("--headless");  	
+		ChromeDriver browserWeb = new ChromeDriver(options);
+		browserWeb.get(startUrl + "admin");
+		Thread.sleep(500);
+		adminLogin("admin", "1234", browserWeb);
+		Thread.sleep(500);
+
+        browserWeb.findElement(By.className("ad-tab")).click();
+        //browser.findElement(By.className("admin-log-out")).click();
+        List<WebElement> adlist = browser.findElements(By.className("ad-list-component"));
+        System.out.println(adlist.size());
+        assertNotNull(adlist.size());  
+        browserWeb.close();
+    }
+	
+	@Test
+    public void FR57() throws InterruptedException  {
+		
+		ChromeOptions options = new ChromeOptions();  
+		options.addArguments("--headless");  	
+		ChromeDriver browserWeb = new ChromeDriver(options);
+		browserWeb.get(startUrl + "admin");
+		Thread.sleep(1000);
+		adminLogin("admin", "1234", browserWeb);
+		Thread.sleep(1000);
+
+        browserWeb.findElement(By.className("promote-tab")).click();
+
+        WebElement SearchInput = browserWeb.findElement(By.className("searchInput"));    
+        String input=SearchInput.getAttribute("value");
+        System.out.println("sss+"+input);
+
+       
+        Thread.sleep(1000);
+      
+        List<WebElement> suggestions = browserWeb.findElements(By.className("feed-component-wrapper"));
+        System.out.println(suggestions.size());
+        browserWeb.close();
+        
+        assertNotNull(suggestions.size());    
+    }
 	
 	@Test
 	public void FR58() throws InterruptedException {	
@@ -1376,62 +1535,66 @@ public class FR1to11Test{
 		
 	}
 	
-//	@Test
-//    public void FR68() throws InterruptedException {        
-//    
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");      
-//        ChromeDriver browserWeb = new ChromeDriver(options);
-//        username="testing12";
-//        password="testing12";
-//        startUrl = "http://localhost:8080/";
-//        browserWeb.get(startUrl + "admin");
-//        adminLogin("admin", "1234", browserWeb);
-//
-//        WebElement blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-//        ((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
-//        
-//        String searchKey = "Justin Bieber";
-//        WebElement searchField = blockDiv.findElement(By.className("searchInput"));
-//        searchField.sendKeys(searchKey);
-//        
-//        WebElement searchheader = blockDiv.findElement(By.className("search-header"));
-//        browserWeb.findElement(By.className("blockButton")).click();
-//        Thread.sleep(2000);
-//        
-//        browserWeb.get(startUrl + "admin");
-//        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-//        Thread.sleep(500);
-//        List<WebElement> blocked = browserWeb.findElements(By.className("unblockButton"));
-//
-//        for (WebElement b : blocked) {        
-//            WebElement item = b.findElement(By.xpath(".."));    
-//            String name = item.findElement(By.xpath(".//p[2]")).getText();    
-//            if (name.equals(searchKey)) {
-//                item.findElement(By.className("unblockButton")).click();
-//                Thread.sleep(500);
-//            }
-//        }
-//        
-//        browserWeb.get(startUrl + "admin");
-//        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-//        Thread.sleep(500);
-//        List<WebElement> blockedNew = browserWeb.findElements(By.className("unblockButton"));
-//        
-//        ArrayList<String> namesNew = new ArrayList<>();
-//        for (WebElement b : blockedNew) {        
-//            WebElement item = b.findElement(By.xpath(".."));    
-//            namesNew.add(item.findElement(By.xpath(".//p[2]")).getText());    
-//        }
-//        
-//        browserWeb.close();
-//        
-//        assertFalse(namesNew.contains(searchKey));
-//    }
-//	
+	@Test
+    public void FR68() throws InterruptedException {        
+    
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");      
+        ChromeDriver browserWeb = new ChromeDriver(options);
+        username="testing12";
+        password="testing12";
+        startUrl = "http://localhost:8080/";
+        browserWeb.get(startUrl + "admin");
+        adminLogin("admin", "1234", browserWeb);
+        
+    	browserWeb.findElement(By.className("promote-tab")).click();
+
+        WebElement blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+        ((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
+        
+        String searchKey = "Justin Bieber";
+        WebElement searchField = blockDiv.findElement(By.className("searchInput"));
+        searchField.sendKeys(searchKey);
+        
+        WebElement searchheader = blockDiv.findElement(By.className("search-header"));
+        browserWeb.findElement(By.className("blockButton")).click();
+        Thread.sleep(2000);
+        
+        browserWeb.get(startUrl + "admin");
+    	browserWeb.findElement(By.className("promote-tab")).click();
+        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+        Thread.sleep(500);
+        List<WebElement> blocked = browserWeb.findElements(By.className("unblockButton"));
+
+        for (WebElement b : blocked) {        
+            WebElement item = b.findElement(By.xpath(".."));    
+            String name = item.findElement(By.xpath(".//p[2]")).getText();    
+            if (name.equals(searchKey)) {
+                item.findElement(By.className("unblockButton")).click();
+                Thread.sleep(500);
+            }
+        }
+        
+        browserWeb.get(startUrl + "admin");
+    	browserWeb.findElement(By.className("promote-tab")).click();
+        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+        Thread.sleep(500);
+        List<WebElement> blockedNew = browserWeb.findElements(By.className("unblockButton"));
+        
+        ArrayList<String> namesNew = new ArrayList<String>();
+        for (WebElement b : blockedNew) {        
+            WebElement item = b.findElement(By.xpath(".."));    
+            namesNew.add(item.findElement(By.xpath(".//p[2]")).getText());    
+        }
+        
+        browserWeb.close();
+        
+        assertFalse(namesNew.contains(searchKey));
+    }
+	
 	
 	@Test
 	public void FR67() throws InterruptedException {		
@@ -1439,6 +1602,8 @@ public class FR1to11Test{
 		logout(browser);
 		browser.get("http://localhost:8080/admin");
 		adminLogin("admin", "1234", browser);
+		
+		browser.findElement(By.className("promote-tab")).click();
 		
 		boolean exist=false;
 		WebElement element = browser.findElement(By.className("admin-block-content"));
