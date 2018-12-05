@@ -64,6 +64,7 @@ class InfluencerList extends React.Component {
     return (
         <div className='admin-box'>
         <h1 className="section-title"> Top 5 most followed influencers by ad</h1>
+        <h2 className="instruction-text-ads">Click an ad to the left to see Statistics</h2>
         <div className="influencer-list-header">
           <span>Rank</span>
           <span></span>
