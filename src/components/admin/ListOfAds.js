@@ -4,8 +4,8 @@ import ListOfAdsComponent from './ListOfAdsComponent'
 import {BACKEND_URL} from './../../constants'
 
 class ListOfAds extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       data: [],
       statusText: ""
@@ -30,7 +30,7 @@ class ListOfAds extends React.Component {
 
     if (this.state.data.rows != "undefined") {
       const allAds = this.state.data.rows
-      const listOfAllAds = allAds.map((ad, index) => <ListOfAdsComponent key={index} data={ad}/>)
+      const listOfAllAds = allAds.map((ad, index) => <ListOfAdsComponent key={index} data={ad} sendId={this.props.sendId}/>)
       return listOfAllAds
     }
 
@@ -67,7 +67,7 @@ class ListOfAds extends React.Component {
     let statusText
     if (this.state.data.rows != null) {
       let allAds = this.state.data.rows
-      listOfAllAds = allAds.map((ad, index) => <ListOfAdsComponent key={index} data={ad} index={index} onClick={() => this.removeAdd(index, ad.adid)}/>)
+      listOfAllAds = allAds.map((ad, index) => <ListOfAdsComponent key={index} data={ad} index={index} onClick={() => this.removeAdd(index, ad.adid)} sendId={this.props.sendId}/>)
     }
 
     if (this.state.statusText != "") {
@@ -76,7 +76,7 @@ class ListOfAds extends React.Component {
 
     return (
 
-      <div className='admin-box'>
+      <div className="whole-ad-component">
         <h1 className="section-title">List of your ads</h1>
         <p className="status-text">{statusText}</p>
         <div className="ad-list-header">

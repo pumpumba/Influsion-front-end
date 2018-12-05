@@ -12,6 +12,7 @@ class ListOfAdsComponent extends React.Component {
     }
     this.getClicksOnAds = this.getClicksOnAds.bind(this)
     this.addAndSumClicks = this.addAndSumClicks.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   getClicksOnAds() {
@@ -40,12 +41,17 @@ class ListOfAdsComponent extends React.Component {
     this.getClicksOnAds()
   }
 
+  handleClick(){
+    this.props.sendId(this.props.data.adid)
+  }
+
 
 
 
   render() {
+
     return (
-      <div className="ad-list-component">
+      <div className="ad-list-component" onClick={this.handleClick}>
         <span onClick={this.getClicksOnAds}>{this.props.data.title}</span>
         <span title="Database id of Ad">{this.props.data.adid}</span>
         <span title="Total amount of clicks on ad">{this.state.totalClicks}</span>

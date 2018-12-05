@@ -6,16 +6,26 @@ import MostFollowedAd from './../5MostFollowedByAd'
 class AdTab extends React.Component {
   constructor(){
     super()
-  
+    this.state ={
+      activeAd: ''
+
+    }
+    this.sendAdId = this.sendAdId.bind(this)
   }
+
+  sendAdId(id){
+
+    this.setState({activeAd: id})
+  }
+
   render() {
 
     return (
       <div className="ad-tab-content">
         <CreateAd />
-        <ListOfAds />
+        <ListOfAds sendId={this.sendAdId} />
         <div className='most-followed-ad'>
-            <MostFollowedAd/>
+            <MostFollowedAd adId={this.state.activeAd}/>
         </div>
       </div>
     )
