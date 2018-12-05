@@ -18,7 +18,7 @@ class SearchSuggestionComponent extends React.Component {
         e.preventDefault()
         this.setInflId(e, param)
     }
-    
+
     setInflId(e, influencer) {
         this.props.sendId(influencer)
         this.props.sendInfluencerClicked(true)
@@ -45,17 +45,17 @@ class SearchSuggestionComponent extends React.Component {
                     pictureFound = true;
                     break
                 }
-            } 
+            }
             if (!pictureFound) {
                 profileImage = <img src={placeHolder}/>
             }
         }
-    
+
 
         return (
             <div className='admin-search-header'>
                 {profileImage}
-                <button className='name-button' onClick={this.handleClick.bind(this, this.props.data.inflid )}> {this.props.data.influencername} </button>
+                <button className='name-button' onClick={this.handleClick.bind(this, this.props.data.inflid )}> {this.props.data.influencername} <span>ID:{this.props.data.inflid}</span>  </button>
                 <div className='search-platforms' style={{ justifyContent: 'right', alignItems: 'right', textalign: 'right' }}>
                     {(twitter) ? <span><FontAwesomeIcon icon={['fab', 'twitter']} /> </span> : ''}
                     {(instagram) ? <span><FontAwesomeIcon icon={['fab', 'instagram']} /> </span> : ''}

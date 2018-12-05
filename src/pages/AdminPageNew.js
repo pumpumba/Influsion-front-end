@@ -42,7 +42,7 @@ class AdminPageNew extends React.Component {
       <div className="admin-page-container">
         <header>
           <div className="admin-title">
-            inFlusion: Admin
+              inFlusion: Admin
             <button onClick={this.logOut} className='admin-log-out'>Log out</button>
           </div>
         </header>
