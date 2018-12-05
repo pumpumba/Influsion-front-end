@@ -2,6 +2,7 @@ package Selenium;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.text.ParseException;
@@ -622,9 +623,6 @@ public class FR1to11Test{
 		ChromeOptions options = new ChromeOptions();  
 		options.addArguments("--headless");  	
 		ChromeDriver browserWeb = new ChromeDriver(options);
-		username="testing12";
-		password="testing12";
-		startUrl = "http://localhost:8080/";
 		browserWeb.get(startUrl + "admin");
 		Thread.sleep(1000);
 		adminLogin("admin", "1234", browserWeb);
@@ -683,6 +681,43 @@ public class FR1to11Test{
 		WebElement Searchexp = browser.findElement(By.className("info-text"));	
 		assertEquals(Searchexp.getText().substring(0,7) ,"Welcome");	
 	}
+	
+	
+	@Test
+    public void FR26() throws InterruptedException {
+       ChromeOptions options = new ChromeOptions();
+       options.addArguments("--headless");
+       ChromeDriver browserWeb = new ChromeDriver(options);
+       browserWeb.get(startUrl + "admin");
+       adminLogin("admin", "1234", browserWeb);
+       
+       browserWeb.findElement(By.className("ad-tab")).click();
+		
+        //browser.findElement(By.className("admin-log-out")).click();
+        List<WebElement> adlist = browser.findElements(By.className("ad-list-component"));
+        //List<WebElement>  deletelist = adlist.get(2).findElements(By.tagName("span"));        
+
+        String Clicks = "";
+        //boolean correctMeta=true;
+        
+
+        for (WebElement data : adlist) {
+            List<WebElement>  list = data.findElements(By.tagName("span"));
+            for(WebElement li : list) {
+                if (li.getAttribute("title").equals("Total amount of clicks on ad")) {
+
+                Clicks = li.getText();
+                System.out.println("sss"+Clicks);
+                assertNotNull(Clicks);
+            }
+            }
+            
+
+        }
+        
+        browserWeb.close();
+        
+    }
 	
 	@Test
 	public void FR27() throws InterruptedException {
@@ -1320,7 +1355,7 @@ public class FR1to11Test{
 	 public void FR44o45o46o47o63() throws InterruptedException {
 
 		        ChromeOptions options = new ChromeOptions();
-		    //  options.addArguments("--headless");
+		       options.addArguments("--headless");
 		       ChromeDriver browserWeb = new ChromeDriver(options);
 		       username="testing12";
 		       password="testing12";
@@ -1367,7 +1402,7 @@ public class FR1to11Test{
 		       browserWeb.findElement(By.className("ad-tab")).click();
 		        Thread.sleep(200);
 		       List<WebElement> adsNew = browserWeb.findElements(By.className("ad-list-component"));
-		       ArrayList<String> adtitles = new ArrayList<>();
+		       ArrayList<String> adtitles = new ArrayList<String>();
 		       for (WebElement ad : adsNew) {
 		           adtitles.add(ad.findElement(By.xpath(".//span[1]")).getText());
 		       }
@@ -1427,7 +1462,53 @@ public class FR1to11Test{
 		
 		
 		
+		
 	}
+	
+	@Test
+    public void FR51() throws InterruptedException {
+		ChromeOptions options = new ChromeOptions();  
+		options.addArguments("--headless");  	
+		ChromeDriver browserWeb = new ChromeDriver(options);
+		browserWeb.get(startUrl + "admin");
+		Thread.sleep(500);
+		adminLogin("admin", "1234", browserWeb);
+		Thread.sleep(500);
+
+        browserWeb.findElement(By.className("ad-tab")).click();
+        //browser.findElement(By.className("admin-log-out")).click();
+        List<WebElement> adlist = browser.findElements(By.className("ad-list-component"));
+        System.out.println(adlist.size());
+        assertNotNull(adlist.size());  
+        browserWeb.close();
+    }
+	
+	@Test
+    public void FR57() throws InterruptedException  {
+		
+		ChromeOptions options = new ChromeOptions();  
+		options.addArguments("--headless");  	
+		ChromeDriver browserWeb = new ChromeDriver(options);
+		browserWeb.get(startUrl + "admin");
+		Thread.sleep(1000);
+		adminLogin("admin", "1234", browserWeb);
+		Thread.sleep(1000);
+
+        browserWeb.findElement(By.className("promote-tab")).click();
+
+        WebElement SearchInput = browserWeb.findElement(By.className("searchInput"));    
+        String input=SearchInput.getAttribute("value");
+        System.out.println("sss+"+input);
+
+       
+        Thread.sleep(1000);
+      
+        List<WebElement> suggestions = browserWeb.findElements(By.className("feed-component-wrapper"));
+        System.out.println(suggestions.size());
+        browserWeb.close();
+        
+        assertNotNull(suggestions.size());    
+    }
 	
 	@Test
 	public void FR58() throws InterruptedException {	
