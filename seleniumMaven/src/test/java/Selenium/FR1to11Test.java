@@ -1387,13 +1387,18 @@ public class FR1to11Test{
 		        Thread.sleep(200);
 		       List<WebElement> ads = browserWeb.findElements(By.className("ad-list-component"));
 
+		       System.out.println(ads.size());
 		       for (WebElement ad : ads) {
 		           ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", ad);
-		           Thread.sleep(50);
-
+		           Thread.sleep(500);
+		       
 		           if (ad.findElement(By.xpath(".//span[1]")).getText().equals(title)) {
 		               ad.findElement(By.xpath(".//span[4]")).click();
 		               Thread.sleep(50);
+		               break;
+		           //    ads.remove(ads.size()-1);
+		               
+		          //     System.out.println(ad.getText());
 
 		           }
 		       }
@@ -1408,7 +1413,7 @@ public class FR1to11Test{
 		       }
 
 		       browserWeb.close();
-		       assertFalse(adtitles.contains(title));
+		       assertEquals(false, adtitles.contains(title));
 
 		    }
 		
