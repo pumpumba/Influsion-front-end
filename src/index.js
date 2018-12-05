@@ -8,6 +8,7 @@ import Settings from './pages/Settings'
 import Delete from './pages/Delete'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import AdminPageNew from './pages/AdminPageNew'
 import AdminPage from './pages/AdminPage'
 import AdminLogin from './pages/AdminLogin'
 import ModifyUser from './pages/ModifyUser'
@@ -71,13 +72,8 @@ class Index extends React.Component {
           return (
               <Router>
                 <Switch>
-                    <Route exact path='/admin' className="adminRoute" render={(props) => <AdminPage {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId}  updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route exact path='/' className="adminRoute" render={(props) => <AdminPage {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route exact path='/admin-settings' render={(props) => <AdminSettings {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route exact path='/admin-promote' render={(props) => <AdminPromote {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route exact path='/admin-block' render={(props) => <AdminBlock {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route exact path='/admin-create' render={(props) => <AdminCreate {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
-                    <Route exact path='/admin-search' render={(props) => <AdminSearch {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <Route exact path='/admin' className="adminRoute" render={(props) => <AdminPageNew {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId}  updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <Route exact path='/' className="adminRoute" render={(props) => <AdminPageNew {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                 </Switch>
