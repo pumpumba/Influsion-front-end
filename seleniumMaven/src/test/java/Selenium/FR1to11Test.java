@@ -281,6 +281,7 @@ public class FR1to11Test{
 	public void FR4_Twitter() throws InterruptedException {
 		
 		login(username, password, browser);
+
 		
 		List<WebElement> Button =browser.findElements(By.cssSelector("[data-icon='twitter']"));
 		Button.get(Button.size()-1).click();
@@ -1381,7 +1382,7 @@ public class FR1to11Test{
 		        Thread.sleep(200);
 		       browserWeb.get(startUrl + "admin");
 		       browserWeb.findElement(By.className("ad-tab")).click();
-		        Thread.sleep(200);
+		        Thread.sleep(1000);
 		       List<WebElement> ads = browserWeb.findElements(By.className("ad-list-component"));
 
 		       System.out.println(ads.size());
@@ -1390,9 +1391,10 @@ public class FR1to11Test{
 		           Thread.sleep(500);
 		       
 		           if (ad.findElement(By.xpath(".//span[1]")).getText().equals(title)) {
+		        	   Thread.sleep(1000);
 		        	   ad.findElement(By.className("fa-trash")).click();
 		             //  ad.findElement(By.xpath(".//span[4]")).click();
-		               Thread.sleep(50);
+		               Thread.sleep(1000);
 		               break;
 		           //    ads.remove(ads.size()-1);
 		               
