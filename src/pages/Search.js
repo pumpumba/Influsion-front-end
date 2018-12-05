@@ -21,12 +21,12 @@ class Search extends React.Component {
         let infoText1
         let infoText2
         if (!this.state.currentlySearching) {
-            infoText1 = 'Welcome to the world of searching and all we can give' 
+            infoText1 = 'Welcome to the world of searching and all we can give'
             infoText2 = 'Start typing the name of your favorite influencer and experience the magic!'
         } else {
             infoText1, infoText2 = ''
         }
-        
+
         return (
             <div>
                 <Header />

@@ -73,6 +73,7 @@ class Index extends React.Component {
               <Router>
                 <Switch>
                     <Route exact path='/admin' className="adminRoute" render={(props) => <AdminPageNew {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId}  updateUserId={this.updateUserId} userId={this.state.userId} />} />
+                    <Route exact path='/adminold' className="adminRoute" render={(props) => <AdminPage {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId}  updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route exact path='/' className="adminRoute" render={(props) => <AdminPageNew {...props} updateAdminId={this.updateAdminId} adminId={this.state.adminId} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route exact path='/register' render={(props) => <Register {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />
                     <Route path='/:influencerid' render={(props) => <InfluencerFeed {...props} updateUserId={this.updateUserId} userId={this.state.userId} />} />

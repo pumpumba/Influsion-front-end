@@ -75,16 +75,20 @@
   grid-gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 .admin-box{
   background-color: white;
 }
 .promote-tab-content{
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 0.8fr 0.9fr 2fr;
   grid-gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 
   .promote-post{
     height: 70vh;
@@ -100,4 +104,6 @@
   grid-gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
