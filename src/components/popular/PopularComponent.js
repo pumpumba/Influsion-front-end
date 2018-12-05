@@ -173,6 +173,7 @@ class PopularComponent extends React.Component {
                     className='popular-component-wrapper'
                     style={styles}
                     data-state={this.state.open ? 'open' : 'closed'}
+                    data-ispromoted={this.props.isPromoted}
                     onClick={this.onClick}
                 >
                     <PopularComponentClosedView
