@@ -1315,8 +1315,69 @@ public class FR1to11Test{
 		List<WebElement> FeedComponent = browser.findElements(By.className("feed-component-wrapper"));
 		assertEquals(true, FeedComponent.size()>0);
 		
-		
 	}
+	 @Test
+	 public void FR44o45o46o47o63() throws InterruptedException {
+
+		        ChromeOptions options = new ChromeOptions();
+		    //  options.addArguments("--headless");
+		       ChromeDriver browserWeb = new ChromeDriver(options);
+		       username="testing12";
+		       password="testing12";
+		       startUrl = "http://localhost:8080/";
+		       browserWeb.get(startUrl + "admin");
+		       adminLogin("admin", "1234", browserWeb);
+
+		        String imgsrc="https://i.imgur.com/7EbnoBp.jpg";
+		        String title="cocacola";
+		        String text="cocacola123";
+		        
+		       browserWeb.findElement(By.className("ad-tab")).click();
+
+		       WebElement adContainer = browserWeb.findElement(By.className("create-ad-container"));
+		       WebElement titleinput = adContainer.findElement(By.xpath(".//form[@class='white-form']/input[@class='ad-username']"));
+		       titleinput.sendKeys(title);
+		       WebElement imginput = adContainer.findElement(By.xpath(".//form[@class='white-form']/input[@class='ad-picture-input']"));
+		       imginput.sendKeys(imgsrc);
+		       WebElement contentinput = adContainer.findElement(By.xpath(".//form[@class='white-form']/textarea[@class='ad-content-text']"));
+		       ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", contentinput);
+		       contentinput.sendKeys(text);
+		       WebElement feedinput = adContainer.findElement(By.className("on-popular-feed-box"));
+		       ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", feedinput);
+		       feedinput.click();
+		       adContainer.findElement(By.className("white-button")).click();
+		        Thread.sleep(200);
+		       browserWeb.get(startUrl + "admin");
+		       browserWeb.findElement(By.className("ad-tab")).click();
+		        Thread.sleep(200);
+		       List<WebElement> ads = browserWeb.findElements(By.className("ad-list-component"));
+
+		       for (WebElement ad : ads) {
+		           ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", ad);
+		           Thread.sleep(50);
+
+		           if (ad.findElement(By.xpath(".//span[1]")).getText().equals(title)) {
+		               ad.findElement(By.xpath(".//span[4]")).click();
+		               Thread.sleep(50);
+
+		           }
+		       }
+
+		       browserWeb.get(startUrl + "admin");
+		       browserWeb.findElement(By.className("ad-tab")).click();
+		        Thread.sleep(200);
+		       List<WebElement> adsNew = browserWeb.findElements(By.className("ad-list-component"));
+		       ArrayList<String> adtitles = new ArrayList<>();
+		       for (WebElement ad : adsNew) {
+		           adtitles.add(ad.findElement(By.xpath(".//span[1]")).getText());
+		       }
+
+		       browserWeb.close();
+		       assertFalse(adtitles.contains(title));
+
+		    }
+		
+
 	@Test
 	public void FR48() throws InterruptedException {	
 		
