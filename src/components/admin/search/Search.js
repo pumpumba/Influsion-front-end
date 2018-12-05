@@ -18,7 +18,7 @@ class Search extends React.Component {
         this.setState({inflid: val})
     }
 
-    
+
 
     componentDidUpdate(oldProps) {
         const newProps = this.props
@@ -30,6 +30,8 @@ class Search extends React.Component {
     render() {
         return (
             <div>
+              <h1>Search for influencers here</h1>
+              <p>Enter the name of an influencer</p>
                 <main className='admin-search-content'>
                     <SearchSuggestions inflid={this.state.inflid} sendId={this.getId}/>
                     <div className='admin-influencer-feed'>
