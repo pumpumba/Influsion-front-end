@@ -628,6 +628,11 @@ public class FR1to11Test{
 		browserWeb.get(startUrl + "admin");
 		Thread.sleep(1000);
 		adminLogin("admin", "1234", browserWeb);
+		boolean checker=false;
+		
+		try {
+		
+		browserWeb.findElement(By.className("promote-tab")).click();
 		
 		
 		WebElement blockDiv = browserWeb.findElement(By.className("admin-block-content"));	
@@ -639,18 +644,28 @@ public class FR1to11Test{
 		
 		WebElement searchheader = blockDiv.findElement(By.className("search-header"));
 		browserWeb.findElement(By.className("blockButton")).click();
-		boolean checker=true;
 		
-		Thread.sleep(1000);
+		
+		
+		
 		
 		browserWeb.get(startUrl + "admin");
+		Thread.sleep(1000);
+		browserWeb.findElement(By.className("promote-tab")).click();
 		Thread.sleep(1000);
 		
 		WebElement blockedbox = browserWeb.findElement(By.className("blocked-box"));	
 		((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockedbox);
 		((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
 		
+
+		
+		checker=true;
 		browserWeb.close();
+		
+		} catch(Exception e) {
+			checker=false;
+		}
 		assertEquals(true, checker);
 		
 		
@@ -1256,6 +1271,8 @@ public class FR1to11Test{
 			logout(browser);
 			browser.get("http://localhost:8080/admin");
 			adminLogin("admin", "1234", browser);
+			
+			
 			browser.findElement(By.className("admin-log-out")).click();
 			Thread.sleep(1000);
 			
@@ -1376,62 +1393,66 @@ public class FR1to11Test{
 		
 	}
 	
-//	@Test
-//    public void FR68() throws InterruptedException {        
-//    
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");      
-//        ChromeDriver browserWeb = new ChromeDriver(options);
-//        username="testing12";
-//        password="testing12";
-//        startUrl = "http://localhost:8080/";
-//        browserWeb.get(startUrl + "admin");
-//        adminLogin("admin", "1234", browserWeb);
-//
-//        WebElement blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-//        ((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
-//        
-//        String searchKey = "Justin Bieber";
-//        WebElement searchField = blockDiv.findElement(By.className("searchInput"));
-//        searchField.sendKeys(searchKey);
-//        
-//        WebElement searchheader = blockDiv.findElement(By.className("search-header"));
-//        browserWeb.findElement(By.className("blockButton")).click();
-//        Thread.sleep(2000);
-//        
-//        browserWeb.get(startUrl + "admin");
-//        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-//        Thread.sleep(500);
-//        List<WebElement> blocked = browserWeb.findElements(By.className("unblockButton"));
-//
-//        for (WebElement b : blocked) {        
-//            WebElement item = b.findElement(By.xpath(".."));    
-//            String name = item.findElement(By.xpath(".//p[2]")).getText();    
-//            if (name.equals(searchKey)) {
-//                item.findElement(By.className("unblockButton")).click();
-//                Thread.sleep(500);
-//            }
-//        }
-//        
-//        browserWeb.get(startUrl + "admin");
-//        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
-//        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
-//        Thread.sleep(500);
-//        List<WebElement> blockedNew = browserWeb.findElements(By.className("unblockButton"));
-//        
-//        ArrayList<String> namesNew = new ArrayList<>();
-//        for (WebElement b : blockedNew) {        
-//            WebElement item = b.findElement(By.xpath(".."));    
-//            namesNew.add(item.findElement(By.xpath(".//p[2]")).getText());    
-//        }
-//        
-//        browserWeb.close();
-//        
-//        assertFalse(namesNew.contains(searchKey));
-//    }
-//	
+	@Test
+    public void FR68() throws InterruptedException {        
+    
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");      
+        ChromeDriver browserWeb = new ChromeDriver(options);
+        username="testing12";
+        password="testing12";
+        startUrl = "http://localhost:8080/";
+        browserWeb.get(startUrl + "admin");
+        adminLogin("admin", "1234", browserWeb);
+        
+    	browserWeb.findElement(By.className("promote-tab")).click();
+
+        WebElement blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+        ((JavascriptExecutor) browserWeb).executeScript("window.scrollBy(0,-100)","");
+        
+        String searchKey = "Justin Bieber";
+        WebElement searchField = blockDiv.findElement(By.className("searchInput"));
+        searchField.sendKeys(searchKey);
+        
+        WebElement searchheader = blockDiv.findElement(By.className("search-header"));
+        browserWeb.findElement(By.className("blockButton")).click();
+        Thread.sleep(2000);
+        
+        browserWeb.get(startUrl + "admin");
+    	browserWeb.findElement(By.className("promote-tab")).click();
+        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+        Thread.sleep(500);
+        List<WebElement> blocked = browserWeb.findElements(By.className("unblockButton"));
+
+        for (WebElement b : blocked) {        
+            WebElement item = b.findElement(By.xpath(".."));    
+            String name = item.findElement(By.xpath(".//p[2]")).getText();    
+            if (name.equals(searchKey)) {
+                item.findElement(By.className("unblockButton")).click();
+                Thread.sleep(500);
+            }
+        }
+        
+        browserWeb.get(startUrl + "admin");
+    	browserWeb.findElement(By.className("promote-tab")).click();
+        blockDiv = browserWeb.findElement(By.className("admin-block-content"));    
+        ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", blockDiv);
+        Thread.sleep(500);
+        List<WebElement> blockedNew = browserWeb.findElements(By.className("unblockButton"));
+        
+        ArrayList<String> namesNew = new ArrayList<String>();
+        for (WebElement b : blockedNew) {        
+            WebElement item = b.findElement(By.xpath(".."));    
+            namesNew.add(item.findElement(By.xpath(".//p[2]")).getText());    
+        }
+        
+        browserWeb.close();
+        
+        assertFalse(namesNew.contains(searchKey));
+    }
+	
 	
 	@Test
 	public void FR67() throws InterruptedException {		
@@ -1439,6 +1460,8 @@ public class FR1to11Test{
 		logout(browser);
 		browser.get("http://localhost:8080/admin");
 		adminLogin("admin", "1234", browser);
+		
+		browser.findElement(By.className("promote-tab")).click();
 		
 		boolean exist=false;
 		WebElement element = browser.findElement(By.className("admin-block-content"));
