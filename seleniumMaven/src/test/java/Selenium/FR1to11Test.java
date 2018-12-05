@@ -1357,14 +1357,11 @@ public class FR1to11Test{
 		        ChromeOptions options = new ChromeOptions();
 		       options.addArguments("--headless");
 		       ChromeDriver browserWeb = new ChromeDriver(options);
-		       username="testing12";
-		       password="testing12";
-		       startUrl = "http://localhost:8080/";
 		       browserWeb.get(startUrl + "admin");
 		       adminLogin("admin", "1234", browserWeb);
 
 		        String imgsrc="https://i.imgur.com/7EbnoBp.jpg";
-		        String title="cocacola"+ randInt(1000,100000);
+		        String title="cocacola"+ randInt(1000,100000) + "GGGGG";
 		        String text="cocacola123";
 		        
 		       browserWeb.findElement(By.className("ad-tab")).click();
@@ -1393,7 +1390,8 @@ public class FR1to11Test{
 		           Thread.sleep(500);
 		       
 		           if (ad.findElement(By.xpath(".//span[1]")).getText().equals(title)) {
-		               ad.findElement(By.xpath(".//span[4]")).click();
+		        	   ad.findElement(By.className("fa-trash")).click();
+		             //  ad.findElement(By.xpath(".//span[4]")).click();
 		               Thread.sleep(50);
 		               break;
 		           //    ads.remove(ads.size()-1);
@@ -1402,16 +1400,21 @@ public class FR1to11Test{
 
 		           }
 		       }
+		       System.out.println(ads.size());
 
 		       browserWeb.get(startUrl + "admin");
+		       Thread.sleep(500);
 		       browserWeb.findElement(By.className("ad-tab")).click();
-		        Thread.sleep(200);
+		        Thread.sleep(1000);
 		       List<WebElement> adsNew = browserWeb.findElements(By.className("ad-list-component"));
 		       ArrayList<String> adtitles = new ArrayList<String>();
 		       for (WebElement ad : adsNew) {
+		           ((JavascriptExecutor) browserWeb).executeScript("arguments[0].scrollIntoView(true);", ad);
+		           Thread.sleep(200);
 		           adtitles.add(ad.findElement(By.xpath(".//span[1]")).getText());
 		       }
 
+		       System.out.println(adsNew.size());
 		       browserWeb.close();
 		       assertEquals(false, adtitles.contains(title));
 
