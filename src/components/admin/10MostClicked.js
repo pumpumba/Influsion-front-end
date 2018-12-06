@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import InfluencerListComponent from './InfluencerListComponent'
-import {BACKEND_URL} from './../../constants'
+import { BACKEND_URL } from './../../constants'
 
 class InfluencerList extends React.Component {
   constructor() {
@@ -17,7 +17,7 @@ class InfluencerList extends React.Component {
 
   setInflId(influencer) {
     this.props.sendId(influencer)
-}
+  }
 
   handleClick(i) {
     this.setInflId(i)
@@ -25,8 +25,8 @@ class InfluencerList extends React.Component {
 
   componentDidMount() {
     fetch(BACKEND_URL + 'db/get_top_clicked_influencers?limit=10', {})
-        .then(response => response.json())
-        .then(response => this.setState({ response }))
+      .then(response => response.json())
+      .then(response => this.setState({ response }))
   }
 
   render() {
@@ -34,15 +34,20 @@ class InfluencerList extends React.Component {
     if (this.state.response.rows !== undefined) {
       if (this.state.response.rows.length > 0) {
 
-        listContent = this.state.response.rows.map((curContent, index) => {
+        let influencerList = this.state.response.rows
+        let influencerSortedList = influencerList.sort(function (a, b) {
+          return b.nrclicks - a.nrclicks
+        })
+
+        listContent = influencerSortedList.map((curContent, index) => {
           return <InfluencerListComponent
-                    key={curContent.influencerid}
-                    index={index}
-                    influencerName={curContent.influencername}
-                    numberOfFollowers={curContent.nrclicks}
-                    imgs={curContent.img}
-                    onClick={() => this.handleClick(curContent.influencerid)}
-                  />
+            key={curContent.influencerid}
+            index={index}
+            influencerName={curContent.influencername}
+            numberOfFollowers={curContent.nrclicks}
+            imgs={curContent.img}
+            onClick={() => this.handleClick(curContent.influencerid)}
+          />
         })
       }
     }
