@@ -166,8 +166,6 @@ class PopularComponent extends React.Component {
                 }
             }
 
-
-
             return (
                 <div
                     className='popular-component-wrapper'
@@ -178,7 +176,7 @@ class PopularComponent extends React.Component {
                 >
                     <PopularComponentClosedView
                         backgroundImage={backgroundUrl}
-                        userProfileImageUrl={this.props.data.video_thumbnail_url || this.props.data.userProfileImageUrl || this.props.data.imgurl}
+                        userProfileImageUrl={this.props.data.profilePictureFromAccount || this.props.data.video_thumbnail_url || this.props.data.userProfileImageUrl || this.props.data.imgurl}
                         url={this.props.data.tweetUrl || this.props.data.postUrl || this.props.data.video_url || this.props.data.imgurl}
                         changeHeart={this.changeHeart}
                         caption={this.props.data.tweetText || this.props.data.postText || this.props.data.textdescription}
