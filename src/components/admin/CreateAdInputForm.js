@@ -85,6 +85,7 @@ class CreateAdInputForm extends React.Component {
     }
     return (
       <div className="create-ad-container">
+        <p className="status-text">{statusText}</p>
           <form className='white-form'>
             <input className="ad-username"
               type="text"
@@ -137,7 +138,7 @@ class CreateAdInputForm extends React.Component {
             <button className="white-button" onClick={this.handleSubmit}>
               Submit Ad
             </button>
-            <p className="status-text">{statusText}</p>
+
           </form>
       </div>
     );
