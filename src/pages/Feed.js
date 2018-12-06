@@ -88,6 +88,7 @@ class Feed extends React.Component {
                     inflid={this.props.inflid}
                     updateFeed={this.fetchFromApi}
                     dummyTrigger={this.state.dummyTrigger}
+                    isPromoted={curContent.promotedfollowing}
                 />
             })
         }
