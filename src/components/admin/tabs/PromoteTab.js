@@ -4,6 +4,7 @@ import PromoteAd from './../PromoteAd'
 import BlockInfluencer from './../BlockInfluencer'
 import ListOfBlocked from './../ListOfBlocked'
 import Search from './../search/Search'
+import ListOfPromoted from './../ListOfPromoted'
 
 class PromoteTab extends React.Component {
   constructor(){
@@ -15,15 +16,19 @@ class PromoteTab extends React.Component {
 
   render () {
     return(
-    <div className="promote-tab-content">
+    <div>
+      <div className="promote-tab-content">
       <div className='search-and-feed'>
           <Search inflid={this.state.inflidClicked}/>
       </div>
-      <PromoteAd/>        
-        <div className="block-content">
-            <BlockInfluencer />
-            <ListOfBlocked />
-        </div>
+
+      <PromoteAd/>
+      <ListOfPromoted />
+    </div>
+      <div className="block-content">
+      <BlockInfluencer />
+      <ListOfBlocked />
+      </div>
     </div>
     )
   }
