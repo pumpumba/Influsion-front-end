@@ -65,3 +65,29 @@
     text-decoration: underline;
   }
 }
+
+.promoted-list-component{
+  display: grid;
+  grid-template-columns: 0.6fr 3fr 3fr 1fr 1fr;
+  padding: .5rem;
+  cursor: pointer;
+}
+
+.promoted-list-component:nth-child(2n){
+  background-color: lighten($light-pink, 3%);
+}
+
+.promoted-list-header{
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 0.6fr 3fr 3fr 1fr 1fr;
+  font-weight: bold;
+  .title-span{
+    font-size:1em;
+
+  }
+  span{
+    font-size: 0.7em;
+
+  }
+}

@@ -1,8 +1,9 @@
 .block-content {
   height: 800px;
   display: grid;
-  grid-template-columns: 5fr 4fr;
-  grid-gap: 2vw;
+  grid-template-columns: 2fr 2fr;
+  grid-gap: 4vw;
+  margin: 4em;
 
 
   .search-input-wrapper {

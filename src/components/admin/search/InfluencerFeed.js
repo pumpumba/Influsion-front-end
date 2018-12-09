@@ -49,6 +49,7 @@ class InfluencerFeed extends React.Component {
       feedContent = filteredContent.map(curContent => {
         return <FeedComponent
           key={curContent.postid}
+          postid={curContent.postid}
           data={curContent.platformcontent}
           userId={this.props.userId}
         />
