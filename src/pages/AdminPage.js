@@ -15,6 +15,7 @@ import './../styles/admin/most-clicked-followed-search.scss'
 import BlockInfluencer from './../components/admin/BlockInfluencer'
 import ListOfBlocked from './../components/admin/ListOfBlocked'
 import MostFollowedAd from './../components/admin/5MostFollowedByAd'
+import ListOfPromoted from './../components/admin/ListOfPromoted'
 
 class AdminPage extends React.Component {
     constructor() {
@@ -75,6 +76,11 @@ class AdminPage extends React.Component {
                     </div>
                     <div className="create-ad">
                         <PromoteAd />
+                        <ListOfPromoted />
+                        <div className="block-content">
+                            <BlockInfluencer />
+                            <ListOfBlocked />
+                        </div>
                     </div>
                     <div className='most-followed-ad'>
                         <MostFollowedAd/>
@@ -92,10 +98,7 @@ class AdminPage extends React.Component {
                     </div>
                     </div>
 
-                <div className="block-content">
-                    <BlockInfluencer />
-                    <ListOfBlocked />
-                </div>
+
                 <div className="admin-content">
                     <div className="admin-left-content">
                         <a href='/admin-promote' className='white-button'>Promote Post</a>

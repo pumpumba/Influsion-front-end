@@ -31,7 +31,7 @@ class FeedComponent extends React.Component {
                         noOfLikes={this.props.data.tweetFavoriteCount || this.props.data.postLikeCount || this.props.data.video_like_count}
                         noOfRetweets={this.props.data.tweetRetweetCount}
                         timeStamp={this.props.data.tweetCreatedAt || this.props.data.postCreatedAt || this.props.data.video_created_at}
-                        postId={this.props.data.tweetId || this.props.data.postId || this.props.data.video_id}
+                        postId={this.props.postid || this.props.postid  || this.props.postid }
                     />
                 </div>
             )

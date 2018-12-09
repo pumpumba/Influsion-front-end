@@ -27,7 +27,11 @@ class PopularComponentHeader extends React.Component {
                     }
                     <StopPropagation>
                         <a href={this.props.url}>
-                            <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
+                            {this.props.isPromoted ?
+                                <FontAwesomeIcon icon={['fas', 'ad']} />
+                                :
+                                <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
+                            }
                         </a>
                         <FontAwesomeIcon
                             icon={'heart'}
