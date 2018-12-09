@@ -77,7 +77,7 @@ class PopularComponentExpandedView extends React.Component {
         this.openAd = this.openAd.bind(this)
     }
 
-    openAd(){
+    openAd() {
         window.open(this.props.readmoreurl)
     }
 
@@ -107,9 +107,15 @@ class PopularComponentExpandedView extends React.Component {
                         {this.props.userName}
                         {this.props.userVerified && <img className="verifiedIcon" src={require('../../../../img/Twitter_Verified_Badge.svg')} />}
                         <StopPropagation>
-                            <a href={this.props.url} className='platform-link'>
-                                <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
-                            </a>
+                            {this.props.isPromoted ?
+                                <span class='platform-link'>
+                                    <FontAwesomeIcon icon={['fas', 'ad']} />
+                                </span>
+                                :
+                                <a href={this.props.url} className='platform-link'>
+                                    <FontAwesomeIcon icon={['fab', `${this.props.platform.toLowerCase()}`]} />
+                                </a>
+                            }
                         </StopPropagation>
                     </NavLink>
                     <ContentPlacer {...this.props} />

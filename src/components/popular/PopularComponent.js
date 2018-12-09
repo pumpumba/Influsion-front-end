@@ -3,7 +3,7 @@ import PopularComponentClosedView from './popularSubComponents/PopularComponentC
 import PopularComponentExpandedView from './popularSubComponents/PopularComponentExpandedView'
 import { followInfluencer, unfollowInfluencer } from '../functions/followAndUnfollowInfluencer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {BACKEND_URL} from './../../constants'
+import { BACKEND_URL } from './../../constants'
 
 
 class PopularComponent extends React.Component {
@@ -25,11 +25,11 @@ class PopularComponent extends React.Component {
 
     addUserVisit(e) {
         if (this.props.data.platform === "twitter") {
-          this.state.typeOfVisit = "twitterpost"
+            this.state.typeOfVisit = "twitterpost"
         } else if (this.props.data.platform === "Youtube") {
-          this.state.typeOfVisit = "youtubevideo"
+            this.state.typeOfVisit = "youtubevideo"
         } else if (this.props.data.platform === "instagram") {
-          this.state.typeOfVisit = "instagrampost"
+            this.state.typeOfVisit = "instagrampost"
         }
         e.preventDefault()
         fetch(BACKEND_URL + 'db/add_user_visit/', {
@@ -38,8 +38,10 @@ class PopularComponent extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({influencer_id: this.props.data.influencerId, user_id: this.props.userId,
-                                  type_of_visit: this.state.typeOfVisit})
+            body: JSON.stringify({
+                influencer_id: this.props.data.influencerId, user_id: this.props.userId,
+                type_of_visit: this.state.typeOfVisit
+            })
         })
     }
 
@@ -51,7 +53,7 @@ class PopularComponent extends React.Component {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({user_id: this.props.userId, ad_id: this.props.data.adid})
+            body: JSON.stringify({ user_id: this.props.userId, ad_id: this.props.data.adid })
         })
     }
 
@@ -67,9 +69,9 @@ class PopularComponent extends React.Component {
         }))
 
         if (this.state.open && this.props.data.adid) {
-          this.addAdClick(e)
+            this.addAdClick(e)
         } else if (this.state.open) {
-          this.addUserVisit(e)
+            this.addUserVisit(e)
         }
 
     }
@@ -85,7 +87,7 @@ class PopularComponent extends React.Component {
         }
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         document.body.className = 'scroll'
     }
 
@@ -94,19 +96,19 @@ class PopularComponent extends React.Component {
         let styles = null
         let backgroundUrl = ['']
 
-        if(this.state.open){
+        if (this.state.open) {
             document.body.className = 'noscroll'
-        }else{
+        } else {
             document.body.className = 'scroll'
         }
 
-        if(this.props.data.adid){
+        if (this.props.data.adid) {
             styles = {
                 backgroundImage: 'url(' + this.props.data.imgurl[0] + ')'
             }
-            if (this.props.imgurl === 'undefined'){
+            if (this.props.imgurl === 'undefined') {
                 backgroundUrl = '../../../img/404Jonas-7a6e7fcf.png'
-            }else{
+            } else {
                 backgroundUrl = this.props.data.imgurl
             }
             return (
@@ -184,6 +186,7 @@ class PopularComponent extends React.Component {
                         platform={this.props.data.platform}
                         influencerId={this.props.data.influencerId}
                         isInstagramVideo={isInstagramVideo}
+                        isPromoted={this.props.isPromoted}
                     />
                     {this.state.open &&
                         <PopularComponentExpandedView
@@ -203,6 +206,7 @@ class PopularComponent extends React.Component {
                             platform={this.props.data.platform}
                             heart={this.state.heart}
                             influencerId={this.props.data.influencerId}
+                            isPromoted={this.props.isPromoted}
                         />
                     }
                     <div className='blur-overlay'></div>
